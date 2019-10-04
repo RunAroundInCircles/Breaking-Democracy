@@ -1,11 +1,13 @@
 /* Grand-Theft-Democracy.js Javascript */
 
 //Describes the party for a Candidate
-class Party = {
+
+//Check errors with F12
+class Party {
     constructor(Partyname){
       this.name = Partyname
     }
-    this.personalites = [1,2,3]
+    personalites = [1,2,3]
   }
 
 
@@ -18,9 +20,23 @@ class Candidate{
   }
 }
 
-var List = require("collections/list");
-var candidateList = new List();
-var partiesList = new List();
+function myFunction(){
+  alert("ENTERED");
+}
+
+//var List = require("collections/list");
+//var candidateList = new List();
+//var partiesList = new List();
+
+function generateCandidate(firstname, lastname, partyname){
+  if(partiesList.findValue()){
+
+  }
+
+  var candidate = new Candidate(firstname,lastname,partyname);
+  candidateList.add(candidate)
+}
+
 
 // Try edit message
 const data = {
@@ -29,6 +45,6 @@ const data = {
   party: "D"
 }
 
-$('#msg').html(personalities[data.message + data.minimum].toString(10))
+//$('#msg').html(personalities[data.message + data.minimum].toString(10))
 
 console.log(data)
