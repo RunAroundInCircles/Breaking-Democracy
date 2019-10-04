@@ -18,6 +18,10 @@ class Candidate{
   }
 }
 
+var List = require("collections/list");
+var candidateList = new List();
+var partiesList = new List();
+
 // Try edit message
 const data = {
   minimum: 0,
