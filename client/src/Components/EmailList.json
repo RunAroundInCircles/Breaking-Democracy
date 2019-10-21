@@ -1,0 +1,8 @@
+const emails = [
+	{Sender: "Putin", SenderEmail:"putin@democrastan.org", ccsEmails: "", title: "", favorited: False, id: 1, body: "Hello Putin, /n/n This is future Putin. You have to win or I will kill you."},
+	{Sender: "George Bush", SenderEmail:"bushie@democrastan.org", ccsEmails: "", title: "",  favorited: False,id: 2, body: "Hello Putin, /n/n Wanna go golfing again?"},
+	{Sender: "Fan", SenderEmail:"y/nfan@yahoo.com", ccsEmails: "", title: "", favorited: False, id: 3, body: "Hello Putin! /n/n I LOVE YOU SO MUCH. CAN WE GET MARRIED AND HAVE LIKE 20 KIDS. OMG HI."},
+	{Sender: "Anti", SenderEmail:"Anti@yahoo.com", ccsEmails: "", title: "", favorited: False, id: 4, body: "I hope you die you russia loving commie."}
+];
+
+export emails;
