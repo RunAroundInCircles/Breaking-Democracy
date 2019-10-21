@@ -1,0 +1,6 @@
+const parties = [
+	{name: "Democratic", desc: "Blue bois"},
+	{name: "Republican", desc: "Red bois"}
+];
+
+export parties;
