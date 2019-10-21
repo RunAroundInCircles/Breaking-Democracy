@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
 import EmailApp from './Components/EmailApp.js';
+import emails from './Components/EmailList.json';
 
 function App() {
   return (
     <div className="App">
-      <EmailApp/>
+      <EmailApp emails={emails}/>
     </div>
   );
 }
