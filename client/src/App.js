@@ -5,7 +5,7 @@ import EmailApp from './Components/EmailApp.js';
 function App() {
   return (
     <div className="App">
-      <EmailApp/>
+      <EmailApp emails={}/>
     </div>
   );
 }
