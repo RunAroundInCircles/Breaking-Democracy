@@ -18,6 +18,7 @@ class EmailList extends Component {
                 onSelect={this.props.onSelect}
                 {...email}/>);
         });
+
         return(
             <div className="email-list">
                 {emails}

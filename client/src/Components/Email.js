@@ -21,14 +21,14 @@ class Email extends Component {
             // Render as selected
             return (
                 <div onClick={this.props.onSelect}>
-                    {this.title}
+                    <h1 >{this.state.title}</h1>}
                 </div>
             );
         } else {
             // Render as not selected
             return (
                 <div onClick={this.props.onSelect}>
-                    {this.title}
+                    <h1 >{this.state.title}</h1>
                 </div>
             );
         }
