@@ -12,23 +12,40 @@ class Email extends Component {
             ccsEmail: props.ccsEmail,
             favorited: props.favorited,
             pinned: props.pinned,
-            id: props.id
+            id: props.id,
+            onSelect: props.onSelect
         }
+        this.handleClick = this.handleClick.bind(this);
+        if(this.props.selected == true) {
+            console.log('selected');
+        }
+    }
+
+    handleClick(e) {
+        e.preventDefault();
+        this.state.onSelect(this.state);
     }
 
     render() {
         if(this.props.selected) {
             // Render as selected
             return (
-                <div onClick={this.props.onSelect}>
-                    <h1 >{this.state.title}</h1>}
+                <div className='email-selected' onClick={this.handleClick}>
+                    <font color = "blue">
+                        <h1>{this.state.sender}</h1>
+                        <h2>{this.state.title}</h2>
+                        <h3>{this.state.body.substring(0,40)}</h3>
+                    </font>
                 </div>
             );
         } else {
             // Render as not selected
             return (
-                <div onClick={this.props.onSelect}>
-                    <h1 >{this.state.title}</h1>
+                <div className='email-notselected' onClick={this.handleClick}>
+                    <font color = "red"> 
+                    <h1>{this.state.sender}</h1> </font>
+                    <h2>{this.state.title}</h2>
+                    <h3>{this.state.body.substring(0,40)}</h3>
                 </div>
             );
         }
