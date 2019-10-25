@@ -20,6 +20,7 @@ class EmailList extends Component {
         });
         return(
             <div className="email-list">
+                <h1>&nbsp;Inbox</h1>
                 {emails}
             </div>
         )

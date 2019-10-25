@@ -31,19 +31,16 @@ class Email extends Component {
             // Render as selected
             return (
                 <div className='email-selected' onClick={this.handleClick}>
-                    <font color = "blue">
                         <h1>{this.state.sender}</h1>
                         <h2>{this.state.title}</h2>
                         <h3>{this.state.body.substring(0,40)}</h3>
-                    </font>
                 </div>
             );
         } else {
             // Render as not selected
             return (
                 <div className='email-notselected' onClick={this.handleClick}>
-                    <font color = "red"> 
-                    <h1>{this.state.sender}</h1> </font>
+                    <h1>{this.state.sender}</h1>
                     <h2>{this.state.title}</h2>
                     <h3>{this.state.body.substring(0,40)}</h3>
                 </div>
