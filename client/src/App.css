@@ -23,4 +23,28 @@
 
 .email-list {
   text-align: left;
+  border-style: solid;
+  position: absolute;
+  width: 25%;
+}
+
+.email-reader {
+  text-align: left;
+  padding: 10px;
+  left: 25%;
+  height: 100%;
+  width: 75%;
+  border-style: solid;
+  position: absolute;
+}
+
+.email-selected {
+  background-color: #d3d3d3;
+  border-style: solid;
+  padding: 10px;
+}
+
+.email-notselected {
+  border-style: solid;
+  padding: 10px;
 }

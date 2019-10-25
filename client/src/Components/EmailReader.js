@@ -8,12 +8,25 @@ class EmailReader extends Component {
             email: props.email
         }
     }
-    render() {
-        return(
-            <div className="email-reader">
 
-            </div>
-        )
+    render() {
+        if (this.props.email === null) {
+            return(
+                <div className="email-reader">
+                </div>
+            )
+        }
+        else {
+            return(
+                <div className="email-reader">
+                    <h1>{this.props.email.title}</h1>
+                    <h2>{this.props.email.sender}</h2>
+                    <h3>{this.props.email.senderEmail}</h3>
+                    <h3>{this.props.email.ccsEmail}</h3>
+                    <body>{this.props.email.body}</body>
+                </div>
+            )
+        }
     }
 }
 
