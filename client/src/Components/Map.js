@@ -1,13 +1,13 @@
 import React,{Component} from 'react';
-import svg from './democrastan.svg';
+import democristan from './Maps/democristan.svg.js';
 
 class Map extends Component{
+	
 	render(){
-		return(
-			<div className='mySvg'>
-				<img src={svg}/>
-			</div>
-		);
+		const svg = {
+			__html: democristan
+		}
+		return <div dangerouslySetInnerHTML={svg}/>;
 	}
 }
 export default Map
