@@ -48,3 +48,8 @@
   border-style: solid;
   padding: 10px;
 }
+
+.map {
+  height: 50%;
+  width: 100%;
+}
