@@ -1,4 +1,4 @@
-"Breaking Democracy"
+Breaking Democracy
 
 
-"Instructions coming soon...."
+Instructions coming soon....
