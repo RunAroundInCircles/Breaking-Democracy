@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import democristan from './Maps/democristan.svg.js';
+import democristan from './Maps/country.svg.js';
 
 class Map extends Component{
 	
