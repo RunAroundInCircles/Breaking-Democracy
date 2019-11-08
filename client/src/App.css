@@ -64,6 +64,7 @@ svg {
 svg > g > path {
 	fill: red;
 	stroke: black;
+  
 }
 
 svg > g > path:hover {
