@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css';
-import EmailApp from './Components/EmailApp.js';
-import emails from './Components/EmailList.json';
+import MapApp from './Components/MapApp.js';
 import Map from './Components/Map.js'
+import country from './Components/Maps/country.svg.js';
 
 function App() {
   return (
     //Contains all components of the game
     <div className="App">
 	{/*<EmailApp emails={emails}/> { Email component of game, takes in list of email json objects } */}
-	  <Map/>
+	  <MapApp currentId={country}/>
     </div>
   );
 }
