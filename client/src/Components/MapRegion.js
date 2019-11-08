@@ -9,6 +9,8 @@ import region6 from './Maps/Region-6.svg.js';
 import region7 from './Maps/Region-7.svg.js';
 import region8 from './Maps/Region-8.svg.js';
 
+//NOT IMPLEMENTED
+
 class MapRegion extends Component {
     constructor(props) {
         super(props);
