@@ -18,7 +18,7 @@ class Map extends Component{
 		this.state = {
 			selectedRegion: props.selectedRegion,
 			onSelect: props.onSelect,
-			currentID: props.currentID
+			currentID: props.currentId
 		}
 		this.displayRegionMap = this.displayRegionMap.bind(this);
 	}
@@ -28,8 +28,8 @@ class Map extends Component{
 	}
 
 	render(){
-		const svg = {
-			__html: this.state.currentID
+		var svg = {
+			__html: this.props.currentId
 		}
 		return <div className="country-map" dangerouslySetInnerHTML={svg} ref={this.mapRef}/>
 	}
@@ -46,8 +46,15 @@ class Map extends Component{
 		var func = this.state.onSelect;
 		this.mapRef.current.querySelectorAll('g > path').forEach((region) => {
 			region.addEventListener('click', function(event) {
-				console.log(region.parentElement.parentElement.parentElement.parentElement);
-				func(region);
+				//console.log(region.parentElement.parentElement.parentElement.parentElement);
+				func(region.id);
+
+				this.mapRef = React.createRef();
+				const svg = {
+					__html: region.id
+				}
+				return <div classsName="region-map" dangerouslySetInnerHTML={svg} ref={this.mapRef} />
+				
 				//console.log('1');
 				//return (<MapRegion key={region.id}
 					//selected={this.props.selectedRegion && this.props.selectedRegion.id === region.id}

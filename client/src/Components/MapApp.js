@@ -8,7 +8,7 @@ class MapApp extends Component {
 		super(props);
         this.state = {
             selectedRegion: null,
-            currentId: this.props.currentId
+            currentId: country
         }
         this.setSelectedRegion = this.setSelectedRegion.bind(this);
     }
@@ -26,8 +26,9 @@ class MapApp extends Component {
     }
 	//function to set the currently selected email to be displayed in EmailReader.js
     setSelectedRegion(region) {
-        console.log(region.id);
-        this.setState({currentId: region.id});
+        console.log(region);
+        this.setState({currentId: region});
+        console.log(this.state.currentId);
         //this.setState({selectedRegion: region}); //render gets retriggered as soon as state is changed
     }
 }
