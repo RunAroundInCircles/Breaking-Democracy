@@ -42,19 +42,53 @@ class Map extends Component{
 				{...region}/>);
 			});
 		*/
-		
+
 		var func = this.state.onSelect;
-		this.mapRef.current.querySelectorAll('g > path').forEach((region) => {
+		this.mapRef.current.querySelectorAll('g > path').forEach((region, index) => {
 			region.addEventListener('click', function(event) {
-				//console.log(region.parentElement.parentElement.parentElement.parentElement);
-				func(region.id);
+
+
+				switch(index){
+						case 0:
+							func(region1);
+						break;
+						case 1:
+							func(region2);
+						break;
+						case 2:
+							func(region3);
+						break;
+						case 3:
+							func(region4);
+						break;
+						case 4:
+							func(region6);
+						break;
+						case 5:
+							func(region5);
+						break;
+						case 6:
+							func(region8);
+						break;
+						case 7:
+							func(region7);
+						break;
+						default:
+							func(country);
+						break;
+
+
+				}
+
+
+				//func(region.id);
 
 				this.mapRef = React.createRef();
 				const svg = {
 					__html: region.id
 				}
 				return <div classsName="region-map" dangerouslySetInnerHTML={svg} ref={this.mapRef} />
-				
+
 				//console.log('1');
 				//return (<MapRegion key={region.id}
 					//selected={this.props.selectedRegion && this.props.selectedRegion.id === region.id}
