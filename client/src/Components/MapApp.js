@@ -26,9 +26,7 @@ class MapApp extends Component {
     }
 	//function to set the currently selected email to be displayed in EmailReader.js
     setSelectedRegion(region) {
-        console.log(region);
         this.setState({currentId: region});
-        console.log(this.state.currentId);
         //this.setState({selectedRegion: region}); //render gets retriggered as soon as state is changed
     }
 }
