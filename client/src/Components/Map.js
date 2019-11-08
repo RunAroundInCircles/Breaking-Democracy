@@ -29,7 +29,7 @@ class Map extends Component{
 
 	render(){
 		var svg = {
-			__html: this.props.currentId
+			__html: this.props.currentId + '<button onClick={this.state.onSelect(country)}/>'
 		}
 		return <div className="country-map" dangerouslySetInnerHTML={svg} ref={this.mapRef}/>
 	}
@@ -45,63 +45,40 @@ class Map extends Component{
 
 		var func = this.state.onSelect;
 		this.mapRef.current.querySelectorAll('g > path').forEach((region, index) => {
+			region.fill = "blue";
 			region.addEventListener('click', function(event) {
-
-
 				switch(index){
-						case 0:
-							func(region1);
-						break;
-						case 1:
-							func(region2);
-						break;
-						case 2:
-							func(region3);
-						break;
-						case 3:
-							func(region4);
-						break;
-						case 4:
-							func(region6);
-						break;
-						case 5:
-							func(region5);
-						break;
-						case 6:
-							func(region8);
-						break;
-						case 7:
-							func(region7);
-						break;
-						default:
-							func(country);
-						break;
-
-
+					case 0:
+						func(region1);
+					break;
+					case 1:
+						func(region2);
+					break;
+					case 2:
+						func(region3);
+					break;
+					case 3:
+						func(region4);
+					break;
+					case 4:
+						func(region6);
+					break;
+					case 5:
+						func(region5);
+					break;
+					case 6:
+						func(region8);
+					break;
+					case 7:
+						func(region7);
+					break;
+					default:
+						func(country);
+					break;
 				}
-
-
-				//func(region.id);
-
-				this.mapRef = React.createRef();
-				const svg = {
-					__html: region.id
-				}
-				return <div classsName="region-map" dangerouslySetInnerHTML={svg} ref={this.mapRef} />
-
-				//console.log('1');
-				//return (<MapRegion key={region.id}
-					//selected={this.props.selectedRegion && this.props.selectedRegion.id === region.id}
-					//onSelect={this.props.onSelect}
-					//>);
-				}
-			)
+				console.log(region.parentElement.parentElement);
+			})
 		});
-		//console.log(region);
-		//if(region != "undefined") {
-			//this.setState({currentID: region.id});
-		//}
-
 	}
 }
 export default Map;
