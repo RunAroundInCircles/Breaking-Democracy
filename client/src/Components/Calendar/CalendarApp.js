@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import Calendar from './Calendar.jsx';
+import Calendar from './Calendar.js';
 
 import './CalendarUI.css';
 
@@ -12,7 +12,6 @@ class CalendarApp extends Component {
     render() {
         return(
             <div className="calendar-app">
-                <span className="icon">date_range</span>
                 <Calendar />
             </div>
         )
