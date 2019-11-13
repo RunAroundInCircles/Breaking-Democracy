@@ -10,7 +10,9 @@ class Calendar extends React.Component {
   };
 
   renderHeader() {
-    const dateFormat = "mm yyyy";
+    const dateFormat = "MMMM yyyy";
+
+    console.log(this.state.currentMonth);
 
     return (
       <div className="header row flex-middle">
@@ -20,7 +22,7 @@ class Calendar extends React.Component {
           </div>
         </div>
         <div className="col col-center">
-          <span>{ format(this.state.currentMonth, dateFormat)}</span>
+          <span>{format(this.state.currentMonth, dateFormat)}</span>
         </div>
         <div className="col col-end" onClick={this.nextMonth}>
           <div className="icon">chevron_right</div>
@@ -30,7 +32,7 @@ class Calendar extends React.Component {
   }
 
   renderDays() {
-    const dateFormat = "d";
+    const dateFormat = "eee";
     const days = [];
 
     let startDate =  startOfWeek(this.state.currentMonth);
@@ -72,7 +74,7 @@ class Calendar extends React.Component {
                 :  isSameDay(day, selectedDate) ? "selected" : ""
             }`}
             key={day}
-            onClick={() => this.onDateClick(parse(cloneDay))}
+            onClick={() => this.onDateClick(cloneDay)}
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
