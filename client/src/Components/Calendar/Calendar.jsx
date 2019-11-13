@@ -10,7 +10,7 @@ class Calendar extends React.Component {
   };
 
   renderHeader() {
-    const dateFormat = "mmmm yyyy";
+    const dateFormat = "mm yyyy";
 
     return (
       <div className="header row flex-middle">
@@ -30,7 +30,7 @@ class Calendar extends React.Component {
   }
 
   renderDays() {
-    const dateFormat = "dddd";
+    const dateFormat = "d";
     const days = [];
 
     let startDate =  startOfWeek(this.state.currentMonth);
