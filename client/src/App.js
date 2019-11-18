@@ -3,7 +3,8 @@ import './App.css';
 import './Components/Calendar/CalendarUI.css';
 import MapApp from './Components/MapApp.js';
 import EmailApp from './Components/EmailApp.js';
-import Calendar from './Components/Calendar/CalendarApp.js';
+import CalendarApp from './Components/Calendar/CalendarApp.js';
+import events from './Components/Calendar/EventList.json';
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
     <div className="App">	  
 	    {/*<EmailApp emails={emails}/> { Email component of game, takes in list of email json objects } */}
       {/*<MapApp/> {/*Map component of the game takes no props*/}
-      <Calendar/>
+      <CalendarApp events={events}/>
     </div>
   );
 }
