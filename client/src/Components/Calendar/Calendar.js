@@ -1,16 +1,35 @@
 //Base code was found here: https://blog.flowandform.agency/create-a-custom-calendar-in-react-3df1bfd0b728
 // The code needed to be recreated to work with the new version of datefns
 import React from "react";
-import {format,startOfWeek,parse, addMonths,startOfMonth,startDate,endDate,addDays,subMonths,endOfWeek,endOfMonth,isSameMonth,isSameDay}  from "date-fns";
+import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,endOfMonth,isSameMonth,isSameDay,isEqual}  from "date-fns";
+import Event from "./Event.js";
 
 class Calendar extends React.Component {
   state = {
     currentMonth: new Date(),
-    selectedDate: new Date()
+    selectedDate: new Date(),
+    events: this.props.events.map((event) => {
+      var date = new Date(event.year, event.month, event.day);
+      return(
+        {date: date, message: event.message}//<Event key={date} message={event.message} date={date}/>
+      );
+    })
   };
 
+  containsDate(date) {
+    var i;
+    for(i = 0; i < this.state.events.length; i++) {
+      //console.log(this.state.events[i].key);
+      //console.log(date);
+      if(isEqual(date, this.state.events[i].date)) {
+        return this.state.events[i].message;
+      }
+    }
+    return null;
+  }
+  
   renderHeader() {
-    const dateFormat = "mm yyyy";
+    const dateFormat = "MMMM yyyy";
 
     return (
       <div className="header row flex-middle">
@@ -20,7 +39,7 @@ class Calendar extends React.Component {
           </div>
         </div>
         <div className="col col-center">
-          <span>{ format(this.state.currentMonth, dateFormat)}</span>
+          <span>{format(this.state.currentMonth, dateFormat)}</span>
         </div>
         <div className="col col-end" onClick={this.nextMonth}>
           <div className="icon">chevron_right</div>
@@ -30,7 +49,7 @@ class Calendar extends React.Component {
   }
 
   renderDays() {
-    const dateFormat = "d";
+    const dateFormat = "eee";
     const days = [];
 
     let startDate =  startOfWeek(this.state.currentMonth);
@@ -38,16 +57,16 @@ class Calendar extends React.Component {
     for (let i = 0; i < 7; i++) {
       days.push(
         <div className="col col-center" key={i}>
-          { format( addDays(startDate, i), dateFormat)}
+          {format( addDays(startDate, i), dateFormat)}
         </div>
       );
     }
-
+    
     return <div className="days row">{days}</div>;
   }
 
   renderCells() {
-    const { currentMonth, selectedDate } = this.state;
+    const {currentMonth, selectedDate} = this.state;
     const monthStart =  startOfMonth(currentMonth);
     const monthEnd =  endOfMonth(monthStart);
     const startDate =  startOfWeek(monthStart);
@@ -64,6 +83,7 @@ class Calendar extends React.Component {
       for (let i = 0; i < 7; i++) {
         formattedDate =  format(day, dateFormat);
         const cloneDay = day;
+        
         days.push(
           <div
             className={`col cell ${
@@ -72,10 +92,11 @@ class Calendar extends React.Component {
                 :  isSameDay(day, selectedDate) ? "selected" : ""
             }`}
             key={day}
-            onClick={() => this.onDateClick(parse(cloneDay))}
+            onClick={() => this.onDateClick(cloneDay)}
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
+            <span className="event">{this.containsDate(day)}</span>
           </div>
         );
         day = addDays(day, 1);
@@ -87,6 +108,7 @@ class Calendar extends React.Component {
       );
       days = [];
     }
+
     return <div className="body">{rows}</div>;
   }
 

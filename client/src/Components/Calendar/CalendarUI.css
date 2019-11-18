@@ -58,24 +58,12 @@ header {
   background: var(--neutral-color);
 }
 
-header #logo {
-  font-size: 175%;
-  text-align: center;
-  color: var(--main-color);
-  line-height: 1;
-}
-
-header #logo .icon {
-  padding-right: .25em;
-}
-
 main {
   display: block;
   margin: 0 auto;
   margin-top: 5em;
   max-width: 50em;
 }
-
 
 /* GRID */
 
