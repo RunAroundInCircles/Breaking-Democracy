@@ -11,7 +11,7 @@ class Calendar extends React.Component {
     events: this.props.events.map((event) => {
       var date = new Date(event.year, event.month, event.day);
       return(
-        {date: date, message: event.message}//<Event key={date} message={event.message} date={date}/>
+        {date: date, message: <Event key={date} message={event.message} date={date}/>}//<Event key={date} message={event.message} date={date}/>
       );
     })
   };
@@ -19,8 +19,6 @@ class Calendar extends React.Component {
   containsDate(date) {
     var i;
     for(i = 0; i < this.state.events.length; i++) {
-      //console.log(this.state.events[i].key);
-      //console.log(date);
       if(isEqual(date, this.state.events[i].date)) {
         return this.state.events[i].message;
       }
@@ -96,7 +94,7 @@ class Calendar extends React.Component {
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
-            <span className="event">{this.containsDate(day)}</span>
+            {this.containsDate(day)}
           </div>
         );
         day = addDays(day, 1);
