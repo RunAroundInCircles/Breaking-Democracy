@@ -56,9 +56,9 @@
 
 svg {
 	width: 48%;
-  position: absolute;
-  display: block;
-  margin: auto;
+	position: absolute;
+	display: block;
+	margin: auto;
 }
 
 svg > g > path {
@@ -74,11 +74,20 @@ svg > g > path:hover {
 Button{
 	background-color: black; /* Green */
 	border-style: solid;
-	border-color:white;
+	border-color:Red;
 	color: white;
-	padding: 15px 32px;
+	padding: 10px 45px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
 }
+
+Button:hover{
+	background-color: gold;
+}
+
+button:focus {
+	outline:0;
+}
+

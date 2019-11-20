@@ -26,13 +26,17 @@ class MainPage extends Component{
 								<span>Calendar</span>
 							</Button>
 						</Link>
-				
+						&nbsp;
+						&nbsp; {/*This adds spaces between the buttons*/}
+						&nbsp;
 						<Link to='/Email'>
 							<Button renderAs='button'>
 								<span>Email</span>
 							</Button>
 						</Link>
-							
+						&nbsp;
+						&nbsp; {/*This adds spaces between the buttons*/}
+						&nbsp;
 						<Link to='/Map'>
 							<Button renderAs='button'>
 								<span>Map</span>
