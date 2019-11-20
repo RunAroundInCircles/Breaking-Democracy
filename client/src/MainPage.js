@@ -5,6 +5,8 @@ import EmailApp from './Components/EmailApp.js';
 import CalendarApp from './Components/Calendar/CalendarApp.js';
 import events from './Components/Calendar/EventList.json';
 import emails from './Components/EmailList.json';
+import {Button, ButtonToolbar} from 'react-bootstrap';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,17 +20,24 @@ class MainPage extends Component{
 			<Router>
 				<div>
 					<nav>
-						<ul>
-							<li>
-								<Link to='/Calendar'>Calendar</Link>
-							</li>
-							<li>
-								<Link to= '/Email'>Email</Link>
-							</li>
-							<li>
-								<Link to = '/Map'>Map</Link>								
-							</li>
-						</ul>
+	
+						<Link to='/Calendar'>
+							<Button renderAs='button'>
+								<span>Calendar</span>
+							</Button>
+						</Link>
+				
+						<Link to='/Email'>
+							<Button renderAs='button'>
+								<span>Email</span>
+							</Button>
+						</Link>
+							
+						<Link to='/Map'>
+							<Button renderAs='button'>
+								<span>Map</span>
+							</Button>
+						</Link>								
 					</nav>
 					
 					<Switch>
