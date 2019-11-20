@@ -8,13 +8,23 @@ class Event extends Component {
             date: props.date,
             message: props.message
         }
+
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(e) {
+        e.preventDefault(); //Prevent default behavior
+        alert(this.state.message);
     }
 
     render() {
         return (
-            <div className="event" date={this.state.date} id={this.state.id}>
-                {this.state.message}
-            </div>
+            <svg className="eventSVG" onClick={this.handleClick}>
+                <g>
+                    <rect width="1000" height="25%" fillOpacity=".25" fill="red"/>
+                    <text x="0" y="15">{this.state.message}</text>
+                </g>
+            </svg>
         );
     }
 }
