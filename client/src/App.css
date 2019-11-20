@@ -56,12 +56,15 @@
 
 svg {
 	width: 48%;
-	position: absolute;
+  position: absolute;
+  display: block;
+  margin: auto;
 }
 
 svg > g > path {
 	fill: red;
 	stroke: black;
+  
 }
 
 svg > g > path:hover {
