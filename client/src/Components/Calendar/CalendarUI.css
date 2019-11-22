@@ -48,7 +48,8 @@ body {
     line-height: 1.5;
     color: var(--text-color);
     background: var(--bg-color);
-    position: relative;
+    height: fit-content;
+	
 }
 
 header {
@@ -149,9 +150,10 @@ main {
   border-bottom: 1px solid var(--border-color);
 }
 
+
 .calendar .body .cell {
   position: relative;
-  height: 5em;
+  height: 7.4em;
   border-right: 1px solid var(--border-color);
   overflow: hidden;
   cursor: pointer;
