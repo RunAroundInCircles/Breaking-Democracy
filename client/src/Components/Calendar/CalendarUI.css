@@ -38,6 +38,7 @@
 
 * {
   box-sizing: border-box;
+ 
 }
 
 body {
@@ -171,6 +172,7 @@ main {
 
 .calendar .body .row {
   border-bottom: 1px solid var(--border-color);
+  
 }
 
 .calendar .body .row:last-child {
@@ -222,3 +224,4 @@ main {
 .event {
   color: red;
 }
+
