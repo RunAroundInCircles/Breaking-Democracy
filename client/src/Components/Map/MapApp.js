@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import Map from './Map.js';
-import country from './Maps/country.svg.js';
+import country from '../../Resources/Maps/country.svg.js';
+import './Map.css';
 
 class MapApp extends Component {
     constructor(props) {
@@ -13,11 +14,11 @@ class MapApp extends Component {
 	//Renders the map in currentID
     render() {
         return(
-            <div className="map-app"> 
-                <Map 
+            <div className="map-app">
+                <Map
                     onSelect={this.setSelectedRegion}
                     currentId={this.state.currentId}
-                />				
+                />
             </div>
         )
     }

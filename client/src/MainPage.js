@@ -1,10 +1,10 @@
 import React,{Component} from 'react';
 import './App.css';
-import MapApp from './Components/MapApp.js';
-import EmailApp from './Components/EmailApp.js';
+import MapApp from './Components/Map/MapApp.js';
+import EmailApp from './Components/Email/EmailApp.js';
 import CalendarApp from './Components/Calendar/CalendarApp.js';
 import events from './Components/Calendar/EventList.json';
-import emails from './Components/EmailList.json';
+import emails from './Components/Email/EmailList.json';
 import {Button, ButtonToolbar} from 'react-bootstrap';
 
 import {
@@ -20,30 +20,33 @@ class MainPage extends Component{
 			<Router>
 				<div>
 					<nav>
-	
+
 						<Link to='/Calendar'>
-							<Button renderAs='button'>
+							<Button renderas='button'>
 								<span>Calendar</span>
 							</Button>
 						</Link>
 						&nbsp;
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
+
 						<Link to='/Email'>
-							<Button renderAs='button'>
+							<Button renderas='button'>
 								<span>Email</span>
 							</Button>
 						</Link>
+
 						&nbsp;
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
+
 						<Link to='/Map'>
-							<Button renderAs='button'>
+							<Button renderas='button'>
 								<span>Map</span>
 							</Button>
-						</Link>								
+						</Link>
 					</nav>
-					
+
 					<Switch>
 						<Route path='/Calendar'>
 							<CalendarApp events={events}/>

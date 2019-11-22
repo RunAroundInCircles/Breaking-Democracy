@@ -38,7 +38,7 @@
 
 * {
   box-sizing: border-box;
- 
+
 }
 
 body {
@@ -174,7 +174,7 @@ main {
 
 .calendar .body .row {
   border-bottom: 1px solid var(--border-color);
-  
+
 }
 
 .calendar .body .row:last-child {
@@ -223,7 +223,10 @@ main {
   width: calc(100%/7);
 }
 
-.event {
+.eventSVG {
   color: red;
+	width: 48%;
+  position: absolute;
+  display: block;
+  margin: auto;
 }
-
