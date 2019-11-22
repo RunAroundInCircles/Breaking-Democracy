@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import Map from './Map.js';
-import country from './Maps/country.svg.js';
+import country from '../../Resources/Maps/country.svg.js';
 import './Map.css';
 
 class MapApp extends Component {
