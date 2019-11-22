@@ -36,16 +36,16 @@ class Calendar extends React.Component {
     return (
       <div className="header row flex-middle">
         <div className="col col-start">
-        //Creates an arrow to allow the user to click to the previous month
+        {/*Creates an arrow to allow the user to click to the previous month*/}
           <div className="icon" onClick={this.prevMonth}>
             chevron_left
           </div>
         </div>
-        //Displays the month and year
+        {/*Displays the month and year*/}
         <div className="col col-center">
           <span>{format(this.state.currentMonth, dateFormat)}</span>
         </div>
-        //Creates an arrow to allow the user to click to the next month
+        {/*Creates an arrow to allow the user to click to the next month*/}
         <div className="col col-end" onClick={this.nextMonth}>
           <div className="icon">chevron_right</div>
         </div>
