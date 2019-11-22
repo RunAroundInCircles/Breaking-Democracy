@@ -16,17 +16,17 @@ class MainPage extends Component{
 	render(){
 		return(
 			<Router>
-				<div>
+				<div id="screen">
 					<nav>
 						<ul>
 							<li>
 								<Link to='/Calendar'>Calendar</Link>
 							</li>
 							<li>
-								<Link to= '/Email'>Email</Link>
+								<Link to='/Email'>Email</Link>
 							</li>
 							<li>
-								<Link to = '/Map'>Map</Link>								
+								<Link to='/Map'>Map</Link>								
 							</li>
 						</ul>
 					</nav>

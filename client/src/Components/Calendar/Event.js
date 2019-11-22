@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import {Link} from "react-router-dom";
 
 class Event extends Component {
     constructor(props) {
@@ -6,9 +7,9 @@ class Event extends Component {
 
         this.state = {
             date: props.date,
-            message: props.message
+            message: props.message,
+            id: props.id
         }
-
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -18,13 +19,9 @@ class Event extends Component {
     }
 
     render() {
+        let route = "/Calendar/" + this.state.id;
         return (
-            <svg className="eventSVG" onClick={this.handleClick}>
-                <g>
-                    <rect width="1000" height="25%" fillOpacity=".25" fill="red"/>
-                    <text x="0" y="15">{this.state.message}</text>
-                </g>
-            </svg>
+            <Link to={route}>{this.state.message}</Link>
         );
     }
 }
