@@ -7,8 +7,10 @@ Instructions coming soon....
 
 Current Implementation
 =
+You can switch between:
 * An email module
 * A map module
+* A calendar module
 
 Thank You to the following people
 =
