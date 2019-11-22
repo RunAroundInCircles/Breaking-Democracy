@@ -219,6 +219,9 @@ main {
   width: calc(100%/7);
 }
 
-.event {
-  color: red;
+.eventSVG {
+	width: 48%;
+  position: absolute;
+  display: block;
+  margin: auto;
 }
