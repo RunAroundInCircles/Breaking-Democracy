@@ -21,8 +21,8 @@ class MainPage extends Component{
 				<div>
 					<nav>
 
-						<Link to='/Calendar'>
-							<Button renderas='button'>
+						<Link to='/Calendar'>{/*Button to Calendar*/}
+							<Button renderAs='button'>
 								<span>Calendar</span>
 							</Button>
 						</Link>
@@ -31,7 +31,7 @@ class MainPage extends Component{
 						&nbsp;
 
 						<Link to='/Email'>
-							<Button renderas='button'>
+							<Button renderAs='button'>{/*Button to Email*/}
 								<span>Email</span>
 							</Button>
 						</Link>
@@ -39,15 +39,14 @@ class MainPage extends Component{
 						&nbsp;
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
-
-						<Link to='/Map'>
-							<Button renderas='button'>
+						<Link to='/Map'>{/*Button to Map*/}
+							<Button renderAs='button'>
 								<span>Map</span>
 							</Button>
 						</Link>
 					</nav>
-
-					<Switch>
+					
+					<Switch>{/*The switch to click between pages.*/}
 						<Route path='/Calendar'>
 							<CalendarApp events={events}/>
 						</Route>

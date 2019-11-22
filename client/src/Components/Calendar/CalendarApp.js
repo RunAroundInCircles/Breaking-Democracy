@@ -5,14 +5,14 @@ import './CalendarUI.css';
 
 class CalendarApp extends Component {
     constructor(props) {
-		//Sets inital selected email to null and when an email is set to select it binds the selected email to be set.
+		//sets initial events to specified date on the calendar.
       super(props);
 
       this.state = {
           events: props.events
       }
     }
-	//Renders the selected email, the email list and setting the selected email on a click.
+	//Renders the calendar for the current month with all current events.
     render() {
         return(
             <div className="calendar-app">
