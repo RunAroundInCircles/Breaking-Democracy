@@ -20,30 +20,33 @@ class MainPage extends Component{
 			<Router>
 				<div>
 					<nav>
-	
+
 						<Link to='/Calendar'>
-							<Button renderAs='button'>
+							<Button renderas='button'>
 								<span>Calendar</span>
 							</Button>
 						</Link>
 						&nbsp;
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
+
 						<Link to='/Email'>
-							<Button renderAs='button'>
+							<Button renderas='button'>
 								<span>Email</span>
 							</Button>
 						</Link>
+
 						&nbsp;
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
+      
 						<Link to='/Map'>
-							<Button renderAs='button'>
+							<Button renderas='button'>
 								<span>Map</span>
 							</Button>
-						</Link>								
+						</Link>
 					</nav>
-					
+
 					<Switch>
 						<Route path='/Calendar'>
 							<CalendarApp events={events}/>

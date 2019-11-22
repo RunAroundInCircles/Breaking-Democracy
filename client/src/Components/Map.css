@@ -1,0 +1,17 @@
+.map-app {
+	width: 38%;
+  height: 10%;
+  position: absolute;
+  display: block;
+  margin: auto;
+}
+
+.map-app svg > g > path {
+	fill: red;
+	stroke: black;
+
+}
+
+.map-app svg > g > path:hover {
+	fill: gold;
+}

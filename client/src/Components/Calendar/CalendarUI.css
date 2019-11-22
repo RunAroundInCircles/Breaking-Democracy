@@ -221,7 +221,10 @@ main {
   width: calc(100%/7);
 }
 
-.event {
+.eventSVG {
   color: red;
+	width: 48%;
+  position: absolute;
+  display: block;
+  margin: auto;
 }
-
