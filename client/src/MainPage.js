@@ -26,6 +26,9 @@ class MainPage extends Component{
 								<span>Calendar</span>
 							</Button>
 						</Link>
+						&nbsp;
+						&nbsp; {/*This adds spaces between the buttons*/}
+						&nbsp;
 
 						<Link to='/Email'>
 							<Button renderas='button'>
@@ -33,6 +36,10 @@ class MainPage extends Component{
 							</Button>
 						</Link>
 
+						&nbsp;
+						&nbsp; {/*This adds spaces between the buttons*/}
+						&nbsp;
+      
 						<Link to='/Map'>
 							<Button renderas='button'>
 								<span>Map</span>

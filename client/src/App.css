@@ -28,16 +28,57 @@
   width: 25%;
 }
 
-.email-reader {
+
+.emailh1{
   text-align: left;
   padding: 10px;
   left: 25%;
-  height: 100%;
+  top: 20px;
   width: 75%;
   border-style: solid;
   position: absolute;
 }
 
+.emailh2{
+  text-align: left;
+  padding-left:20px;
+  left: 25%;
+  top: 91px;
+  width: 75%;
+  border-style: solid;
+  position: absolute;
+}
+.emailh3{
+  text-align: left;
+  padding-left:30px;
+  left: 25%;
+  top: 130px;
+  width: 75%;
+  border-style: solid;
+  position: absolute;
+}
+.emailh4{
+  text-align: left;
+  padding-left:30px;
+  left: 25%;
+  top: 160px;
+  width: 75%;
+  border-style: solid;
+  position: absolute;
+}
+
+.emailbody{
+
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 10px;
+  height: 400px;
+  left: 25%;
+  top: 210px;
+  width: 75%;
+  border-style: solid;
+  position: absolute;
+}
 .email-selected {
   background-color: #d3d3d3;
   border-style: solid;
@@ -50,13 +91,22 @@
 }
 
 Button{
-	background-color: black; /* Green */
+	background-color: grey; /* Green */
 	border-style: solid;
-	border-color:white;
+	border-color:Red;
 	color: white;
-	padding: 15px 32px;
+	padding: 10px 45px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
 }
+
+Button:hover{
+	background-color: gold;
+}
+
+button:focus {
+	outline:0;
+}
+
