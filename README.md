@@ -7,11 +7,13 @@ Instructions coming soon....
 
 Current Implementation
 =
-You can switch between:
+You can switch between different modules by clicking on the red buttons at the top of the screen:
 * **An email module**: The email module allows users to see emails in the left side panel and then when an email is clicked the full email will be displayed in the main panel.
 ![Inbox](/UsercaseImages/StartingInbox.PNG)
 ![EmailSelected](/UsercaseImages/SelectedEmail.PNG)
+
 * **A map module**: The map modules allows users to click different territories in the map and then a zoomed in map of the territory will be shown.
+
 ![Map](/UsercaseImages/initialMap.PNG)
 ![SelectedDistrict](/UsercaseImages/selected.png)
 ![District1](/UsercaseImages/districtOne.PNG)
