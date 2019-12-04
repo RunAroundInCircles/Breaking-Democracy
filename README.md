@@ -7,7 +7,7 @@ Instructions coming soon....
 
 Current Implementation
 =
-You can switch between:
+You can switch between different modules by clicking on the red buttons at the top of the screen:
 * **An email module**: The email module allows users to see emails in the left side panel and then when an email is clicked the full email will be displayed in the main panel.
 ![Inbox](/UsercaseImages/StartingInbox.PNG)
 ![EmailSelected](/UsercaseImages/SelectedEmail.PNG)
