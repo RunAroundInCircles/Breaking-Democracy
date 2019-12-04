@@ -2,8 +2,11 @@ Breaking Democracy
 =
 A prototype web game.
 
-Instructions coming soon....
-========
+Instructions
+=
+
+To start the server run the command `npm start` in the application directory.
+The server will then start on localhost:3000
 
 Current Implementation
 =
