@@ -5,6 +5,7 @@ import EmailApp from './Components/EmailApp.js';
 import CalendarApp from './Components/Calendar/CalendarApp.js';
 import events from './Components/Calendar/EventList.json';
 import emails from './Components/EmailList.json';
+import EventPopup from './Components/Calendar/EventPopup.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -34,7 +35,9 @@ class MainPage extends Component{
 					<Switch>
 						<Route path='/Calendar'>
 							<CalendarApp events={events}/>
+							<Route path='/Calendar/:id' component={EventPopup} />
 						</Route>
+
 						<Route path='/Email'>
 							<EmailApp emails={emails}/>
 						</Route>
