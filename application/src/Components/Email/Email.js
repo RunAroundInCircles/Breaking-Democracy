@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
-
+import face from './face.png';
 class Email extends Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
             title: props.title, //Title of the email
             body: props.body, //Body of the email
@@ -15,7 +15,7 @@ class Email extends Component {
             id: props.id, //Unique ID of the email
             onSelect: props.onSelect //Inherited method to run onClick
         }
-        
+
         //Binds this to handleClick
         this.handleClick = this.handleClick.bind(this);
     }
@@ -33,17 +33,19 @@ class Email extends Component {
             return (
                 <div className='email-selected' onClick={this.handleClick}>
                         <h1>{this.state.sender}</h1> {/* Name of Sender */}
+                        <img src={face} alt="face"/>
                         <h2>{this.state.title}</h2> {/* Ttile of Email */}
                         <h3>{this.state.body.substring(0,40)}</h3> {/* Body of Email, shortened to 40 characters */}
                 </div>
             );
         }
-        //Else if the email is not selected 
+        //Else if the email is not selected
         else {
             // Render as not selected
             return (
                 <div className='email-notselected' onClick={this.handleClick}>
                     <h1>{this.state.sender}</h1> {/* Name of Sender */}
+                    <img src={face} alt="face"/>
                     <h2>{this.state.title}</h2> {/* Ttile of Email */}
                     <h3>{this.state.body.substring(0,40)}</h3> {/* Body of Email, shortened to 40 characters */}
                 </div>
