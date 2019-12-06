@@ -4,14 +4,9 @@ import MapApp from './Components/Map/MapApp.js';
 import EmailApp from './Components/Email/EmailApp.js';
 import CalendarApp from './Components/Calendar/CalendarApp.js';
 import events from './Components/Calendar/EventList.json';
-<<<<<<< HEAD
 import emails from './Components/Email/EmailList.json';
 import {Button, ButtonToolbar} from 'react-bootstrap';
-
-=======
-import emails from './Components/EmailList.json';
 import EventPopup from './Components/Calendar/EventPopup.js';
->>>>>>> Gavin_FrontEnd
 import {
   BrowserRouter as Router,
   Switch,
