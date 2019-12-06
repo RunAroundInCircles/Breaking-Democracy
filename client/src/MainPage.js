@@ -4,9 +4,14 @@ import MapApp from './Components/Map/MapApp.js';
 import EmailApp from './Components/Email/EmailApp.js';
 import CalendarApp from './Components/Calendar/CalendarApp.js';
 import events from './Components/Calendar/EventList.json';
+<<<<<<< HEAD
 import emails from './Components/Email/EmailList.json';
 import {Button, ButtonToolbar} from 'react-bootstrap';
 
+=======
+import emails from './Components/EmailList.json';
+import EventPopup from './Components/Calendar/EventPopup.js';
+>>>>>>> Gavin_FrontEnd
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,9 +23,8 @@ class MainPage extends Component{
 	render(){
 		return(
 			<Router>
-				<div>
+				<div id="screen">
 					<nav>
-
 						<Link to='/Calendar'>{/*Button to Calendar*/}
 							<Button renderAs='button'>
 								<span>Calendar</span>
@@ -49,7 +53,9 @@ class MainPage extends Component{
 					<Switch>{/*The switch to click between pages.*/}
 						<Route path='/Calendar'>
 							<CalendarApp events={events}/>
+							<Route path='/Calendar/:id' component={EventPopup} />
 						</Route>
+
 						<Route path='/Email'>
 							<EmailApp emails={emails}/>
 						</Route>
