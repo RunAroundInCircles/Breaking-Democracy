@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import Email from './Email.js';
-import face from './face.png';
+import face from '../../Resources/Email Faces/face.png';
 
 class EmailReader extends Component {
     constructor(props) {
@@ -24,11 +24,11 @@ class EmailReader extends Component {
             return(
                 <div className="email-reader">
                     <h1 className="emailh1">{this.props.email.title}</h1>
-                    <img src={face} alt="face"/>
                     <h2 className="emailh2">{this.props.email.sender}</h2>
                     <h3 className="emailh3">{this.props.email.senderEmail}</h3>
                     <h3 className="emailh4">{this.props.email.ccsEmail}</h3>
                     <body className="emailbody">{this.props.email.body}</body>
+                    <img className="readerImage" src={face} alt="face"/>
                 </div>
             )
         }
