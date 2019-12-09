@@ -3,9 +3,18 @@ import Calendar from './Calendar.js';
 import './CalendarUI.css';
 import Event from "./Event.js";
 
+
+/**
+ * Used to add events to the calendar
+ * @extends React, Calendar, Event, ./CalendarUI.css
+ */
 class CalendarApp extends Component {
+  /**
+   * Sets initial events to specified date on the calendar.
+   * @param {Property} props The parameters needed to setup the calendar
+   */
     constructor(props) {
-		//sets initial events to specified date on the calendar.
+
       super(props);
 
       this.state = {
@@ -17,7 +26,11 @@ class CalendarApp extends Component {
           })
       }
     }
-	//Renders the calendar for the current month with all current events.
+
+	/**
+   * Renders the calendar for the current month with all current events.
+   * @return {div} Returns the calendar with all the events
+   */
     render() {
         return(
             <div className="calendar-app">

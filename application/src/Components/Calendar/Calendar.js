@@ -4,18 +4,30 @@ import React from "react";
 import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,endOfMonth,isSameMonth,isSameDay,isEqual}  from "date-fns";
 import Event from "./Event.js";
 
+/**
+ * Calendar component of the app that allows the user to click different events
+ * during the political campaign to influence candidates.
+ * @extends React
+ */
 class Calendar extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    currentMonth: new Date(), //The Current Month shown to the user
+    selectedDate: new Date(), //The date of the clicked cell
 
-    this.state = {
-      currentMonth: new Date(),
-      selectedDate: new Date(),
-      events: props.events
-    };
-  }
+    //When a date cell is clicked a new event is triggered.
+    events: this.props.events.map((event) => {
+      var date = new Date(event.year, event.month, event.day);
+      return(
+        {date: date, message: <Event key={date} message={event.message} date={date}/>}//<Event key={date} message={event.message} date={date}/>
+      );
+    })
+  };
 
-//Goes through all the dates and finds the one that is equal to the given date
+/**
+ * Goes through all the dates and finds the one that is equal to the given date
+ * @param  {[Date]} date Represents the current date.
+ *  * @return {String} Returns an event if one exists.
+ */
   containsDate(date) {
     var i;
     for(i = 0; i < this.state.events.length; i++) {
@@ -26,7 +38,10 @@ class Calendar extends React.Component {
     return null;
   }
 
-  //Renders the Month and year at the top of the calendar
+/**
+ * Renders the Month and year at the top of the calendar
+ * @return {String} Creates the header for the calendar
+ */
   renderHeader() {
     const dateFormat = "MMMM yyyy";
 
@@ -50,9 +65,12 @@ class Calendar extends React.Component {
     );
   }
 
-//Gives the date format of the days in the week list above the cells
+/**
+ * Gives the date format of the days in the week list above the cells
+ * @return {String} Returns the days of the week to be displayed in the calendar
+ */
   renderDays() {
-    const dateFormat = "eee"; //Gives the day as a 3 accronym
+    const dateFormat = "eee"; //Gives the day as a 3 letter accronym
     const days = [];
 
     //Finds the start of the week based off the current month
@@ -70,7 +88,10 @@ class Calendar extends React.Component {
     return <div className="days row">{days}</div>;
   }
 
-  //Renders each cell in the calendar and adds the day number
+  /**
+   * Renders each cell in the calendar and adds the day number
+   * @return {div} Returns a div that represent a day as a cell in the calendar
+   */
   renderCells() {
     const {currentMonth, selectedDate} = this.state;
     const monthStart =  startOfMonth(currentMonth);
@@ -119,28 +140,41 @@ class Calendar extends React.Component {
     return <div className="body">{rows}</div>;
   }
 
-//When the day is click the cell will have a blue highlighted bar
+/**
+ * When the day is click the cell will have a blue highlighted bar
+ * @param  {int} day The day that needs to be selected
+ * @return {int} Returns the day that needs to be selected and the page will update to highlight the cell
+ */
   onDateClick = day => {
     this.setState({
       selectedDate: day
     });
   };
 
-//When the right arrow is pressed by the user the month will increase by one
+/**
+ * When the right arrow is pressed by the user the month will increase by one
+ * @return {int} Increments the month and the page will update to the next month
+ */
   nextMonth = () => {
     this.setState({
       currentMonth: addMonths(this.state.currentMonth, 1)
     });
   };
 
-//When the user clicks the left arrow the month will decrease by one
+/**
+ * When the user clicks the left arrow the month will decrease by one
+ * @return {int} Decrements the month and the page will update to the previous month
+ */
   prevMonth = () => {
     this.setState({
       currentMonth: subMonths(this.state.currentMonth, 1)
     });
   };
 
-//Renders all of the calendar
+/**
+ * Renders all of the calendar
+ * @return {div} Returns a div that represents the calendar
+ */
   render() {
     return (
       <div className="calendar">
