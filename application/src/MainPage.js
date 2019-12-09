@@ -3,8 +3,10 @@ import './App.css';
 import MapApp from './Components/Map/MapApp.js';
 import EmailApp from './Components/Email/EmailApp.js';
 import CalendarApp from './Components/Calendar/CalendarApp.js';
+import Echo from './Components/Echo/Echo.js'
 import events from './Components/Calendar/EventList.json';
 import emails from './Components/Email/EmailList.json';
+import echos from './Components/Echo/echo.json';
 import {Button, ButtonToolbar} from 'react-bootstrap';
 import EventPopup from './Components/Calendar/EventPopup.js';
 import {
@@ -43,6 +45,15 @@ class MainPage extends Component{
 								<span>Map</span>
 							</Button>
 						</Link>
+						
+						&nbsp;
+						&nbsp; {/*This adds spaces between the buttons*/}
+						&nbsp;
+						<Link to= '/Echo'>
+							<Button renderAs='button'>
+								<span>Echo</span>
+							</Button>
+						</Link>
 					</nav>
 					
 					<Switch>{/*The switch to click between pages.*/}
@@ -56,6 +67,9 @@ class MainPage extends Component{
 						</Route>
 						<Route path='/Map'>
 							<MapApp/>
+						</Route>
+						<Route path='/Echo'>
+							<Echo echos={echos}/>
 						</Route>
 					</Switch>
 				</div>
