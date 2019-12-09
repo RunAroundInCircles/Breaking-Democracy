@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import face from './face.png';
+import face from '../../Resources/Email Faces/face.png';
 class Email extends Component {
     constructor(props) {
         super(props);
@@ -26,6 +26,10 @@ class Email extends Component {
         this.state.onSelect(this.state); //Runs onSelect using this.state as argument
     }
 
+/**
+ * Renders each individual email in the email list panel
+ * @return returns the div of the indvidual email in the email list
+ */
     render() {
         //If the email is selected
         if(this.props.selected) {
@@ -33,7 +37,7 @@ class Email extends Component {
             return (
                 <div className='email-selected' onClick={this.handleClick}>
                         <h1>{this.state.sender}</h1> {/* Name of Sender */}
-                        <img src={face} alt="face"/>
+                        <img className="sideImage" src={face} alt="face"/>
                         <h2>{this.state.title}</h2> {/* Ttile of Email */}
                         <h3>{this.state.body.substring(0,40)}</h3> {/* Body of Email, shortened to 40 characters */}
                 </div>
@@ -45,7 +49,7 @@ class Email extends Component {
             return (
                 <div className='email-notselected' onClick={this.handleClick}>
                     <h1>{this.state.sender}</h1> {/* Name of Sender */}
-                    <img src={face} alt="face"/>
+                    <img className="sideImage" src={face} alt="face"/>
                     <h2>{this.state.title}</h2> {/* Ttile of Email */}
                     <h3>{this.state.body.substring(0,40)}</h3> {/* Body of Email, shortened to 40 characters */}
                 </div>
