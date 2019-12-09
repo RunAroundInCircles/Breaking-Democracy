@@ -5,18 +5,15 @@ import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,en
 import Event from "./Event.js";
 
 class Calendar extends React.Component {
-  state = {
-    currentMonth: new Date(), //The Current Month shown to the user
-    selectedDate: new Date(), //The date of the clicked cell
+  constructor(props) {
+    super(props);
 
-    //When a date cell is clicked a new event is triggered.
-    events: this.props.events.map((event) => {
-      var date = new Date(event.year, event.month, event.day);
-      return(
-        {date: date, message: <Event key={date} message={event.message} date={date}/>}//<Event key={date} message={event.message} date={date}/>
-      );
-    })
-  };
+    this.state = {
+      currentMonth: new Date(),
+      selectedDate: new Date(),
+      events: props.events
+    };
+  }
 
 //Goes through all the dates and finds the one that is equal to the given date
   containsDate(date) {
