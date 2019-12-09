@@ -1,6 +1,10 @@
 import React from 'react';
 import {useParams, Link} from "react-router-dom";
 
+/**
+ * Creates a popup for the event clicked
+ * @param       {Properties} props Parameters needed to create the event
+ */
 function EventPopup(props) {
     console.log(props);
     let {id} = useParams();
@@ -34,7 +38,7 @@ export default EventPopup;
 
 /*
                     <svg height='50%'>
-                <rect 
+                <rect
                     height='100%'
                     width='100%'
                     rx='5'
@@ -42,7 +46,7 @@ export default EventPopup;
                     x='0'
                     y='0'
                 >
-                    <rect 
+                    <rect
                         height='25'
                         width='25'
                         fill='red'
