@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import './EmailUI.css';
 import EmailList from './EmailList.js';
 import EmailReader from './EmailReader.js';
 
