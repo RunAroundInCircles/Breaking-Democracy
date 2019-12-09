@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
-import {Link, useParams} from "react-router-dom";
+import {Link} from "react-router-dom";
+import {Button} from 'react-bootstrap';
 
 /**
  * Represents an event in the calendar. This is where users will be able
@@ -34,7 +35,11 @@ class Event extends Component {
 
         let route = "/Calendar/" + this.props.id;
         return (
-            <Link to={route}>{this.props.message}</Link>
+            <Link to={route}>
+                <Button>
+                    {this.props.message}
+				</Button>
+            </Link>
         );
     }
 }

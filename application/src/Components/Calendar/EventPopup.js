@@ -1,13 +1,14 @@
 import React from 'react';
-import {useParams, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
+import {Button} from 'react-bootstrap';
 
 /**
  * Creates a popup for the event clicked
  * @param       {Properties} props Parameters needed to create the event
  */
 function EventPopup(props) {
-    console.log(props);
-    let {id} = useParams();
+    let date = new Date(props.event.year, props.event.month, props.event.day);
+    let options = {year: 'numeric', month: 'short', day: 'numeric'};
     return (
          <div style={{display: 'flex',
             alignItems: 'center',
@@ -23,11 +24,17 @@ function EventPopup(props) {
             <div style={{backgroundColor: 'rgba(255, 255, 255, 1)',
                 borderRadius: '5px',
                 width: '50vw',
-                height: '50vh'
+                height: '50vh',
+                position: 'absolute'
             }}>
-                <Link to='/Calendar'>X</Link>
+                <Link to='/Calendar' >
+                    <Button style={{top: 5, right: 5, position: 'absolute'}}>
+						<span>X</span>
+					</Button>
+                </Link>
                 <div style={{justifyContent: 'center'}}>
-                    <h1>EVENT {id}!</h1>
+                    <h1>{date.toLocaleDateString("en-US", options)}</h1>
+                    <h2>{props.event.message}</h2>
                 </div>
             </div>
         </div>
@@ -36,21 +43,3 @@ function EventPopup(props) {
 
 export default EventPopup;
 
-/*
-                    <svg height='50%'>
-                <rect
-                    height='100%'
-                    width='100%'
-                    rx='5'
-                    fill='white'
-                    x='0'
-                    y='0'
-                >
-                    <rect
-                        height='25'
-                        width='25'
-                        fill='red'
-                    />
-                </rect>
-            </svg>
-*/

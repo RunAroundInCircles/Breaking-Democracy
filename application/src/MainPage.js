@@ -3,7 +3,7 @@ import './App.css';
 import MapApp from './Components/Map/MapApp.js';
 import EmailApp from './Components/Email/EmailApp.js';
 import CalendarApp from './Components/Calendar/CalendarApp.js';
-import Echo from './Components/Echo/Echo.js'
+import EchoApp from './Components/Echo/EchoApp.js'
 import events from './Components/Calendar/EventList.json';
 import emails from './Components/Email/EmailList.json';
 import echos from './Components/Echo/echo.json';
@@ -22,8 +22,8 @@ class MainPage extends Component{
 			<Router>
 				<div id="screen">
 					<nav>
-						<Link to='/Calendar'>{/*Button to Calendar*/}
-							<Button renderAs='button'>
+						<Link to='/Calendar'> {/*Button to Calendar*/}
+							<Button>
 								<span>Calendar</span>
 							</Button>
 						</Link>
@@ -32,7 +32,7 @@ class MainPage extends Component{
 						&nbsp;
 
 						<Link to='/Email'>
-							<Button renderAs='button'>{/*Button to Email*/}
+							<Button> {/*Button to Email*/}
 								<span>Email</span>
 							</Button>
 						</Link>
@@ -40,8 +40,8 @@ class MainPage extends Component{
 						&nbsp;
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
-						<Link to='/Map'>{/*Button to Map*/}
-							<Button renderAs='button'>
+						<Link to='/Map'>
+							<Button> {/*Button to Map*/}
 								<span>Map</span>
 							</Button>
 						</Link>
@@ -50,7 +50,7 @@ class MainPage extends Component{
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
 						<Link to= '/Echo'>
-							<Button renderAs='button'>
+							<Button>
 								<span>Echo</span>
 							</Button>
 						</Link>
@@ -58,10 +58,12 @@ class MainPage extends Component{
 					
 					<Switch>{/*The switch to click between pages.*/}
 						<Route path='/Calendar'>
-							<CalendarApp events={events}/>
-							<Route path='/Calendar/:id' component={EventPopup} />
+							<CalendarApp events={Object.values(events)}/>
+							<Route path='/Calendar/:id' render={(props)=>{
+								return <EventPopup event={events[props.match.params.id]}/>
+							 }
+							}/>
 						</Route>
-
 						<Route path='/Email'>
 							<EmailApp emails={emails}/>
 						</Route>
@@ -69,7 +71,7 @@ class MainPage extends Component{
 							<MapApp/>
 						</Route>
 						<Route path='/Echo'>
-							<Echo echos={echos}/>
+							<EchoApp echos={echos}/>
 						</Route>
 					</Switch>
 				</div>
