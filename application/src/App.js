@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
-import './Components/Calendar/CalendarUI.css';
-import './Components/Email/EmailUI.css';
-import './Components/Map/Map.css'
+
+
 
 import MapApp from './Components/Map/MapApp.js';
 import EmailApp from './Components/Email/EmailApp.js';
