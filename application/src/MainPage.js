@@ -3,7 +3,7 @@ import './App.css';
 import MapApp from './Components/Map/MapApp.js';
 import EmailApp from './Components/Email/EmailApp.js';
 import CalendarApp from './Components/Calendar/CalendarApp.js';
-import Echo from './Components/Echo/Echo.js'
+import EchoApp from './Components/Echo/EchoApp.js'
 import events from './Components/Calendar/EventList.json';
 import emails from './Components/Email/EmailList.json';
 import echos from './Components/Echo/echo.json';
@@ -71,7 +71,7 @@ class MainPage extends Component{
 							<MapApp/>
 						</Route>
 						<Route path='/Echo'>
-							<Echo echos={echos}/>
+							<EchoApp echos={echos}/>
 						</Route>
 					</Switch>
 				</div>

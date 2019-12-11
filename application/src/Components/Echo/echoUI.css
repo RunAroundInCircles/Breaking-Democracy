@@ -1,0 +1,22 @@
+.echo-selected{
+	width: 40%;
+	height:300px;
+	border-style:solid;
+	text-align:center;
+	margin-bottom:50px;
+	background-color:white;
+}
+.echo-list{
+	text-align:left;
+	
+	position:absolute;	
+	left:30%;
+	width:100%;
+}
+.echo-head{
+	padding-left:250px;
+}
+body{
+	overflow-x:hidden;
+	background-color:lightgrey;
+}
