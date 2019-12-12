@@ -1,26 +1,5 @@
 [
-    {
-        text: 'Killed a man',
-        date: 'March 03 2017',
-        category: {
-            tag: 'medium',
-            color: '#018f69'
-        }
-    },
-    {
-        text: 'Rigged an election',
-        date: 'March 06 2017',
-        category: {
-            tag: 'medium',
-            color: '#018f69'
-        }
-    },
-	{
-        text: 'Killed another man',
-        date: 'March 21 2017',
-        category: {
-            tag: 'medium',
-            color: '#018f69'
-        }
-    }
+    {"name": "Killed a man", "date": "March 03 2017","description": "He killed a man"},
+    {"name": "Election", "date": "November 25 1865","description": "Go vote!"},
+	{"name": "Got elected bitch","date": "April 26 1865","description": "I won fuck you"}
 ]

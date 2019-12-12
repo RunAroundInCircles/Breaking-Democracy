@@ -9,7 +9,8 @@ import emails from './Components/Email/EmailList.json';
 import echos from './Components/Echo/echo.json';
 import {Button, Tab, Tabs} from 'react-bootstrap';
 import EventPopup from './Components/Calendar/EventPopup.js';
-import Timeline from './Components/Timeline/Timeline.js'
+import TimelineApp from './Components/Timeline/TimelineApp.js'
+import timelineevents from './Components/Timeline/TimelineData.json';
 
 import {
   BrowserRouter as Router,
@@ -85,7 +86,7 @@ class MainPage extends Component{
 							<EchoApp echos={echos}/>
 						</Route>
 						<Route path='/Timeline'>
-							<Timeline/>
+							<TimelineApp timelineevents={timelineevents}/>
 						</Route>
 					</Switch>
 				</div>
