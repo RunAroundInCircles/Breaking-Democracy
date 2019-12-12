@@ -18,6 +18,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import MapRegion from './Components/Map/MapRegion.js';
 
 class MainPage extends Component{
 	render(){
@@ -81,6 +82,10 @@ class MainPage extends Component{
 						</Route>
 						<Route path='/Map'>
 							<MapApp/>
+							<Route path='/Map/:id' render={(props)=>{
+									return <MapRegion/>
+								}
+							}/>							
 						</Route>
 						<Route path='/Echo'>
 							<EchoApp echos={echos}/>

@@ -2,6 +2,10 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {Button} from 'react-bootstrap';
 
+/**
+ * Creates a popup for the event clicked
+ * @param       {Properties} props Parameters needed to create the event
+ */
 function EventPopup(props) {
     let date = new Date(props.event.year, props.event.month, props.event.day);
     let options = {year: 'numeric', month: 'short', day: 'numeric'};
@@ -38,3 +42,4 @@ function EventPopup(props) {
 }
 
 export default EventPopup;
+
