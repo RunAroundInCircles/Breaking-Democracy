@@ -2,7 +2,6 @@
 // The code needed to be recreated to work with the new version of datefns
 import React from "react";
 import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,endOfMonth,isSameMonth,isSameDay,isEqual}  from "date-fns";
-import Event from "./Event.js";
 
 /**
  * Calendar component of the app that allows the user to click different events

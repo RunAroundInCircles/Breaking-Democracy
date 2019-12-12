@@ -8,25 +8,6 @@ import {Button} from 'react-bootstrap';
  * @extends React,react-router-dom
  */
 class Event extends Component {
-  /**
-   * Constructor for creating a new event
-   * @param {Properties} props Parameters to create a new event
-   */
-    constructor(props) {
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-/**
- * Handles a click event on a event
- * @param  {Event} e Click Event
- * @return {Alert}  Displays the event to the user
- */
-    handleClick(e) {
-        e.preventDefault(); //Prevent default behavior
-        alert(this.state.message);
-    }
-
 /**
  * Renders the alert and allows the user to go back to the original calendar
  * @return {Link} An event that is able to go back to the original calendar
@@ -35,8 +16,8 @@ class Event extends Component {
 
         let route = "/Calendar/" + this.props.id;
         return (
-            <Link to={route}>
-                <Button>
+            <Link to={route} className="calendar-event-link">
+                <Button className="calendar-event-button">
                     {this.props.message}
 				</Button>
             </Link>

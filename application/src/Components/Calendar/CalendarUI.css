@@ -223,10 +223,20 @@ main {
   width: calc(100%/7);
 }
 
-.eventSVG {
-  color: red;
-	width: 48%;
-  position: absolute;
-  display: block;
-  margin: auto;
+.calendar-event-button {
+  background-color: var(--main-color);
+  box-sizing: border-box;
+  width: 50%;
+	border-style: solid;
+	border-color: var(--border-color);
+	color: white;
+	padding: 5px 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
+.bg {
+  pointer-events: none;
 }
