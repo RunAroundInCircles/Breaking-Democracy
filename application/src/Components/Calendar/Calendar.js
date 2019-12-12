@@ -2,7 +2,6 @@
 // The code needed to be recreated to work with the new version of datefns
 import React from "react";
 import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,endOfMonth,isSameMonth,isSameDay,isEqual}  from "date-fns";
-import Event from "./Event.js";
 
 /**
  * Calendar component of the app that allows the user to click different events
@@ -15,12 +14,7 @@ class Calendar extends React.Component {
     selectedDate: new Date(), //The date of the clicked cell
 
     //When a date cell is clicked a new event is triggered.
-    events: this.props.events.map((event) => {
-      var date = new Date(event.year, event.month, event.day);
-      return(
-        {date: date, message: <Event key={date} message={event.message} date={date}/>}//<Event key={date} message={event.message} date={date}/>
-      );
-    })
+    events: this.props.events
   };
 
 /**
