@@ -1,15 +1,6 @@
 import React from 'react';
 import './App.css';
-
-
-
-import MapApp from './Components/Map/MapApp.js';
-import EmailApp from './Components/Email/EmailApp.js';
-import CalendarApp from './Components/Calendar/CalendarApp.js';
-import events from './Components/Calendar/EventList.json';
 import MainPage from './MainPage.js';
-import emails from './Components/Email/EmailList.json';
-import Map from './Components/Map/Map.js'
 
 
 function App() {

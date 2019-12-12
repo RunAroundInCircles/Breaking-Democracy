@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import Email from './Email.js';
 import face from '../../Resources/Email Faces/face.png';
 
 class EmailReader extends Component {
