@@ -4,6 +4,9 @@
   position: absolute;
   width: 25%;
   background-color:white;
+  overflow:scroll;
+  overflow-x:hidden;
+  height:94.3%;
 }
 
 .emailh1{
@@ -105,4 +108,5 @@
 
 body{
 	background-color:lightgrey;
+	
 }
