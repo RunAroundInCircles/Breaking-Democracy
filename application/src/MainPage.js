@@ -9,7 +9,7 @@ import emails from './Components/Email/EmailList.json';
 import echos from './Components/Echo/echo.json';
 import {Button, Tab, Tabs} from 'react-bootstrap';
 import EventPopup from './Components/Calendar/EventPopup.js';
-import Timeline from './Components/Timeline/vertical-timeline-component-for-react-master/examples/src/index.js';
+import Timeline from './Components/Timeline/Timeline.js'
 
 import {
   BrowserRouter as Router,
