@@ -8,12 +8,11 @@ import {Button} from 'react-bootstrap';
  * @extends React,react-router-dom
  */
 class Event extends Component {
-/**
- * Renders the alert and allows the user to go back to the original calendar
- * @return {Link} An event that is able to go back to the original calendar
- */
+    /**
+     * Creates the event to be shown within the calendar cells that allows the user to get more information about the specific event
+     * @return {Link} An link to /Calendar/id of the event
+     */
     render() {
-
         let route = "/Calendar/" + this.props.id;
         return (
             <Link to={route} className="calendar-event-link">
