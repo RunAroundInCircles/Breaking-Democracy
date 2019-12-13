@@ -11,7 +11,6 @@ import {Button, Tab, Tabs} from 'react-bootstrap';
 import EventPopup from './Components/Calendar/EventPopup.js';
 import TimelineApp from './Components/Timeline/TimelineApp.js'
 import timelineevents from './Components/Timeline/TimelineData.json';
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,6 +19,11 @@ import {
 } from "react-router-dom";
 import MapRegion from './Components/Map/MapRegion.js';
 
+/**
+ * MainPage component of the app that renders and returns all the buttons
+ * and allows you to switch between each page using reactRouter.
+ * @extends React
+ */
 class MainPage extends Component{
 	render(){
 		return(
