@@ -9,7 +9,11 @@ import region7 from '../../Resources/Maps/Region-7.svg.js';
 import region8 from '../../Resources/Maps/Region-8.svg.js';
 
 
-
+/**
+ * This section will be used to add data to the map regions
+ * @param       {[Property]} props These are used to access data from the map regions
+ * @constructor
+ */
 function MapRegion(props) {
     return (
         <span>Banana</span>

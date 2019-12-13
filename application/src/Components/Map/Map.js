@@ -9,7 +9,15 @@ import region6 from '../../Resources/Maps/Region-6.svg.js';
 import region7 from '../../Resources/Maps/Region-7.svg.js';
 import region8 from '../../Resources/Maps/Region-8.svg.js';
 
+/**
+ * Generates a Map for the user so they can click on a region and zoom in on the region
+ * @extends Component
+ */
 class Map extends Component{
+	/**
+	 * Generates the Map object
+	 * @param {Property} props The initial parameters needed to setup the Map
+	 */
 	constructor(props) {
 		super(props);
 
@@ -20,7 +28,10 @@ class Map extends Component{
 		}
 	}
 
-	//Shows the map referenced by currentId
+	/**
+	 * Shows the map referenced by currentId
+	 * @return {Div} Displays the current region or map based off the specific ID
+	 */
 	render(){
 		var svg = {
 			__html: this.props.currentId //Formats the map to be inserted as InnnerHTML
@@ -28,7 +39,10 @@ class Map extends Component{
 		return <div className="country-map" dangerouslySetInnerHTML={svg} ref={this.mapRef}/> //Uses svg to display map
 	}
 
-	//Attaches onSelect click event to all regions of the map
+	/**
+	 * Attaches onSelect click event to all regions of the map
+	 * @return {[Function]} The Function will be used to display the specified region or based off the ID given
+	 */
 	componentDidMount() {
 		var func = this.state.onSelect; //Allows access to onSelect within the forEach
 		//Iterates through all paths within the svg and attaches the click event to each path
