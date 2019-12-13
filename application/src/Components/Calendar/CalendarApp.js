@@ -5,16 +5,15 @@ import Event from "./Event.js";
 
 
 /**
- * Used to add events to the calendar
+ * Used to render the Calendar object
  * @extends React, Calendar, Event, ./CalendarUI.css
  */
 class CalendarApp extends Component {
   /**
-   * Sets initial events to specified date on the calendar.
+   * Converts the events passed in to objects containing a date and the message representing an event
    * @param {Property} props The parameters needed to setup the calendar
    */
     constructor(props) {
-
       super(props);
 
       this.state = {
