@@ -1,5 +1,9 @@
 import React,{Component} from 'react';
 
+/**
+ * Timeline component of the app that renders the svg file for the timeline.
+ * @extends React
+ */
 class Timeline extends Component{
 	constructor(props) {
         super(props);
@@ -13,8 +17,8 @@ class Timeline extends Component{
     }
 
 	/**
- 	* Renders each individual timeline event on the timeline
- 	* @return returns the div of the indvidual timeline event in the timeline list
+ 	* Renders the timeline.
+ 	* @return returns the div of the svg image for the timeline.
  	*/
 	render(){
 		return(

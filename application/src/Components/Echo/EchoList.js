@@ -1,7 +1,11 @@
 import React,{Component} from 'react';
 import Echo from './Echo.js';
 
-
+/**
+ * EchoList component of the app that renders and returns the entire list of echos
+ * that have been individually parsed.
+ * @extends React
+ */
 class EchoList extends Component {
     constructor(props) {
         super(props);
@@ -11,15 +15,18 @@ class EchoList extends Component {
             echos: props.echos
         }
     }
+	/**
+ 	* Renders each individual echo and sets the echos key to be the name associated with the echo.
+ 	* @return returns the div containing the heading and all echos that have been parsed.
+ 	*/
     render() {
-        //The following mapping function finds the email that the user selected
+        //The following mapping function parses each echo separately.
         const echos = this.props.echos.map((echo) => {
             return (<Echo key={echo.name}
                 {...echo}/>);
         });
         return(
             <div className="echo-list">
-                {/*&nbsp adds a single space before Inbox that lines up the word Inbox with the other emails when being displayed.*/}
                 <h1 className="echo-head">Echos</h1>
                 {echos}
             </div>
