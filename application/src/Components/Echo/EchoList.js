@@ -11,7 +11,7 @@ class EchoList extends Component {
         super(props);
 
         this.state = {
-            //emails is a list of all the emails passed down from EmailApp
+            //echos is a list of all the echos passed down from EchoApp
             echos: props.echos
         }
     }

@@ -11,7 +11,10 @@ class Echo extends Component {
             time: props.time 
         }
     }
-
+	/**
+ 	* Renders and returns each state inside the ech.
+ 	* @return returns the div containing the time, at, name and body to be displayed on the page.
+ 	*/
     render() {
            return (
                 <div className='echo-selected'>

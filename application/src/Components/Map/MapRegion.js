@@ -2,6 +2,11 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {Button} from 'react-bootstrap';
 
+/**
+ * This section will be used to add data to the map regions
+ * @param       {[Property]} props These are used to access data from the map regions
+ * @constructor
+ */
 function MapRegion(props) {
     return (
         <div style={{display: 'flex',

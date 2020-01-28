@@ -1,6 +1,10 @@
 import React,{Component} from 'react';
 import face from '../../Resources/Email Faces/face.png';
 
+/**
+ * This will display a full email to the user.
+ * @extends Component
+ */
 class EmailReader extends Component {
     constructor(props) {
         super(props);
@@ -9,7 +13,10 @@ class EmailReader extends Component {
             email: props.email
         }
     }
-	//renders the email
+	/**
+   * Renders the email
+   * @return {[Div]} Renders either an empty box because no email is selected or the selected email
+   */
     render() {
 		//If the email is null return nothing.
         if (this.props.email === null) {
