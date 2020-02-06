@@ -8,13 +8,13 @@
 }
 .echo-list{
 	text-align:left;
-	
-	position:absolute;	
+
+	position:absolute;
 	left:30%;
 	width:100%;
 }
 .echo-head{
-	padding-left:250px;
+	padding-left:288px;
 }
 body{
 	overflow-x:hidden;

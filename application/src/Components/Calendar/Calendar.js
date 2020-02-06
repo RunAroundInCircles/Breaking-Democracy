@@ -13,15 +13,15 @@ class Calendar extends React.Component {
     currentMonth: new Date(), //The Current Month shown to the user
     selectedDate: new Date(), //The date of the clicked cell
 
-    //When a date cell is clicked a new event is triggered.
+    //The different events to be displayed on the calendar
     events: this.props.events
   };
 
-/**
- * Goes through all the dates and finds the one that is equal to the given date
- * @param  {[Date]} date Represents the current date.
- *  * @return {String} Returns an event if one exists.
- */
+  /**
+   * Goes through all the dates and searches for an event that is on the same day as the date passed in.
+   * @param  {[Date]} date The date to search for.
+   *  * @return {String} Returns an event if one exists, else it returns null.
+   */
   containsDate(date) {
     var i;
     for(i = 0; i < this.state.events.length; i++) {
@@ -32,10 +32,10 @@ class Calendar extends React.Component {
     return null;
   }
 
-/**
- * Renders the Month and year at the top of the calendar
- * @return {String} Creates the header for the calendar
- */
+  /**
+   * Renders the Month, year, and arrows to change months at the top of the calendar
+   * @return {String} Creates the header for the calendar
+   */
   renderHeader() {
     const dateFormat = "MMMM yyyy";
 
@@ -59,10 +59,10 @@ class Calendar extends React.Component {
     );
   }
 
-/**
- * Gives the date format of the days in the week list above the cells
- * @return {String} Returns the days of the week to be displayed in the calendar
- */
+  /**
+   * Gives the date format of the days in the week list above the cells
+   * @return {String} Returns the days of the week to be displayed in the calendar
+   */
   renderDays() {
     const dateFormat = "eee"; //Gives the day as a 3 letter accronym
     const days = [];
@@ -118,7 +118,7 @@ class Calendar extends React.Component {
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
-            {this.containsDate(day)}
+            {this.containsDate(day)} {/*Gets the event for the day if it exists*/}
           </div>
         );
         day = addDays(day, 1);

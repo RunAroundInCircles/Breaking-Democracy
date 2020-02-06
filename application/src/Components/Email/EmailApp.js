@@ -3,7 +3,17 @@ import './EmailUI.css';
 import EmailList from './EmailList.js';
 import EmailReader from './EmailReader.js';
 
+/**
+ * Used to display a list of emails and a reader that allows the user to view an
+ * entire email.
+ * @extends Component
+ */
 class EmailApp extends Component {
+
+  /**
+   * Creates the initial Email Application
+   * @param {Property} props The parameters needed to set up the Email Application
+   */
     constructor(props) {
 		//Sets inital selected email to null and when an email is set to select it binds the selected email to be set.
 		super(props);
@@ -12,17 +22,22 @@ class EmailApp extends Component {
         }
         this.setSelectedEmail = this.setSelectedEmail.bind(this);
     }
-	//Renders the selected email, the email list and setting the selected email on a click.
+	/**
+   * Renders the selected email, the email list and setting the selected email on a click.
+   * @return {Div} Returns a list of emails and a reader that allows the user to read the full email.
+   */
     render() {
         return(
+
             <div className="email-app"> 
 				
                 <EmailList 
                     emails={this.props.emails} 
+
                     selectedEmail={this.state.selectedEmail}
                     onSelect={this.setSelectedEmail}
-                />				
-				{/*Pulls inn the selected email from EmailReader.js*/}
+                />
+				{/*Pulls in the selected email from EmailReader.js*/}
                 <EmailReader email={this.state.selectedEmail}/>
             </div>
         )

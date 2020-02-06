@@ -1,6 +1,17 @@
 import React,{Component} from 'react';
 import face from '../../Resources/Email Faces/face.png';
+
+/**
+ * Represents an actual email which will be used to give tutorials and
+ * story information to the player.
+ * @extends Component
+ */
 class Email extends Component {
+
+  /**
+   * Creates an email object.
+   * @param {Property} props All the properties needed to create an email.
+   */
     constructor(props) {
         super(props);
 
@@ -20,7 +31,11 @@ class Email extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    //Alters reaction to clicking
+    /**
+     * Alters reaction to clicking
+     * @param  {Event} e The click event
+     * @return {State} Changes which email that is selected
+     */
     handleClick(e) {
         e.preventDefault(); //Prevent default behavior
         this.state.onSelect(this.state); //Runs onSelect using this.state as argument

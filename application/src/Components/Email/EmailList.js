@@ -1,7 +1,16 @@
 import React,{Component} from 'react';
 import Email from './Email.js';
 
+/**
+ * Generates a graphical list of all the emails the user can access
+ * @extends Component
+ */
 class EmailList extends Component {
+
+  /**
+   * Creates the initial list for all the emails
+   * @param {Property} props The parameters needed to create the EmailList
+   */
     constructor(props) {
         super(props);
 
@@ -14,6 +23,11 @@ class EmailList extends Component {
             onSelect: props.onSelect
         }
     }
+
+    /**
+     * Renders the email List for the user
+     * @return {[Div]} The HTML that will render the selected email and the email list
+     */
     render() {
         //The following mapping function finds the email that the user selected
         const emails = this.props.emails.map((email) => {
