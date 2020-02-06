@@ -32,7 +32,7 @@ class MainPage extends Component{
 				<div id="screen">
 					<nav>
 						<Link to='/Calendar'> {/*Button to Calendar*/}
-							<Button>
+							<Button id="calendar-button">
 								<span>Calendar</span>
 							</Button>
 						</Link>
