@@ -16,6 +16,7 @@ class EmailApp extends Component {
     render() {
         return(
             <div className="email-app"> 
+				
                 <EmailList 
                     emails={this.props.emails} 
                     selectedEmail={this.state.selectedEmail}
