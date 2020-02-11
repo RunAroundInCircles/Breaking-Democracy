@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders TimelineApp page 1`] = `
+<div
+  className="timeline-app"
+>
+  <div
+    className="timeline-list"
+  >
+    <h1
+      className="Event-head"
+    >
+      Timeline
+    </h1>
+    <div
+      style={
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "height": "80vh",
+          "justifyContent": "center",
+          "position": "absolute",
+          "width": "100vw",
+        }
+      }
+    >
+      <svg
+        height="50"
+        width="50"
+      >
+        <polygon
+          points="0,25 50,0 50,50"
+          style={
+            Object {
+              "fill": "grey",
+              "stroke": "red",
+              "strokeWidth": 3,
+            }
+          }
+        />
+      </svg>
+      <svg
+        height="50"
+        width="100vw"
+      >
+        <line
+          style={
+            Object {
+              "stroke": "red",
+              "strokeWidth": 3,
+            }
+          }
+          x1="0"
+          x2="100vw"
+          y1="25"
+          y2="25"
+        />
+      </svg>
+      <svg
+        height="50"
+        width="50"
+      >
+        <polygon
+          points="50,25 0,0 0,50"
+          style={
+            Object {
+              "fill": "grey",
+              "stroke": "red",
+              "strokeWidth": 3,
+            }
+          }
+        />
+      </svg>
+    </div>
+    <div
+      style={
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "height": "80vh",
+          "justifyContent": "center",
+          "position": "absolute",
+          "width": "100vw",
+        }
+      }
+    >
+      <svg
+        height="50"
+        width="50"
+      >
+        <polygon
+          points="0,25 50,0 50,50"
+          style={
+            Object {
+              "fill": "grey",
+              "stroke": "red",
+              "strokeWidth": 3,
+            }
+          }
+        />
+      </svg>
+      <svg
+        height="50"
+        width="100vw"
+      >
+        <line
+          style={
+            Object {
+              "stroke": "red",
+              "strokeWidth": 3,
+            }
+          }
+          x1="0"
+          x2="100vw"
+          y1="25"
+          y2="25"
+        />
+      </svg>
+      <svg
+        height="50"
+        width="50"
+      >
+        <polygon
+          points="50,25 0,0 0,50"
+          style={
+            Object {
+              "fill": "grey",
+              "stroke": "red",
+              "strokeWidth": 3,
+            }
+          }
+        />
+      </svg>
+    </div>
+    <div
+      style={
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "height": "80vh",
+          "justifyContent": "center",
+          "position": "absolute",
+          "width": "100vw",
+        }
+      }
+    >
+      <svg
+        height="50"
+        width="50"
+      >
+        <polygon
+          points="0,25 50,0 50,50"
+          style={
+            Object {
+              "fill": "grey",
+              "stroke": "red",
+              "strokeWidth": 3,
+            }
+          }
+        />
+      </svg>
+      <svg
+        height="50"
+        width="100vw"
+      >
+        <line
+          style={
+            Object {
+              "stroke": "red",
+              "strokeWidth": 3,
+            }
+          }
+          x1="0"
+          x2="100vw"
+          y1="25"
+          y2="25"
+        />
+      </svg>
+      <svg
+        height="50"
+        width="50"
+      >
+        <polygon
+          points="50,25 0,0 0,50"
+          style={
+            Object {
+              "fill": "grey",
+              "stroke": "red",
+              "strokeWidth": 3,
+            }
+          }
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;

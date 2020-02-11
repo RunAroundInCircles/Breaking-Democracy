@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import './App.css';
 import MapApp from './Components/Map/MapApp.js';
+import MapRegion from './Components/Map/MapRegion.js';
 import EmailApp from './Components/Email/EmailApp.js';
 import CalendarApp from './Components/Calendar/CalendarApp.js';
 import EchoApp from './Components/Echo/EchoApp.js'
@@ -11,13 +12,14 @@ import {Button, Tab, Tabs} from 'react-bootstrap';
 import EventPopup from './Components/Calendar/EventPopup.js';
 import TimelineApp from './Components/Timeline/TimelineApp.js'
 import timelineevents from './Components/Timeline/TimelineData.json';
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-import MapRegion from './Components/Map/MapRegion.js';
+
 
 /**
  * MainPage component of the app that renders and returns all the buttons
@@ -31,7 +33,7 @@ class MainPage extends Component{
 				<div id="screen">
 					<nav>
 						<Link to='/Calendar'> {/*Button to Calendar*/}
-							<Button>
+							<Button id="calendar-button">
 								<span>Calendar</span>
 							</Button>
 						</Link>
@@ -53,7 +55,7 @@ class MainPage extends Component{
 								<span>Map</span>
 							</Button>
 						</Link>
-						
+
 						&nbsp;
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
@@ -62,7 +64,7 @@ class MainPage extends Component{
 								<span>Echo</span>
 							</Button>
 						</Link>
-						
+
 						&nbsp;
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
@@ -72,7 +74,7 @@ class MainPage extends Component{
 							</Button>
 						</Link>
 					</nav>
-					
+
 					<Switch>{/*The switch to click between pages.*/}
 						<Route path='/Calendar'>
 							<CalendarApp events={Object.values(events)}/>
@@ -89,7 +91,7 @@ class MainPage extends Component{
 							<Route path='/Map/:id' render={(props)=>{
 									return <MapRegion region={props.match.params.id}/>
 								}
-							}/>							
+							}/>
 						</Route>
 						<Route path='/Echo'>
 							<EchoApp echos={echos}/>
