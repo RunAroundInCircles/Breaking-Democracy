@@ -1,0 +1,112 @@
+.email-list {
+  text-align: left;
+  border-style: solid;
+  position: absolute;
+  width: 25%;
+  background-color:white;
+  overflow:scroll;
+  overflow-x:hidden;
+  height:94.3%;
+}
+
+.emailh1{
+  background-color:white;
+  text-align: left;
+  padding: 10px;
+  left: 25%;
+  top: 20px;
+  width: 75%;
+  border-style: solid;
+  position: absolute;
+}
+
+.emailh2{
+  background-color:white;
+  text-align: left;
+  padding-left:20px;
+  left: 25%;
+  top: 91px;
+  width: 75%;
+  border-style: solid;
+  position: absolute;
+}
+.emailh3{
+  text-align: left;
+  background-color:white;
+  padding-left:30px;
+  left: 25%;
+  top: 130px;
+  width: 75%;
+  border-style: solid;
+  position: absolute;
+}
+.emailh4{
+  text-align: left;
+  background-color:white;
+  padding-left:30px;
+  left: 25%;
+  top: 160px;
+  width: 75%;
+  border-style: solid;
+  position: absolute;
+}
+
+.emailbody{
+  background-color:white;
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 10px;
+  height: 400px;
+  left: 25%;
+  top: 210px;
+  width: 75%;
+  border-style: solid;
+  position: absolute;
+}
+
+
+.email-reader .readerImage {
+  height: 90px;
+  width: 90px;
+  position: absolute;
+  left: 90%;
+  top: 28px;
+  transform: translate(80px, 5px);
+}
+
+.email-selected .sideImage {
+  height: 90px;
+  width: 90px;
+  position: absolute;
+  left: 80%;
+  transform: translate(-30px, -100px);
+}
+
+.email-notselected .sideImage {
+  height: 90px;
+  width: 90px;
+  position: absolute;
+  left: 80%;
+  transform: translate(-30px, -100px);
+}
+
+.email-selected {
+  background-color: #d3d3d3;
+  border-style: solid;
+  padding: 10px;
+}
+
+.email-notselected {
+  border-style: solid;
+  padding: 10px;
+}
+
+.readerImage{
+  position: absolute;
+  left: 300;
+}
+
+body{
+	background-color:lightgrey;
+	
+}

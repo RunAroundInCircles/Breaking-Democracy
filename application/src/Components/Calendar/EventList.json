@@ -1,0 +1,9 @@
+{
+    "0": {"id": 0, "day": 1, "month": 10, "year": 2019, "message": "Pick up eggs"},
+    "1": {"id": 1, "day": 17, "month": 10, "year": 2019, "message": "Seize the means of production"},
+    "2": {"id": 2, "day": 30, "month": 10, "year": 2019, "message": "Pay rent"},
+    "3": {"id": 3, "day": 31, "month": 9, "year": 2019, "message": "Pay rent"},
+    "4": {"id": 4, "day": 1, "month": 11, "year": 2019, "message": "Did you pay November's rent?"},
+    "5": {"id": 5, "day": 25, "month": 11, "year": 2019, "message": "Merry Chrysler!!!"},
+    "6": {"id": 6, "day": 1, "month": 0, "year": 2020, "message": "Happy New Year!!!"}
+}

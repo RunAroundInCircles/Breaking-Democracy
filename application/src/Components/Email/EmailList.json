@@ -1,0 +1,6 @@
+[
+	{"sender": "Putin", "senderEmail":"putin@democrastan.org", "ccsEmail": "gmneises@ksu.edu", "title": "Dear Future Putin", "favorited": false, "pinned": false, "id": 1, "body": "Hello Putin, \n\n This is future Putin. You have to win."},
+	{"sender": "George Bush", "senderEmail":"bushie@democrastan.org", "ccsEmail": ".", "title": "Golfing?",  "favorited": false, "pinned": false, "id": 2, "body": "Hello Putin, \n\n Wanna go golfing again?"},
+	{"sender": "Tutorial", "senderEmail":"tutorial@yahoo.com", "ccsEmail": ".", "title": "Tutorial #1", "favorited": false, "pinned": false, "id": 3, "body": "Hello Putin! \n\n Click Emails to view tutorials and see story."},
+	{"sender": "Story", "senderEmail":"story@yahoo.com", "ccsEmail": ".", "title": "Story #1", "favorited": false, "pinned": false, "id": 4, "body": "This is an important piece of information for the story."}
+]
