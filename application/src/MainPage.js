@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import './App.css';
 import MapApp from './Components/Map/MapApp.js';
+import MapRegion from './Components/Map/MapRegion.js';
 import EmailApp from './Components/Email/EmailApp.js';
 import CalendarApp from './Components/Calendar/CalendarApp.js';
 import EchoApp from './Components/Echo/EchoApp.js'
@@ -18,7 +19,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import MapRegion from './Components/Map/MapRegion.js';
+
 
 /**
  * MainPage component of the app that renders and returns all the buttons
@@ -54,7 +55,7 @@ class MainPage extends Component{
 								<span>Map</span>
 							</Button>
 						</Link>
-						
+
 						&nbsp;
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
@@ -63,7 +64,7 @@ class MainPage extends Component{
 								<span>Echo</span>
 							</Button>
 						</Link>
-						
+
 						&nbsp;
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
@@ -73,7 +74,7 @@ class MainPage extends Component{
 							</Button>
 						</Link>
 					</nav>
-					
+
 					<Switch>{/*The switch to click between pages.*/}
 						<Route path='/Calendar'>
 							<CalendarApp events={Object.values(events)}/>
@@ -88,9 +89,9 @@ class MainPage extends Component{
 						<Route path='/Map'>
 							<MapApp/>
 							<Route path='/Map/:id' render={(props)=>{
-									return <MapRegion/>
+									return <MapRegion region={props.match.params.id}/>
 								}
-							}/>							
+							}/>
 						</Route>
 						<Route path='/Echo'>
 							<EchoApp echos={echos}/>

@@ -1,13 +1,5 @@
 import React,{Component} from 'react';
 import country from '../../Resources/Maps/country.svg.js';
-import region1 from '../../Resources/Maps/Region-1.svg.js';
-import region2 from '../../Resources/Maps/Region-2.svg.js';
-import region3 from '../../Resources/Maps/Region-3.svg.js';
-import region4 from '../../Resources/Maps/Region-4.svg.js';
-import region5 from '../../Resources/Maps/Region-5.svg.js';
-import region6 from '../../Resources/Maps/Region-6.svg.js';
-import region7 from '../../Resources/Maps/Region-7.svg.js';
-import region8 from '../../Resources/Maps/Region-8.svg.js';
 
 /**
  * Generates a Map for the user so they can click on a region and zoom in on the region
@@ -20,12 +12,21 @@ class Map extends Component{
 	 */
 	constructor(props) {
 		super(props);
+		this.state = {
+			regions: {
+				0: {red:10, blue:90},
+				1: {red:10, blue:90},
+				2: {red:10, blue:90},
+				3: {red:10, blue:90},
+				4: {red:10, blue:90},
+				5: {red:10, blue:90},
+				6: {red:10, blue:90},
+				7: {red:10, blue:90},
+				8: {red:10, blue:90}
+			}
+		}
 
 		this.mapRef = React.createRef();
-		this.state = {
-			onSelect: props.onSelect, //On click response passed from MapApp
-			currentID: props.currentId //Current map to display
-		}
 	}
 
 	/**
@@ -34,7 +35,7 @@ class Map extends Component{
 	 */
 	render(){
 		var svg = {
-			__html: this.props.currentId //Formats the map to be inserted as InnnerHTML
+			__html: country //Formats the map to be inserted as InnnerHTML
 		}
 		return <div className="country-map" dangerouslySetInnerHTML={svg} ref={this.mapRef}/> //Uses svg to display map
 	}
@@ -44,40 +45,12 @@ class Map extends Component{
 	 * @return {[Function]} The Function will be used to display the specified region or based off the ID given
 	 */
 	componentDidMount() {
-		var func = this.state.onSelect; //Allows access to onSelect within the forEach
+		var func = this.props.onSelect; //Allows access to onSelect within the forEach
 		//Iterates through all paths within the svg and attaches the click event to each path
 		this.mapRef.current.querySelectorAll('g > path').forEach((region, index) => {
 			region.addEventListener('click', function(event) {
 				//Decides which region map to show based on what region is clicked on
-				switch(index){
-					case 0:
-						func(region1);
-					break;
-					case 1:
-						func(region2);
-					break;
-					case 2:
-						func(region3);
-					break;
-					case 3:
-						func(region4);
-					break;
-					case 4:
-						func(region6);
-					break;
-					case 5:
-						func(region5);
-					break;
-					case 6:
-						func(region8);
-					break;
-					case 7:
-						func(region7);
-					break;
-					default:
-						func(country);
-					break;
-				}
+				func(index);			
 			})
 		});
 	}
