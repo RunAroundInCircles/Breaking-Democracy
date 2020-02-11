@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Echo page 1`] = `
+<div
+  className="echo-app"
+>
+  <div
+    className="echo-list"
+  >
+    <h1
+      className="echo-head"
+    >
+      Echos
+    </h1>
+    <div
+      className="echo-selected"
+    >
+      <h4>
+        21h
+      </h4>
+      <h1>
+        @washingtonpost
+      </h1>
+       
+      <h2>
+        Washington Post
+      </h2>
+       
+      <h3>
+        Breaking news! The president is getting impeached.
+      </h3>
+       
+    </div>
+    <div
+      className="echo-selected"
+    >
+      <h4>
+        22h
+      </h4>
+      <h1>
+        @vernon
+      </h1>
+       
+      <h2>
+        Vernon
+      </h2>
+       
+      <h3>
+        New Candidate is rising in the polls.
+      </h3>
+       
+    </div>
+    <div
+      className="echo-selected"
+    >
+      <h4>
+        2h
+      </h4>
+      <h1>
+        @eli
+      </h1>
+       
+      <h2>
+        Fake News
+      </h2>
+       
+      <h3>
+        Totally real news story
+      </h3>
+       
+    </div>
+    <div
+      className="echo-selected"
+    >
+      <h4>
+        23h
+      </h4>
+      <h1>
+        @TimeMagazine
+      </h1>
+       
+      <h2>
+        TimeMagazine
+      </h2>
+       
+      <h3>
+        Candidate suggests new policies.
+      </h3>
+       
+    </div>
+  </div>
+</div>
+`;
