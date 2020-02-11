@@ -11,11 +11,12 @@ import region7 from '../../Resources/Maps/Region-7.svg.js';
 import region8 from '../../Resources/Maps/Region-8.svg.js';
 
 /**
- * This section will be used to add data to the map regions
- * @param       {[Property]} props These are used to access data from the map regions
+ * This function returns the proper map region based on the passed in prop
+ * @param       {[Property]} props region: the region id to render
  * @constructor
  */
 function MapRegion(props) {
+    //regions stores all of the regional maps so that they can be easily accessed
     var regions = {
         0: region1,
         1: region2,
@@ -26,11 +27,12 @@ function MapRegion(props) {
         6: region7,
         7: region8
     }
+    //svg stores the raw html of the regional svg map to be inserted into the div
     var svg = {
         __html: regions[props.region] //Formats the map to be inserted as InnnerHTML
     }
-    var color = '#ff0000';
     return (
+        //This div is the shadow that blocks the country map from being clicked on
         <div style={{display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -42,7 +44,7 @@ function MapRegion(props) {
             left: 0,
             backgroundColor: 'rgba(0, 0, 0, .7)'
         }}>
-            {/*This div is the body of the popup window containing the back button and the event info*/}
+            {/*This div is the body of the popup window containing the back button and the regional map*/}
             <div style={{backgroundColor: 'rgba(255, 255, 255, 1)',
                 borderRadius: '5px',
                 width: '75vw',
@@ -50,13 +52,13 @@ function MapRegion(props) {
                 position: 'absolute',
                 justifyContent: 'center'
             }}>
-                {/*This link acts as a back button allowing the user to redirect to Calendar*/}
+                {/*This link acts as a back button allowing the user to redirect to Map*/}
                 <Link to='/Map' >
                     <Button style={{top: 5, right: 5, position: 'absolute'}}>
 						<span>X</span>
 					</Button>
                 </Link>
-                {/*This div contains all of the information for the event*/}
+                {/*This div contains the regional map*/}
                 <div className="region-map" 
                     dangerouslySetInnerHTML={svg}
                 />

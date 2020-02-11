@@ -3,10 +3,11 @@
 }
 
 .map-app svg > g > path:hover {
-	fill: gold;
+	fill: gold !important;
 }
 
 .region-map svg > g > path {
+  fill: red;
   stroke: black;
 }
 
