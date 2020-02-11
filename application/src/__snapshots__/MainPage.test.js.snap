@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders calendar page 1`] = `
+Array [
+  <a
+    href=""
+    onClick={[Function]}
+    page="http://localhost:3000/Calendar"
+  >
+    Calendar
+  </a>,
+  " ",
+]
+`;
