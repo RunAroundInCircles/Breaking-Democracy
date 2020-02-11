@@ -18,7 +18,7 @@ test('renders MapApp page', () => {
 
 	.create(
 		<Router>
-			<Route path='/Map/:id' render={(props)=>{
+			<Route path='/Map/' render={(props)=>{
 					return <MapRegion/>
 				}
 			}>
