@@ -6,7 +6,9 @@ import renderer from 'react-test-renderer';
 
 import ReactDOM from 'react-dom';
 
-//Checks to see if the Email is correctly rendered
+/**
+ * Checks to see if the Email is correctly rendered
+ */
 test('renders emailApp page', () => {
 	const tree = renderer
 	.create(<EmailApp emails={emails}/>)

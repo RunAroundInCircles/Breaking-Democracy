@@ -12,13 +12,15 @@ import {
   Link
 } from "react-router-dom";
 
-//Checks to see if the Map is correctly rendered
+/**
+ * Checks to see if the Map is correctly rendered
+ */
 test('renders MapApp page', () => {
 	const tree = renderer
 
 	.create(
 		<Router>
-			<Route path='/Map/:id' render={(props)=>{
+			<Route path='/Map/' render={(props)=>{
 					return <MapRegion/>
 				}
 			}>

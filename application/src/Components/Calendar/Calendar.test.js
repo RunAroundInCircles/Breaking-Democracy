@@ -6,7 +6,9 @@ import renderer from 'react-test-renderer';
 
 import ReactDOM from 'react-dom';
 
-//Checks to see if the Calendar is correctly rendered
+/**
+ * Checks to see if the Calendar is correctly rendered
+ */
 test('renders CalendarApp page', () => {
 	const tree = renderer
 	.create(<CalendarApp events={Object.values(events)}/>)
