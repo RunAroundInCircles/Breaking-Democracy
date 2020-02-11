@@ -87,7 +87,7 @@ class MainPage extends Component{
 						<Route path='/Map'>
 							<MapApp/>
 							<Route path='/Map/:id' render={(props)=>{
-									return <MapRegion/>
+									return <MapRegion region={props.match.params.id}/>
 								}
 							}/>							
 						</Route>

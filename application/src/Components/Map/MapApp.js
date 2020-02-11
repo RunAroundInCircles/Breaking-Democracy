@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
+import {withRouter} from 'react-router-dom';
 import Map from './Map.js';
-import country from '../../Resources/Maps/country.svg.js';
 import './Map.css';
 
 /**
@@ -13,10 +13,7 @@ class MapApp extends Component {
    * @param {[Property]} props The initial parameters needed to create the Map
    */
     constructor(props) {
-		super(props);
-        this.state = {
-            currentId: country //Map to currently display, initially set to the country map
-        }
+        super(props);
         this.setSelectedRegion = this.setSelectedRegion.bind(this); //Bind MapApp to this for setSelectedRegion
     }
 
@@ -27,10 +24,7 @@ class MapApp extends Component {
     render() {
         return(
             <div className="map-app">
-                <Map
-                    onSelect={this.setSelectedRegion}
-                    currentId={this.state.currentId}
-                />
+                <Map onSelect={this.setSelectedRegion}/>
             </div>
         )
     }
@@ -40,8 +34,10 @@ class MapApp extends Component {
    * @param {[ID]} region Figures out which region was clicked by the user and sets the id to the currentID
    */
     setSelectedRegion(region) {
-        this.setState({currentId: region});
+        const {history} = this.props;
+        var address = "/Map/" + region;
+        history.push(address);
     }
 }
 
-export default MapApp;
+export default withRouter(MapApp);
