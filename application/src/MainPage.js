@@ -12,6 +12,8 @@ import {Button, Tab, Tabs} from 'react-bootstrap';
 import EventPopup from './Components/Calendar/EventPopup.js';
 import TimelineApp from './Components/Timeline/TimelineApp.js'
 import timelineevents from './Components/Timeline/TimelineData.json';
+import './MainPage.css';
+import desktop from './Resources/Title_Computer.png';
 
 import {
   BrowserRouter as Router,
@@ -29,9 +31,11 @@ import {
 class MainPage extends Component{
 	render(){
 		return(
-			<Router>
+
+      <Router>
 				<div id="screen">
-					<nav>
+        <img className="desktop" src={desktop} alt="desktop"/>
+          <nav>
 						<Link to='/Calendar'> {/*Button to Calendar*/}
 							<Button id="calendar-button">
 								<span>Calendar</span>
