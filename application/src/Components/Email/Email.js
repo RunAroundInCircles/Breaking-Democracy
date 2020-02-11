@@ -51,6 +51,7 @@ class Email extends Component {
             // Render as selected
             return (
                 <div className='email-selected' onClick={this.handleClick}>
+						
                         <h1>{this.state.sender}</h1> {/* Name of Sender */}
                         <img className="sideImage" src={face} alt="face"/>
                         <h2>{this.state.title}</h2> {/* Title of Email */}

@@ -11,6 +11,7 @@ import {Button, Tab, Tabs} from 'react-bootstrap';
 import EventPopup from './Components/Calendar/EventPopup.js';
 import TimelineApp from './Components/Timeline/TimelineApp.js'
 import timelineevents from './Components/Timeline/TimelineData.json';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -31,7 +32,7 @@ class MainPage extends Component{
 				<div id="screen">
 					<nav>
 						<Link to='/Calendar'> {/*Button to Calendar*/}
-							<Button>
+							<Button id="calendar-button">
 								<span>Calendar</span>
 							</Button>
 						</Link>
