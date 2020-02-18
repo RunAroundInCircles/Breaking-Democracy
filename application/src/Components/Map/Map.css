@@ -7,10 +7,9 @@
 }
 
 .region-map svg > g > path {
-  fill: red;
   stroke: black;
 }
 
 .region-map svg > g > path:hover {
-  fill: gold;
+  fill: gold !important;
 }
