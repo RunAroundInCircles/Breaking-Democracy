@@ -13,6 +13,7 @@ class Event extends Component {
      * @return {Link} An link to /Calendar/id of the event
      */
     render() {
+        
         let route = "/Calendar/" + this.props.id;
         return (
             <Link to={route} className="calendar-event-link">
