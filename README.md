@@ -31,6 +31,11 @@ You can switch between different modules by clicking on the red buttons at the t
 * **A timeline module**: The timeline module allows users to see previous events the user has accompolished in this game session.
 ![Timeline](/UsercaseImages/InitialTimeLine.PNG)
 
+Testing
+=
+* **Snapshots**: For each component above, including the Main Page component, we have created snapshot tests which will check to see if the components stay consistent with any updates.
+
+
 Thank You to the following people
 =
 * moodydev for inspiration on creating the react calendar: https://github.com/moodydev
