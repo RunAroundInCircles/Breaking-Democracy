@@ -6,7 +6,9 @@ import renderer from 'react-test-renderer';
 
 import ReactDOM from 'react-dom';
 
-//Checks to see if the Timeline is correctly rendered
+/**
+ * Checks to see if the Timeline is correctly rendered
+ */
 test('renders TimelineApp page', () => {
 	const tree = renderer
 	.create(<TimelineApp timelineevents={timelineevents}/>)
