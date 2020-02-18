@@ -4,14 +4,19 @@ exports[`renders EchoApp page 1`] = `
 <div
   className="echo-app"
 >
+  <img
+    alt="dolphin"
+    className="dolphin"
+    src="Echo_Dolphin.png"
+  />
+  <h1
+    className="echo-head"
+  >
+    Echos
+  </h1>
   <div
     className="echo-list"
   >
-    <h1
-      className="echo-head"
-    >
-      Echos
-    </h1>
     <div
       className="echo-selected"
     >
