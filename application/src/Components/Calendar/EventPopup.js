@@ -44,6 +44,9 @@ function EventPopup(props) {
                 <div style={{justifyContent: 'center'}}>
                     <h1>{date.toLocaleDateString("en-US", options)}</h1>
                     <h2>{props.event.message}</h2>
+					<Link>
+						<Button>Choice 1</Button>
+					</Link>
                 </div>
             </div>
         </div>
