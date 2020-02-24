@@ -14,6 +14,8 @@ import TimelineApp from './Components/Timeline/TimelineApp.js'
 import timelineEvents from './Components/Timeline/TimelineData.json';
 import './MainPage.css';
 import desktop from './Resources/Title_Computer.png';
+import Situations from './Components/Calendar/Situations.json';
+
 
 import {
   BrowserRouter as Router,
@@ -83,7 +85,7 @@ class MainPage extends Component{
 						<Route path='/Calendar'>
 							<CalendarApp events={Object.values(events)}/>
 							<Route path='/Calendar/:id' render={(props)=>{
-								return <EventPopup event={events[props.match.params.id]}/>
+								return <EventPopup event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]}/>
 							 }
 							}/>
 						</Route>
