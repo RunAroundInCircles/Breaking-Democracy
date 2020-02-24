@@ -1,0 +1,12 @@
+{
+	"0":{"id":0, "situation": "Riots break out in Region 2 due to police shooting.", "Choice1": "Send out false articles about destructive riots.", "Choice2": "Bribe a cop to kill another person."},
+	"1":{"id":1, "situation": "Candidate X caught embezzling money", "Choice1": "", "Choice2": ""},
+	"2":{"id":2, "situation": "Candidate Y has an affair with Candidate Z", "Choice1": "", "Choice2": ""},
+	"3":{"id":3, "situation": "Water shut down for all of district 4", "Choice1": "", "Choice2": ""},
+	"4":{"id":4, "situation": "Massive Tornado hits Region 6", "Choice1": "", "Choice2": ""},
+	"5":{"id":5, "situation": "Candidate A starring in new movie", "Choice1": "", "Choice2": ""},
+	"6":{"id":6, "situation": "Candidate B sex tape unearthed", "Choice1": "", "Choice2": ""},
+	"7":{"id":7, "situation": "Red party spreading propaganda", "Choice1": "", "Choice2": ""},
+	"8":{"id":8, "situation": "Blue party parade", "Choice1": "", "Choice2": ""},
+	"9":{"id":9, "situation": "Independents start forest fire", "Choice1": "Blame X side", "Choice2": "Blame Y side"}
+}

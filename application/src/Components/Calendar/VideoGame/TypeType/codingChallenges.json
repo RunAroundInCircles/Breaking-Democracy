@@ -1,0 +1,5 @@
+[
+    {"id": 1, "challenge": "Type a print statement saying 'i will  win.' in Python.","answer": "print('I will win')"},
+    {"id": 2, "challenge": "initiate a integer for 42 in C# with the name number.","answer": "int number = 42;"},
+	{"id": 3,"challenge": "April 26 1865","answer": "I won!"}
+]
