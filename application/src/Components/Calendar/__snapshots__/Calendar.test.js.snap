@@ -348,39 +348,39 @@ exports[`renders CalendarApp page 1`] = `
            
         </div>
         <div
-          className="col cell "
-          onClick={[Function]}
-        >
-          <span
-            className="number"
-          >
-            11
-          </span>
-          <span
-            className="bg"
-          >
-            11
-          </span>
-           
-        </div>
-        <div
-          className="col cell "
-          onClick={[Function]}
-        >
-          <span
-            className="number"
-          >
-            12
-          </span>
-          <span
-            className="bg"
-          >
-            12
-          </span>
-           
-        </div>
-        <div
           className="col cell selected"
+          onClick={[Function]}
+        >
+          <span
+            className="number"
+          >
+            11
+          </span>
+          <span
+            className="bg"
+          >
+            11
+          </span>
+           
+        </div>
+        <div
+          className="col cell "
+          onClick={[Function]}
+        >
+          <span
+            className="number"
+          >
+            12
+          </span>
+          <span
+            className="bg"
+          >
+            12
+          </span>
+           
+        </div>
+        <div
+          className="col cell "
           onClick={[Function]}
         >
           <span
