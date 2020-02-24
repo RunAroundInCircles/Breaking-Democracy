@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {Button} from 'react-bootstrap';
+import TypeGame from './VideoGame/TypeType/TypeGame.js';
 
 /**
  * Creates a popup when an event is clicked on the calendar
@@ -13,7 +14,7 @@ function EventPopup(props) {
 
     //options is used to format how the date of the event is displayed
     let options = {year: 'numeric', month: 'short', day: 'numeric'};
-    
+	
     return (
         //This div covers the screen with an black opaque layer
          <div style={{display: 'flex',
@@ -41,9 +42,17 @@ function EventPopup(props) {
 					</Button>
                 </Link>
                 {/*This div contains all of the information for the event*/}
+				
                 <div style={{justifyContent: 'center'}}>
                     <h1>{date.toLocaleDateString("en-US", options)}</h1>
                     <h2>{props.event.message}</h2>
+					<h3>{props.situation.situation}</h3>
+					<Link>
+						<Button onclick = "function(){<TypeGame/>}">{props.situation.Choice1}</Button>
+					</Link>
+					<Link>
+						<Button onclick = "function(){<TypeGame/>}">{props.situation.Choice2}</Button>
+					</Link>
                 </div>
             </div>
         </div>
