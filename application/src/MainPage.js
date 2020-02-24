@@ -11,7 +11,7 @@ import echos from './Components/Echo/echo.json';
 import {Button, Tab, Tabs} from 'react-bootstrap';
 import EventPopup from './Components/Calendar/EventPopup.js';
 import TimelineApp from './Components/Timeline/TimelineApp.js'
-import timelineevents from './Components/Timeline/TimelineData.json';
+import timelineEvents from './Components/Timeline/TimelineData.json';
 import './MainPage.css';
 import desktop from './Resources/Title_Computer.png';
 import Situations from './Components/Calendar/Situations.json';
@@ -103,7 +103,7 @@ class MainPage extends Component{
 							<EchoApp echos={echos}/>
 						</Route>
 						<Route path='/Timeline'>
-							<TimelineApp timelineevents={timelineevents}/>
+							<TimelineApp timelineEvents={timelineEvents}/>
 						</Route>
 					</Switch>
 				</div>

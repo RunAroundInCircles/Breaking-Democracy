@@ -1,5 +1,12 @@
-[
-    {"id": 1, "challenge": "Type a print statement saying 'i will  win.' in Python.","answer": "print('I will win')"},
-    {"id": 2, "challenge": "initiate a integer for 42 in C# with the name number.","answer": "int number = 42;"},
-	{"id": 3,"challenge": "April 26 1865","answer": "I won!"}
-]
+{
+    "0":{"id": 0, "challenge": "Type a print statement saying 'i will  win.' in Python.","answer": "print('I will win')"},
+    "1":{"id": 1, "challenge": "initiate a integer for 42 in C# with the name number.","answer": "int number = 42;"},
+	"2":{"id": 2,"challenge": "April 26 1865","answer": "I won!"},
+	"3":{"id": 3, "challenge": "Type a print statement saying 'i will  win.' in Python.","answer": "print('I will win')"},
+    "4":{"id": 4, "challenge": "initiate a integer for 42 in C# with the name number.","answer": "int number = 42;"},
+	"5":{"id": 5,"challenge": "April 26 1865","answer": "I won!"},
+	"6":{"id": 6, "challenge": "Type a print statement saying 'i will  win.' in Python.","answer": "print('I will win')"},
+    "7":{"id": 7, "challenge": "initiate a integer for 42 in C# with the name number.","answer": "int number = 42;"},
+	"8":{"id": 8,"challenge": "April 26 1865","answer": "I won!"},
+	"9":{"id": 9, "challenge": "Type a print statement saying 'i will  win.' in Python.","answer": "print('I will win')"}
+}

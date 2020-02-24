@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import TimelineEvent from './TimelineEvent.js';
+import Timeline from './Timeline.js';
 
 /**
  * TimelineApp component of the app that renders and returns a TimelineEvent
@@ -17,9 +18,8 @@ class TimelineApp extends Component {
     render() {
         return(
             <div className="timeline-app"> 
-                <TimelineEvent 
-                    timelineevents={this.props.timelineevents} 
-                />				
+                <Timeline/>
+                <TimelineEvent timelineEvents={this.props.timelineEvents}/>
             </div>
         )
     }
