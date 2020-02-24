@@ -1,9 +1,8 @@
 import React,{Component} from 'react';
-import challenges from './codingChallenges.json';
 
 
 class TypeGame extends Component{
-
+	
 	handleChange(){
 			return(
 				<h1>You won! Please Exit.</h1>
@@ -30,17 +29,17 @@ class TypeGame extends Component{
                 height: '50vh',
                 position: 'absolute'
         }}>
-				<h1>{challenges[Math.floor(Math.random() * 10)]}</h1>
-				//make textbox and a  submit button when submit button is clicked then check and move on.
+				<h1>{this.props.challenges.challenge}</h1>
+				
 				<form onSubmit={this.handleSubmit}>
 					<label>
 					Answer:
-					<input type="text" value={this.state.value} onChange={this.handleChange} />
+					<input type="text" onChange={this.handleChange} />
 					</label>
 					<input type="submit" value="Submit" />
 				</form>
 			</div>
-			</div>
+		</div>
 	)}
 }
 

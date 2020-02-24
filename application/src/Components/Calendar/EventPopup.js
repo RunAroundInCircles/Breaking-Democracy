@@ -2,7 +2,8 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {Button} from 'react-bootstrap';
 import TypeGame from './VideoGame/TypeType/TypeGame.js';
-
+import ReactDOM from 'react-dom';
+import challenges from './VideoGame/TypeType/codingChallenges.json';
 /**
  * Creates a popup when an event is clicked on the calendar
  * @param {Properties} props Parameters needed to create the event, contains event which had an id, year, month, day, and a message
@@ -14,7 +15,8 @@ function EventPopup(props) {
 
     //options is used to format how the date of the event is displayed
     let options = {year: 'numeric', month: 'short', day: 'numeric'};
-	
+	let game = <TypeGame challenges = {challenges[Math.floor(Math.random()* 10)]}/>;
+
     return (
         //This div covers the screen with an black opaque layer
          <div style={{display: 'flex',
@@ -48,13 +50,14 @@ function EventPopup(props) {
                     <h2>{props.event.message}</h2>
 					<h3>{props.situation.situation}</h3>
 					<Link>
-						<Button onclick = "function(){<TypeGame/>}">{props.situation.Choice1}</Button>
+						<Button onClick= {() => ReactDOM.render(game, document.getElementById('root'))}>{props.situation.Choice1}</Button>
 					</Link>
 					<Link>
-						<Button onclick = "function(){<TypeGame/>}">{props.situation.Choice2}</Button>
+						<Button onClick= {() => ReactDOM.render(game, document.getElementById('root'))}>{props.situation.Choice2}</Button>
 					</Link>
                 </div>
             </div>
+			
         </div>
     );
 }
