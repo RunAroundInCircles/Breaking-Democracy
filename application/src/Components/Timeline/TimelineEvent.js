@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
-import Timeline from './Timeline.js';
+//import Timeline from './Timeline.js'; Will be used later in production
 
 /**
- * TimelineEvent component of the app that parses each event that is passed down from TimelineApp 
+ * TimelineEvent component of the app that parses each event that is passed down from TimelineApp
  * @extends React
  */
 class TimelineEvent extends Component {

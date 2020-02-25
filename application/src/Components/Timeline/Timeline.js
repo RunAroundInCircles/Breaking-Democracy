@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { isThisHour } from 'date-fns';
+//import { isThisHour } from 'date-fns'; Will be used later in production
 
 /**
  * Timeline component of the app that renders the svg file for the timeline.
@@ -12,7 +12,7 @@ class Timeline extends Component{
  	*/
 	render(){
 		return(
-			<div className="timeline-line" 
+			<div className="timeline-line"
 				style={{display: 'flex',
 					alignItems: 'center',
 					justifyContent: 'center',
