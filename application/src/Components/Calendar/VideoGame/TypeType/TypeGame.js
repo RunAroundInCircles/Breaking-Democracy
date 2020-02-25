@@ -2,13 +2,21 @@ import React,{Component} from 'react';
 
 
 class TypeGame extends Component{
-	
+	/**
+	 * Returns that the player has won the mini game and adds the header to the event popup.
+	 * @return {HTML} [Returns a header that the user has won]
+	 */
 	handleChange(){
 			return(
 				<h1>You won! Please Exit.</h1>
 			)
-	
+
 	}
+
+	/**
+	 * Renders the event popup to show the plaer has won
+	 * @return {div} [Returns the popup]
+	 */
 	render(){
 		return(
 		<div style={{display: 'flex',
@@ -30,7 +38,7 @@ class TypeGame extends Component{
                 position: 'absolute'
         }}>
 				<h1>{this.props.challenges.challenge}</h1>
-				
+
 				<form onSubmit={this.handleSubmit}>
 					<label>
 					Answer:

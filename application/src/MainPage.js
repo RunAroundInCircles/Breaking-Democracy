@@ -8,7 +8,7 @@ import EchoApp from './Components/Echo/EchoApp.js'
 import events from './Components/Calendar/EventList.json';
 import emails from './Components/Email/EmailList.json';
 import echos from './Components/Echo/echo.json';
-import {Button, Tab, Tabs} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 import EventPopup from './Components/Calendar/EventPopup.js';
 import TimelineApp from './Components/Timeline/TimelineApp.js'
 import timelineEvents from './Components/Timeline/TimelineData.json';

@@ -20,6 +20,7 @@ class Calendar extends React.Component {
 
   /**
    * Goes through all the dates and searches for an event that is on the same day as the date passed in.
+   * This also goes through all the events already completed by the player and will remove them from the calendar
    * @param  {[Date]} date The date to search for.
    *  * @return {String} Returns an event if one exists, else it returns null.
    */
@@ -30,10 +31,10 @@ class Calendar extends React.Component {
 
       if(isEqual(date, this.state.events[i].date)) {
         found = this.state.eventCompleted.find(function(index){
-          return i == index;
+          return i === index;
         });
 
-        if(found != -1){
+        if(found !== -1){
           return this.state.events[i].message;
         }
         else{
