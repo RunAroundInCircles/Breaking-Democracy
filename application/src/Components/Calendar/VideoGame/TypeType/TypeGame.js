@@ -2,14 +2,23 @@ import React,{Component} from 'react';
 
 
 class TypeGame extends Component{
+	/**
+	 * Returns that the player has won the mini game and adds the header to the event popup.
+	 * @return {HTML} [Returns a header that the user has won]
+	 */
 	
 	/*Will be able to check if the answer is right and change certain attributes when done.*/
 	handleSubmit(){
 			return(
 				<h1>You won! Please Exit.</h1>
 			)
-	
+
 	}
+
+	/**
+	 * Renders the event popup to show the plaer has won
+	 * @return {div} [Returns the popup]
+	 */
 	render(){
 		return(
 		<div style={{display: 'flex',
