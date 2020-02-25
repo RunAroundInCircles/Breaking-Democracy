@@ -30,7 +30,7 @@ You can switch between different modules by clicking on the red buttons at the t
 ![Echo](/UsercaseImages/initialEchos.PNG)
 
 * **A timeline module**: The timeline module allows users to see previous events the user has accompolished in this game session.
-![Timeline](/UsercaseImages/InitialTimeLine.PNG)
+![Timeline](/UsercaseImages/InitialTimeline.PNG)
 
 Testing
 =
