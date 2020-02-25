@@ -15,6 +15,8 @@ function EventPopup(props) {
 
     //options is used to format how the date of the event is displayed
     let options = {year: 'numeric', month: 'short', day: 'numeric'};
+	
+	//gets a certain challenge for an event happening from the json file.
 	let game = <TypeGame challenges = {challenges[Math.floor(Math.random()* 10)]}/>;
 
     return (
@@ -49,6 +51,7 @@ function EventPopup(props) {
                     <h1>{date.toLocaleDateString("en-US", options)}</h1>
                     <h2>{props.event.message}</h2>
 					<h3>{props.situation.situation}</h3>
+					{/*Gives the choices for the situation and onclick rerenders the page for the game.*/}
 					<Link>
 						<Button onClick= {() => ReactDOM.render(game, document.getElementById('root'))}>{props.situation.Choice1}</Button>
 					</Link>

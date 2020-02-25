@@ -3,7 +3,8 @@ import React,{Component} from 'react';
 
 class TypeGame extends Component{
 	
-	handleChange(){
+	/*Will be able to check if the answer is right and change certain attributes when done.*/
+	handleSubmit(){
 			return(
 				<h1>You won! Please Exit.</h1>
 			)
@@ -30,7 +31,7 @@ class TypeGame extends Component{
                 position: 'absolute'
         }}>
 				<h1>{this.props.challenges.challenge}</h1>
-				
+				{/*Creates a form that has a submit button. and calls handleChange when pressed.*/}
 				<form onSubmit={this.handleSubmit}>
 					<label>
 					Answer:
