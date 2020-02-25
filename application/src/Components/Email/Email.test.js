@@ -7,7 +7,7 @@ import { shallow } from 'enzyme';
 import ReactDOM from 'react-dom';
 
 /**
- * Checks to see if the Email is correctly rendered
+ * Checks to see if the Email page is correctly rendered
  */
 test('renders emailApp page', () => {
 	const tree = renderer
@@ -15,7 +15,9 @@ test('renders emailApp page', () => {
 	expect(tree).toMatchSnapshot();
 });
 
-
+/**
+ * Checks to see if all emails is correctly rendered
+ */
 test('renders each email', () => {
 	const tree = renderer
 	.create(<EmailApp emails={emails}/>)
@@ -23,8 +25,10 @@ test('renders each email', () => {
 	expect(tree.state).not.toBeNull();
 });
 
-
-test('renders each email', () => {
+/**
+ * Checks to see if the selected email is correctly rendered
+ */
+test('renders selected email', () => {
 	const wrapper = shallow(<EmailApp emails={emails}/>);
 	const button = wrapper.find('selected-email');
 	button.simulate('click');

@@ -1,6 +1,10 @@
 import React,{Component} from 'react';
 
 class Echo extends Component {
+  /**
+   * Constructs the echo component
+   * @param {Properties} props [All the necessary properties needed to generate the echo component]
+   */
     constructor(props) {
         super(props);
 
