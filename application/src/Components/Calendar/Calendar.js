@@ -12,21 +12,34 @@ class Calendar extends React.Component {
   state = {
     currentMonth: new Date(), //The Current Month shown to the user
     selectedDate: new Date(), //The date of the clicked cell
-
+    eventCompleted: [],
     //The different events to be displayed on the calendar
     events: this.props.events
+
   };
 
   /**
    * Goes through all the dates and searches for an event that is on the same day as the date passed in.
+   * This also goes through all the events already completed by the player and will remove them from the calendar
    * @param  {[Date]} date The date to search for.
    *  * @return {String} Returns an event if one exists, else it returns null.
    */
   containsDate(date) {
     var i;
+    var found = -1;
     for(i = 0; i < this.state.events.length; i++) {
+
       if(isEqual(date, this.state.events[i].date)) {
-        return this.state.events[i].message;
+        found = this.state.eventCompleted.find(function(index){
+          return i === index;
+        });
+
+        if(found !== -1){
+          return this.state.events[i].message;
+        }
+        else{
+          return null;
+        }
       }
     }
     return null;
