@@ -91,7 +91,7 @@
 }
 
 Button{
-	background-color: grey; /* Green */
+	background-color: grey; /* Grey */
 	border-style: solid;
 	border-color:Red;
 	color: white;
@@ -106,6 +106,6 @@ Button:hover{
 	background-color: gold;
 }
 
-button:focus {
+Button:focus {
 	outline:0;
 }

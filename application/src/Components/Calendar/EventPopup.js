@@ -15,7 +15,7 @@ function EventPopup(props) {
 
     //options is used to format how the date of the event is displayed
     let options = {year: 'numeric', month: 'short', day: 'numeric'};
-	
+
 	//gets a certain challenge for an event happening from the json file.
 	let game = <TypeGame challenges = {challenges[Math.floor(Math.random()* 10)]}/>;
 
@@ -46,7 +46,7 @@ function EventPopup(props) {
 					</Button>
                 </Link>
                 {/*This div contains all of the information for the event*/}
-				
+
                 <div style={{justifyContent: 'center'}}>
                     <h1>{date.toLocaleDateString("en-US", options)}</h1>
                     <h2>{props.event.message}</h2>
@@ -60,7 +60,7 @@ function EventPopup(props) {
 					</Link>
                 </div>
             </div>
-			
+
         </div>
     );
 }

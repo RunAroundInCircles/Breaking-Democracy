@@ -31,6 +31,10 @@ import {
  * @extends React
  */
 class MainPage extends Component{
+  state = {
+    eventsCompleted: []
+
+  };
 	render(){
 		return(
 
@@ -83,9 +87,9 @@ class MainPage extends Component{
 
 					<Switch>{/*The switch to click between pages.*/}
 						<Route path='/Calendar'>
-							<CalendarApp events={Object.values(events)}/>
+							<CalendarApp events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
 							<Route path='/Calendar/:id' render={(props)=>{
-								return <EventPopup event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]}/>
+								return <EventPopup event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]} eventsCompleted={this.state.eventsCompleted}/>
 							 }
 							}/>
 						</Route>
@@ -103,7 +107,7 @@ class MainPage extends Component{
 							<EchoApp echos={echos}/>
 						</Route>
 						<Route path='/Timeline'>
-							<TimelineApp timelineEvents={timelineEvents}/>
+							<TimelineApp timelineEvents={timelineEvents} eventsCompleted={this.state.eventsCompleted}/>
 						</Route>
 					</Switch>
 				</div>
