@@ -31,6 +31,24 @@ import {
  * @extends React
  */
 class MainPage extends Component{
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			//Only stores red data to reduce unneccesary data storage
+			pollData: {
+				0: [75, 75, 75, 75, 75, 75, 75],
+				1: [25, 25, 25, 25],
+				2: [62, 33, 51, 83],
+				3: [75, 50, 57],
+				4: [38, 51],
+				5: [18],
+				6: [70, 25, 89, 34],
+				7: [21, 12, 37]
+			}
+		}
+	}
+
 	render(){
 		return(
 
@@ -93,9 +111,9 @@ class MainPage extends Component{
 							<EmailApp emails={emails}/>
 						</Route>
 						<Route path='/Map'>
-							<MapApp/>
+							<MapApp pollData={this.state.pollData}/>
 							<Route path='/Map/:id' render={(props)=>{
-									return <MapRegion region={props.match.params.id}/>
+									return <MapRegion region={props.match.params.id} pollData={this.state.pollData}/>
 								}
 							}/>
 						</Route>

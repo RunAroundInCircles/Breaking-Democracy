@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import {Button} from 'react-bootstrap';
 import region1 from '../../Resources/Maps/Region-1.svg.js';
@@ -16,10 +16,13 @@ import region8 from '../../Resources/Maps/Region-8.svg.js';
  * @constructor
  */
 function MapRegion(props) {
+    const colors = useState(props.pollData[props.region]);
     //regions stores all of the regional maps so that they can be easily accessed
     useEffect(() => {
         document.querySelectorAll('g > path[id~=district]').forEach((district, index) => {
-            var color = 'rgb(' + regionColors[index].red + ', 0, ' + regionColors[index].blue + ')'; //Formats colors to be used
+            var color = 'rgb(' + (colors[0][index]/100)*255 + 
+                ', 0, ' + 
+                (1- (colors[0][index]/100))*255 + ')'; //Formats colors to be used
             district.style.setProperty("fill", color);
         });
     });
@@ -33,17 +36,6 @@ function MapRegion(props) {
         5: region6, 
         6: region7,
         7: region8
-    }
-
-    var regionColors = {
-        0: {red: 255 * Math.random(), blue: 255 * Math.random()},
-        1: {red: 255 * Math.random(), blue: 255 * Math.random()},
-        2: {red: 255 * Math.random(), blue: 255 * Math.random()},
-        3: {red: 255 * Math.random(), blue: 255 * Math.random()},
-        4: {red: 255 * Math.random(), blue: 255 * Math.random()},
-        5: {red: 255 * Math.random(), blue: 255 * Math.random()},
-        6: {red: 255 * Math.random(), blue: 255 * Math.random()},
-        7: {red: 255 * Math.random(), blue: 255 * Math.random()}
     }
 
     //svg stores the raw html of the regional svg map to be inserted into the div
