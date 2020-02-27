@@ -12,20 +12,6 @@ class Map extends Component{
 	 */
 	constructor(props) {
 		super(props);
-		this.state = {
-			//regions stores the color information for all of the different regions in the map
-			regions: { 
-				0: {red: 255 * Math.random(), blue: 255 * Math.random()},
-				1: {red: 255 * Math.random(), blue: 255 * Math.random()},
-				2: {red: 255 * Math.random(), blue: 255 * Math.random()},
-				3: {red: 255 * Math.random(), blue: 255 * Math.random()},
-				4: {red: 255 * Math.random(), blue: 255 * Math.random()},
-				5: {red: 255 * Math.random(), blue: 255 * Math.random()},
-				6: {red: 255 * Math.random(), blue: 255 * Math.random()},
-				7: {red: 255 * Math.random(), blue: 255 * Math.random()},
-				8: {red: 255 * Math.random(), blue: 255 * Math.random()}
-			}
-		}
 
 		this.mapRef = React.createRef();
 	}
@@ -47,10 +33,18 @@ class Map extends Component{
 	 */
 	componentDidMount() {
 		var func = this.props.onSelect; //Allows access to onSelect within the forEach
-		var colors = this.state.regions; //Allows access to regions within the forEach
 		//Iterates through all paths within the svg and attaches the click event to each path and gives them their unique color
 		this.mapRef.current.querySelectorAll('g > path').forEach((region, index) => {
-			var color = 'rgb(' + colors[index].red + ', 0, ' + colors[index].blue + ')'; //Formats colors to be used
+			var i;
+			var red = 0;
+			var blue = 0;
+			for(i = 0; i < this.props.pollData[index].length; i++) {
+				red += this.props.pollData[index][i];
+			}
+			red = red/this.props.pollData[index].length;
+			blue = 100-red;
+			
+			var color = 'rgb(' + (red/100)*255 + ', 0, ' + (blue/100)*255 + ')'; //Formats colors to be used
 			region.style.setProperty("fill", color);
 			region.style.setProperty("fill:hover", 'gold');
 			region.addEventListener('click', function(event) {

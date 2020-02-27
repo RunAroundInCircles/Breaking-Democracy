@@ -24,7 +24,7 @@ class MapApp extends Component {
     render() {
         return(
             <div className="map-app">
-                <Map onSelect={this.setSelectedRegion}/>
+                <Map onSelect={this.setSelectedRegion} pollData={this.props.pollData}/>
             </div>
         )
     }

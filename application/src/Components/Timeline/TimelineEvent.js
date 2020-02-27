@@ -8,18 +8,13 @@ import React,{Component} from 'react';
 class TimelineEvent extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            //timelineEvents contains all the events on the timeline given by TimelineApp
-            timelineEvents: props.timelineEvents
-        }
     }
 	/**
  	* Renders each individual timeline event into its own event space
  	* @return returns the div heading and returns each parsed timeline event
  	*/
     render() {
-        //The following mapping function finds the email that the user selected
+        //The following mapping function finds the events and their results that need to be displayed
         var eventsFormated = [];
         var i;
         for(i = 0; i < this.props.timelineEvents.length; i++) {
