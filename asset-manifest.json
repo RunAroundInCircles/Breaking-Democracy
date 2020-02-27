@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/catiel/Breaking-Democracy/static/css/main.8f5e5ebd.chunk.css",
-    "main.js": "/catiel/Breaking-Democracy/static/js/main.49d55f40.chunk.js",
-    "main.js.map": "/catiel/Breaking-Democracy/static/js/main.49d55f40.chunk.js.map",
-    "runtime-main.js": "/catiel/Breaking-Democracy/static/js/runtime-main.0b474c5b.js",
-    "runtime-main.js.map": "/catiel/Breaking-Democracy/static/js/runtime-main.0b474c5b.js.map",
-    "static/js/2.dcea51df.chunk.js": "/catiel/Breaking-Democracy/static/js/2.dcea51df.chunk.js",
-    "static/js/2.dcea51df.chunk.js.map": "/catiel/Breaking-Democracy/static/js/2.dcea51df.chunk.js.map",
-    "index.html": "/catiel/Breaking-Democracy/index.html",
-    "precache-manifest.16965ec8d516770049909d7cbd2f6e9b.js": "/catiel/Breaking-Democracy/precache-manifest.16965ec8d516770049909d7cbd2f6e9b.js",
-    "service-worker.js": "/catiel/Breaking-Democracy/service-worker.js",
-    "static/css/main.8f5e5ebd.chunk.css.map": "/catiel/Breaking-Democracy/static/css/main.8f5e5ebd.chunk.css.map",
-    "static/js/2.dcea51df.chunk.js.LICENSE.txt": "/catiel/Breaking-Democracy/static/js/2.dcea51df.chunk.js.LICENSE.txt",
-    "static/media/Title_Computer.png": "/catiel/Breaking-Democracy/static/media/Title_Computer.2b24c9f9.png"
+    "main.css": "/catiel/Breaking-Democracy/tree/master/application/static/css/main.8f5e5ebd.chunk.css",
+    "main.js": "/catiel/Breaking-Democracy/tree/master/application/static/js/main.65629b48.chunk.js",
+    "main.js.map": "/catiel/Breaking-Democracy/tree/master/application/static/js/main.65629b48.chunk.js.map",
+    "runtime-main.js": "/catiel/Breaking-Democracy/tree/master/application/static/js/runtime-main.977cc694.js",
+    "runtime-main.js.map": "/catiel/Breaking-Democracy/tree/master/application/static/js/runtime-main.977cc694.js.map",
+    "static/js/2.dcea51df.chunk.js": "/catiel/Breaking-Democracy/tree/master/application/static/js/2.dcea51df.chunk.js",
+    "static/js/2.dcea51df.chunk.js.map": "/catiel/Breaking-Democracy/tree/master/application/static/js/2.dcea51df.chunk.js.map",
+    "index.html": "/catiel/Breaking-Democracy/tree/master/application/index.html",
+    "precache-manifest.d64baf50a9445209d4b8f377867a522e.js": "/catiel/Breaking-Democracy/tree/master/application/precache-manifest.d64baf50a9445209d4b8f377867a522e.js",
+    "service-worker.js": "/catiel/Breaking-Democracy/tree/master/application/service-worker.js",
+    "static/css/main.8f5e5ebd.chunk.css.map": "/catiel/Breaking-Democracy/tree/master/application/static/css/main.8f5e5ebd.chunk.css.map",
+    "static/js/2.dcea51df.chunk.js.LICENSE.txt": "/catiel/Breaking-Democracy/tree/master/application/static/js/2.dcea51df.chunk.js.LICENSE.txt",
+    "static/media/Title_Computer.png": "/catiel/Breaking-Democracy/tree/master/application/static/media/Title_Computer.2b24c9f9.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.0b474c5b.js",
+    "static/js/runtime-main.977cc694.js",
     "static/js/2.dcea51df.chunk.js",
     "static/css/main.8f5e5ebd.chunk.css",
-    "static/js/main.49d55f40.chunk.js"
+    "static/js/main.65629b48.chunk.js"
   ]
 }
