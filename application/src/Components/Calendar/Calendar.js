@@ -31,6 +31,7 @@ class Calendar extends React.Component {
     for(i = 0; i < this.state.events.length; i++) {
 
       if(isEqual(date, this.state.events[i].date)) {
+        /*If any of the items in eventsCompleted (Found in MainPage are equal to the index then we do not render the item) */
         if (this.state.eventsCompleted.find(element => element == i)){
           return null;
         }

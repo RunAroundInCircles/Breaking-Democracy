@@ -32,7 +32,7 @@ import {
  */
 class MainPage extends Component{
   state = {
-    eventsCompleted: [0,2,3]
+    eventsCompleted: []
 
   };
   callback = (eventsCompletedFromCalendar) => {
