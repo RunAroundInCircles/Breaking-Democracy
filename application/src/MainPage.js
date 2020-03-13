@@ -32,9 +32,13 @@ import {
  */
 class MainPage extends Component{
   state = {
-    eventsCompleted: []
+    eventsCompleted: [0,2,3]
 
   };
+  callback = (eventsCompletedFromCalendar) => {
+    this.state.eventsCompleted = eventsCompletedFromCalendar;
+  };
+
 	render(){
 		return(
 
@@ -87,7 +91,7 @@ class MainPage extends Component{
 
 					<Switch>{/*The switch to click between pages.*/}
 						<Route path='/Calendar'>
-							<CalendarApp events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
+							<CalendarApp  callbackFromMain={this.callback} events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
 							<Route path='/Calendar/:id' render={(props)=>{
 								return <EventPopup event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]} eventsCompleted={this.state.eventsCompleted}/>
 							 }

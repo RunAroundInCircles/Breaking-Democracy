@@ -27,18 +27,15 @@ class Calendar extends React.Component {
   containsDate(date) {
     var i;
     var found = -1;
+    //window.alert(date.Month);
     for(i = 0; i < this.state.events.length; i++) {
 
       if(isEqual(date, this.state.events[i].date)) {
-        found = this.state.eventsCompleted.find(function(index){
-          return i === index;
-        });
-
-        if(found !== -1){
-          return this.state.events[i].message;
+        if (this.state.eventsCompleted.find(element => element == i)){
+          return null;
         }
         else{
-          return null;
+          return this.state.events[i].message;
         }
       }
     }
