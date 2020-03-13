@@ -35,6 +35,11 @@ class MainPage extends Component{
     eventsCompleted: []
 
   };
+
+  /**
+   * Allows the EventPopup component to say if the user has completed the game successfully.
+   * @param  {ID}   eventsCompleted The id of the event completed.
+   */
   callback = (eventsCompleted) => {
     this.state.eventsCompleted.push(eventsCompleted);
   };
