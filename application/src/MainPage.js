@@ -140,7 +140,7 @@ class MainPage extends Component{
 							<EchoApp echos={echos}/>
 						</Route>
 						<Route path='/Timeline'>
-							<TimelineApp timelineEvents={timelineEvents} eventsCompleted={this.state.eventsCompleted}/>
+							<TimelineApp  events={Object.values(events)} timelineEvents={timelineEvents} eventsCompleted={this.state.eventsCompleted}/>
 						</Route>
 					</Switch>
 				</div>
