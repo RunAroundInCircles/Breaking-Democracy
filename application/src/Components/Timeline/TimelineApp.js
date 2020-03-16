@@ -10,10 +10,10 @@ import Timeline from './Timeline.js';
  */
 class TimelineApp extends Component {
 // This code snippet will be used later in production
-/*    constructor(props) {
+    constructor(props) {
 		super(props);
-    }
-    */
+  };
+
 
 	/**
  	* Renders a Timeline and a TimelineEvent given all current events.
@@ -23,7 +23,7 @@ class TimelineApp extends Component {
         return(
             <div className="timeline-app">
                 <Timeline/>
-                <TimelineEvent timelineEvents={this.props.timelineEvents} eventsCompleted={this.props.eventsCompleted}/>
+                <TimelineEvent events={this.props.events} timelineEvents={this.props.timelineEvents} eventsCompleted={this.props.eventsCompleted}/>
             </div>
         )
     }
