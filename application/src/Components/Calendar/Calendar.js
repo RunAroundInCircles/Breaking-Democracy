@@ -26,8 +26,6 @@ class Calendar extends React.Component {
    */
   containsDate(date) {
     var i;
-    var found = -1;
-    //window.alert(date.Month);
     for(i = 0; i < this.state.events.length; i++) {
 
       if(isEqual(date, this.state.events[i].date)) {
@@ -181,6 +179,7 @@ class Calendar extends React.Component {
  * @return {div} Returns a div that represents the calendar
  */
   render() {
+    console.log(this.props.eventsCompleted);
     return (
       <div className="calendar">
         {this.renderHeader()}
