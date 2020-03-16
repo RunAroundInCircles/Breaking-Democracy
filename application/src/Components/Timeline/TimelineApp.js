@@ -14,7 +14,7 @@ class TimelineApp extends Component {
 		super(props);
     }
     */
-   
+
 	/**
  	* Renders a Timeline and a TimelineEvent given all current events.
  	* @return returns the div of a Timeline and a TimelineEvent Component that has all current events passed in.
@@ -23,7 +23,7 @@ class TimelineApp extends Component {
         return(
             <div className="timeline-app">
                 <Timeline/>
-                <TimelineEvent timelineEvents={this.props.timelineEvents}/>
+                <TimelineEvent timelineEvents={this.props.timelineEvents} eventsCompleted={this.props.eventsCompleted}/>
             </div>
         )
     }

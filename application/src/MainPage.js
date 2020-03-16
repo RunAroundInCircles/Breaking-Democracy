@@ -31,6 +31,7 @@ import {
  * @extends React
  */
 class MainPage extends Component{
+
 	constructor(props) {
 		super(props);
 
@@ -45,8 +46,17 @@ class MainPage extends Component{
 				5: [18],
 				6: [70, 25, 89, 34],
 				7: [21, 12, 37]
-			}
+			},
+      eventsCompleted: []
 		}
+    
+    /**
+     * Allows the EventPopup component to say if the user has completed the game successfully.
+     * @param  {ID}   eventsCompleted The id of the event completed.
+     */
+    callback = (eventsCompleted) => {
+      this.state.eventsCompleted.push(eventsCompleted);
+    };
 	}
 
 	render(){
@@ -101,9 +111,9 @@ class MainPage extends Component{
 
 					<Switch>{/*The switch to click between pages.*/}
 						<Route path='/Calendar'>
-							<CalendarApp events={Object.values(events)}/>
+							<CalendarApp   events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
 							<Route path='/Calendar/:id' render={(props)=>{
-								return <EventPopup event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]}/>
+								return <EventPopup callbackFromMain={this.callback} event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]} eventsCompleted={this.state.eventsCompleted}/>
 							 }
 							}/>
 						</Route>
@@ -121,7 +131,7 @@ class MainPage extends Component{
 							<EchoApp echos={echos}/>
 						</Route>
 						<Route path='/Timeline'>
-							<TimelineApp timelineEvents={timelineEvents}/>
+							<TimelineApp timelineEvents={timelineEvents} eventsCompleted={this.state.eventsCompleted}/>
 						</Route>
 					</Switch>
 				</div>

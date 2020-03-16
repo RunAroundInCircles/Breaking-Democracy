@@ -33,7 +33,7 @@ class CalendarApp extends Component {
     render() {
         return(
             <div className="calendar-app">
-                <Calendar events={this.state.events}/>
+                <Calendar callbackFromMain={this.callback} events={this.state.events} eventsCompleted={this.props.eventsCompleted}/>
             </div>
         )
     }

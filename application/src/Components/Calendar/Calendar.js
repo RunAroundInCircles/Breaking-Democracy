@@ -12,7 +12,7 @@ class Calendar extends React.Component {
   state = {
     currentMonth: new Date(), //The Current Month shown to the user
     selectedDate: new Date(), //The date of the clicked cell
-    eventCompleted: [],
+    eventsCompleted: this.props.eventsCompleted,
     //The different events to be displayed on the calendar
     events: this.props.events
 
@@ -27,18 +27,16 @@ class Calendar extends React.Component {
   containsDate(date) {
     var i;
     var found = -1;
+    //window.alert(date.Month);
     for(i = 0; i < this.state.events.length; i++) {
 
       if(isEqual(date, this.state.events[i].date)) {
-        found = this.state.eventCompleted.find(function(index){
-          return i === index;
-        });
-
-        if(found !== -1){
-          return this.state.events[i].message;
+        /*If any of the items in eventsCompleted (Found in MainPage are equal to the index then we do not render the item) */
+        if (this.state.eventsCompleted.find(element => element == i)){
+          return null;
         }
         else{
-          return null;
+          return this.state.events[i].message;
         }
       }
     }
