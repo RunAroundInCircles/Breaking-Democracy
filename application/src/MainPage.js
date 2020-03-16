@@ -31,18 +31,33 @@ import {
  * @extends React
  */
 class MainPage extends Component{
-  state = {
-    eventsCompleted: []
 
-  };
+	constructor(props) {
+		super(props);
 
-  /**
-   * Allows the EventPopup component to say if the user has completed the game successfully.
-   * @param  {ID}   eventsCompleted The id of the event completed.
-   */
-  callback = (eventsCompleted) => {
-    this.state.eventsCompleted.push(eventsCompleted);
-  };
+		this.state = {
+			//Only stores red data to reduce unneccesary data storage
+			pollData: {
+				0: [75, 75, 75, 75, 75, 75, 75],
+				1: [25, 25, 25, 25],
+				2: [62, 33, 51, 83],
+				3: [75, 50, 57],
+				4: [38, 51],
+				5: [18],
+				6: [70, 25, 89, 34],
+				7: [21, 12, 37]
+			},
+      eventsCompleted: []
+		}
+    
+    /**
+     * Allows the EventPopup component to say if the user has completed the game successfully.
+     * @param  {ID}   eventsCompleted The id of the event completed.
+     */
+    callback = (eventsCompleted) => {
+      this.state.eventsCompleted.push(eventsCompleted);
+    };
+	}
 
 	render(){
 		return(
@@ -106,9 +121,9 @@ class MainPage extends Component{
 							<EmailApp emails={emails}/>
 						</Route>
 						<Route path='/Map'>
-							<MapApp/>
+							<MapApp pollData={this.state.pollData}/>
 							<Route path='/Map/:id' render={(props)=>{
-									return <MapRegion region={props.match.params.id}/>
+									return <MapRegion region={props.match.params.id} pollData={this.state.pollData}/>
 								}
 							}/>
 						</Route>
