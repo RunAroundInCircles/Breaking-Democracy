@@ -47,9 +47,10 @@ class MainPage extends Component{
 				6: [70, 25, 89, 34],
 				7: [21, 12, 37]
 			},
-      eventsCompleted: []
+      eventsCompleted: ["0"]
 		}
-    
+    };
+
     /**
      * Allows the EventPopup component to say if the user has completed the game successfully.
      * @param  {ID}   eventsCompleted The id of the event completed.
@@ -57,7 +58,7 @@ class MainPage extends Component{
     callback = (eventsCompleted) => {
       this.state.eventsCompleted.push(eventsCompleted);
     };
-	}
+
 
 	render(){
 		return(
@@ -131,7 +132,7 @@ class MainPage extends Component{
 							<EchoApp echos={echos}/>
 						</Route>
 						<Route path='/Timeline'>
-							<TimelineApp timelineEvents={timelineEvents} eventsCompleted={this.state.eventsCompleted}/>
+							<TimelineApp  events={Object.values(events)} timelineEvents={timelineEvents} eventsCompleted={this.state.eventsCompleted}/>
 						</Route>
 					</Switch>
 				</div>
