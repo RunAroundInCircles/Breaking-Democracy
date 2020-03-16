@@ -6,6 +6,11 @@ import React,{Component} from 'react';
  * @extends React
  */
 class Timeline extends Component{
+
+	state = {
+    eventsCompleted: this.props.eventsCompleted
+  };
+
 	/**
  	* Renders the timeline.
  	* @return returns the div of the svg image for the timeline.
