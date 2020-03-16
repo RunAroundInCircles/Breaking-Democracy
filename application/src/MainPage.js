@@ -11,7 +11,6 @@ import echos from './Components/Echo/echo.json';
 import {Button} from 'react-bootstrap';
 import EventPopup from './Components/Calendar/EventPopup.js';
 import TimelineApp from './Components/Timeline/TimelineApp.js'
-import timelineEvents from './Components/Timeline/TimelineData.json';
 import './MainPage.css';
 import desktop from './Resources/Title_Computer.png';
 import Situations from './Components/Calendar/Situations.json';
@@ -47,7 +46,7 @@ class MainPage extends Component{
 				6: [70, 25, 89, 34],
 				7: [21, 12, 37]
 			},
-      		eventsCompleted: []
+			eventsCompleted: []
 		}
     
 		this.callback = this.callback.bind(this);
@@ -64,8 +63,10 @@ class MainPage extends Component{
 			region: region,
 			district: district
 		}
+		let updatedData = this.state.pollData;
+		updatedData[region][district] += (updatedData[region][district] * percent)
+		this.setState({pollData: updatedData});
 		this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
-		console.log("update");
 	};
 
 	render(){
@@ -140,7 +141,7 @@ class MainPage extends Component{
 							<EchoApp echos={echos}/>
 						</Route>
 						<Route path='/Timeline'>
-							<TimelineApp  events={Object.values(events)} timelineEvents={timelineEvents} eventsCompleted={this.state.eventsCompleted}/>
+							<TimelineApp  events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
 						</Route>
 					</Switch>
 				</div>
