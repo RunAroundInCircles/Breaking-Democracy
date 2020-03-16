@@ -47,17 +47,26 @@ class MainPage extends Component{
 				6: [70, 25, 89, 34],
 				7: [21, 12, 37]
 			},
-      eventsCompleted: []
+      		eventsCompleted: []
 		}
     
-    /**
-     * Allows the EventPopup component to say if the user has completed the game successfully.
-     * @param  {ID}   eventsCompleted The id of the event completed.
-     */
-    callback = (eventsCompleted) => {
-      this.state.eventsCompleted.push(eventsCompleted);
-    };
+		this.callback = this.callback.bind(this);
 	}
+
+	/**
+	 * Allows the EventPopup component to say if the user has completed the game successfully.
+	 * @param  {ID}   eventsCompleted The id of the event completed.
+	 */
+	callback = (eventid, percent, region, district) => {
+		var eventCompleted = {
+			eventID: eventid,
+			percent: percent,
+			region: region,
+			district: district
+		}
+		this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
+		console.log("update");
+	};
 
 	render(){
 		return(
@@ -113,7 +122,7 @@ class MainPage extends Component{
 						<Route path='/Calendar'>
 							<CalendarApp   events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
 							<Route path='/Calendar/:id' render={(props)=>{
-								return <EventPopup callbackFromMain={this.callback} event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]} eventsCompleted={this.state.eventsCompleted}/>
+								return <EventPopup callbackFromMain={this.callback} event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]}/>
 							 }
 							}/>
 						</Route>
