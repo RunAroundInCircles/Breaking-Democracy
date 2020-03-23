@@ -11,7 +11,6 @@ import echos from './Components/Echo/echo.json';
 import {Button} from 'react-bootstrap';
 import EventPopup from './Components/Calendar/EventPopup.js';
 import TimelineApp from './Components/Timeline/TimelineApp.js'
-import timelineEvents from './Components/Timeline/TimelineData.json';
 import './MainPage.css';
 import desktop from './Resources/Title_Computer.png';
 import Situations from './Components/Calendar/Situations.json';
@@ -47,18 +46,28 @@ class MainPage extends Component{
 				6: [70, 25, 89, 34],
 				7: [21, 12, 37]
 			},
-      eventsCompleted: ["0"]
+			eventsCompleted: []
 		}
-    };
+    
+		this.callback = this.callback.bind(this);
+	}
 
-    /**
-     * Allows the EventPopup component to say if the user has completed the game successfully.
-     * @param  {ID}   eventsCompleted The id of the event completed.
-     */
-    callback = (eventsCompleted) => {
-      this.state.eventsCompleted.push(eventsCompleted);
-    };
-
+	/**
+	 * Allows the EventPopup component to say if the user has completed the game successfully.
+	 * @param  {ID}   eventsCompleted The id of the event completed.
+	 */
+	callback = (eventid, percent, region, district) => {
+		var eventCompleted = {
+			eventID: eventid,
+			percent: percent,
+			region: region,
+			district: district
+		}
+		let updatedData = this.state.pollData;
+		updatedData[region][district] += (updatedData[region][district] * percent)
+		this.setState({pollData: updatedData});
+		this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
+	};
 
 	render(){
 		return(
@@ -114,7 +123,7 @@ class MainPage extends Component{
 						<Route path='/Calendar'>
 							<CalendarApp   events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
 							<Route path='/Calendar/:id' render={(props)=>{
-								return <EventPopup callbackFromMain={this.callback} event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]} eventsCompleted={this.state.eventsCompleted}/>
+								return <EventPopup callbackFromMain={this.callback} event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]}/>
 							 }
 							}/>
 						</Route>
@@ -132,7 +141,7 @@ class MainPage extends Component{
 							<EchoApp echos={echos}/>
 						</Route>
 						<Route path='/Timeline'>
-							<TimelineApp  events={Object.values(events)} timelineEvents={timelineEvents} eventsCompleted={this.state.eventsCompleted}/>
+							<TimelineApp  events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
 						</Route>
 					</Switch>
 				</div>
