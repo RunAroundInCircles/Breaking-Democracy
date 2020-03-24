@@ -11,7 +11,6 @@ import echos from './Components/Echo/echo.json';
 import {Button} from 'react-bootstrap';
 import EventPopup from './Components/Calendar/EventPopup.js';
 import TimelineApp from './Components/Timeline/TimelineApp.js'
-import timelineEvents from './Components/Timeline/TimelineData.json';
 import './MainPage.css';
 import desktop from './Resources/Title_Computer.png';
 import Situations from './Components/Calendar/Situations.json';
@@ -31,6 +30,45 @@ import {
  * @extends React
  */
 class MainPage extends Component{
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			//Only stores red data to reduce unneccesary data storage
+			pollData: {
+				0: [75, 75, 75, 75, 75, 75, 75],
+				1: [25, 25, 25, 25],
+				2: [62, 33, 51, 83],
+				3: [75, 50, 57],
+				4: [38, 51],
+				5: [18],
+				6: [70, 25, 89, 34],
+				7: [21, 12, 37]
+			},
+			eventsCompleted: []
+		}
+    
+		this.callback = this.callback.bind(this);
+	}
+
+	/**
+	 * Allows the EventPopup component to say if the user has completed the game successfully.
+	 * @param  {ID}   eventsCompleted The id of the event completed.
+	 */
+	callback = (eventid, percent, region, district) => {
+		var eventCompleted = {
+			eventID: eventid,
+			percent: percent,
+			region: region,
+			district: district
+		}
+		let updatedData = this.state.pollData;
+		updatedData[region][district] += (updatedData[region][district] * percent)
+		this.setState({pollData: updatedData});
+		this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
+	};
+
 	render(){
 		return(
 
@@ -83,9 +121,9 @@ class MainPage extends Component{
 
 					<Switch>{/*The switch to click between pages.*/}
 						<Route path='/Calendar'>
-							<CalendarApp events={Object.values(events)}/>
+							<CalendarApp   events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
 							<Route path='/Calendar/:id' render={(props)=>{
-								return <EventPopup event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]}/>
+								return <EventPopup callbackFromMain={this.callback} event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]}/>
 							 }
 							}/>
 						</Route>
@@ -93,9 +131,9 @@ class MainPage extends Component{
 							<EmailApp emails={emails}/>
 						</Route>
 						<Route path='/Map'>
-							<MapApp/>
+							<MapApp pollData={this.state.pollData}/>
 							<Route path='/Map/:id' render={(props)=>{
-									return <MapRegion region={props.match.params.id}/>
+									return <MapRegion region={props.match.params.id} pollData={this.state.pollData}/>
 								}
 							}/>
 						</Route>
@@ -103,7 +141,7 @@ class MainPage extends Component{
 							<EchoApp echos={echos}/>
 						</Route>
 						<Route path='/Timeline'>
-							<TimelineApp timelineEvents={timelineEvents}/>
+							<TimelineApp  events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
 						</Route>
 					</Switch>
 				</div>

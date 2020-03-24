@@ -17,13 +17,13 @@
 .echo-head{
 	z-index: 0;
 	color: blue;
-	position: fixed;
+	position: absolute;
 	font-size: 30pt;
 	top: 3%;
 	left: 46.5%;
 }
 .dolphin{
-	position: fixed;
+	position: absolute;
 	left: 46.5%;
 	top: 5%;
 }

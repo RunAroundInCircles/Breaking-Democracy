@@ -11,11 +11,7 @@ import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,en
 class Calendar extends React.Component {
   state = {
     currentMonth: new Date(), //The Current Month shown to the user
-    selectedDate: new Date(), //The date of the clicked cell
-    eventCompleted: [],
-    //The different events to be displayed on the calendar
-    events: this.props.events
-
+    selectedDate: new Date() //The date of the clicked cell
   };
 
   /**
@@ -26,19 +22,15 @@ class Calendar extends React.Component {
    */
   containsDate(date) {
     var i;
-    var found = -1;
-    for(i = 0; i < this.state.events.length; i++) {
+    for(i = 0; i < this.props.events.length; i++) {
 
-      if(isEqual(date, this.state.events[i].date)) {
-        found = this.state.eventCompleted.find(function(index){
-          return i === index;
-        });
-
-        if(found !== -1){
-          return this.state.events[i].message;
+      if(isEqual(date, this.props.events[i].date)) {
+        /*If any of the items in eventsCompleted (Found in MainPage are equal to the index then we do not render the item) */
+        if (this.props.eventsCompleted.find(element => element == i)){
+          return null;
         }
         else{
-          return null;
+          return this.props.events[i].message;
         }
       }
     }
@@ -183,6 +175,7 @@ class Calendar extends React.Component {
  * @return {div} Returns a div that represents the calendar
  */
   render() {
+    console.log(this.props.eventsCompleted);
     return (
       <div className="calendar">
         {this.renderHeader()}
