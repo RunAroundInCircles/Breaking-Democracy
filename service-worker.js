@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Breaking-Democracy/precache-manifest.3220fe37bcfa0e1cddb1d119ef0af7ed.js"
+  "/Breaking-Democracy/precache-manifest.bd102ab7302e4c8fb735d3919b9865c2.js"
 );
 
 self.addEventListener('message', (event) => {
