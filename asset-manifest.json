@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/Breaking-Democracy/application/static/css/main.4a016d26.chunk.css",
-    "main.js": "/Breaking-Democracy/application/static/js/main.05ee099a.chunk.js",
-    "main.js.map": "/Breaking-Democracy/application/static/js/main.05ee099a.chunk.js.map",
-    "runtime-main.js": "/Breaking-Democracy/application/static/js/runtime-main.9d18e9f3.js",
-    "runtime-main.js.map": "/Breaking-Democracy/application/static/js/runtime-main.9d18e9f3.js.map",
-    "static/js/2.19bbc2a5.chunk.js": "/Breaking-Democracy/application/static/js/2.19bbc2a5.chunk.js",
-    "static/js/2.19bbc2a5.chunk.js.map": "/Breaking-Democracy/application/static/js/2.19bbc2a5.chunk.js.map",
-    "index.html": "/Breaking-Democracy/application/index.html",
-    "precache-manifest.754617ff4ca30f41d135b2fde6c94604.js": "/Breaking-Democracy/application/precache-manifest.754617ff4ca30f41d135b2fde6c94604.js",
-    "service-worker.js": "/Breaking-Democracy/application/service-worker.js",
-    "static/css/main.4a016d26.chunk.css.map": "/Breaking-Democracy/application/static/css/main.4a016d26.chunk.css.map",
-    "static/js/2.19bbc2a5.chunk.js.LICENSE.txt": "/Breaking-Democracy/application/static/js/2.19bbc2a5.chunk.js.LICENSE.txt"
+    "main.css": "/Breaking-Democracy/application/src/static/css/main.4a016d26.chunk.css",
+    "main.js": "/Breaking-Democracy/application/src/static/js/main.d49c9a5a.chunk.js",
+    "main.js.map": "/Breaking-Democracy/application/src/static/js/main.d49c9a5a.chunk.js.map",
+    "runtime-main.js": "/Breaking-Democracy/application/src/static/js/runtime-main.faf03ca8.js",
+    "runtime-main.js.map": "/Breaking-Democracy/application/src/static/js/runtime-main.faf03ca8.js.map",
+    "static/js/2.19bbc2a5.chunk.js": "/Breaking-Democracy/application/src/static/js/2.19bbc2a5.chunk.js",
+    "static/js/2.19bbc2a5.chunk.js.map": "/Breaking-Democracy/application/src/static/js/2.19bbc2a5.chunk.js.map",
+    "index.html": "/Breaking-Democracy/application/src/index.html",
+    "precache-manifest.2282d85f944e1020a4ef7c34b934cada.js": "/Breaking-Democracy/application/src/precache-manifest.2282d85f944e1020a4ef7c34b934cada.js",
+    "service-worker.js": "/Breaking-Democracy/application/src/service-worker.js",
+    "static/css/main.4a016d26.chunk.css.map": "/Breaking-Democracy/application/src/static/css/main.4a016d26.chunk.css.map",
+    "static/js/2.19bbc2a5.chunk.js.LICENSE.txt": "/Breaking-Democracy/application/src/static/js/2.19bbc2a5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.9d18e9f3.js",
+    "static/js/runtime-main.faf03ca8.js",
     "static/js/2.19bbc2a5.chunk.js",
     "static/css/main.4a016d26.chunk.css",
-    "static/js/main.05ee099a.chunk.js"
+    "static/js/main.d49c9a5a.chunk.js"
   ]
 }
