@@ -1,8 +1,16 @@
 {
+  "homepage": "https://github.com/catiel/Breaking-Democracy",
   "devDependencies": {
+    "gh-pages": "^2.2.0",
     "react-test-renderer": "^16.12.0"
   },
   "dependencies": {
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "react-scripts": "^3.4.0"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "react-scripts build"
   }
 }
