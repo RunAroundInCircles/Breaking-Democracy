@@ -1,5 +1,5 @@
 {
-  "homepage": "https://github.com/catiel/Breaking-Democracy",
+  "homepage": "https://catiel.github.io/Breaking-Democracy/",
   "devDependencies": {
     "gh-pages": "^2.2.0",
     "react-test-renderer": "^16.12.0"
