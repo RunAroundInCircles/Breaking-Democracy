@@ -40,3 +40,4 @@ Testing
 Thank You to the following people
 =
 * moodydev for inspiration on creating the react calendar: https://github.com/moodydev
+* chriz001 for creating the shooter minigame: https://github.com/chriz001/Reacteroids
