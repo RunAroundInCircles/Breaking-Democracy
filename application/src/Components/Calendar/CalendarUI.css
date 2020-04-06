@@ -31,6 +31,9 @@
   --border-color: #eee;
   --bg-color: #f9f9f9;
   --neutral-color: #fff;
+  --completed-color: #32a852;
+  --failed-color: #a83232;
+  --locked-color: #808080;
 }
 
 
@@ -49,7 +52,7 @@ body {
     color: var(--text-color);
     background: var(--bg-color);
     height: fit-content;
-	
+
 }
 
 header {
@@ -229,6 +232,48 @@ main {
   width: 50%;
 	border-style: solid;
 	border-color: var(--border-color);
+	color: white;
+	padding: 5px 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
+.calendar-event-button-completed {
+  background-color: var(--event-completed-color);
+  box-sizing: border-box;
+  width: 50%;
+	border-style: solid;
+	border-color: var(--event-completed-color);
+	color: white;
+	padding: 5px 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
+.calendar-event-button-failed {
+  background-color: var(--event-failed-color);
+  box-sizing: border-box;
+  width: 50%;
+	border-style: solid;
+	border-color: var(--event-failed-color);
+	color: white;
+	padding: 5px 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
+.calendar-event-button-locked {
+  background-color: var(--event-locked-color);
+  box-sizing: border-box;
+  width: 50%;
+	border-style: solid;
+	border-color: var(--event-locked-color);
 	color: white;
 	padding: 5px 5px;
 	text-align: center;

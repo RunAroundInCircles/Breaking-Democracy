@@ -48,7 +48,7 @@ class MainPage extends Component{
 			},
 			eventsCompleted: []
 		}
-    
+
 		this.callback = this.callback.bind(this);
 	}
 
@@ -56,12 +56,13 @@ class MainPage extends Component{
 	 * Allows the EventPopup component to say if the user has completed the game successfully.
 	 * @param  {ID}   eventsCompleted The id of the event completed.
 	 */
-	callback = (eventid, percent, region, district) => {
+	callback = (eventid, percent, region, district,state) => {
 		var eventCompleted = {
 			eventID: eventid,
 			percent: percent,
 			region: region,
-			district: district
+			district: district,
+      state: state
 		}
 		let updatedData = this.state.pollData;
 		updatedData[region][district] += (updatedData[region][district] * percent)
