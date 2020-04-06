@@ -4,6 +4,8 @@ import {Button} from 'react-bootstrap';
 import TypeGame from './VideoGame/TypeType/TypeGame.js';
 import ReactDOM from 'react-dom';
 import challenges from './VideoGame/TypeType/codingChallenges.json';
+import { Reacteroids } from './VideoGame/ShootShoot/src/Reacteroids';
+
 /**
  * Creates a popup when an event is clicked on the calendar
  * @param {Properties} props Parameters needed to create the event, contains event which had an id, year, month, day, and a message
@@ -19,8 +21,9 @@ function EventPopup(props) {
     const [renderGame, setRenderGame] = useState(false);
 
 	//gets a certain challenge for an event happening from the json file.
-    let game = <TypeGame challenges = {challenges[Math.floor(Math.random()* 10)]} callbackFromMain={props.callbackFromMain} eventID={props.event.id}/>;
-    
+    //let game = <TypeGame challenges = {challenges[Math.floor(Math.random()* 10)]} callbackFromMain={props.callbackFromMain} eventID={props.event.id}/>;
+    let game = <Reacteroids/>;
+	
     return (
         //This div covers the screen with an black opaque layer
          <div style={{display: 'flex',
