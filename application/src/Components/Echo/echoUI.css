@@ -4,7 +4,7 @@
 	height:300px;
 	border-style:solid;
 	text-align:center;
-	margin-bottom:50px;
+	display:inline-block;
 	background-color:white;
 }
 .echo-list{
