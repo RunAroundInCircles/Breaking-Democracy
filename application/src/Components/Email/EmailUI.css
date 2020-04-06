@@ -63,6 +63,7 @@
   width: 75%;
   border-style: solid;
   position: absolute;
+    font-size: 15px;
 }
 
 
@@ -110,4 +111,3 @@
 body{
 	background-color: lightgrey;
 }
-
