@@ -18,8 +18,8 @@ export class Reacteroids extends Component {
     super();
     this.state = {
       screen: {
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: window.innerWidth / 2.5,
+        height: window.innerHeight /2.5,
         ratio: window.devicePixelRatio || 1,
       },
       context: null,
@@ -236,10 +236,6 @@ export class Reacteroids extends Component {
         <div className="endgame">
           <p>Game over, man!</p>
           <p>{message}</p>
-          <button
-            onClick={ this.startGame.bind(this) }>
-            try again?
-          </button>
         </div>
       )
     }
@@ -247,12 +243,6 @@ export class Reacteroids extends Component {
     return (
       <div>
         { endgame }
-        <span className="score current-score" >Score: {this.state.currentScore}</span>
-        <span className="score top-score" >Top Score: {this.state.topScore}</span>
-        <span className="controls" >
-          Use [A][S][W][D] or [←][↑][↓][→] to MOVE<br/>
-          Use [SPACE] to SHOOT
-        </span>
         <canvas ref="canvas"
           width={this.state.screen.width * this.state.screen.ratio}
           height={this.state.screen.height * this.state.screen.ratio}
