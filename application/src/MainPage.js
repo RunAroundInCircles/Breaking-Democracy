@@ -47,7 +47,7 @@ class MainPage extends Component{
 				7: [21, 12, 37]
 			},
 			eventsCompleted: [],
-			currentTurnDate: new Date('2020-03-01')
+			turnStartDate: new Date('2020-03-01')
 		}
     
 		this.callback = this.callback.bind(this);
@@ -125,7 +125,7 @@ class MainPage extends Component{
 
 					<Switch>{/*The switch to click between pages.*/}
 						<Route path='/Calendar'>
-							<CalendarApp   events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
+							<CalendarApp   events={Object.values(events)} eventsCompleted={this.state.eventsCompleted} turnStartDate={this.state.turnStartDate}/>
 							<Route path='/Calendar/:id' render={(props)=>{
 								return <EventPopup callbackFromMain={this.callback} event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]}/>
 							 }

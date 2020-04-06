@@ -10,8 +10,8 @@ import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,en
  */
 class Calendar extends React.Component {
   state = {
-    currentMonth: new Date(), //The Current Month shown to the user
-    selectedDate: new Date() //The date of the clicked cell
+    currentMonth: startOfMonth(this.props.turnStartDate), //The Current Month shown to the user
+    selectedDate: this.props.turnStartDate //new Date() //The date of the clicked cell
   };
 
   /**
