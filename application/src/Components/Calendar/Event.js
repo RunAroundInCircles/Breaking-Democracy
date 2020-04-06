@@ -8,21 +8,12 @@ import {Button} from 'react-bootstrap';
  * @extends React,react-router-dom
  */
 class Event extends Component {
-  const eventState = {
-    LOCKED: 'locked',
-    COMPLETED: 'completed',
-    FAILED: 'failed',
-    AVAILABLE: 'available'
-  }
-
-
     /**
      * Creates the event to be shown within the calendar cells that allows the user to get more information about the specific event
      * @return {Link} An link to /Calendar/id of the event
      */
-    render(/*State */) {
+    render() {
         let route = "/Calendar/" + this.props.id;
-        //if( avilable ){
         return (
             <Link to={route} className="calendar-event-link">
                 <Button className="calendar-event-button">
@@ -30,15 +21,6 @@ class Event extends Component {
 				</Button>
             </Link>
         );
-        // }else if(locked){
-        //
-        // else if(completed){
-        //
-        //
-        // }
-        // else if(failed){
-        //
-        // }
     }
 }
 

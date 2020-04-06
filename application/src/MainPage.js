@@ -48,7 +48,7 @@ class MainPage extends Component{
 			},
 			eventsCompleted: []
 		}
-
+    
 		this.callback = this.callback.bind(this);
 	}
 
@@ -59,13 +59,12 @@ class MainPage extends Component{
 	 * @param  {region}	   eventsCompleted The id of the region to update
 	 * @param  {district}  eventsCompleted The id of the district to update
 	 */
-	callback = (eventid, percent, region, district,state) => {
+	callback = (eventid, percent, region, district) => {
 		var eventCompleted = {
 			eventID: eventid,
 			percent: percent,
 			region: region,
-			district: district,
-      state: state
+			district: district
 		}
 		let updatedData = this.state.pollData;
 		updatedData[region][district] += (updatedData[region][district] * percent)

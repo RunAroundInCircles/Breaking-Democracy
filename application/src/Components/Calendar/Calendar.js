@@ -10,8 +10,8 @@ import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,en
  */
 class Calendar extends React.Component {
   state = {
-    currentMonth: new Date(2020, 2, 1, 0, 0, 0, 0), //This to be the first day that the player starts on
-    selectedDate: new Date(2020, 2, 1, 0, 0, 0, 0) //This is set to be the first day the player starts on
+    currentMonth: new Date(), //The Current Month shown to the user
+    selectedDate: new Date() //The date of the clicked cell
   };
 
   /**
@@ -27,7 +27,7 @@ class Calendar extends React.Component {
       if(isEqual(date, this.props.events[i].date)) {
         /*If any of the items in eventsCompleted (Found in MainPage are equal to the index then we do not render the item) */
         if (this.props.eventsCompleted.find(element => element.eventID == i)){
-          return this.props.events[i].message;
+          return null;
         }
         else{
           return this.props.events[i].message;
@@ -167,6 +167,7 @@ class Calendar extends React.Component {
  * @return {div} Returns a div that represents the calendar
  */
   render() {
+    console.log(this.props.eventsCompleted);
     return (
       <div className="calendar">
         {this.renderHeader()}
