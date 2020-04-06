@@ -46,7 +46,8 @@ class MainPage extends Component{
 				6: [70, 25, 89, 34],
 				7: [21, 12, 37]
 			},
-			eventsCompleted: []
+			eventsCompleted: [],
+			currentTurnDate: new Date('2020-03-01')
 		}
     
 		this.callback = this.callback.bind(this);
