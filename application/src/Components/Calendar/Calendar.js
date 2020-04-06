@@ -1,7 +1,7 @@
 //Base code was found here: https://blog.flowandform.agency/create-a-custom-calendar-in-react-3df1bfd0b728
 // The code needed to be recreated to work with the new version of datefns
 import React from "react";
-import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,endOfMonth,isSameMonth,isSameDay,isEqual}  from "date-fns";
+import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,endOfMonth,isSameMonth,isSameDay,isEqual, isAfter, isBefore, add}  from "date-fns";
 
 /**
  * Calendar component of the app that allows the user to click different events
@@ -97,6 +97,7 @@ class Calendar extends React.Component {
     const monthEnd =  endOfMonth(monthStart);
     const startDate =  startOfWeek(monthStart);
     const endDate =  endOfWeek(monthEnd);
+    const gameRoundEnd = add(selectedDate, {weeks: 2});
 
     const dateFormat = "d";
     const rows = [];
@@ -116,10 +117,12 @@ class Calendar extends React.Component {
             className={`col cell ${
               ! isSameMonth(day, monthStart)
                 ? "disabled"
-                :  isSameDay(day, selectedDate) ? "selected" : ""
+                :  ((isBefore(day, selectedDate) || isAfter(day, gameRoundEnd))
+                    ? "disabled" 
+                    : ""
+                   )
             }`}
             key={day}
-            onClick={() => this.onDateClick(cloneDay)}
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
@@ -138,17 +141,6 @@ class Calendar extends React.Component {
 
     return <div className="body">{rows}</div>;
   }
-
-/**
- * When the day is click the cell will have a blue highlighted bar
- * @param  {int} day The day that needs to be selected
- * @return {int} Returns the day that needs to be selected and the page will update to highlight the cell
- */
-  onDateClick = day => {
-    this.setState({
-      selectedDate: day
-    });
-  };
 
 /**
  * When the right arrow is pressed by the user the month will increase by one
@@ -175,7 +167,6 @@ class Calendar extends React.Component {
  * @return {div} Returns a div that represents the calendar
  */
   render() {
-    console.log(this.props.eventsCompleted);
     return (
       <div className="calendar">
         {this.renderHeader()}

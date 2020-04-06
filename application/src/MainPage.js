@@ -53,8 +53,11 @@ class MainPage extends Component{
 	}
 
 	/**
-	 * Allows the EventPopup component to say if the user has completed the game successfully.
-	 * @param  {ID}   eventsCompleted The id of the event completed.
+	 * Allows an external component to add entries to eventsCompleted and update the pollData
+	 * @param  {eventid}   eventsCompleted The id of the event completed.
+	 * @param  {percent}   eventsCompleted The percentage amount of change for the region's district
+	 * @param  {region}	   eventsCompleted The id of the region to update
+	 * @param  {district}  eventsCompleted The id of the district to update
 	 */
 	callback = (eventid, percent, region, district) => {
 		var eventCompleted = {

@@ -17,7 +17,8 @@ import region8 from '../../Resources/Maps/Region-8.svg.js';
  */
 function MapRegion(props) {
     const colors = useState(props.pollData[props.region]);
-    //regions stores all of the regional maps so that they can be easily accessed
+    
+    //Applies coloring to the districts after the page is rendered
     useEffect(() => {
         document.querySelectorAll('g > path[id~=district]').forEach((district, index) => {
             var color = 'rgb(' + (colors[0][index]/100)*255 + 
@@ -27,6 +28,7 @@ function MapRegion(props) {
         });
     });
     
+    //regions stores all of the regional maps so that they can be easily accessed
     var regions = {
         0: region1,
         1: region2,
