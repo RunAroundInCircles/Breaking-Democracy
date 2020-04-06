@@ -10,8 +10,9 @@ import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,en
  */
 class Calendar extends React.Component {
   state = {
-    currentMonth: new Date(), //The Current Month shown to the user
-    selectedDate: new Date() //The date of the clicked cell
+    currentMonth: new Date(2020, 2, 1, 0, 0, 0, 0), //The Current Month shown to the user
+    selectedDate: new Date(2020, 2, 1, 0, 0, 0, 0), //The date of the clicked cell
+    currentProgress: new Date(2020, 2, 1, 0, 0, 0, 0)
   };
 
   /**
@@ -52,6 +53,7 @@ class Calendar extends React.Component {
             chevron_left
           </div>
         </div>
+
         {/*Displays the month and year*/}
         <div className="col col-center">
           <span>{format(this.state.currentMonth, dateFormat)}</span>
@@ -92,18 +94,24 @@ class Calendar extends React.Component {
    * @return {div} Returns a div that represent a day as a cell in the calendar
    */
   renderCells() {
+
+
+
     const {currentMonth, selectedDate} = this.state;
     const monthStart =  startOfMonth(currentMonth);
     const monthEnd =  endOfMonth(monthStart);
     const startDate =  startOfWeek(monthStart);
+
+    let day = startDate;
+    console.log(day);
     const endDate =  endOfWeek(monthEnd);
-    const gameRoundEnd = add(selectedDate, {weeks: 2});
+    var gameRoundEnd = addDays(startOfWeek(this.state.currentProgress), 13);
 
     const dateFormat = "d";
     const rows = [];
 
     let days = [];
-    let day = startDate;
+
     let formattedDate = "";
 
     //Goes through every day in the month and formats them (Gives the correct day number to the cell)
@@ -111,17 +119,19 @@ class Calendar extends React.Component {
       for (let i = 0; i < 7; i++) {
         formattedDate =  format(day, dateFormat);
         const cloneDay = day;
+        var status = "enabled";
 
+          if(!isSameMonth(day,startOfWeek(this.state.currentProgress))){
+            status = "disabled";
+          }
+
+          if(isBefore(day, startOfWeek(this.state.currentProgress)) || isAfter(day, gameRoundEnd)){
+            status = "disabled";
+          }
         days.push(
           <div
             className={`col cell ${
-              ! isSameMonth(day, monthStart)
-                ? "disabled"
-                :  ((isBefore(day, selectedDate) || isAfter(day, gameRoundEnd))
-                    ? "disabled" 
-                    : ""
-                   )
-            }`}
+            status}`}
             key={day}
           >
             <span className="number">{formattedDate}</span>
