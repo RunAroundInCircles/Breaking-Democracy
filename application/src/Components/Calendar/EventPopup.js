@@ -24,6 +24,7 @@ function EventPopup(props) {
     //let game = <TypeGame challenges = {challenges[Math.floor(Math.random()* 10)]} callbackFromMain={props.callbackFromMain} eventID={props.event.id}/>;
     let game = <Reacteroids/>;
 	
+	
     return (
         //This div covers the screen with an black opaque layer
          <div style={{display: 'flex',
