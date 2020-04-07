@@ -10,9 +10,7 @@ import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,en
  */
 class Calendar extends React.Component {
   state = {
-    currentMonth: new Date(2020, 2, 1, 0, 0, 0, 0), //The Current Month shown to the user
-    selectedDate: new Date(2020, 2, 1, 0, 0, 0, 0), //The date of the clicked cell
-    currentProgress: new Date(2020, 2, 1, 0, 0, 0, 0) //The current date the player is on
+    currentMonth: startOfMonth(this.props.turnStartDate), //The Current Month shown to the user
   };
 
   /**
@@ -101,9 +99,9 @@ class Calendar extends React.Component {
     const startDate =  startOfWeek(monthStart);
 
     let day = startDate;
-    console.log(day);
     const endDate =  endOfWeek(monthEnd);
-    var gameRoundEnd = addDays(startOfWeek(this.state.currentProgress), 13); //Only allows 2 weeks increments
+    
+    var turnEndDate = addDays(selectedDate, 13); //Only allows 2 weeks increments
 
     const dateFormat = "d";
     const rows = [];
@@ -116,16 +114,16 @@ class Calendar extends React.Component {
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate =  format(day, dateFormat);
-        const cloneDay = day;
         var status = "enabled";
-
-          if(!isSameMonth(day,startOfWeek(this.state.currentProgress))){ //If the date is outside of the month then the event is disabled.
-            status = "disabled";
-          }
-
-          if(isBefore(day, startOfWeek(this.state.currentProgress)) || isAfter(day, gameRoundEnd)){  //If the date is outside of the 2 week interval then the event is disabled.
-            status = "disabled";
-          }
+    
+        if(!isSameMonth(day, monthStart)){//If the date is outside of the month then the event is disabled.
+          status = "disabled";
+        }
+        
+        if(isBefore(day, selectedDate) || isAfter(day, turnEndDate)){ //If the date is outside of the 2 week interval then the event is disabled.
+          status = "disabled";
+        }
+        
         days.push(
           <div
             className={`col cell ${
