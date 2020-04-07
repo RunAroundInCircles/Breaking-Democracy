@@ -100,7 +100,8 @@ class Calendar extends React.Component {
 
     let day = startDate;
     const endDate =  endOfWeek(monthEnd);
-    var turnEndDate = addDays(startOfWeek(selectedDate), 13);
+    
+    var turnEndDate = addDays(selectedDate, 13); //Only allows 2 weeks increments
 
     const dateFormat = "d";
     const rows = [];
@@ -115,13 +116,11 @@ class Calendar extends React.Component {
         formattedDate =  format(day, dateFormat);
         var status = "enabled";
     
-        //If the day is outside the current month disable it
-        if(!isSameMonth(day, monthStart)){
+        if(!isSameMonth(day, monthStart)){//If the date is outside of the month then the event is disabled.
           status = "disabled";
         }
-
-        //If the day is before or after the turn window disable it
-        if(isBefore(day, selectedDate) || isAfter(day, turnEndDate)){
+        
+        if(isBefore(day, selectedDate) || isAfter(day, turnEndDate)){ //If the date is outside of the 2 week interval then the event is disabled.
           status = "disabled";
         }
         
