@@ -10,9 +10,9 @@ import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,en
  */
 class Calendar extends React.Component {
   state = {
-    currentMonth: new Date(2020, 2, 1, 0, 0, 0, 0), //The Current Month shown to the user
-    selectedDate: new Date(2020, 2, 1, 0, 0, 0, 0), //The date of the clicked cell
+    currentMonth: startOfMonth(this.props.turnStartDate), //The Current Month shown to the user
     currentProgress: new Date(2020, 2, 1, 0, 0, 0, 0)
+    
   };
 
   /**
@@ -94,10 +94,8 @@ class Calendar extends React.Component {
    * @return {div} Returns a div that represent a day as a cell in the calendar
    */
   renderCells() {
-
-
-
-    const {currentMonth, selectedDate} = this.state;
+    const currentMonth = this.state.currentMonth;
+    const selectedDate = this.props.turnStartDate;
     const monthStart =  startOfMonth(currentMonth);
     const monthEnd =  endOfMonth(monthStart);
     const startDate =  startOfWeek(monthStart);
