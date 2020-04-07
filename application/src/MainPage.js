@@ -85,7 +85,6 @@ class MainPage extends Component{
 			}
 		});
 
-		console.log(eventsToComplete);
 		//If all events are complete advance the 
 		if(eventsToComplete.length == 0) {
 			this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
@@ -98,9 +97,6 @@ class MainPage extends Component{
 	//Returns all of the event IDs between 2 dates
 	getEventIDsBetween = (turnStartDate, turnEndDate) => {
 		let eventsBetween = [];
-
-		console.log(turnStartDate);
-		console.log(turnEndDate);
 
 		Object.values(events).map((event) => {
 			let eventDate = new Date(event.year, event.month, event.day, 0, 0, 0, 0);
