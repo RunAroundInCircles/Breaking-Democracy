@@ -14,14 +14,13 @@ import TimelineApp from './Components/Timeline/TimelineApp.js'
 import './MainPage.css';
 import desktop from './Resources/Title_Computer.png';
 import Situations from './Components/Calendar/Situations.json';
-
-
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
+import { add, isBefore, isAfter } from 'date-fns';
 
 
 /**
@@ -47,7 +46,7 @@ class MainPage extends Component{
 				7: [21, 12, 37]
 			},
 			eventsCompleted: [],
-			turnStartDate: new Date('2020-03-01')
+			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0)
 		}
     
 		this.callback = this.callback.bind(this);
@@ -67,8 +66,30 @@ class MainPage extends Component{
 			region: region,
 			district: district
 		}
+
 		let updatedData = this.state.pollData;
 		updatedData[region][district] += (updatedData[region][district] * percent)
+
+		let turnEndDate = add(this.state.turnStartDate, {weeks: 2});
+		let eventsToComplete = [];
+		Object.values(events).map((event) => {
+			let eventDate = new Date(event.year, event.month, event.day, 0, 0, 0, 0);
+			if(!(isBefore(eventDate, this.state.turnStartDate) || isAfter(eventDate, turnEndDate))) {
+				let containsDate = false;
+				this.state.eventsCompleted.map((eventCompleted) => {
+					if (eventCompleted.eventID == event.id) {
+						containsDate = true;
+					}
+				})
+				if(!(eventid == event.id || containsDate)) {
+					eventsToComplete.push(event.id);
+				}
+			}
+		});
+		if(eventsToComplete.length == 0) {
+			this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
+		}
+
 		this.setState({pollData: updatedData});
 		this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
 	};
