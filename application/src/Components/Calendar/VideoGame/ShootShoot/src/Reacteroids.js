@@ -158,12 +158,12 @@ export class Reacteroids extends Component {
         topScore: this.state.currentScore,
       });
       localStorage['topscore'] = this.state.currentScore;
-	  var percent = (Math.random() * 2) - 1;
+	}
+	var percent = (Math.random() * 2) - 1;
       percent = percent.toFixed(2);
 	  var region = Math.floor(Math.random() * 8);
 	  var district = Math.floor(Math.random() * 7);
 	  this.props.callbackFromMain(this.props.eventID, percent, region, 0);
-	}
   }
 
   generateAsteroids(howMany){
@@ -242,7 +242,6 @@ export class Reacteroids extends Component {
         <div className="endgame">
           <p>Game over, man!</p>
           <p>{message}</p>
-		  <script>gameOver();</script>
         </div>
 		
       )
