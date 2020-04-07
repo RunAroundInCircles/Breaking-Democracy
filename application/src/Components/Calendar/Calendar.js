@@ -10,8 +10,9 @@ import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,en
  */
 class Calendar extends React.Component {
   state = {
-    currentMonth: new Date(2020, 2, 1, 0, 0, 0, 0), //The Current Month shown to the user
-    selectedDate: new Date(2020, 2, 1, 0, 0, 0, 0) //The date of the clicked cell
+    currentMonth: startOfMonth(this.props.turnStartDate), //The Current Month shown to the user
+    currentProgress: new Date(2020, 2, 1, 0, 0, 0, 0)
+    
   };
 
   /**
@@ -93,10 +94,8 @@ class Calendar extends React.Component {
    * @return {div} Returns a div that represent a day as a cell in the calendar
    */
   renderCells() {
-
-
-
-    const {currentMonth, selectedDate} = this.state;
+    const currentMonth = this.state.currentMonth;
+    const selectedDate = this.props.turnStartDate;
     const monthStart =  startOfMonth(currentMonth);
     const monthEnd =  endOfMonth(monthStart);
     const startDate =  startOfWeek(monthStart);
@@ -104,7 +103,7 @@ class Calendar extends React.Component {
     let day = startDate;
     console.log(day);
     const endDate =  endOfWeek(monthEnd);
-    const gameRoundEnd = add(startOfWeek(day), {days: 7});
+    var gameRoundEnd = addDays(startOfWeek(this.state.currentProgress), 13);
 
     const dateFormat = "d";
     const rows = [];
@@ -120,10 +119,13 @@ class Calendar extends React.Component {
         const cloneDay = day;
         var status = "enabled";
 
-          if(isBefore(startOfWeek(day), selectedDate) || isAfter(startOfWeek(day), gameRoundEnd)){
+          if(!isSameMonth(day,startOfWeek(this.state.currentProgress))){
             status = "disabled";
           }
 
+          if(isBefore(day, startOfWeek(this.state.currentProgress)) || isAfter(day, gameRoundEnd)){
+            status = "disabled";
+          }
         days.push(
           <div
             className={`col cell ${
