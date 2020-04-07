@@ -10,9 +10,9 @@ import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,en
  */
 class Calendar extends React.Component {
   state = {
-    currentMonth: startOfMonth(this.props.turnStartDate), //The Current Month shown to the user
-    currentProgress: new Date(2020, 2, 1, 0, 0, 0, 0)
-    
+    currentMonth: new Date(2020, 2, 1, 0, 0, 0, 0), //The Current Month shown to the user
+    selectedDate: new Date(2020, 2, 1, 0, 0, 0, 0), //The date of the clicked cell
+    currentProgress: new Date(2020, 2, 1, 0, 0, 0, 0) //The current date the player is on
   };
 
   /**
@@ -103,7 +103,7 @@ class Calendar extends React.Component {
     let day = startDate;
     console.log(day);
     const endDate =  endOfWeek(monthEnd);
-    var gameRoundEnd = addDays(startOfWeek(this.state.currentProgress), 13);
+    var gameRoundEnd = addDays(startOfWeek(this.state.currentProgress), 13); //Only allows 2 weeks increments
 
     const dateFormat = "d";
     const rows = [];
@@ -119,11 +119,11 @@ class Calendar extends React.Component {
         const cloneDay = day;
         var status = "enabled";
 
-          if(!isSameMonth(day,startOfWeek(this.state.currentProgress))){
+          if(!isSameMonth(day,startOfWeek(this.state.currentProgress))){ //If the date is outside of the month then the event is disabled.
             status = "disabled";
           }
 
-          if(isBefore(day, startOfWeek(this.state.currentProgress)) || isAfter(day, gameRoundEnd)){
+          if(isBefore(day, startOfWeek(this.state.currentProgress)) || isAfter(day, gameRoundEnd)){  //If the date is outside of the 2 week interval then the event is disabled.
             status = "disabled";
           }
         days.push(
