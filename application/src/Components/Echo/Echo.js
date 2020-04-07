@@ -21,11 +21,13 @@ class Echo extends Component {
  	*/
     render() {
            return (
-                <div className='echo-selected'>
+                <div className='echo'>
+                  <span class='echo-contents'>
 					          <h4>{this.state.time}</h4>
                     <h1>{this.state.at}</h1> {/* Name of Sender */}
                     <h2>{this.state.name}</h2> {/* Ttile of Echo */}
                     <h3>{this.state.body}</h3> {/* Body of Echo*/}
+                  </span>
                 </div>
             );
     }

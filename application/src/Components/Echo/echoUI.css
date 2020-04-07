@@ -1,10 +1,13 @@
-.echo-selected{
+.echo{
 	z-index: 100;
 	width: 40%;
-	height:300px;
 	border-style:solid;
 	text-align:center;
 	background-color:white;
+}
+.echo-contents{
+	margin: 10px;
+	display: inline-block;
 }
 .echo-list{
 	text-align:left;
