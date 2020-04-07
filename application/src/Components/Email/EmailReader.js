@@ -33,7 +33,7 @@ class EmailReader extends Component {
                     <h2 className="emailh2">{this.props.email.sender}</h2>
                     <h3 className="emailh3">{this.props.email.senderEmail}</h3>
                     <h3 className="emailh4">{this.props.email.ccsEmail}</h3>
-                    <body className="emailbody">{this.props.email.body}</body>
+                    <body className="emailbody" style={{whiteSpace: 'pre-wrap'}}>{this.props.email.body}</body>
                     <img className="readerImage" src={face} alt="face"/>
                 </div>
             )

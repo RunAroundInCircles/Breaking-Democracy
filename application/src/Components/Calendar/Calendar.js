@@ -1,7 +1,7 @@
 //Base code was found here: https://blog.flowandform.agency/create-a-custom-calendar-in-react-3df1bfd0b728
 // The code needed to be recreated to work with the new version of datefns
 import React from "react";
-import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,endOfMonth,isSameMonth,isSameDay,isEqual}  from "date-fns";
+import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,endOfMonth,isSameMonth,isSameDay,isEqual, isAfter, isBefore, add}  from "date-fns";
 
 /**
  * Calendar component of the app that allows the user to click different events
@@ -10,23 +10,29 @@ import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,en
  */
 class Calendar extends React.Component {
   state = {
-    currentMonth: new Date(), //The Current Month shown to the user
-    selectedDate: new Date(), //The date of the clicked cell
-
-    //The different events to be displayed on the calendar
-    events: this.props.events
+    currentMonth: new Date(2020, 2, 1, 0, 0, 0, 0), //The Current Month shown to the user
+    selectedDate: new Date(2020, 2, 1, 0, 0, 0, 0), //The date of the clicked cell
+    currentProgress: new Date(2020, 2, 1, 0, 0, 0, 0)
   };
 
   /**
    * Goes through all the dates and searches for an event that is on the same day as the date passed in.
+   * This also goes through all the events already completed by the player and will remove them from the calendar
    * @param  {[Date]} date The date to search for.
    *  * @return {String} Returns an event if one exists, else it returns null.
    */
   containsDate(date) {
     var i;
-    for(i = 0; i < this.state.events.length; i++) {
-      if(isEqual(date, this.state.events[i].date)) {
-        return this.state.events[i].message;
+    for(i = 0; i < this.props.events.length; i++) {
+
+      if(isEqual(date, this.props.events[i].date)) {
+        /*If any of the items in eventsCompleted (Found in MainPage are equal to the index then we do not render the item) */
+        if (this.props.eventsCompleted.find(element => element.eventID == i)){
+          return null;
+        }
+        else{
+          return this.props.events[i].message;
+        }
       }
     }
     return null;
@@ -47,6 +53,7 @@ class Calendar extends React.Component {
             chevron_left
           </div>
         </div>
+
         {/*Displays the month and year*/}
         <div className="col col-center">
           <span>{format(this.state.currentMonth, dateFormat)}</span>
@@ -87,17 +94,24 @@ class Calendar extends React.Component {
    * @return {div} Returns a div that represent a day as a cell in the calendar
    */
   renderCells() {
+
+
+
     const {currentMonth, selectedDate} = this.state;
     const monthStart =  startOfMonth(currentMonth);
     const monthEnd =  endOfMonth(monthStart);
     const startDate =  startOfWeek(monthStart);
+
+    let day = startDate;
+    console.log(day);
     const endDate =  endOfWeek(monthEnd);
+    var gameRoundEnd = addDays(startOfWeek(this.state.currentProgress), 13);
 
     const dateFormat = "d";
     const rows = [];
 
     let days = [];
-    let day = startDate;
+
     let formattedDate = "";
 
     //Goes through every day in the month and formats them (Gives the correct day number to the cell)
@@ -105,16 +119,20 @@ class Calendar extends React.Component {
       for (let i = 0; i < 7; i++) {
         formattedDate =  format(day, dateFormat);
         const cloneDay = day;
+        var status = "enabled";
 
+          if(!isSameMonth(day,startOfWeek(this.state.currentProgress))){
+            status = "disabled";
+          }
+
+          if(isBefore(day, startOfWeek(this.state.currentProgress)) || isAfter(day, gameRoundEnd)){
+            status = "disabled";
+          }
         days.push(
           <div
             className={`col cell ${
-              ! isSameMonth(day, monthStart)
-                ? "disabled"
-                :  isSameDay(day, selectedDate) ? "selected" : ""
-            }`}
+            status}`}
             key={day}
-            onClick={() => this.onDateClick(cloneDay)}
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
@@ -133,17 +151,6 @@ class Calendar extends React.Component {
 
     return <div className="body">{rows}</div>;
   }
-
-/**
- * When the day is click the cell will have a blue highlighted bar
- * @param  {int} day The day that needs to be selected
- * @return {int} Returns the day that needs to be selected and the page will update to highlight the cell
- */
-  onDateClick = day => {
-    this.setState({
-      selectedDate: day
-    });
-  };
 
 /**
  * When the right arrow is pressed by the user the month will increase by one

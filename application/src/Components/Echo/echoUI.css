@@ -1,20 +1,30 @@
 .echo-selected{
+	z-index: 100;
 	width: 40%;
 	height:300px;
 	border-style:solid;
 	text-align:center;
-	margin-bottom:50px;
 	background-color:white;
 }
 .echo-list{
 	text-align:left;
-	
-	position:absolute;	
-	left:30%;
-	width:100%;
+	position: absolute;
+	left: 30%;
+	width: 100%;
+	top: 20%;
 }
 .echo-head{
-	padding-left:250px;
+	z-index: 0;
+	color: blue;
+	position: absolute;
+	font-size: 30pt;
+	top: 3%;
+	left: 46.5%;
+}
+.dolphin{
+	position: absolute;
+	left: 46.5%;
+	top: 5%;
 }
 body{
 	overflow-x:hidden;

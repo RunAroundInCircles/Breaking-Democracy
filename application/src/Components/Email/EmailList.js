@@ -40,7 +40,7 @@ class EmailList extends Component {
         return(
             <div className="email-list">
                 {/*&nbsp adds a single space before Inbox that lines up the word Inbox with the other emails when being displayed.*/}
-                <h1>&nbsp;Inbox</h1>
+				<h1 className = "Inbox">&nbsp;Inbox</h1>
                 {emails}
             </div>
         )

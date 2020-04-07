@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders link to calendar page 1`] = `
+Array [
+  <a
+    href=""
+    onClick={[Function]}
+    page="http://localhost:3000/Calendar"
+  >
+    Calendar
+  </a>,
+  " ",
+]
+`;
+
+exports[`renders link to echo page 1`] = `
+Array [
+  <a
+    href=""
+    onClick={[Function]}
+    page="http://localhost:3000/Echo"
+  >
+    Echo
+  </a>,
+  " ",
+]
+`;
+
+exports[`renders link to email page 1`] = `
+Array [
+  <a
+    href=""
+    onClick={[Function]}
+    page="http://localhost:3000/Email"
+  >
+    Email
+  </a>,
+  " ",
+]
+`;
+
+exports[`renders link to map page 1`] = `
+Array [
+  <a
+    href=""
+    onClick={[Function]}
+    page="http://localhost:3000/Map"
+  >
+    Map
+  </a>,
+  " ",
+]
+`;
+
+exports[`renders link to timeline page 1`] = `
+Array [
+  <a
+    href=""
+    onClick={[Function]}
+    page="http://localhost:3000/Timeline"
+  >
+    Timeline
+  </a>,
+  " ",
+]
+`;

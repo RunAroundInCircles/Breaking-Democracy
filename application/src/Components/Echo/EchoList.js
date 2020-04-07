@@ -27,7 +27,6 @@ class EchoList extends Component {
         });
         return(
             <div className="echo-list">
-                <h1 className="echo-head">Echos</h1>
                 {echos}
             </div>
         )

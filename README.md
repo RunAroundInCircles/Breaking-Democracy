@@ -21,16 +21,23 @@ You can switch between different modules by clicking on the red buttons at the t
 ![SelectedDistrict](/UsercaseImages/selected.png)
 ![District1](/UsercaseImages/districtOne.PNG)
 
-* **A calendar module**: The calendar module allows users to see different events that the user can participate in for the game. Once correctly implemented the user can click the event and a mini game will start.
+* **A calendar module**: The calendar module allows users to see different events that the user can participate in for the game. Once correctly implemented the user can click the event and a mini game will start. One example minigame is hacking.
 ![Calendar](/UsercaseImages/calendar.PNG)
 ![CalendarEvent](/UsercaseImages/calendarEvent.PNG)
+![HackingGame](/UsercaseImages/HackingGame.png)
 
 * **Echo module**: The Echo module allows users to see social media posts about events in the game.
 ![Echo](/UsercaseImages/initialEchos.PNG)
 
 * **A timeline module**: The timeline module allows users to see previous events the user has accompolished in this game session.
-![Timeline](/UsercaseImages/InitialTimeLine.PNG)
+![Timeline](/UsercaseImages/InitialTimeline.PNG)
+
+Testing
+=
+* **Snapshots**: For each component above, including the Main Page component, we have created snapshot tests which will check to see if the components stay consistent with any updates.
+
 
 Thank You to the following people
 =
 * moodydev for inspiration on creating the react calendar: https://github.com/moodydev
+* chriz001 for creating the shooter minigame: https://github.com/chriz001/Reacteroids
