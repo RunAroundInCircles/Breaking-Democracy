@@ -11,8 +11,6 @@ import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,en
 class Calendar extends React.Component {
   state = {
     currentMonth: startOfMonth(this.props.turnStartDate), //The Current Month shown to the user
-    currentProgress: new Date(2020, 2, 1, 0, 0, 0, 0)
-    
   };
 
   /**
@@ -101,9 +99,8 @@ class Calendar extends React.Component {
     const startDate =  startOfWeek(monthStart);
 
     let day = startDate;
-    console.log(day);
     const endDate =  endOfWeek(monthEnd);
-    var gameRoundEnd = addDays(startOfWeek(this.state.currentProgress), 13);
+    var turnEndDate = addDays(startOfWeek(selectedDate), 13);
 
     const dateFormat = "d";
     const rows = [];
@@ -116,16 +113,18 @@ class Calendar extends React.Component {
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate =  format(day, dateFormat);
-        const cloneDay = day;
         var status = "enabled";
+    
+        //If the day is outside the current month disable it
+        if(!isSameMonth(day, monthStart)){
+          status = "disabled";
+        }
 
-          if(!isSameMonth(day,startOfWeek(this.state.currentProgress))){
-            status = "disabled";
-          }
-
-          if(isBefore(day, startOfWeek(this.state.currentProgress)) || isAfter(day, gameRoundEnd)){
-            status = "disabled";
-          }
+        //If the day is before or after the turn window disable it
+        if(isBefore(day, selectedDate) || isAfter(day, turnEndDate)){
+          status = "disabled";
+        }
+        
         days.push(
           <div
             className={`col cell ${
