@@ -5,6 +5,10 @@ A prototype web game.
 Instructions
 =
 
+Please install node JS at https://nodejs.org/en/download/
+Then run the powershell script called INSTALL.ps1
+
+
 To start the server run the command `npm start` in the application directory.
 The server will then start on localhost:3000
 

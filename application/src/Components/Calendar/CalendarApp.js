@@ -20,7 +20,7 @@ class CalendarApp extends Component {
           events: props.events.map((event) => {
             let date = new Date(event.year, event.month, event.day);
             return(
-              {date: date, message: <Event key={event.id} message={event.message} date={date} id={event.id}/>}
+              {date: date, message: <Event key={event.id} message={event.message} date={date} id={event.id} status={event.status}/>}
             );
           })
       }
