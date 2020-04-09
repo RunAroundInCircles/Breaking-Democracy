@@ -96,10 +96,8 @@ class Calendar extends React.Component {
    * @return {div} Returns a div that represent a day as a cell in the calendar
    */
   renderCells() {
-
-
-
-    const {currentMonth, selectedDate} = this.state;
+    const currentMonth = this.state.currentMonth;
+    const selectedDate = this.props.turnStartDate;
     const monthStart =  startOfMonth(currentMonth);
     const monthEnd =  endOfMonth(monthStart);
     const startDate =  startOfWeek(monthStart);
