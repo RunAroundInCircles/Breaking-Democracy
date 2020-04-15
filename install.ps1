@@ -19,4 +19,5 @@ npm install react
 npm uninstall webpack
 npm install webpack@4.42.0 webpack@4.41.5
 rm .\node_modules\*
+
 npm install
