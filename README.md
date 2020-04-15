@@ -5,6 +5,10 @@ A prototype web game.
 Instructions
 =
 
+Please install node JS at https://nodejs.org/en/download/
+Then run the powershell script called INSTALL.ps1
+
+
 To start the server run the command `npm start` in the application directory.
 The server will then start on localhost:3000
 
@@ -24,6 +28,7 @@ You can switch between different modules by clicking on the red buttons at the t
 * **A calendar module**: The calendar module allows users to see different events that the user can participate in for the game. Once correctly implemented the user can click the event and a mini game will start. One example minigame is hacking.
 ![Calendar](/UsercaseImages/calendar.PNG)
 ![CalendarEvent](/UsercaseImages/calendarEvent.PNG)
+* **An asteroids clone**: The only minigame implemented currently is an asteroids clone, move with arrow keys and shoot with space bar. Destroy as many asteroids as you can before you die.
 ![HackingGame](/UsercaseImages/HackingGame.png)
 
 * **Echo module**: The Echo module allows users to see social media posts about events in the game.
