@@ -44,10 +44,8 @@ function EventPopup(props) {
     const [renderGame, setRenderGame] = useState(false);
 
 	//gets a certain challenge for an event happening from the json file.
-    //let game = <TypeGame challenges = {challenges[Math.floor(Math.random()* 10)]} callbackFromMain={props.callbackFromMain} eventID={props.event.id}/>;
-	//let game = <Reacteroids callbackFromMain= {this.props.callback}/>;
-	let game = <Reacteroids callbackFromMain={props.callbackFromMain} eventID={props.event.id}/>;
-	
+    let game = <TypeGame challenges = {challenges[Math.floor(Math.random()* 10)]} callbackFromMain={props.callbackFromMain} eventID={props.event.id}/>;
+    //let game = <Reacteroids/>;
 	
     return (
         //This div covers the screen with an black opaque layer

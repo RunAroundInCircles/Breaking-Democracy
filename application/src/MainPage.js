@@ -93,22 +93,22 @@ class MainPage extends Component{
 		let updatedData = this.state.pollData;
 		updatedData[region][district] += (updatedData[region][district] * percent)
 
-		let turnEndDate = add(this.state.turnStartDate, {weeks: 2});
-		let eventsToComplete = [];
-		Object.values(events).map((event) => {
-			let eventDate = new Date(event.year, event.month, event.day, 0, 0, 0, 0);
-			if(!(isBefore(eventDate, this.state.turnStartDate) || isAfter(eventDate, turnEndDate))) {
-				let containsDate = false;
-				this.state.eventsCompleted.map((eventCompleted) => {
-					if (eventCompleted.eventID == event.id) {
-						containsDate = true;
-					}
-				})
-				if(!(eventid == event.id || containsDate)) {
-					eventsToComplete.push(event.id);
-				}
+		//Get the event IDs between the two dates that need to be completed before the round can advance
+		let eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
+		
+		//Remove the newly completed event ID if it is in the array
+		if(eventsToComplete.includes(eventid)) {
+			eventsToComplete.splice(eventsToComplete.indexOf(eventid), 1);
+		}
+
+		//Remove all completed event IDs from the array
+		this.state.eventsCompleted.map((completedEvent) => {
+			if(eventsToComplete.includes(completedEvent.eventID)) {
+				eventsToComplete.splice(eventsToComplete.indexOf(completedEvent.eventID), 1);
 			}
 		});
+
+		//If all events are complete advance the 
 		if(eventsToComplete.length == 0) {
 			this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
 		}
@@ -116,6 +116,20 @@ class MainPage extends Component{
 		this.setState({pollData: updatedData});
 		this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
 	};
+
+	//Returns all of the event IDs between 2 dates
+	getEventIDsBetween = (turnStartDate, turnEndDate) => {
+		let eventsBetween = [];
+
+		Object.values(events).map((event) => {
+			let eventDate = new Date(event.year, event.month, event.day, 0, 0, 0, 0);
+			if(!(isBefore(eventDate, turnStartDate) || isAfter(eventDate, turnEndDate))) {
+				eventsBetween.push(event.id);
+			}
+		});
+
+		return eventsBetween;
+	}
 
 	render(){
 		return(
