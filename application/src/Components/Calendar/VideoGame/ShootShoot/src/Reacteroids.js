@@ -14,8 +14,8 @@ const KEY = {
 };
 
 export class Reacteroids extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       screen: {
         width: window.innerWidth / 2.5,
@@ -35,6 +35,7 @@ export class Reacteroids extends Component {
       topScore: localStorage['topscore'] || 0,
       inGame: false
     }
+	this.result = 0;
     this.ship = [];
     this.asteroids = [];
     this.bullets = [];
@@ -157,7 +158,12 @@ export class Reacteroids extends Component {
         topScore: this.state.currentScore,
       });
       localStorage['topscore'] = this.state.currentScore;
-    }
+	}
+	var percent = (Math.random() * 2) - 1;
+      percent = percent.toFixed(2);
+	  var region = Math.floor(Math.random() * 8);
+	  var district = Math.floor(Math.random() * 7);
+	  this.props.callbackFromMain(this.props.eventID, percent, region, 0);
   }
 
   generateAsteroids(howMany){
@@ -237,7 +243,9 @@ export class Reacteroids extends Component {
           <p>Game over, man!</p>
           <p>{message}</p>
         </div>
+		
       )
+	  
     }
 
     return (
