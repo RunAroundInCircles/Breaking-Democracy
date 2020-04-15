@@ -1,3 +1,26 @@
+/*MIT License
+
+Copyright (c) 2019 Caleb Logan
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
 //Base code was found here: https://blog.flowandform.agency/create-a-custom-calendar-in-react-3df1bfd0b728
 // The code needed to be recreated to work with the new version of datefns
 import React from "react";
@@ -10,9 +33,7 @@ import {format,startOfWeek,addMonths,startOfMonth,addDays,subMonths,endOfWeek,en
  */
 class Calendar extends React.Component {
   state = {
-    currentMonth: new Date(2020, 2, 1, 0, 0, 0, 0), //The Current Month shown to the user
-    selectedDate: new Date(2020, 2, 1, 0, 0, 0, 0), //The date of the clicked cell
-    currentProgress: new Date(2020, 2, 1, 0, 0, 0, 0)
+    currentMonth: startOfMonth(this.props.turnStartDate), //The Current Month shown to the user
   };
 
   /**
@@ -94,18 +115,16 @@ class Calendar extends React.Component {
    * @return {div} Returns a div that represent a day as a cell in the calendar
    */
   renderCells() {
-
-
-
-    const {currentMonth, selectedDate} = this.state;
+    const currentMonth = this.state.currentMonth;
+    const selectedDate = this.props.turnStartDate;
     const monthStart =  startOfMonth(currentMonth);
     const monthEnd =  endOfMonth(monthStart);
     const startDate =  startOfWeek(monthStart);
 
     let day = startDate;
-    console.log(day);
     const endDate =  endOfWeek(monthEnd);
-    var gameRoundEnd = addDays(startOfWeek(this.state.currentProgress), 13);
+    
+    var turnEndDate = addDays(selectedDate, 13); //Only allows 2 weeks increments
 
     const dateFormat = "d";
     const rows = [];
@@ -118,16 +137,16 @@ class Calendar extends React.Component {
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate =  format(day, dateFormat);
-        const cloneDay = day;
         var status = "enabled";
-
-          if(!isSameMonth(day,startOfWeek(this.state.currentProgress))){
-            status = "disabled";
-          }
-
-          if(isBefore(day, startOfWeek(this.state.currentProgress)) || isAfter(day, gameRoundEnd)){
-            status = "disabled";
-          }
+    
+        if(!isSameMonth(day, monthStart)){//If the date is outside of the month then the event is disabled.
+          status = "disabled";
+        }
+        
+        if(isBefore(day, selectedDate) || isAfter(day, turnEndDate)){ //If the date is outside of the 2 week interval then the event is disabled.
+          status = "disabled";
+        }
+        
         days.push(
           <div
             className={`col cell ${
