@@ -35,7 +35,9 @@ If(Test-Path "./package-lock.json"){
 cd ..
 $currentDirectory = Get-Location
 
-Expand-Archive -Path "./installation files.zip" -DestinationPath  $currentDirectory # Extracts dependencies
+Expand-Archive -Path "./Install Modules/install files 1.zip" -DestinationPath  $currentDirectory # Extracts dependencies
+Expand-Archive -Path "./Install Modules/install files 2.zip" -DestinationPath  $currentDirectory # Extracts dependencies
+Expand-Archive -Path "./Install Modules/install files 3.zip" -DestinationPath  $currentDirectory # Extracts dependencies
 
 cd "./application"
 npm install .
