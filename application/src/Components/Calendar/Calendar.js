@@ -112,6 +112,9 @@ class Calendar extends React.Component {
     return <div className="days row">{days}</div>;
   }
 
+
+
+
   /**
    * Renders each cell in the calendar and adds the day number
    * @return {div} Returns a div that represent a day as a cell in the calendar
@@ -122,7 +125,7 @@ class Calendar extends React.Component {
     const monthStart =  startOfMonth(currentMonth);
     const monthEnd =  endOfMonth(monthStart);
     var startDate =  startOfWeek(monthStart);
-    var turnDate = this.props.turnStartDate;
+    var turnDate = this.props.turnStartDate;//this.findTurnDate();
     let day = startDate;
     const endDate =  endOfWeek(monthEnd);
 
@@ -135,20 +138,7 @@ class Calendar extends React.Component {
 
     let formattedDate = "";
 
-  /* Goes through events to see if all the events in the 2 week interval have been completed */
-  for(var i = 0; i < this.props.events.length; i++) {
 
-      if(!(isBefore(this.props.events[i].date,turnDate) || isAfter(this.props.events[i].date,turnDate))) {
-        /*Goes through all the events and checks to see if they are in the 2 week interval  */
-
-      if (this.props.eventsCompleted.find(element => element.eventID != i)){
-          /* If all events for this interval have been finished move to the next 2 weeks */
-          turnDate = addDays(turnDate,14);
-          turnEndDate = addDays(turnDate, 13);
-          break;
-        }
-      }
-    }
 
 
     //Goes through every day in the month and formats them (Gives the correct day number to the cell)
@@ -157,11 +147,8 @@ class Calendar extends React.Component {
         formattedDate =  format(day, dateFormat);
         var status = "enabled";
 
-        if(!isSameMonth(day, monthStart)){//If the date is outside of the month then the event is disabled.
-          status = "disabled";
-        }
 
-        if(isBefore(day, selectedDate) || isAfter(day, turnEndDate)){ //If the date is outside of the 2 week interval then the event is disabled.
+        if(isBefore(day, turnDate) || isAfter(day, turnEndDate)){ //If the date is outside of the 2 week interval then the event is disabled.
           status = "disabled";
         }
 

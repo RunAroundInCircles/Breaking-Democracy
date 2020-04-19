@@ -56,7 +56,7 @@ class CalendarApp extends Component {
     render() {
         return(
             <div className="calendar-app">
-                <Calendar updateTurn={this.props.updateTurn} callbackFromMain={this.props.callback} events={this.state.events} eventsCompleted={this.props.eventsCompleted} turnStartDate={this.props.turnStartDate}/>
+                <Calendar  callbackFromMain={this.props.callback} events={this.state.events} eventsCompleted={this.props.eventsCompleted} turnStartDate={this.props.turnStartDate}/>
             </div>
         )
     }
