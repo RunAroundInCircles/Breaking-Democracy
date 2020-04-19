@@ -51,7 +51,7 @@ class Calendar extends React.Component {
 
 
         if (this.props.eventsCompleted.find(element => element.eventID == i)){
-          return this.props.event[i].message;
+          return null;
         }
         else{
           return this.props.events[i].message;
@@ -117,16 +117,16 @@ class Calendar extends React.Component {
    * @return {div} Returns a div that represent a day as a cell in the calendar
    */
   renderCells() {
-    const currentMonth = this.state.currentMonth;
+    var currentMonth = this.state.currentMonth;
     const selectedDate = this.props.turnStartDate;
     const monthStart =  startOfMonth(currentMonth);
     const monthEnd =  endOfMonth(monthStart);
-    const startDate =  startOfWeek(monthStart);
-
+    var startDate =  startOfWeek(monthStart);
+    var turnDate = this.props.turnStartDate;
     let day = startDate;
     const endDate =  endOfWeek(monthEnd);
-    
-    var turnEndDate = addDays(selectedDate, 13); //Only allows 2 weeks increments
+
+    var turnEndDate = addDays(turnDate, 13); //Only allows 2 weeks increments
 
     const dateFormat = "d";
     const rows = [];
@@ -135,20 +135,36 @@ class Calendar extends React.Component {
 
     let formattedDate = "";
 
+  /* Goes through events to see if all the events in the 2 week interval have been completed */
+  for(var i = 0; i < this.props.events.length; i++) {
+
+      if(!(isBefore(this.props.events[i].date,turnDate) || isAfter(this.props.events[i].date,turnDate))) {
+        /*Goes through all the events and checks to see if they are in the 2 week interval  */
+
+      if (this.props.eventsCompleted.find(element => element.eventID != i)){
+          /* If all events for this interval have been finished move to the next 2 weeks */
+          turnDate = addDays(turnDate,14);
+          turnEndDate = addDays(turnDate, 13);
+          break;
+        }
+      }
+    }
+
+
     //Goes through every day in the month and formats them (Gives the correct day number to the cell)
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate =  format(day, dateFormat);
         var status = "enabled";
-    
+
         if(!isSameMonth(day, monthStart)){//If the date is outside of the month then the event is disabled.
           status = "disabled";
         }
-        
+
         if(isBefore(day, selectedDate) || isAfter(day, turnEndDate)){ //If the date is outside of the 2 week interval then the event is disabled.
           status = "disabled";
         }
-        
+
         days.push(
           <div
             className={`col cell ${
