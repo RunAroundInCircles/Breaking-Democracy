@@ -51,7 +51,7 @@ class Calendar extends React.Component {
 
 
         if (this.props.eventsCompleted.find(element => element.eventID == i)){
-          return this.props.event[i].message;
+          return this.props.events[i].message;
         }
         else{
           return this.props.events[i].message;
