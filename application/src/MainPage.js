@@ -108,10 +108,11 @@ class MainPage extends Component{
 			}
 		});
 
-		//If all events are complete advance the
-		if(eventsToComplete.length == 0) {
-			this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
-		}
+    while(eventsToComplete.length == 0){
+      //If all events are complete advance the
+        this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
+        eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
+    }
 
 		this.setState({pollData: updatedData});
 		this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
@@ -130,18 +131,6 @@ class MainPage extends Component{
 
 		return eventsBetween;
 	}
-
-
-/*This function allows the calendar to update the turn date which allows the player to progress
-  through the game.*/
-  updateTurnStartDate  = () => {
-    var newdate = addDays(13, this.state.turnStartDate);
-    this.setState(
-      {
-        turnStartDate :  newdate//Moves the turn date up by 2 weeks.
-      }
-    )
-  }
 
 	render(){
 		return(
@@ -195,7 +184,7 @@ class MainPage extends Component{
 
 					<Switch>{/*The switch to click between pages.*/}
 						<Route path='/Calendar'>
-							<CalendarApp   events={Object.values(events)} updateTurn={this.updateTurnStartDate} eventsCompleted={this.state.eventsCompleted} turnStartDate={this.state.turnStartDate}/>
+							<CalendarApp   events={Object.values(events)} eventsCompleted={this.state.eventsCompleted} turnStartDate={this.state.turnStartDate}/>
 							<Route path='/Calendar/:id' render={(props)=>{
 								return <EventPopup callbackFromMain={this.callback} event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]}/>
 							 }
