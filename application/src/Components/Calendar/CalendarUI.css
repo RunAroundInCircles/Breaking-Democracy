@@ -26,11 +26,14 @@
 
 :root {
   --main-color: #1a8fff;
+  --completed-color: #2E8B57;
   --text-color: #777;
   --text-color-light: #ccc;
   --border-color: #eee;
   --bg-color: #f9f9f9;
   --neutral-color: #fff;
+  --failed-color: #DC143C;
+  --locked-color: #778899;
 }
 
 
@@ -49,7 +52,7 @@ body {
     color: var(--text-color);
     background: var(--bg-color);
     height: fit-content;
-	
+
 }
 
 header {
@@ -225,6 +228,48 @@ main {
 
 .calendar-event-button {
   background-color: var(--main-color);
+  box-sizing: border-box;
+  width: 50%;
+	border-style: solid;
+	border-color: var(--border-color);
+	color: white;
+	padding: 5px 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
+.calendar-event-button-completed {
+  background-color: var(--completed-color);
+  box-sizing: border-box;
+  width: 50%;
+	border-style: solid;
+	border-color: var(--border-color);
+	color: white;
+	padding: 5px 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
+.calendar-event-button-failed {
+  background-color: var(--failed-color);
+  box-sizing: border-box;
+  width: 50%;
+	border-style: solid;
+	border-color: var(--border-color);
+	color: white;
+	padding: 5px 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
+.calendar-event-button-locked {
+  background-color: var(--locked-color);
   box-sizing: border-box;
   width: 50%;
 	border-style: solid;
