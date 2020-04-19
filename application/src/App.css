@@ -89,6 +89,9 @@
   border-style: solid;
   padding: 10px;
 }
+.email-button {
+	background-color: white;
+}
 
 Button{
 	background-color: grey; /* Grey */

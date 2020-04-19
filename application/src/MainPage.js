@@ -151,7 +151,7 @@ class MainPage extends Component{
         <img className="desktop" src={desktop} alt="desktop"/>
           <nav>
 						<Link to='/Calendar'> {/*Button to Calendar*/}
-							<Button id="calendar-button">
+							<Button class="button calendar-button">
 								<span>Calendar</span>
 							</Button>
 						</Link>
