@@ -50,13 +50,13 @@ class Calendar extends React.Component {
         /*If any of the items in eventsCompleted (Found in MainPage are equal to the index then we do not render the item) */
 
 
-        if (this.props.eventsCompleted.find(element => element.eventID == i)){
+/*        if (this.props.eventsCompleted.find(element => element.eventID == i)){
 
           return null;
         }
         else{
-          return this.props.events[i].message;
-        }
+*/          return this.props.events[i].message;
+//        }
       }
     }
     return null;
