@@ -80,13 +80,16 @@ class MainPage extends Component{
   				6: ["Dukaste","Locke","Rehlat","Selia","Dukaste City"],
   				7: ["Wegruesoe","Zaftan","Blektan","Wegruesoe City"]
   		},
+      //eventsCompleted is an array to hold all of the events that have been finished by the player after they complete them.
 			eventsCompleted: [],
+      //events is an object that holds all of the events on the calendar
       events: Object.values(events).map((event) => {
         let date = new Date(event.year, event.month, event.day);
         return(
           {date: date, message: <Event key={event.id} message={event.message} date={date} id={event.id} status={event.status}/>, status: event.status}
         );
       }),
+      //turnStartDate is the beginning Date for the game February 1, 2020
 			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0)
 		}
 

@@ -49,7 +49,7 @@ class Map extends Component{
 		}
 		return (
 			<div>
-				<h1 id="region-name">DEMOCRISTAN</h1>
+				<h1 id="region-name">Country of Democristan</h1>
 				{/*Uses svg to display map*/}
 				<div className="country-map" dangerouslySetInnerHTML={svg} ref={this.mapRef}/>
 			</div>
@@ -73,12 +73,11 @@ class Map extends Component{
         }
         red = red/this.props.pollData[index].length;
         blue = 100-red;
-
+        
         var color = 'rgb(' + (red/100)*255 + ', 0, ' + (blue/100)*255 + ')'; //Formats colors to be used
         region.style.setProperty("fill", color);
         region.style.setProperty("fill:hover", 'gold');
         //Function to display the name of the Region that is being hovered over
-
         var name = this.props.regionDistrictNames[index][0]
         region.addEventListener('mouseover', function(event) {
           var regionName = document.getElementById('region-name');
@@ -94,7 +93,6 @@ class Map extends Component{
           func(index);
         });
       });
-    }
-	}
+	 }
 }
 export default Map;
