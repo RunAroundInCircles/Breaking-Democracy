@@ -56,10 +56,10 @@ namespace Editor
             string pathToEmailsList = "../application/src/Components/Email/EmailList.json";
 
             //Loads in the files into the editor
-            LoadInFile(pathToEventList, "Events");
-            LoadInFile(pathToSituationsList, "Situations");
-            LoadInFile(pathToEchosList, "Echos");
-            LoadInFile(pathToEmailsList, "Emails");
+            LoadInFile(pathToEventList, uxEventList);
+            LoadInFile(pathToSituationsList, uxSituationsList);
+            LoadInFile(pathToEchosList, uxEchosList);
+            LoadInFile(pathToEmailsList, uxEmailList);
 
         }
 
@@ -69,23 +69,37 @@ namespace Editor
         /// </summary>
         /// <param name="path">Path to String</param>
         ///  <param name="NameOfTab">Name of the tab that needs the file</param>
-        private void LoadInFile(string path, string NameOfTab)
+        private void LoadInFile(string path, System.Windows.Forms.DataGridView grid)
         {
             using (StreamReader sr = new StreamReader(path)) // Opens the JSON File
             {
                 JsonReader jr = new JsonTextReader(sr); // Reads through the JSON File
                 string[] pair = new string[2]; //Holds the name of the variable and the value of the variable
-                int count = 0;
+                int variableCounts = 0;
+                int lineCounts = 0;
+
+                
                 while (jr.Read())
                 {
+                    lineCounts++;
                     if (jr.Value != null)
                     {
                         
-                        pair[count % 2] = jr.Value.ToString();
-                        count++;
+                        pair[variableCounts % 2] = jr.Value.ToString();
+                        if ((variableCounts % 2) != 0)
+                        {
+                            if(lineCounts == 1)
+                            {
+                                grid.Columns.Add(pair[0],pair[0]);
+                            }
+                            
+                        }
+                        variableCounts++;
+                        Console.WriteLine(jr.Value.ToString());
                     }
+
+                    
                 }
-                ux
                 Console.WriteLine(pair[0] + " : " + pair[1]);
 
 
