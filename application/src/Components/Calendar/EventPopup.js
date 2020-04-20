@@ -34,17 +34,18 @@ import { Reacteroids } from './VideoGame/ShootShoot/src/Reacteroids';
  * @param {Properties} props Parameters needed to create the event, contains event which had an id, year, month, day, and a message
  * @return {div} Returns a div that blocks all click events below it and contains the popup window
  */
+
 function EventPopup(props) {
+	
+	var num = Math.floor(Math.random()* 10);
     //The date of the event to display
     let date = new Date(props.event.year, props.event.month, props.event.day);
-
     //options is used to format how the date of the event is displayed
     let options = {year: 'numeric', month: 'short', day: 'numeric'};
-
-    const [renderGame, setRenderGame] = useState(false);
-
+    
+	const [renderGame, setRenderGame] = useState(false);
 	//gets a certain challenge for an event happening from the json file.
-    let game = <TypeGame challenges = {challenges[Math.floor(Math.random()* 10)]} callbackFromMain={props.callbackFromMain} eventID={props.event.id}/>;
+    let game = <TypeGame challenges = {challenges[num]} answer = {challenges[num].answer} callbackFromMain={props.callbackFromMain} eventID={props.event.id}/>;
     //let game = <Reacteroids/>;
 	
     return (

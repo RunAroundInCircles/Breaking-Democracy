@@ -33,25 +33,34 @@ class TypeGame extends Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-			result: ""
+			result: "",
+			value: ""
 		}
-
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
 	
+	/*stores the answer inputted before submit*/
+	handleChange(event) {
+		this.setState({value: event.target.value});
+	}
+  
 	/*Will be able to check if the answer is right and change certain attributes when done.*/
 	handleSubmit(event){
 		event.preventDefault();
-		var percent = (Math.random() * 2) - 1;
-        percent = percent.toFixed(2);
-		
 		var region = Math.floor(Math.random() * 8);
-			
 		var district = Math.floor(Math.random() * 7);
+		if(this.props.answer == this.state.value){
+			var percent = .5
+			this.props.callbackFromMain(this.props.eventID, percent, region, 0);
+			this.setState({result: "Success!"});
+		}
+		else {
+			var percent = -.5;
+			this.props.callbackFromMain(this.props.eventID, percent, region, 0);
+			this.setState({result: "Failed!"});
+		}
 		
-		this.props.callbackFromMain(this.props.eventID, percent, region, 0);
-
-		this.setState({result: "Success!"});
 
 	}
 
@@ -64,11 +73,12 @@ class TypeGame extends Component{
 			//This div is the body of the popup window containing the back button and the event info
 			<div style={{justifyContent: 'center'}}>
 				<h1>{this.props.challenges.challenge}</h1>
+				<h2>{this.props.answer}</h2>
 				{/*Creates a form that has a submit button. and calls handleChange when pressed.*/}
 				<form onSubmit={this.handleSubmit}>
 					<label>
 						Answer:
-						<input type="text" onChange={this.handleChange} />
+						<input type="text" value = {this.state.value} onChange={this.handleChange} />
 					</label>
 					<input type="submit" value="Submit" />
 				</form>

@@ -43,7 +43,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import { add, isBefore, isAfter } from 'date-fns';
+import { add, isBefore, isAfter, addDays } from 'date-fns';
 
 
 /**
@@ -119,10 +119,12 @@ class MainPage extends Component{
 			}
 		});
 
-		//If all events are complete advance the
-		if(eventsToComplete.length == 0) {
-			this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
-		}
+
+    while(eventsToComplete.length == 0){
+      //If all events are complete advance the
+        this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
+        eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
+    }
 
 		this.setState({pollData: updatedData});
 		this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
@@ -150,7 +152,7 @@ class MainPage extends Component{
         <img className="desktop" src={desktop} alt="desktop"/>
           <nav>
 						<Link to='/Calendar'> {/*Button to Calendar*/}
-							<Button id="calendar-button">
+							<Button class="button calendar-button">
 								<span>Calendar</span>
 							</Button>
 						</Link>
