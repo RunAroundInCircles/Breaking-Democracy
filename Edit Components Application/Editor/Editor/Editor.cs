@@ -31,6 +31,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace Editor
 {
@@ -54,11 +55,11 @@ namespace Editor
             string pathToEchosList = "../application/src/Components/Echo/echo.json";
             string pathToEmailsList = "../application/src/Components/Email/EmailList.json";
 
+            //Loads in the files into the editor
             LoadInFile(pathToEventList, "Events");
             LoadInFile(pathToSituationsList, "Situations");
             LoadInFile(pathToEchosList, "Echos");
             LoadInFile(pathToEmailsList, "Emails");
-
 
         }
 
@@ -70,31 +71,23 @@ namespace Editor
         ///  <param name="NameOfTab">Name of the tab that needs the file</param>
         private void LoadInFile(string path, string NameOfTab)
         {
-            using (StreamReader sr = new StreamReader(path))
+            using (StreamReader sr = new StreamReader(path)) // Opens the JSON File
             {
-                string line = "";
-
-                while ((line = sr.ReadLine()) != null)
+                JsonReader jr = new JsonTextReader(sr); // Reads through the JSON File
+                string[] pair = new string[2]; //Holds the name of the variable and the value of the variable
+                int count = 0;
+                while (jr.Read())
                 {
-                    int index = line.IndexOf("{");
-                    if (index > 0)
+                    if (jr.Value != null)
                     {
-                        line = line.Substring(line.IndexOf('{') + 1); //Makes sure the line starts with the first { there are some cases where an ID starts with extra data in the beginning.
-                        if(line.IndexOf('}') > 0)
-                        {
-                            line = line.Substring(0, line.IndexOf('}'));
-                        }
                         
-                        string[] variables = line.Split(',');
-
-                        foreach(string pair in variables)
-                        {
-                            Console.WriteLine(pair);
-                        }
-
+                        pair[count % 2] = jr.Value.ToString();
+                        count++;
                     }
-                        
                 }
+                ux
+                Console.WriteLine(pair[0] + " : " + pair[1]);
+
 
             }
         }

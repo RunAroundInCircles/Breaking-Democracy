@@ -8,3 +8,4 @@ C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit C
 C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor.exe.config
 C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor.exe
 C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor.pdb
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\Editor\obj\Debug\Editor.csproj.CopyComplete
