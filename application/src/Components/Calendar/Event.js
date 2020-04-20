@@ -38,7 +38,6 @@ class Event extends Component {
     render() {
         let route = "/Calendar/" + this.props.id;
 
-
         if(this.props.status == 0){ //Ready to play
           return (
               <Link to={route} className="calendar-event-link">

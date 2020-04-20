@@ -33,7 +33,7 @@ import emails from './Components/Email/EmailList.json';
 import echos from './Components/Echo/echo.json';
 import {Button} from 'react-bootstrap';
 import EventPopup from './Components/Calendar/EventPopup.js';
-import Event from ".//Components/Calendar/Event.js";
+import Event from "./Components/Calendar/Event.js";
 import TimelineApp from './Components/Timeline/TimelineApp.js'
 import './MainPage.css';
 import desktop from './Resources/Title_Computer.png';
@@ -99,32 +99,29 @@ class MainPage extends Component{
       state: eventState
 		}
 
-    let temporaryEvents = this.state.events;
 
-    var found = temporaryEvents.find(element => element.id == eventCompleted.id);
-    if(found != null){
-        temporaryEvents[eventid].status = eventCompleted.state;
-        this.setState({events: temporaryEvents});
-    }
+
 
 		let updatedData = this.state.pollData;
 		updatedData[region][district] += (updatedData[region][district] * percent)
 
 		//Get the event IDs between the two dates that need to be completed before the round can advance
 		let eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
-  /*  for(var i = 0; i < eventsToComplete.length; i++){
-      temporaryEvents[eventsToComplete[i]].status = 0;
-    }
-    */
+
+    let temporaryEvents = this.state.events;
+
+      console.log("FOUND STATUS: " + temporaryEvents[eventCompleted.eventID].status);
+        temporaryEvents[eventCompleted.eventID].status = eventCompleted.state;
+        console.log("UPDATED TEMP: " + temporaryEvents[eventCompleted.eventID].status);
+        this.setState({events: temporaryEvents});
+        console.log("EVENTS: " + events[eventCompleted.eventID].status);
+
 		//Remove the newly completed event ID if it is in the array
 		if(eventsToComplete.includes(eventid)) {
 			eventsToComplete.splice(eventsToComplete.indexOf(eventid), 1);
 		}
 
 
-
-    this.setState({events: temporaryEvents});
-    console.log(events[0].status);
 		//Remove all completed event IDs from the array
 		this.state.eventsCompleted.map((completedEvent) => {
 			if(eventsToComplete.includes(completedEvent.eventID)) {
@@ -149,7 +146,7 @@ class MainPage extends Component{
 		Object.values(events).map((event) => {
 			let eventDate = new Date(event.year, event.month, event.day, 0, 0, 0, 0);
 			if(!(isBefore(eventDate, turnStartDate) || isAfter(eventDate, turnEndDate))) {
-        event.status = 0;
+      //  event.status = 0;
         eventsBetween.push(event.id);
 			}
 		});
