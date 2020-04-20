@@ -22,7 +22,7 @@ SOFTWARE.
 */
 
 import React,{Component} from 'react';
-import Sound from 'react-sound';
+//import Sound from 'react-sound';
 import './App.css';
 import MapApp from './Components/Map/MapApp.js';
 import MapRegion from './Components/Map/MapRegion.js';
@@ -86,8 +86,8 @@ class MainPage extends Component{
 			},
 			//eventsCompleted is an array to hold all of the events that have been finished by the player after they complete them.
 			eventsCompleted: [], 
-      currentEmails: [], /*The current list of emails for the sprint we are on */
-      currentSprint: 1, /* The current two week interval we are on */
+      		currentEmails: [], /*The current list of emails for the sprint we are on */
+      		currentSprint: 1, /* The current two week interval we are on */
 			//turnStartDate is the beginning Date for the game February 1, 2020, indicates the start of the turn in Calendar
 			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0)
 		}
@@ -132,20 +132,20 @@ class MainPage extends Component{
 			}
 		});
     
-    while(eventsToComplete.length == 0){
-      //If all events are complete advance the
-      this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
-      
-      //Update eventsToComplete to detect turns with no events
-      eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
-      
-      //Advance the sprint number
-      this.setState({currentSprint: (this.state.currentSprint + 1)});
-    }
+		while(eventsToComplete.length == 0){
+		//If all events are complete advance the
+		this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
+		
+		//Update eventsToComplete to detect turns with no events
+		eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
+		
+		//Advance the sprint number
+		this.setState({currentSprint: (this.state.currentSprint + 1)});
+		}
 
 		this.setState({pollData: updatedData});
 		this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
-  };
+  	};
 
 	//Returns all of the event IDs between 2 dates
 	getEventIDsBetween = (turnStartDate, turnEndDate) => {
@@ -154,75 +154,67 @@ class MainPage extends Component{
 		Object.values(events).map((event) => {
 			let eventDate = new Date(event.year, event.month, event.day, 0, 0, 0, 0);
 			if(!(isBefore(eventDate, turnStartDate) || isAfter(eventDate, turnEndDate))) {
-        event.status = 0;
-        eventsBetween.push(event.id);
+        		event.status = 0;
+        		eventsBetween.push(event.id);
 			}
 		});
 		return eventsBetween;
 	}
 
-	render(){
-		return(
-      <Router>
-        <div id="screen">
-
-        <audio controls autoplay loop id="main-music">
-          <source src="mainMusicMP3" type="audio/mpeg"></source>
-          <source src="mainMusicWAV" type="audio/wav"></source>
-          Your Browser does not support the audio element.
-        </audio>
-
-        <img className="desktop" src={desktop} alt="desktop"/>
-          <nav>
-/*checks if the passed in email is already in the list of current emails. If it is not then it returns True, else if it already exists in the list it returns False
-@param  {emails}   The array of the currentEmails displayed.
-@param  {foundEmail}   The email that wants to be added to the current emails.
-*/
-ifExists(emails, foundEmail){
-	for(var i in emails) {
-		if(emails[i].currentSprint == foundEmail.currentSprint)
-		{
-			return false;
+	/*checks if the passed in email is already in the list of current emails. If it is not then it returns True, else if it already exists in the list it returns False
+	@param  {emails}   The array of the currentEmails displayed.
+	@param  {foundEmail}   The email that wants to be added to the current emails.
+	*/
+	ifExists(emails, foundEmail){
+		for(var i in emails) {
+			if(emails[i].currentSprint == foundEmail.currentSprint)
+			{
+				return false;
+			}
 		}
+		return true
 	}
-	return true
-}
-	
-	
-/*This function gets the current emails needed for the current sprint.
-@param  {emails} The list of emails to be assessed and added to the current email list.
-*/
-setCurrentEmail(emails) {
-	for(var i in emails) {
-		if(emails[i].currentSprint == this.state.currentSprint)
-		{
-			if(this.ifExists(this.state.currentEmails, emails[i])){
-				this.state.currentEmails.push(emails[i]);
+
+
+	/*This function gets the current emails needed for the current sprint.
+	@param  {emails} The list of emails to be assessed and added to the current email list.
+	*/
+	setCurrentEmail(emails) {
+		for(var i in emails) {
+			if(emails[i].currentSprint == this.state.currentSprint)
+			{
+				if(this.ifExists(this.state.currentEmails, emails[i])){
+					this.state.currentEmails.push(emails[i]);
+				}
 			}
 		}
 	}
-}
 
 
-/*This function allows the calendar to update the turn date which allows the player to progress
-  through the game.*/
-  updateTurnStartDate  = () => {
-    var newdate = addDays(13, this.state.turnStartDate);
-    this.setState(
-      {
-        turnStartDate :  newdate//Moves the turn date up by 2 weeks.
-      }
-    )
-  }
-
+	/*This function allows the calendar to update the turn date which allows the player to progress
+	through the game.*/
+	updateTurnStartDate  = () => {
+		var newdate = addDays(13, this.state.turnStartDate);
+		this.setState(
+		{
+			turnStartDate :  newdate//Moves the turn date up by 2 weeks.
+		}
+		)
+	}
 
 	render(){
-
 		return(
-      <Router>
-			<div id="screen">
-				{this.setCurrentEmail(emails)}
-				<img className="desktop" src={desktop} alt="desktop"/>
+      		<Router>
+        		<div id="screen">
+
+					<audio controls autoplay loop id="main-music">
+						<source src="mainMusicMP3" type="audio/mpeg"></source>
+						<source src="mainMusicWAV" type="audio/wav"></source>
+						Your Browser does not support the audio element.
+					</audio>
+
+					{this.setCurrentEmail(emails)}
+					<img className="desktop" src={desktop} alt="desktop"/>
 					<nav>
 						<Link to='/Calendar'> {/*Button to Calendar*/}
 							<Button className="button calendar-button">
