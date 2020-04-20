@@ -47,19 +47,16 @@ class Calendar extends React.Component {
     for(i = 0; i < this.props.events.length; i++) {
 
       if(isEqual(date, this.props.events[i].date)) {
-        /*If any of the items in eventsCompleted (Found in MainPage are equal to the index then we do not render the item) */
-
-
-/*        if (this.props.eventsCompleted.find(element => element.eventID == i)){
-
+      //If any of the items in eventsCompleted (Found in MainPage are equal to the index then we do not render the item)
+        if (this.props.eventsCompleted.find(element => element.eventID == this.props.events[i].id)){
           return null;
         }
         else{
-*/          return this.props.events[i].message;
-//        }
+          return this.props.events[i].message;
+        }
       }
     }
-//    return null;
+    return null;
   }
 
   /**
@@ -150,6 +147,10 @@ class Calendar extends React.Component {
 
 
         if(isBefore(day, turnDate) || isAfter(day, turnEndDate)){ //If the date is outside of the 2 week interval then the event is disabled.
+          status = "disabled";
+        }
+
+        if(!isSameMonth(day, currentMonth)) {
           status = "disabled";
         }
 

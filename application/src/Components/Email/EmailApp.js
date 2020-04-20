@@ -22,9 +22,12 @@ SOFTWARE.
 */
 
 import React,{Component} from 'react';
+import {Link} from "react-router-dom";
+import {Button} from 'react-bootstrap';
 import './EmailUI.css';
 import EmailList from './EmailList.js';
 import EmailReader from './EmailReader.js';
+
 
 /**
  * Used to display a list of emails and a reader that allows the user to view an
@@ -41,30 +44,40 @@ class EmailApp extends Component {
 		//Sets inital selected email to null and when an email is set to select it binds the selected email to be set.
 		super(props);
         this.state = {
-            selectedEmail: null
+            selectedEmail: null,
+			currentEmails: []
         }
         this.setSelectedEmail = this.setSelectedEmail.bind(this);
+
     }
+
 	/**
    * Renders the selected email, the email list and setting the selected email on a click.
    * @return {Div} Returns a list of emails and a reader that allows the user to read the full email.
    */
     render() {
         return(
+            <div className="email-app">
 
-            <div className="email-app"> 
-				
-                <EmailList 
-                    emails={this.props.emails} 
+                <Link to='/MainPage' >
+                    <Button style={{top: 5, right: 5, position: 'absolute'}}>
+                          <span>X</span>
+                    </Button>
+                </Link>
+
+                <EmailList
+                    emails={this.props.emails}
 
                     selectedEmail={this.state.selectedEmail}
                     onSelect={this.setSelectedEmail}
                 />
-				{/*Pulls in the selected email from EmailReader.js*/}
+				        {/*Pulls in the selected email from EmailReader.js*/}
                 <EmailReader email={this.state.selectedEmail}/>
             </div>
         )
     }
+
+
 	//function to set the currently selected email to be displayed in EmailReader.js
     setSelectedEmail(email) {
         this.setState({selectedEmail: email}); //render gets retriggered as soon as state is changed

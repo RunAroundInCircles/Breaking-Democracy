@@ -21,7 +21,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 .echo{
-	z-index: 100;
+	z-index: 2;
 	width: 40%;
 	border-style:solid;
 	text-align:center;
@@ -39,7 +39,7 @@ SOFTWARE.
 	top: 20%;
 }
 .echo-head{
-	z-index: 0;
+	z-index: 2;
 	color: blue;
 	position: absolute;
 	font-size: 30pt;
@@ -47,6 +47,7 @@ SOFTWARE.
 	left: 46.5%;
 }
 .dolphin{
+	z-index: 1;
 	position: absolute;
 	left: 46.5%;
 	top: 5%;
