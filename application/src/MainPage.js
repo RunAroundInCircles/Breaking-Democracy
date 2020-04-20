@@ -37,6 +37,7 @@ import TimelineApp from './Components/Timeline/TimelineApp.js'
 import './MainPage.css';
 import desktop from './Resources/Title_Computer.png';
 import Situations from './Components/Calendar/Situations.json';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -69,12 +70,17 @@ class MainPage extends Component{
 				7: [21, 12, 37]
 			},
 			eventsCompleted: [],
-			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0)
+			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0),
+			currentSprint: 1, /* The current two week interval we are on */
+			currentEmails: [] /*The current list of emails for the sprint we are on */
 		}
 
 		this.callback = this.callback.bind(this);
+		this.setCurrentEmail = this.setCurrentEmail.bind(this);
+		this.ifExists = this.ifExists.bind(this);
 	}
-
+	
+	
 	/**
 	 * Allows an external component to add entries to eventsCompleted and update the pollData
 	 * @param  {eventid}   eventsCompleted The id of the event completed.
@@ -89,7 +95,9 @@ class MainPage extends Component{
 			region: region,
 			district: district
 		}
-
+		
+		
+		
 		let updatedData = this.state.pollData;
 		updatedData[region][district] += (updatedData[region][district] * percent)
 
@@ -111,6 +119,7 @@ class MainPage extends Component{
 		//If all events are complete advance the
 		if(eventsToComplete.length == 0) {
 			this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
+			this.setState({currentSprint: (this.state.currentSprint + 1)});
 		}
 
 		this.setState({pollData: updatedData});
@@ -131,6 +140,35 @@ class MainPage extends Component{
 		return eventsBetween;
 	}
 
+/*checks if the passed in email is already in the list of current emails. If it is not then it returns True, else if it already exists in the list it returns False
+@param  {emails}   The array of the currentEmails displayed.
+@param  {foundEmail}   The email that wants to be added to the current emails.
+*/
+ifExists(emails, foundEmail){
+	for(var i in emails) {
+		if(emails[i].currentSprint == foundEmail.currentSprint)
+		{
+			return false;
+		}
+	}
+	return true
+}
+	
+	
+/*This function gets the current emails needed for the current sprint.
+@param  {emails} The list of emails to be assessed and added to the current email list.
+*/
+setCurrentEmail(emails) {
+	for(var i in emails) {
+		if(emails[i].currentSprint == this.state.currentSprint)
+		{
+			if(this.ifExists(this.state.currentEmails, emails[i])){
+				this.state.currentEmails.push(emails[i]);
+			}
+		}
+	}
+}
+
 
 /*This function allows the calendar to update the turn date which allows the player to progress
   through the game.*/
@@ -144,12 +182,13 @@ class MainPage extends Component{
   }
 
 	render(){
-		return(
 
+		return(
       <Router>
-				<div id="screen">
-        <img className="desktop" src={desktop} alt="desktop"/>
-          <nav>
+			<div id="screen">
+				{this.setCurrentEmail(emails)}
+				<img className="desktop" src={desktop} alt="desktop"/>
+					<nav>
 						<Link to='/Calendar'> {/*Button to Calendar*/}
 							<Button class="button calendar-button">
 								<span>Calendar</span>
@@ -202,7 +241,7 @@ class MainPage extends Component{
 							}/>
 						</Route>
 						<Route path='/Email'>
-							<EmailApp emails={emails}/>
+							<EmailApp emails = {this.state.currentEmails}/>
 						</Route>
 						<Route path='/Map'>
 							<MapApp pollData={this.state.pollData}/>

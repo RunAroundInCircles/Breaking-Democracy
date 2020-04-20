@@ -68,6 +68,7 @@ class EmailList extends Component {
             </div>
         )
     }
+	
 }
 
 export default EmailList;
