@@ -66,7 +66,7 @@ class Event extends Component {
         </Link>
         );
       }
-      else { //locked
+      else if(this.props.status == 4){ //locked
           return (
         <Link to={route} className="calendar-event-link">
             <Button className="calendar-event-button-locked">

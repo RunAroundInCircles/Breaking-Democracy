@@ -39,12 +39,12 @@ class TypeGame extends Component{
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 	}
-	
+
 	/*stores the answer inputted before submit*/
 	handleChange(event) {
 		this.setState({value: event.target.value});
 	}
-  
+
 	/*Will be able to check if the answer is right and change certain attributes when done.*/
 	handleSubmit(event){
 		event.preventDefault();
@@ -52,15 +52,15 @@ class TypeGame extends Component{
 		var district = Math.floor(Math.random() * 7);
 		if(this.props.answer == this.state.value){
 			var percent = .5
-			this.props.callbackFromMain(this.props.eventID, percent, region, 0);
+			this.props.callbackFromMain(this.props.eventID, percent, region, 0,2);
 			this.setState({result: "Success!"});
 		}
 		else {
 			var percent = -.5;
-			this.props.callbackFromMain(this.props.eventID, percent, region, 0);
+			this.props.callbackFromMain(this.props.eventID, percent, region, 0,3);
 			this.setState({result: "Failed!"});
 		}
-		
+
 
 	}
 
