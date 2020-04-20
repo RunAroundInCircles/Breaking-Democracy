@@ -72,30 +72,23 @@ class MainPage extends Component{
 				6: [70, 25, 89, 34],
 				7: [21, 12, 37]
 			},
-      //regionDistrictNames stores all of the names of the regions and districts to be displayed on the map the first name in the array is the region, all subsequent are districts
-  		regionDistrictNames: {
-  				0: ["Saika","Rakka","Feidler","Larch","Broon","Lona La","Oglad","Prock"],
-  				1: ["Kaika","Ash","Holly","Kefler","Darby"],
-  				2: ["Flaze","Gretroit","Hearth","Magdo","Garde"],
-  				3: ["Libdove","Moka","Agon","Veera"],
-  				4: ["Osco","Proe","Haley"],
-  				5: ["Warren Central", "Warren Central"],
-  				6: ["Dukaste","Locke","Rehlat","Selia","Dukaste City"],
-  				7: ["Wegruesoe","Zaftan","Blektan","Wegruesoe City"]
-  		},
-      //eventsCompleted is an array to hold all of the events that have been finished by the player after they complete them.
-			eventsCompleted: [],
-			currentSprint: 1, /* The current two week interval we are on */
-			currentEmails: [], /*The current list of emails for the sprint we are on */
-      
-      //events is an object that holds all of the events on the calendar
-      events: Object.values(events).map((event) => {
-        let date = new Date(event.year, event.month, event.day);
-        return(
-          {date: date, message: <Event key={event.id} message={event.message} date={date} id={event.id} status={event.status}/>, status: event.status}
-        );
-      }),
-      //turnStartDate is the beginning Date for the game February 1, 2020
+			//regionDistrictNames stores all of the names of the regions and districts to be displayed on the map
+			//the first name in the array is the region, all subsequent are districts
+			regionDistrictNames: {
+					0: ["Saika","Rakka","Feidler","Larch","Broon","Lona La","Oglad","Prock"],
+					1: ["Kaika","Ash","Holly","Kefler","Darby"],
+					2: ["Flaze","Gretroit","Hearth","Magdo","Garde"],
+					3: ["Libdove","Moka","Agon","Veera"],
+					4: ["Osco","Proe","Haley"],
+					5: ["Warren Central", "Warren Central"],
+					6: ["Dukaste","Locke","Rehlat","Selia","Dukaste City"],
+					7: ["Wegruesoe","Zaftan","Blektan","Wegruesoe City"]
+			},
+			//eventsCompleted is an array to hold all of the events that have been finished by the player after they complete them.
+			eventsCompleted: [], 
+      currentEmails: [], /*The current list of emails for the sprint we are on */
+      currentSprint: 1, /* The current two week interval we are on */
+			//turnStartDate is the beginning Date for the game February 1, 2020, indicates the start of the turn in Calendar
 			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0)
 		}
 
@@ -118,47 +111,36 @@ class MainPage extends Component{
 			eventID: eventid,
 			percent: percent,
 			region: region,
-			district: district,
-      state: eventState
+			district: district
 		}
-
-    let temporaryEvents = this.state.events;
-
-    var found = temporaryEvents.find(element => element.id == eventCompleted.id);
-    if(found != null){
-        temporaryEvents[eventid].status = eventCompleted.state;
-        this.setState({events: temporaryEvents});
-    }
-
-
+    
 		let updatedData = this.state.pollData;
 		updatedData[region][district] += (updatedData[region][district] * percent)
 
 		//Get the event IDs between the two dates that need to be completed before the round can advance
 		let eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
-  /*  for(var i = 0; i < eventsToComplete.length; i++){
-      temporaryEvents[eventsToComplete[i]].status = 0;
-    }
-    */
+
 		//Remove the newly completed event ID if it is in the array
 		if(eventsToComplete.includes(eventid)) {
 			eventsToComplete.splice(eventsToComplete.indexOf(eventid), 1);
 		}
-
-    this.setState({events: temporaryEvents});
-    console.log(events[0].status);
+    
 		//Remove all completed event IDs from the array
 		this.state.eventsCompleted.map((completedEvent) => {
 			if(eventsToComplete.includes(completedEvent.eventID)) {
 				eventsToComplete.splice(eventsToComplete.indexOf(completedEvent.eventID), 1);
 			}
 		});
-
+    
     while(eventsToComplete.length == 0){
       //If all events are complete advance the
-        this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
-        eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
-        this.setState({currentSprint: (this.state.currentSprint + 1)});
+      this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
+      
+      //Update eventsToComplete to detect turns with no events
+      eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
+      
+      //Advance the sprint number
+      this.setState({currentSprint: (this.state.currentSprint + 1)});
     }
 
 		this.setState({pollData: updatedData});
@@ -247,6 +229,7 @@ setCurrentEmail(emails) {
 								<span>Calendar</span>
 							</Button>
 						</Link>
+
 						&nbsp;
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
@@ -260,6 +243,7 @@ setCurrentEmail(emails) {
 						&nbsp;
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
+
 						<Link to='/Map'>
 							<Button> {/*Button to Map*/}
 								<span>Map</span>
@@ -269,6 +253,7 @@ setCurrentEmail(emails) {
 						&nbsp;
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
+
 						<Link to= '/Echo'>
 							<Button>
 								<span>Echo</span>
@@ -278,6 +263,7 @@ setCurrentEmail(emails) {
 						&nbsp;
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
+						
 						<Link to= '/Timeline'>
 							<Button>
 								<span>Timeline</span>
@@ -287,10 +273,10 @@ setCurrentEmail(emails) {
 
 					<Switch>{/*The switch to click between pages.*/}
 						<Route path='/Calendar'>
-							<CalendarApp   events={this.state.events} eventsCompleted={this.state.eventsCompleted} turnStartDate={this.state.turnStartDate}/>
+							<CalendarApp   events={Object.values(events)} eventsCompleted={this.state.eventsCompleted} turnStartDate={this.state.turnStartDate}/>
 							<Route path='/Calendar/:id' render={(props)=>{
 								return <EventPopup callbackFromMain={this.callback} event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]}/>
-							 }
+								}
 							}/>
 						</Route>
 						<Route path='/Email'>
