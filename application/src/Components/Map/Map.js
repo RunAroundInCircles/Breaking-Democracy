@@ -49,7 +49,7 @@ class Map extends Component{
 		}
 		return (
 			<div>
-				<h1 id="region-name">DEMOCRISTAN</h1>
+				<h1 id="region-name">Country of Democristan</h1>
 				{/*Uses svg to display map*/}
 				<div className="country-map" dangerouslySetInnerHTML={svg} ref={this.mapRef}/>
 			</div>
@@ -78,7 +78,6 @@ class Map extends Component{
 			region.style.setProperty("fill", color);
 			region.style.setProperty("fill:hover", 'gold');
 			//Function to display the name of the Region that is being hovered over
-
 			var name = this.props.regionDistrictNames[index][0]
 			region.addEventListener('mouseover', function(event) {
 				var regionName = document.getElementById('region-name');
