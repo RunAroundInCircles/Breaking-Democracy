@@ -20,16 +20,34 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
 import React from 'react';
 import EmailApp from './EmailApp.js';
 import emails from './EmailList.json';
-import MainPage from '../../App.js';
 import renderer from 'react-test-renderer';
-import { shallow } from 'enzyme';
 import ReactDOM from 'react-dom';
+import { act } from 'react-dom/test-utils';
+
+let container; //Used to contain the rendered page so that its components can be tested
+
+/** 
+ * Before each test sets container to a new div element and adds it to the document
+*/
+beforeEach(() => {
+  container = document.createElement('div');
+  document.body.appendChild(container);
+});
 
 /**
- * Checks to see if the Email page is correctly rendered
+ * After each test removes container from the document and sets it to null
+ */
+afterEach(() => {
+  document.body.removeChild(container);
+  container = null;
+});
+
+/**
+ * Checks to see if the EmailApp page is correctly rendered
  */
 test('renders emailApp page', () => {
 	const tree = renderer
@@ -38,7 +56,7 @@ test('renders emailApp page', () => {
 });
 
 /**
- * Checks to see if all emails is correctly rendered
+ * Checks to see if all emails are correctly rendered
  */
 test('renders each email', () => {
 	const tree = renderer
@@ -48,11 +66,20 @@ test('renders each email', () => {
 });
 
 /**
- * Checks to see if the selected email is correctly rendered
+ * Checks to see if clicking on emails changes them to selected
  */
 test('renders selected email', () => {
-	const wrapper = shallow(<EmailApp emails={emails}/>);
-	const button = wrapper.find('selected-email');
-	button.simulate('click');
-	expect(wrapper.state.onSelect).not.toBeNull();
+	//Expect that at first no emails should be selected
+	act(() => { //act allows functions to behave closer to normal browser behavior
+		ReactDOM.render(<EmailApp emails={emails}/>, container); //Renders EmailApp
+	});
+	let emailsSelected = container.querySelectorAll(".email-selected"); //Get all selected emails
+	expect(emailsSelected.length).toBe(0);
+
+	const emailsNotselected = container.querySelectorAll(".email-notselected"); //Get all non-selected emails
+	act(() => {
+		emailsNotselected.item(0).dispatchEvent(new MouseEvent('click', {bubbles: true})); //Click on the first non-selected email found
+	});
+	emailsSelected = container.querySelectorAll(".email-selected"); //Get all selected emails
+	expect(emailsSelected.length).toBe(1);
 });

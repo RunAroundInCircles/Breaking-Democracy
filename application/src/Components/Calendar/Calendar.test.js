@@ -20,19 +20,24 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
 import React from 'react';
 import CalendarApp from './CalendarApp.js';
 import events from './EventList.json';
-import MainPage from '../../App.js';
 import renderer from 'react-test-renderer';
+import {BrowserRouter as Router,} from "react-router-dom";
 
-import ReactDOM from 'react-dom';
+let turnStartDate = new Date(2020, 2, 1, 0, 0, 0, 0); //Start date used for deployment
 
 /**
- * Checks to see if the Calendar is correctly rendered
+ * Checks to see if CalendarApp is rendered correctly
  */
 test('renders CalendarApp page', () => {
 	const tree = renderer
-	.create(<CalendarApp events={Object.values(events)}/>)
+	.create(
+	<Router> 
+		<CalendarApp events={Object.values(events)} eventsCompleted={[]} turnStartDate={turnStartDate}/>
+	</Router>
+	)
 	expect(tree).toMatchSnapshot();
 });

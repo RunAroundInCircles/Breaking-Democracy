@@ -69,6 +69,17 @@ class MainPage extends Component{
 				6: [70, 25, 89, 34],
 				7: [21, 12, 37]
 			},
+      //regionDistrictNames stores all of the names of the regions and districts to be displayed on the map the first name in the array is the region, all subsequent are districts
+  		regionDistrictNames: {
+  				0: ["Saika","Rakka","Feidler","Larch","Broon","Lona La","Oglad","Prock"],
+  				1: ["Kaika","Ash","Holly","Kefler","Darby"],
+  				2: ["Flaze","Gretroit","Hearth","Magdo","Garde"],
+  				3: ["Libdove","Moka","Agon","Veera"],
+  				4: ["Osco","Proe","Haley"],
+  				5: ["Warren Central", "Warren Central"],
+  				6: ["Dukaste","Locke","Rehlat","Selia","Dukaste City"],
+  				7: ["Wegruesoe","Zaftan","Blektan","Wegruesoe City"]
+  		},
 			eventsCompleted: [],
       events: Object.values(events).map((event) => {
         let date = new Date(event.year, event.month, event.day);
@@ -131,6 +142,7 @@ class MainPage extends Component{
 				eventsToComplete.splice(eventsToComplete.indexOf(completedEvent.eventID), 1);
 			}
 		});
+
 
     while(eventsToComplete.length == 0){
       //If all events are complete advance the
@@ -219,9 +231,9 @@ class MainPage extends Component{
 							<EmailApp emails={emails}/>
 						</Route>
 						<Route path='/Map'>
-							<MapApp pollData={this.state.pollData}/>
+							<MapApp pollData={this.state.pollData} regionDistrictNames={this.state.regionDistrictNames}/>
 							<Route path='/Map/:id' render={(props)=>{
-									return <MapRegion region={props.match.params.id} pollData={this.state.pollData}/>
+									return <MapRegion region={props.match.params.id} pollData={this.state.pollData} regionDistrictNames={this.state.regionDistrictNames}/>
 								}
 							}/>
 						</Route>

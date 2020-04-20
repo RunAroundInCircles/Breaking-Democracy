@@ -20,16 +20,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
 import React from 'react';
 import EchoApp from './EchoApp.js';
 import echos from './echo.json';
-import MainPage from '../../App.js';
 import renderer from 'react-test-renderer';
 
-import ReactDOM from 'react-dom';
-
 /**
- * Checks to see if the Echos page is correctly rendered
+ * Checks to see if the EchoApp page is correctly rendered
  */
 test('renders EchoApp page', () => {
 	const tree = renderer

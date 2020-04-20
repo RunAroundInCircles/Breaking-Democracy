@@ -20,16 +20,17 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
 import React from 'react';
-import TimelineApp from './TimelineApp.js'
-import timelineevents from './TimelineData.json';
+import TimelineApp from './TimelineApp.js';
 import renderer from 'react-test-renderer';
+import events from '../Calendar/EventList.json';
 
 /**
- * Checks to see if the Timeline is correctly rendered
+ * Checks to see if the Timeline App is correctly rendered
  */
 test('renders TimelineApp page', () => {
 	const tree = renderer
-	.create(<TimelineApp timelineevents={timelineevents}/>)
+	.create(<TimelineApp events={events} eventsCompleted={[]}/>)
 	expect(tree).toMatchSnapshot();
 });
