@@ -17,3 +17,7 @@ Button {
   position: relative;
 
 }
+
+.email-button {
+	background-color: white;
+}

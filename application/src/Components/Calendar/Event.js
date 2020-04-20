@@ -37,13 +37,44 @@ class Event extends Component {
      */
     render() {
         let route = "/Calendar/" + this.props.id;
-        return (
-            <Link to={route} className="calendar-event-link">
-                <Button className="calendar-event-button">
-                    {this.props.message}
-				</Button>
-            </Link>
+
+
+        if(this.props.status == 0){ //Ready to play
+          return (
+              <Link to={route} className="calendar-event-link">
+                  <Button className="calendar-event-button">
+                      {this.props.message}
+				                </Button>
+              </Link>
+          );
+        }
+      else if(this.props.status == 2){ //Completed
+          return (
+        <Link to={route} className="calendar-event-link">
+            <Button className="calendar-event-button-completed">
+                {this.props.message}
+                  </Button>
+        </Link>
         );
+      }
+      else if(this.props.status == 3){ //failed
+          return (
+        <Link to={route} className="calendar-event-link">
+            <Button className="calendar-event-button-failed">
+                {this.props.message}
+                  </Button>
+        </Link>
+        );
+      }
+      else { //locked
+          return (
+        <Link to={route} className="calendar-event-link">
+            <Button className="calendar-event-button-locked">
+                {this.props.message}
+                  </Button>
+        </Link>
+        );
+      }
     }
 }
 
