@@ -33,6 +33,7 @@ import emails from './Components/Email/EmailList.json';
 import echos from './Components/Echo/echo.json';
 import {Button} from 'react-bootstrap';
 import EventPopup from './Components/Calendar/EventPopup.js';
+import Event from ".//Components/Calendar/Event.js";
 import TimelineApp from './Components/Timeline/TimelineApp.js'
 import './MainPage.css';
 import desktop from './Resources/Title_Computer.png';
@@ -80,8 +81,10 @@ class MainPage extends Component{
 					6: ["Dukaste","Locke","Rehlat","Selia","Dukaste City"],
 					7: ["Wegruesoe","Zaftan","Blektan","Wegruesoe City"]
 			},
-			eventsCompleted: [], //Stores all of the completed events once they have been completed
-			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0) //Indicates the start of the turn in Calendar
+			//eventsCompleted is an array to hold all of the events that have been finished by the player after they complete them.
+			eventsCompleted: [], 
+			//turnStartDate is the beginning Date for the game February 1, 2020, indicates the start of the turn in Calendar
+			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0)
 		}
 
 		this.callback = this.callback.bind(this);
@@ -93,8 +96,9 @@ class MainPage extends Component{
 	 * @param  {percent}   eventsCompleted The percentage amount of change for the region's district
 	 * @param  {region}	   eventsCompleted The id of the region to update
 	 * @param  {district}  eventsCompleted The id of the district to update
+	 * @param  {eventState}  eventsCompleted What the status of the event is.
 	 */
-	callback = (eventid, percent, region, district) => {
+	callback = (eventid, percent, region, district, eventState) => {
 		var eventCompleted = {
 			eventID: eventid,
 			percent: percent,
@@ -112,7 +116,7 @@ class MainPage extends Component{
 		if(eventsToComplete.includes(eventid)) {
 			eventsToComplete.splice(eventsToComplete.indexOf(eventid), 1);
 		}
-
+		
 		//Remove all completed event IDs from the array
 		this.state.eventsCompleted.map((completedEvent) => {
 			if(eventsToComplete.includes(completedEvent.eventID)) {
@@ -123,6 +127,7 @@ class MainPage extends Component{
 		while(eventsToComplete.length == 0){
 			//If all events are complete advance turn
 			this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
+			eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
 		}
 
 		this.setState({pollData: updatedData});
@@ -136,7 +141,8 @@ class MainPage extends Component{
 		Object.values(events).map((event) => {
 			let eventDate = new Date(event.year, event.month, event.day, 0, 0, 0, 0);
 			if(!(isBefore(eventDate, turnStartDate) || isAfter(eventDate, turnEndDate))) {
-				eventsBetween.push(event.id);
+        event.status = 0;
+        eventsBetween.push(event.id);
 			}
 		});
 
@@ -145,16 +151,16 @@ class MainPage extends Component{
 
 	render(){
 		return(
-
-      <Router>
+      		<Router>
 				<div id="screen">
-        <img className="desktop" src={desktop} alt="desktop"/>
-          <nav>
+				<img className="desktop" src={desktop} alt="desktop"/>
+				<nav>
 						<Link to='/Calendar'> {/*Button to Calendar*/}
-							<Button class="button calendar-button">
+							<Button className="button calendar-button">
 								<span>Calendar</span>
 							</Button>
 						</Link>
+
 						&nbsp;
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
@@ -168,6 +174,7 @@ class MainPage extends Component{
 						&nbsp;
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
+
 						<Link to='/Map'>
 							<Button> {/*Button to Map*/}
 								<span>Map</span>
@@ -177,6 +184,7 @@ class MainPage extends Component{
 						&nbsp;
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
+
 						<Link to= '/Echo'>
 							<Button>
 								<span>Echo</span>
@@ -186,6 +194,7 @@ class MainPage extends Component{
 						&nbsp;
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
+						
 						<Link to= '/Timeline'>
 							<Button>
 								<span>Timeline</span>
@@ -198,7 +207,7 @@ class MainPage extends Component{
 							<CalendarApp   events={Object.values(events)} eventsCompleted={this.state.eventsCompleted} turnStartDate={this.state.turnStartDate}/>
 							<Route path='/Calendar/:id' render={(props)=>{
 								return <EventPopup callbackFromMain={this.callback} event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]}/>
-							 }
+								}
 							}/>
 						</Route>
 						<Route path='/Email'>
