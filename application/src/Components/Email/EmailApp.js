@@ -28,6 +28,7 @@ import './EmailUI.css';
 import EmailList from './EmailList.js';
 import EmailReader from './EmailReader.js';
 
+
 /**
  * Used to display a list of emails and a reader that allows the user to view an
  * entire email.
@@ -43,10 +44,13 @@ class EmailApp extends Component {
 		//Sets inital selected email to null and when an email is set to select it binds the selected email to be set.
 		super(props);
         this.state = {
-            selectedEmail: null
+            selectedEmail: null,
+			currentEmails: []
         }
         this.setSelectedEmail = this.setSelectedEmail.bind(this);
+
     }
+
 	/**
    * Renders the selected email, the email list and setting the selected email on a click.
    * @return {Div} Returns a list of emails and a reader that allows the user to read the full email.
@@ -72,6 +76,8 @@ class EmailApp extends Component {
             </div>
         )
     }
+
+
 	//function to set the currently selected email to be displayed in EmailReader.js
     setSelectedEmail(email) {
         this.setState({selectedEmail: email}); //render gets retriggered as soon as state is changed
