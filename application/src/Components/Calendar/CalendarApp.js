@@ -22,6 +22,8 @@ SOFTWARE.
 */
 
 import React,{Component} from 'react';
+import {Link} from "react-router-dom";
+import {Button} from 'react-bootstrap';
 import Calendar from './Calendar.js';
 import './CalendarUI.css';
 
@@ -50,6 +52,11 @@ class CalendarApp extends Component {
     render() {
         return(
             <div className="calendar-app">
+                <Link to='/MainPage' >
+                    <Button style={{top: 5, right: 5, position: 'absolute'}}>
+                          <span>X</span>
+                    </Button>
+                </Link>
                 <Calendar  callbackFromMain={this.props.callback} events={this.props.events} eventsCompleted={this.props.eventsCompleted} turnStartDate={this.props.turnStartDate}/>
             </div>
         )

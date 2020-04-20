@@ -73,7 +73,7 @@ class Map extends Component{
         }
         red = red/this.props.pollData[index].length;
         blue = 100-red;
-        
+
         var color = 'rgb(' + (red/100)*255 + ', 0, ' + (blue/100)*255 + ')'; //Formats colors to be used
         region.style.setProperty("fill", color);
         region.style.setProperty("fill:hover", 'gold');
@@ -93,6 +93,7 @@ class Map extends Component{
           func(index);
         });
       });
+		}
 	 }
 }
 export default Map;

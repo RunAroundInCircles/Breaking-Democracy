@@ -50,7 +50,6 @@ import {
 } from "react-router-dom";
 import { add, isBefore, isAfter, addDays } from 'date-fns';
 
-
 /**
  * MainPage component of the app that renders and returns all the buttons
  * and allows you to switch between each page using reactRouter.
@@ -139,8 +138,6 @@ class MainPage extends Component{
 			eventsToComplete.splice(eventsToComplete.indexOf(eventid), 1);
 		}
 
-
-
     this.setState({events: temporaryEvents});
     console.log(events[0].status);
 		//Remove all completed event IDs from the array
@@ -150,7 +147,6 @@ class MainPage extends Component{
 			}
 		});
 
-
     while(eventsToComplete.length == 0){
       //If all events are complete advance the
         this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
@@ -159,7 +155,6 @@ class MainPage extends Component{
 
 		this.setState({pollData: updatedData});
 		this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
-
   };
 
 	//Returns all of the event IDs between 2 dates
@@ -175,13 +170,6 @@ class MainPage extends Component{
 		});
 		return eventsBetween;
 	}
-
-  handleSongFinishedPlaying(sound){
-    sound.play();
-  }
-  handleSongLoading(sound){
-    sound.play();
-  }
 
 	render(){
 		return(
