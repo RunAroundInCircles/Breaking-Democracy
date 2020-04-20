@@ -22,6 +22,7 @@ SOFTWARE.
 */
 
 import React,{Component} from 'react';
+import Sound from 'react-sound';
 import './App.css';
 import MapApp from './Components/Map/MapApp.js';
 import MapRegion from './Components/Map/MapRegion.js';
@@ -38,6 +39,8 @@ import TimelineApp from './Components/Timeline/TimelineApp.js'
 import './MainPage.css';
 import desktop from './Resources/Title_Computer.png';
 import Situations from './Components/Calendar/Situations.json';
+import mainMusicMP3 from './Resources/Music/ThemeLoopable.mp3';
+import mainMusicWAV from './Resources/Music/ThemeLoopable.wav';
 
 import {
   BrowserRouter as Router,
@@ -46,7 +49,6 @@ import {
   Link
 } from "react-router-dom";
 import { add, isBefore, isAfter, addDays } from 'date-fns';
-
 
 /**
  * MainPage component of the app that renders and returns all the buttons
@@ -143,8 +145,6 @@ class MainPage extends Component{
 			eventsToComplete.splice(eventsToComplete.indexOf(eventid), 1);
 		}
 
-
-
     this.setState({events: temporaryEvents});
     console.log(events[0].status);
 		//Remove all completed event IDs from the array
@@ -163,7 +163,7 @@ class MainPage extends Component{
 
 		this.setState({pollData: updatedData});
 		this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
-	};
+  };
 
 	//Returns all of the event IDs between 2 dates
 	getEventIDsBetween = (turnStartDate, turnEndDate) => {
@@ -176,10 +176,22 @@ class MainPage extends Component{
         eventsBetween.push(event.id);
 			}
 		});
-
 		return eventsBetween;
 	}
 
+	render(){
+		return(
+      <Router>
+        <div id="screen">
+
+        <audio controls autoplay loop id="main-music">
+          <source src="mainMusicMP3" type="audio/mpeg"></source>
+          <source src="mainMusicWAV" type="audio/wav"></source>
+          Your Browser does not support the audio element.
+        </audio>
+
+        <img className="desktop" src={desktop} alt="desktop"/>
+          <nav>
 /*checks if the passed in email is already in the list of current emails. If it is not then it returns True, else if it already exists in the list it returns False
 @param  {emails}   The array of the currentEmails displayed.
 @param  {foundEmail}   The email that wants to be added to the current emails.
@@ -231,7 +243,7 @@ setCurrentEmail(emails) {
 				<img className="desktop" src={desktop} alt="desktop"/>
 					<nav>
 						<Link to='/Calendar'> {/*Button to Calendar*/}
-							<Button class="button calendar-button">
+							<Button className="button calendar-button">
 								<span>Calendar</span>
 							</Button>
 						</Link>
