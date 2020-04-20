@@ -4,6 +4,7 @@
 
 .map-app svg > g > path:hover {
 	fill: gold !important;
+	visibility: visible;
 }
 
 .region-map svg > g > path {

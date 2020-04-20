@@ -51,7 +51,8 @@ class Calendar extends React.Component {
 
 
         if (this.props.eventsCompleted.find(element => element.eventID == i)){
-          return this.props.events[i].message;
+
+          return null;
         }
         else{
           return this.props.events[i].message;
@@ -112,21 +113,24 @@ class Calendar extends React.Component {
     return <div className="days row">{days}</div>;
   }
 
+
+
+
   /**
    * Renders each cell in the calendar and adds the day number
    * @return {div} Returns a div that represent a day as a cell in the calendar
    */
   renderCells() {
-    const currentMonth = this.state.currentMonth;
+    var currentMonth = this.state.currentMonth;
     const selectedDate = this.props.turnStartDate;
     const monthStart =  startOfMonth(currentMonth);
     const monthEnd =  endOfMonth(monthStart);
-    const startDate =  startOfWeek(monthStart);
-
+    var startDate =  startOfWeek(monthStart);
+    var turnDate = this.props.turnStartDate;//this.findTurnDate();
     let day = startDate;
     const endDate =  endOfWeek(monthEnd);
-    
-    var turnEndDate = addDays(selectedDate, 13); //Only allows 2 weeks increments
+
+    var turnEndDate = addDays(turnDate, 13); //Only allows 2 weeks increments
 
     const dateFormat = "d";
     const rows = [];
@@ -135,20 +139,20 @@ class Calendar extends React.Component {
 
     let formattedDate = "";
 
+
+
+
     //Goes through every day in the month and formats them (Gives the correct day number to the cell)
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate =  format(day, dateFormat);
         var status = "enabled";
-    
-        if(!isSameMonth(day, monthStart)){//If the date is outside of the month then the event is disabled.
+
+
+        if(isBefore(day, turnDate) || isAfter(day, turnEndDate)){ //If the date is outside of the 2 week interval then the event is disabled.
           status = "disabled";
         }
-        
-        if(isBefore(day, selectedDate) || isAfter(day, turnEndDate)){ //If the date is outside of the 2 week interval then the event is disabled.
-          status = "disabled";
-        }
-        
+
         days.push(
           <div
             className={`col cell ${

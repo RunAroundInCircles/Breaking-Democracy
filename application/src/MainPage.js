@@ -43,7 +43,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import { add, isBefore, isAfter } from 'date-fns';
+import { add, isBefore, isAfter, addDays } from 'date-fns';
 
 
 /**
@@ -68,10 +68,21 @@ class MainPage extends Component{
 				6: [70, 25, 89, 34],
 				7: [21, 12, 37]
 			},
+      //regionDistrictNames stores all of the names of the regions and districts to be displayed on the map the first name in the array is the region, all subsequent are districts
+  		regionDistrictNames: {
+  				0: ["Saika","Rakka","Feidler","Larch","Broon","Lona La","Oglad","Prock"],
+  				1: ["Kaika","Ash","Holly","Kefler","Darby"],
+  				2: ["Flaze","Gretroit","Hearth","Magdo","Garde"],
+  				3: ["Libdove","Moka","Agon","Veera"],
+  				4: ["Osco","Proe","Haley"],
+  				5: ["Warren Central", "Warren Central"],
+  				6: ["Dukaste","Locke","Rehlat","Selia","Dukaste City"],
+  				7: ["Wegruesoe","Zaftan","Blektan","Wegruesoe City"]
+  		},
 			eventsCompleted: [],
 			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0)
 		}
-    
+
 		this.callback = this.callback.bind(this);
 	}
 
@@ -95,7 +106,7 @@ class MainPage extends Component{
 
 		//Get the event IDs between the two dates that need to be completed before the round can advance
 		let eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
-		
+
 		//Remove the newly completed event ID if it is in the array
 		if(eventsToComplete.includes(eventid)) {
 			eventsToComplete.splice(eventsToComplete.indexOf(eventid), 1);
@@ -108,10 +119,12 @@ class MainPage extends Component{
 			}
 		});
 
-		//If all events are complete advance the 
-		if(eventsToComplete.length == 0) {
-			this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
-		}
+
+    while(eventsToComplete.length == 0){
+      //If all events are complete advance the
+        this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
+        eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
+    }
 
 		this.setState({pollData: updatedData});
 		this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
@@ -139,7 +152,7 @@ class MainPage extends Component{
         <img className="desktop" src={desktop} alt="desktop"/>
           <nav>
 						<Link to='/Calendar'> {/*Button to Calendar*/}
-							<Button id="calendar-button">
+							<Button class="button calendar-button">
 								<span>Calendar</span>
 							</Button>
 						</Link>
@@ -193,9 +206,9 @@ class MainPage extends Component{
 							<EmailApp emails={emails}/>
 						</Route>
 						<Route path='/Map'>
-							<MapApp pollData={this.state.pollData}/>
+							<MapApp pollData={this.state.pollData} regionDistrictNames={this.state.regionDistrictNames}/>
 							<Route path='/Map/:id' render={(props)=>{
-									return <MapRegion region={props.match.params.id} pollData={this.state.pollData}/>
+									return <MapRegion region={props.match.params.id} pollData={this.state.pollData} regionDistrictNames={this.state.regionDistrictNames}/>
 								}
 							}/>
 						</Route>
