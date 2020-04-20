@@ -24,7 +24,6 @@ SOFTWARE.
 import React,{Component} from 'react';
 import Calendar from './Calendar.js';
 import './CalendarUI.css';
-import Event from "./Event.js";
 
 
 /**
@@ -39,15 +38,10 @@ class CalendarApp extends Component {
     constructor(props) {
       super(props);
 
-      this.state = {
-          events: props.events.map((event) => {
-            let date = new Date(event.year, event.month, event.day);
-            return(
-              {date: date, message: <Event key={event.id} message={event.message} date={date} id={event.id} status={event.status}/>}
-            );
-          })
+/*      this.state = {
+
       }
-    }
+*/    }
 
 	/**
    * Renders the calendar for the current month with all current events.
@@ -56,7 +50,7 @@ class CalendarApp extends Component {
     render() {
         return(
             <div className="calendar-app">
-                <Calendar  callbackFromMain={this.props.callback} events={this.state.events} eventsCompleted={this.props.eventsCompleted} turnStartDate={this.props.turnStartDate}/>
+                <Calendar  callbackFromMain={this.props.callback} events={this.props.events} eventsCompleted={this.props.eventsCompleted} turnStartDate={this.props.turnStartDate}/>
             </div>
         )
     }
