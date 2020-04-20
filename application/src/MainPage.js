@@ -22,6 +22,7 @@ SOFTWARE.
 */
 
 import React,{Component} from 'react';
+import Sound from 'react-sound';
 import './App.css';
 import MapApp from './Components/Map/MapApp.js';
 import MapRegion from './Components/Map/MapRegion.js';
@@ -37,6 +38,9 @@ import TimelineApp from './Components/Timeline/TimelineApp.js'
 import './MainPage.css';
 import desktop from './Resources/Title_Computer.png';
 import Situations from './Components/Calendar/Situations.json';
+import mainMusicMP3 from './Resources/Music/ThemeLoopable.mp3';
+import mainMusicWAV from './Resources/Music/ThemeLoopable.wav';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -130,7 +134,8 @@ class MainPage extends Component{
 
 		this.setState({pollData: updatedData});
 		this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
-	};
+
+  };
 
 	//Returns all of the event IDs between 2 dates
 	getEventIDsBetween = (turnStartDate, turnEndDate) => {
@@ -142,19 +147,31 @@ class MainPage extends Component{
 				eventsBetween.push(event.id);
 			}
 		});
-
 		return eventsBetween;
 	}
 
+  handleSongFinishedPlaying(sound){
+    sound.play();
+  }
+  handleSongLoading(sound){
+    sound.play();
+  }
+
 	render(){
 		return(
-
       <Router>
-				<div id="screen">
+        <div id="screen">
+
+        <audio controls autoplay loop id="main-music">
+          <source src="mainMusicMP3" type="audio/mpeg"></source>
+          <source src="mainMusicWAV" type="audio/wav"></source>
+          Your Browser does not support the audio element.
+        </audio>
+
         <img className="desktop" src={desktop} alt="desktop"/>
           <nav>
 						<Link to='/Calendar'> {/*Button to Calendar*/}
-							<Button class="button calendar-button">
+							<Button className="button calendar-button">
 								<span>Calendar</span>
 							</Button>
 						</Link>
