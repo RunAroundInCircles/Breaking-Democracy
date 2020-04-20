@@ -22,6 +22,7 @@ SOFTWARE.
 */
 
 import React,{Component} from 'react';
+import Sound from 'react-sound';
 import './App.css';
 import MapApp from './Components/Map/MapApp.js';
 import MapRegion from './Components/Map/MapRegion.js';
@@ -38,6 +39,9 @@ import TimelineApp from './Components/Timeline/TimelineApp.js'
 import './MainPage.css';
 import desktop from './Resources/Title_Computer.png';
 import Situations from './Components/Calendar/Situations.json';
+import mainMusicMP3 from './Resources/Music/ThemeLoopable.mp3';
+import mainMusicWAV from './Resources/Music/ThemeLoopable.wav';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -45,7 +49,6 @@ import {
   Link
 } from "react-router-dom";
 import { add, isBefore, isAfter, addDays } from 'date-fns';
-
 
 /**
  * MainPage component of the app that renders and returns all the buttons
@@ -83,13 +86,18 @@ class MainPage extends Component{
 			},
 			//eventsCompleted is an array to hold all of the events that have been finished by the player after they complete them.
 			eventsCompleted: [], 
+      currentEmails: [], /*The current list of emails for the sprint we are on */
+      currentSprint: 1, /* The current two week interval we are on */
 			//turnStartDate is the beginning Date for the game February 1, 2020, indicates the start of the turn in Calendar
 			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0)
 		}
 
 		this.callback = this.callback.bind(this);
+		this.setCurrentEmail = this.setCurrentEmail.bind(this);
+		this.ifExists = this.ifExists.bind(this);
 	}
-
+	
+	
 	/**
 	 * Allows an external component to add entries to eventsCompleted and update the pollData
 	 * @param  {eventid}   eventsCompleted The id of the event completed.
@@ -105,7 +113,7 @@ class MainPage extends Component{
 			region: region,
 			district: district
 		}
-
+    
 		let updatedData = this.state.pollData;
 		updatedData[region][district] += (updatedData[region][district] * percent)
 
@@ -116,23 +124,28 @@ class MainPage extends Component{
 		if(eventsToComplete.includes(eventid)) {
 			eventsToComplete.splice(eventsToComplete.indexOf(eventid), 1);
 		}
-		
+    
 		//Remove all completed event IDs from the array
 		this.state.eventsCompleted.map((completedEvent) => {
 			if(eventsToComplete.includes(completedEvent.eventID)) {
 				eventsToComplete.splice(eventsToComplete.indexOf(completedEvent.eventID), 1);
 			}
 		});
-
-		while(eventsToComplete.length == 0){
-			//If all events are complete advance turn
-			this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
-			eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
-		}
+    
+    while(eventsToComplete.length == 0){
+      //If all events are complete advance the
+      this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
+      
+      //Update eventsToComplete to detect turns with no events
+      eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
+      
+      //Advance the sprint number
+      this.setState({currentSprint: (this.state.currentSprint + 1)});
+    }
 
 		this.setState({pollData: updatedData});
 		this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
-	};
+  };
 
 	//Returns all of the event IDs between 2 dates
 	getEventIDsBetween = (turnStartDate, turnEndDate) => {
@@ -145,16 +158,72 @@ class MainPage extends Component{
         eventsBetween.push(event.id);
 			}
 		});
-
 		return eventsBetween;
 	}
 
 	render(){
 		return(
-      		<Router>
-				<div id="screen">
+      <Router>
+        <div id="screen">
+
+        <audio controls autoplay loop id="main-music">
+          <source src="mainMusicMP3" type="audio/mpeg"></source>
+          <source src="mainMusicWAV" type="audio/wav"></source>
+          Your Browser does not support the audio element.
+        </audio>
+
+        <img className="desktop" src={desktop} alt="desktop"/>
+          <nav>
+/*checks if the passed in email is already in the list of current emails. If it is not then it returns True, else if it already exists in the list it returns False
+@param  {emails}   The array of the currentEmails displayed.
+@param  {foundEmail}   The email that wants to be added to the current emails.
+*/
+ifExists(emails, foundEmail){
+	for(var i in emails) {
+		if(emails[i].currentSprint == foundEmail.currentSprint)
+		{
+			return false;
+		}
+	}
+	return true
+}
+	
+	
+/*This function gets the current emails needed for the current sprint.
+@param  {emails} The list of emails to be assessed and added to the current email list.
+*/
+setCurrentEmail(emails) {
+	for(var i in emails) {
+		if(emails[i].currentSprint == this.state.currentSprint)
+		{
+			if(this.ifExists(this.state.currentEmails, emails[i])){
+				this.state.currentEmails.push(emails[i]);
+			}
+		}
+	}
+}
+
+
+/*This function allows the calendar to update the turn date which allows the player to progress
+  through the game.*/
+  updateTurnStartDate  = () => {
+    var newdate = addDays(13, this.state.turnStartDate);
+    this.setState(
+      {
+        turnStartDate :  newdate//Moves the turn date up by 2 weeks.
+      }
+    )
+  }
+
+
+	render(){
+
+		return(
+      <Router>
+			<div id="screen">
+				{this.setCurrentEmail(emails)}
 				<img className="desktop" src={desktop} alt="desktop"/>
-				<nav>
+					<nav>
 						<Link to='/Calendar'> {/*Button to Calendar*/}
 							<Button className="button calendar-button">
 								<span>Calendar</span>
@@ -211,7 +280,7 @@ class MainPage extends Component{
 							}/>
 						</Route>
 						<Route path='/Email'>
-							<EmailApp emails={emails}/>
+							<EmailApp emails = {this.state.currentEmails}/>
 						</Route>
 						<Route path='/Map'>
 							<MapApp pollData={this.state.pollData} regionDistrictNames={this.state.regionDistrictNames}/>
