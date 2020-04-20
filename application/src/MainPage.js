@@ -88,6 +88,7 @@ class MainPage extends Component{
 	 * @param  {percent}   eventsCompleted The percentage amount of change for the region's district
 	 * @param  {region}	   eventsCompleted The id of the region to update
 	 * @param  {district}  eventsCompleted The id of the district to update
+	 * @param  {eventState}  eventsCompleted What the status of the event is.
 	 */
 	callback = (eventid, percent, region, district, eventState) => {
 		var eventCompleted = {
@@ -111,15 +112,16 @@ class MainPage extends Component{
 
 		//Get the event IDs between the two dates that need to be completed before the round can advance
 		let eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
-
+  /*  for(var i = 0; i < eventsToComplete.length; i++){
+      temporaryEvents[eventsToComplete[i]].status = 0;
+    }
+    */
 		//Remove the newly completed event ID if it is in the array
 		if(eventsToComplete.includes(eventid)) {
 			eventsToComplete.splice(eventsToComplete.indexOf(eventid), 1);
 		}
 
-    for(var i = 0; i < eventsToComplete.length; i++){
-      temporaryEvents[eventsToComplete[i]].status = 0;
-    }
+
 
     this.setState({events: temporaryEvents});
     console.log(events[0].status);
