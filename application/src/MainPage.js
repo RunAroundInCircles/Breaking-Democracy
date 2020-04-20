@@ -68,19 +68,20 @@ class MainPage extends Component{
 				6: [70, 25, 89, 34],
 				7: [21, 12, 37]
 			},
-      //regionDistrictNames stores all of the names of the regions and districts to be displayed on the map the first name in the array is the region, all subsequent are districts
-  		regionDistrictNames: {
-  				0: ["Saika","Rakka","Feidler","Larch","Broon","Lona La","Oglad","Prock"],
-  				1: ["Kaika","Ash","Holly","Kefler","Darby"],
-  				2: ["Flaze","Gretroit","Hearth","Magdo","Garde"],
-  				3: ["Libdove","Moka","Agon","Veera"],
-  				4: ["Osco","Proe","Haley"],
-  				5: ["Warren Central", "Warren Central"],
-  				6: ["Dukaste","Locke","Rehlat","Selia","Dukaste City"],
-  				7: ["Wegruesoe","Zaftan","Blektan","Wegruesoe City"]
-  		},
-			eventsCompleted: [],
-			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0)
+			//regionDistrictNames stores all of the names of the regions and districts to be displayed on the map
+			//the first name in the array is the region, all subsequent are districts
+			regionDistrictNames: {
+					0: ["Saika","Rakka","Feidler","Larch","Broon","Lona La","Oglad","Prock"],
+					1: ["Kaika","Ash","Holly","Kefler","Darby"],
+					2: ["Flaze","Gretroit","Hearth","Magdo","Garde"],
+					3: ["Libdove","Moka","Agon","Veera"],
+					4: ["Osco","Proe","Haley"],
+					5: ["Warren Central", "Warren Central"],
+					6: ["Dukaste","Locke","Rehlat","Selia","Dukaste City"],
+					7: ["Wegruesoe","Zaftan","Blektan","Wegruesoe City"]
+			},
+			eventsCompleted: [], //Stores all of the completed events once they have been completed
+			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0) //Indicates the start of the turn in Calendar
 		}
 
 		this.callback = this.callback.bind(this);
@@ -119,12 +120,10 @@ class MainPage extends Component{
 			}
 		});
 
-
-    while(eventsToComplete.length == 0){
-      //If all events are complete advance the
-        this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
-        eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
-    }
+		while(eventsToComplete.length == 0){
+			//If all events are complete advance turn
+			this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
+		}
 
 		this.setState({pollData: updatedData});
 		this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});

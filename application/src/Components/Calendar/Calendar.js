@@ -153,6 +153,10 @@ class Calendar extends React.Component {
           status = "disabled";
         }
 
+        if(!isSameMonth(day, currentMonth)) {
+          status = "disabled";
+        }
+
         days.push(
           <div
             className={`col cell ${

@@ -165,7 +165,6 @@ main {
 }
 
 .calendar .body .cell:hover {
-  background: var(--bg-color);
   transition: 0.5s ease-out;
 }
 
@@ -200,6 +199,7 @@ main {
 .calendar .body .disabled {
   color: var(--text-color-light);
   pointer-events: none;
+  background: var(--bg-color);
 }
 
 .calendar .body .cell .bg {
@@ -228,48 +228,6 @@ main {
 
 .calendar-event-button {
   background-color: var(--main-color);
-  box-sizing: border-box;
-  width: 50%;
-	border-style: solid;
-	border-color: var(--border-color);
-	color: white;
-	padding: 5px 5px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-}
-
-.calendar-event-button-completed {
-  background-color: var(--completed-color);
-  box-sizing: border-box;
-  width: 50%;
-	border-style: solid;
-	border-color: var(--border-color);
-	color: white;
-	padding: 5px 5px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-}
-
-.calendar-event-button-failed {
-  background-color: var(--failed-color);
-  box-sizing: border-box;
-  width: 50%;
-	border-style: solid;
-	border-color: var(--border-color);
-	color: white;
-	padding: 5px 5px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-}
-
-.calendar-event-button-locked {
-  background-color: var(--locked-color);
   box-sizing: border-box;
   width: 50%;
 	border-style: solid;
