@@ -40,32 +40,42 @@ import region8 from '../../Resources/Maps/Region-8.svg.js';
  */
 function MapRegion(props) {
     const colors = useState(props.pollData[props.region]);
-    
     //Applies coloring to the districts after the page is rendered
+
     useEffect(() => {
         document.querySelectorAll('g > path[id~=district]').forEach((district, index) => {
-            var color = 'rgb(' + (colors[0][index]/100)*255 + 
-                ', 0, ' + 
+            var districtName = document.getElementById('district-name');
+            districtName.innerText = "Region of " + props.regionDistrictNames[props.region][0];
+            var color = 'rgb(' + (colors[0][index]/100)*255 +
+                ', 0, ' +
                 (1- (colors[0][index]/100))*255 + ')'; //Formats colors to be used
             district.style.setProperty("fill", color);
+            //Function to display the name of the District that is being hovered over
+            district.addEventListener('mouseover', function(event) {
+                districtName.innerText = (index+1) + ": " + props.regionDistrictNames[props.region][index+1] + " District";
+      			});
+            //Function to display the name of the Region if no district is being hovered over
+            district.addEventListener('mouseout', function(event) {
+      				  districtName.innerText = "Region of " + props.regionDistrictNames[props.region][0];
+            });
         });
     });
-    
+
     //regions stores all of the regional maps so that they can be easily accessed
     var regions = {
         0: region1,
         1: region2,
         2: region3,
-        3: region4, 
+        3: region4,
         4: region5,
-        5: region6, 
+        5: region6,
         6: region7,
         7: region8
     }
 
     //svg stores the raw html of the regional svg map to be inserted into the div
     var svg = {
-        __html: regions[props.region] //Formats the map to be inserted as InnnerHTML
+        __html: regions[props.region] //Formats the map to be inserted as InnerHTML
     }
     return (
         //This div is the shadow that blocks the country map from being clicked on
@@ -88,14 +98,20 @@ function MapRegion(props) {
                 position: 'absolute',
                 justifyContent: 'center'
             }}>
+            {/*This header is where the name of the region and district is displayed*/}
+            <h1 id="district-name" style={{position: 'absolute',
+                alignItems: 'center',
+                justifyContent: 'center',
+                left: '40%'
+            }}></h1>
                 {/*This link acts as a back button allowing the user to redirect to Map*/}
                 <Link to='/Map' >
                     <Button style={{top: 5, right: 5, position: 'absolute'}}>
-						<span>X</span>
-					</Button>
+						              <span>X</span>
+					          </Button>
                 </Link>
                 {/*This div contains the regional map*/}
-                <div className="region-map" 
+                <div className="region-map"
                     dangerouslySetInnerHTML={svg}
                 />
             </div>

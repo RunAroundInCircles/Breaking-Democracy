@@ -20,36 +20,33 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
 import React from 'react';
 import MapApp from './MapApp.js';
-import MapRegion from './/MapRegion.js';
-import MainPage from '../../App.js';
 import renderer from 'react-test-renderer';
+import { BrowserRouter as Router } from "react-router-dom";
 
-import ReactDOM from 'react-dom';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+//Poll data to use for testing, numbers represent the percentage of votes your party has
+let pollData = {
+	0: [75, 75, 75, 75, 75, 75, 75],
+	1: [25, 25, 25, 25],
+	2: [62, 33, 51, 83],
+	3: [75, 50, 57],
+	4: [38, 51],
+	5: [18],
+	6: [70, 25, 89, 34],
+	7: [21, 12, 37]
+}
 
 /**
- * Checks to see if the Map is correctly rendered
+ * Checks to see if the MapApp is correctly rendered
  */
 test('renders MapApp page', () => {
 	const tree = renderer
-
 	.create(
 		<Router>
-			<Route path='/Map/' render={(props)=>{
-					return <MapRegion/>
-				}
-			}>
-		</Route>
-	</Router>
+			<MapApp pollData={pollData}/>
+		</Router>
 	)
 	expect(tree).toMatchSnapshot();
-
-
 });

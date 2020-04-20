@@ -37,7 +37,9 @@ class MapApp extends Component {
    */
     constructor(props) {
         super(props);
-        this.setSelectedRegion = this.setSelectedRegion.bind(this); //Bind MapApp to this for setSelectedRegion
+
+        //Bind MapApp to this for setSelectedRegion
+        this.setSelectedRegion = this.setSelectedRegion.bind(this);
     }
 
   /**
@@ -47,7 +49,7 @@ class MapApp extends Component {
     render() {
         return(
             <div className="map-app">
-                <Map onSelect={this.setSelectedRegion} pollData={this.props.pollData}/>
+                <Map onSelect={this.setSelectedRegion} pollData={this.props.pollData} regionDistrictNames={this.props.regionDistrictNames}/>
             </div>
         )
     }

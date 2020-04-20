@@ -20,16 +20,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
 import React from 'react';
-import 'react-router';
-import Calendar from './Components/Calendar/Calendar.js';
-import MainPage from './MainPage.js';
 import renderer from 'react-test-renderer';
-import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
   Link
 } from "react-router-dom";
 
@@ -40,9 +35,8 @@ onto the page on startup. Instead by using page the link will only work
 when the button are pressed which is how the main application functions.
 */
 
-
 /**
- * Renders calendar page
+ * Renders link to calendar page
  */
 test('renders link to calendar page', () => {
 	const tree = renderer

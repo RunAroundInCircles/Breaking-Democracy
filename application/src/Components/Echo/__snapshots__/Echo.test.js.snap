@@ -40,79 +40,101 @@ exports[`renders EchoApp page 1`] = `
     className="echo-list"
   >
     <div
-      className="echo-selected"
+      className="echo"
     >
-      <h4>
-        21h
-      </h4>
-      <h1>
-        @washingtonpost
-      </h1>
 
-      <h2>
-        Washington Post
-      </h2>
-
-      <h3>
-        Breaking news! The president is getting impeached.
-      </h3>
+      <span
+        class="echo-contents"
+      >
+        <h4>
+          January 1, 2020
+        </h4>
+        <h1>
+          @democristannightlynews
+        </h1>
+         
+        <h2>
+          DNN
+        </h2>
+         
+        <h3>
+          Good evening Democristan, it is January, 2020. That means it’s time for the second presidential election in our history. There are 3 candidates this time around, and they are excited to get their campaigns out there. Stay tuned for further updates from DNN, we’ll be covering everything that happens this election cycle.
+        </h3>
+         
+      </span>
 
     </div>
     <div
-      className="echo-selected"
+      className="echo"
     >
-      <h4>
-        22h
-      </h4>
-      <h1>
-        @vernon
-      </h1>
+      <span
+        class="echo-contents"
+      >
+        <h4>
+          January 3, 2020
+        </h4>
+        <h1>
+          @candidateconservative
+        </h1>
+         
+        <h2>
+          George Warren
+        </h2>
+         
+        <h3>
+          Greetings Democristan, I am George Warren; the son of our great first president John Warren. As a president I am dedicated to my father’s way of leading our nation and will strive to keep Democristan on the path to greatness.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
 
-      <h2>
-        Vernon
-      </h2>
-
-      <h3>
-        New Candidate is rising in the polls.
-      </h3>
+      <span
+        class="echo-contents"
+      >
+        <h4>
+          January 4, 2020
+        </h4>
+        <h1>
+          @candidateliberal
+        </h1>
+         
+        <h2>
+          Lyra Whit
+        </h2>
+         
+        <h3>
+          Hello my fellow Democristans, I am Lyra Whit; the front runner for the Democristan Liberal Party. As a newly formed country I believe that we have endless potential, however the Democristan Conservative Party is too concerned with mimicking the ways of western politics.  Democristan must break free and forge its own path to a new future.
+        </h3>
+         
+      </span>
 
     </div>
     <div
-      className="echo-selected"
+      className="echo"
     >
-      <h4>
-        2h
-      </h4>
-      <h1>
-        @eli
-      </h1>
 
-      <h2>
-        Fake News
-      </h2>
-
-      <h3>
-        Totally real news story
-      </h3>
-
-    </div>
-    <div
-      className="echo-selected"
-    >
-      <h4>
-        23h
-      </h4>
-      <h1>
-        @TimeMagazine
-      </h1>
-
-      <h2>
-        TimeMagazine
-      </h2>
-
-      <h3>
-        Candidate suggests new policies.
-      </h3>
+      <span
+        class="echo-contents"
+      >
+        <h4>
+          January 6, 2020
+        </h4>
+        <h1>
+          @candidatepurple
+        </h1>
+         
+        <h2>
+          Dimitri Patrov
+        </h2>
+         
+        <h3>
+          My fellow countrymen, I am Dimitri Patrov; the people’s voices need to be heard and I know they deserve this. Therefore, I am running in this election under the Democristan People’s Party, where we will shape this country together by the people, with the people, and for the people.
+        </h3>
+         
+      </span>
 
     </div>
   </div>
