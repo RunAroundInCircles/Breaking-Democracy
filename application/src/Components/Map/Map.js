@@ -45,9 +45,15 @@ class Map extends Component{
 	 */
 	render(){
 		var svg = {
-			__html: country //Formats the map to be inserted as InnnerHTML
+			__html: country //Formats the map to be inserted as InnerHTML
 		}
-		return <div className="country-map" dangerouslySetInnerHTML={svg} ref={this.mapRef}/> //Uses svg to display map
+		return (
+			<div>
+				<h1 id="region-name">DEMOCRISTAN</h1>
+				{/*Uses svg to display map*/}
+				<div className="country-map" dangerouslySetInnerHTML={svg} ref={this.mapRef}/>
+			</div>
+		);
 	}
 
 	/**
@@ -56,6 +62,7 @@ class Map extends Component{
 	 */
 	componentDidMount() {
 		var func = this.props.onSelect; //Allows access to onSelect within the forEach
+
 		//Iterates through all paths within the svg and attaches the click event to each path and gives them their unique color
 		this.mapRef.current.querySelectorAll('g > path').forEach((region, index) => {
 			var i;
@@ -66,14 +73,26 @@ class Map extends Component{
 			}
 			red = red/this.props.pollData[index].length;
 			blue = 100-red;
-			
+
 			var color = 'rgb(' + (red/100)*255 + ', 0, ' + (blue/100)*255 + ')'; //Formats colors to be used
 			region.style.setProperty("fill", color);
 			region.style.setProperty("fill:hover", 'gold');
+			//Function to display the name of the Region that is being hovered over
+
+			var name = this.props.regionDistrictNames[index][0]
+			region.addEventListener('mouseover', function(event) {
+				var regionName = document.getElementById('region-name');
+				regionName.innerText = "Region of " + name;
+			});
+			//Function to display the name of the Democristan if no region is being hovered over
+			region.addEventListener('mouseout', function(event) {
+				var regionName = document.getElementById('region-name');
+				regionName.innerText = "Country of Democristan";
+			});
 			region.addEventListener('click', function(event) {
 				//Decides which region map to show based on what region is clicked on
-				func(index);			
-			})
+				func(index);
+			});
 		});
 	}
 }
