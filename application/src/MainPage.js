@@ -79,7 +79,9 @@ class MainPage extends Component{
   				6: ["Dukaste","Locke","Rehlat","Selia","Dukaste City"],
   				7: ["Wegruesoe","Zaftan","Blektan","Wegruesoe City"]
   		},
+      //eventsCompleted is an array to hold all of the events that have been finished by the player after they complete them.
 			eventsCompleted: [],
+      //turnStartDate is the beginning Date for the game February 1, 2020
 			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0)
 		}
 
