@@ -17,7 +17,7 @@ exports[`renders emailApp page 1`] = `
       onClick={[Function]}
     >
       <h1>
-        Putin
+        Game Master
       </h1>
        
       <img
@@ -26,13 +26,11 @@ exports[`renders emailApp page 1`] = `
         src="face.png"
       />
       <h2>
-        Dear Future Putin
+        Welcome To Grand Theft Democracy
       </h2>
        
       <h3>
-        Hello Putin, 
-
- This is future Putin. Yo
+        Hello and welcome to Grand Theft Democra
       </h3>
        
     </div>
@@ -41,7 +39,7 @@ exports[`renders emailApp page 1`] = `
       onClick={[Function]}
     >
       <h1>
-        George Bush
+        FSB Director
       </h1>
        
       <img
@@ -50,13 +48,13 @@ exports[`renders emailApp page 1`] = `
         src="face.png"
       />
       <h2>
-        Golfing?
+        Interference with Democristan
       </h2>
        
       <h3>
-        Hello Putin, 
+        Good Evening Putin, 
 
- Wanna go golfing again?
+ As you may be awa
       </h3>
        
     </div>
@@ -65,7 +63,7 @@ exports[`renders emailApp page 1`] = `
       onClick={[Function]}
     >
       <h1>
-        Tutorial
+        FSB Director
       </h1>
        
       <img
@@ -74,13 +72,13 @@ exports[`renders emailApp page 1`] = `
         src="face.png"
       />
       <h2>
-        Tutorial #1
+        Good Work
       </h2>
        
       <h3>
-        Hello Putin! 
+        Good Work Mr. Putin,
 
- Click Emails to view tut
+I see that you’ve 
       </h3>
        
     </div>
@@ -89,7 +87,7 @@ exports[`renders emailApp page 1`] = `
       onClick={[Function]}
     >
       <h1>
-        Story
+        FSB Director
       </h1>
        
       <img
@@ -98,11 +96,13 @@ exports[`renders emailApp page 1`] = `
         src="face.png"
       />
       <h2>
-        Story #1
+        New Measures
       </h2>
        
       <h3>
-        This is an important piece of informatio
+        Good Evening Mr. Putin,
+
+I hope things a
       </h3>
        
     </div>
