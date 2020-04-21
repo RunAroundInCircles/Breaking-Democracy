@@ -61,18 +61,51 @@ namespace Editor
             string pathToEchosList = "../application/src/Components/Echo/echo.json";
             string pathToEmailsList = "../application/src/Components/Email/EmailList.json";
 
-            //Loads in the files into the editor
+            string[] paths = { pathToEventList, pathToSituationsList, pathToEchosList, pathToEmailsList };
 
-            //First we load in JSONs that have arrays
-            LoadInFileArray(pathToEventList, uxEventList);
-            LoadInFileArray(pathToSituationsList, uxSituationsList);
+            
+            //The files were not found so close the application
+            if(!checkFiles(paths))
+            {
+                MessageBox.Show("The Files could not be found. Please make sure the executable is in the Edit Components Application folder." +
+                    "\nAlso make sure the JSONs are in the correct paths.");
+                this.Close();
+            }
+            else
+            {
+                //Loads in the files into the editor
 
-            //New load in JSONs that do not use arrays.
-            LoadInFileWithoutArray(pathToEchosList, uxEchosList);
-            LoadInFileWithoutArray(pathToEmailsList, uxEmailList);
+                //First we load in JSONs that have arrays
+                LoadInFileArray(pathToEventList, uxEventList);
+                LoadInFileArray(pathToSituationsList, uxSituationsList);
+
+                //New load in JSONs that do not use arrays.
+                LoadInFileWithoutArray(pathToEchosList, uxEchosList);
+                LoadInFileWithoutArray(pathToEmailsList, uxEmailList);
+            }
 
         }
 
+        /// <summary>
+        /// Checks if the files are correct and can be accessed.
+        /// </summary>
+        /// <param name="paths"></param>
+        /// <returns></returns>
+        public bool checkFiles(string [] paths)
+        {
+            bool pathsAreCorrect = true;
+            //Check to see if the file exists
+            foreach (string path in paths)
+            {
+                if (!File.Exists(path))
+                {
+                    pathsAreCorrect = false;
+                    break;
+                }
+            }
+
+            return pathsAreCorrect;
+        }
 
         /// <summary>
         /// When given a path it will load the file into the associated tab.
