@@ -57,14 +57,7 @@ class CalendarApp extends Component {
    */
     render() {
         return(
-          <div className="calendar-app">
-            <Link to='/MainPage' >
-              <Button style={{top: 5, right: 5, position: 'absolute'}}>
-                <span>X</span>
-              </Button>
-            </Link>
-            <Calendar events={this.state.events} eventsCompleted={this.props.eventsCompleted} turnStartDate={this.props.turnStartDate}/>
-          </div>
+          <Calendar events={this.state.events} eventsCompleted={this.props.eventsCompleted} turnStartDate={this.props.turnStartDate}/>
         )
     }
 

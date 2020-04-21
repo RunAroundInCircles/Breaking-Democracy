@@ -22,8 +22,6 @@ SOFTWARE.
 */
 
 import React,{Component} from 'react';
-import {Link} from "react-router-dom";
-import {Button} from 'react-bootstrap';
 import TimelineEvent from './TimelineEvent.js';
 import Timeline from './Timeline.js';
 
@@ -47,11 +45,6 @@ class TimelineApp extends Component {
     render() {
         return(
             <div className="timeline-app">
-                <Link to='/MainPage' >
-                    <Button style={{top: 5, right: 5, position: 'absolute'}}>
-                          <span>X</span>
-                    </Button>
-                </Link>
                 <Timeline/>
                 <TimelineEvent events={this.props.events} eventsCompleted={this.props.eventsCompleted}/>
             </div>

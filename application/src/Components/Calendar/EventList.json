@@ -1,198 +1,28 @@
 {
-  "0": {
-    "id": "0",
-    "day": "3",
-    "month": "2",
-    "year": "2020",
-    "message": "Iowa Caucus"
-  },
-  "1": {
-    "id": "1",
-    "day": "11",
-    "month": "2",
-    "year": "2020",
-    "message": "New Hampshire Caucus"
-  },
-  "2": {
-    "id": "2",
-    "day": "22",
-    "month": "2",
-    "year": "2020",
-    "message": "South Carolina Caucus"
-  },
-  "3": {
-    "id": "3",
-    "day": "3",
-    "month": "3",
-    "year": "2020",
-    "message": "Super Tuesday"
-  },
-  "4": {
-    "id": "4",
-    "day": "3",
-    "month": "10",
-    "year": "2020",
-    "message": "Primaries Idaho, Michigan, Mississippi, Missouri, North Dakota, Washington"
-  },
-  "5": {
-    "id": "5",
-    "day": "12",
-    "month": "3",
-    "year": "2020",
-    "message": "Virigin Islands Caucus"
-  },
-  "6": {
-    "id": "6",
-    "day": "14",
-    "month": "3",
-    "year": "2020",
-    "message": "Caucus for Guam and Northern Mariana and Convention for Wyoming"
-  },
-  "7": {
-    "id": "7",
-    "day": "17",
-    "month": "3",
-    "year": "2020",
-    "message": "Primaries for Arizona, Florida, Illinois, Ohio Caucus for Northern Mariana"
-  },
-  "8": {
-    "id": "8",
-    "day": "24",
-    "month": "3",
-    "year": "2020",
-    "message": "Caucus for American Samoa and Primary for Georgia"
-  },
-  "9": {
-    "id": "9",
-    "day": "27",
-    "month": "3",
-    "year": "2020",
-    "message": "North Dakota Convention"
-  },
-  "10": {
-    "id": "10",
-    "day": "29",
-    "month": "3",
-    "year": "2020",
-    "message": "Puerto Rico Primary"
-  },
-  "11": {
-    "id": "11",
-    "day": "4",
-    "month": "4",
-    "year": "2020",
-    "message": "Caucus for Wyoming, Primaries for Alaska, Hawaii, Louisiana"
-  },
-  "12": {
-    "id": "12",
-    "day": "7",
-    "month": "4",
-    "year": "2020",
-    "message": "Primary: Wisconsin"
-  },
-  "13": {
-    "id": "13",
-    "day": "28",
-    "month": "4",
-    "year": "2020",
-    "message": "Primaries: Conneticut, Delaware, Maryland, New York, Pennsylvaina, Rhode Island"
-  },
-  "14": {
-    "id": "14",
-    "day": "2",
-    "month": "5",
-    "year": "2020",
-    "message": "Caucus: Guam Primary: Kansas "
-  },
-  "15": {
-    "id": "15",
-    "day": "5",
-    "month": "5",
-    "year": "2020",
-    "message": "Primaries for Indiana"
-  },
-  "16": {
-    "id": "16",
-    "day": "12",
-    "month": "5",
-    "year": "2020",
-    "message": "Primaries for Nebraska and Wester Virginia"
-  },
-  "17": {
-    "id": "17",
-    "day": "19",
-    "month": "5",
-    "year": "2020",
-    "message": "Primaries for Kentucky and Oregon"
-  },
-  "18": {
-    "id": "18",
-    "day": "2",
-    "month": "6",
-    "year": "2020",
-    "message": "Primaries for District of Columbia, Montana, New Jersey, New Mexico, South Dakota"
-  },
-  "19": {
-    "id": "19",
-    "day": "6",
-    "month": "6",
-    "year": "2020",
-    "message": "Caucus: Virgin Islands"
-  },
-  "20": {
-    "id": "20",
-    "day": "6",
-    "month": "7",
-    "year": "2020",
-    "message": "Primary: Puerto Rico"
-  },
-  "21": {
-    "id": "21",
-    "day": "13",
-    "month": "7",
-    "year": "2020",
-    "message": "Democratic Convention"
-  },
-  "22": {
-    "id": "22",
-    "day": "24",
-    "month": "8",
-    "year": "2020",
-    "message": "Republican Convention"
-  },
-  "23": {
-    "id": "23",
-    "day": "29",
-    "month": "9",
-    "year": "2020",
-    "message": "First Presidential Debate"
-  },
-  "24": {
-    "id": "24",
-    "day": "7",
-    "month": "10",
-    "year": "2020",
-    "message": "Vice Presidential Debate"
-  },
-  "25": {
-    "id": "25",
-    "day": "15",
-    "month": "10",
-    "year": "2020",
-    "message": "Second Presidential Debate"
-  },
-  "26": {
-    "id": "26",
-    "day": "22",
-    "month": "10",
-    "year": "2020",
-    "message": "Third Presidential Debate"
-  },
-  "27": {
-    "id": "27",
-    "day": "3",
-    "month": "11",
-    "year": "2020",
-    "message": "2020 Presidential Election"
-  }
+    "0": {"id": 0, "day": 3, "month": 2, "year": 2020, "message": "Saika Region Caucus", "status": 4},
+    "1": {"id": 1, "day": 11, "month": 2, "year": 2020, "message": "Flaze Region Caucus", "status": 4},
+    "2": {"id": 2, "day": 22, "month": 2, "year": 2020, "message": "Osco Region Caucus", "status": 4},
+    "3": {"id": 3, "day": 3, "month": 3, "year": 2020, "message": "Super Tuesday", "status": 4},
+    "4": {"id": 4, "day": 10, "month": 3, "year": 2020, "message": "Primaries for Districts in Saika", "status": 4},
+    "5": {"id": 5, "day": 12, "month": 3, "year": 2020, "message": "Primaries for Districts in Osco", "status": 4},
+    "6": {"id": 6, "day": 14, "month": 3, "year": 2020, "message": "Kaika Region Caucus", "status": 4},
+    "7": {"id": 7, "day": 17, "month": 3, "year": 2020, "message": "Primaries for Districts in Flaze", "status": 4},
+    "8": {"id": 8, "day": 24, "month": 3, "year": 2020, "message": "Libdove Region Caucus", "status": 4},
+    "9": {"id": 9, "day": 27, "month": 3, "year": 2020, "message": "Dukaste Region Caucus", "status": 4},
+    "10": {"id": 10, "day": 29, "month": 3, "year": 2020, "message": "Primaries for Districts in Dukaste", "status": 4},
+    "11": {"id": 11, "day": 4, "month": 4, "year": 2020, "message": "Wegruesoe Region Caucus", "status": 4},
+    "12": {"id": 12, "day": 14, "month": 4, "year": 2020, "message": "Primaries for Districts in Libdove", "status": 4},
+    "13": {"id": 13, "day": 22, "month": 4, "year": 2020, "message": "Primaries for Districts in Dukaste", "status": 4},
+    "14": {"id": 14, "day": 2, "month": 4, "year": 2020, "message": "Kaika Region Caucus ", "status": 4},
+    "15": {"id": 15, "day": 30, "month": 5, "year": 2020, "message": "Primaries for Districts in Kaika", "status": 4},
+    "16": {"id": 16, "day": 2, "month": 6, "year": 2020, "message": "Primaries for Warren Central", "status": 4},
+    "17": {"id": 17, "day": 6, "month": 6, "year": 2020, "message": "Warren Central Caucus", "status": 4},
+    "18": {"id": 18, "day": 6, "month": 7, "year": 2020, "message": "Conservative Convention", "status": 4},
+    "19": {"id": 19, "day": 13, "month": 7, "year": 2020, "message": "Liberal Convention", "status": 4},
+    "20": {"id": 20, "day": 24, "month": 8, "year": 2020, "message": "Peoples Party Convention", "status": 4},
+    "21": {"id": 21, "day": 29, "month": 9, "year": 2020, "message": "First Presidential Debate", "status": 4},
+    "22": {"id": 22, "day": 7, "month": 10, "year": 2020, "message": "Vice Presidential Debate", "status": 4},
+    "23": {"id": 23, "day": 15, "month": 10, "year": 2020, "message": "Second Presidential Debate", "status": 4},
+    "24": {"id": 24, "day": 22, "month": 10, "year": 2020, "message": "Third Presidential Debate", "status": 4},
+    "25": {"id": 25, "day": 3, "month": 11, "year": 2020, "message": "2020 Presidential Election", "status": 4}
 }
