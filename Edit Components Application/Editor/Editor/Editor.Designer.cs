@@ -50,11 +50,22 @@ namespace Editor
         /// </summary>
         private void InitializeComponent()
         {
-            this.uxEventNameTab = new System.Windows.Forms.TabControl();
+            this.uxTabs = new System.Windows.Forms.TabControl();
             this.uxEventTab = new System.Windows.Forms.TabPage();
             this.uxEventList = new System.Windows.Forms.DataGridView();
+            this.eventArrayIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eventID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.day = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.month = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eventYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.message = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uxSituationsTab = new System.Windows.Forms.TabPage();
             this.uxSituationsList = new System.Windows.Forms.DataGridView();
+            this.SituationsArrayIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.situationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.situation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.situationChoice1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.situationChoice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uxEchoTab = new System.Windows.Forms.TabPage();
             this.uxEchosList = new System.Windows.Forms.DataGridView();
             this.echoBody = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,7 +74,6 @@ namespace Editor
             this.echoTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uxEmailTab = new System.Windows.Forms.TabPage();
             this.uxEmailList = new System.Windows.Forms.DataGridView();
-            this.btnSave = new System.Windows.Forms.Button();
             this.emailCurrentSprint = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailSender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,18 +83,10 @@ namespace Editor
             this.emailPinned = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailbody = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eventArrayIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eventID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.day = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.month = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eventYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.message = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SituationsArrayIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.situationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.situation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.situationChoice1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.situationChoice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uxEventNameTab.SuspendLayout();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.tabsPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonPannel = new System.Windows.Forms.FlowLayoutPanel();
+            this.uxTabs.SuspendLayout();
             this.uxEventTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uxEventList)).BeginInit();
             this.uxSituationsTab.SuspendLayout();
@@ -93,19 +95,22 @@ namespace Editor
             ((System.ComponentModel.ISupportInitialize)(this.uxEchosList)).BeginInit();
             this.uxEmailTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uxEmailList)).BeginInit();
+            this.tabsPanel.SuspendLayout();
+            this.buttonPannel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // uxEventNameTab
+            // uxTabs
             // 
-            this.uxEventNameTab.Controls.Add(this.uxEventTab);
-            this.uxEventNameTab.Controls.Add(this.uxSituationsTab);
-            this.uxEventNameTab.Controls.Add(this.uxEchoTab);
-            this.uxEventNameTab.Controls.Add(this.uxEmailTab);
-            this.uxEventNameTab.Location = new System.Drawing.Point(12, 12);
-            this.uxEventNameTab.Name = "uxEventNameTab";
-            this.uxEventNameTab.SelectedIndex = 0;
-            this.uxEventNameTab.Size = new System.Drawing.Size(886, 426);
-            this.uxEventNameTab.TabIndex = 0;
+            this.uxTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.uxTabs.Controls.Add(this.uxEventTab);
+            this.uxTabs.Controls.Add(this.uxSituationsTab);
+            this.uxTabs.Controls.Add(this.uxEchoTab);
+            this.uxTabs.Controls.Add(this.uxEmailTab);
+            this.uxTabs.Location = new System.Drawing.Point(3, 3);
+            this.uxTabs.Name = "uxTabs";
+            this.uxTabs.SelectedIndex = 0;
+            this.uxTabs.Size = new System.Drawing.Size(895, 415);
+            this.uxTabs.TabIndex = 0;
             // 
             // uxEventTab
             // 
@@ -113,7 +118,7 @@ namespace Editor
             this.uxEventTab.Location = new System.Drawing.Point(4, 25);
             this.uxEventTab.Name = "uxEventTab";
             this.uxEventTab.Padding = new System.Windows.Forms.Padding(3);
-            this.uxEventTab.Size = new System.Drawing.Size(878, 397);
+            this.uxEventTab.Size = new System.Drawing.Size(887, 386);
             this.uxEventTab.TabIndex = 0;
             this.uxEventTab.Text = "Events";
             this.uxEventTab.UseVisualStyleBackColor = true;
@@ -128,11 +133,43 @@ namespace Editor
             this.month,
             this.eventYear,
             this.message});
-            this.uxEventList.Location = new System.Drawing.Point(-4, 0);
+            this.uxEventList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uxEventList.Location = new System.Drawing.Point(3, 3);
             this.uxEventList.Name = "uxEventList";
             this.uxEventList.RowTemplate.Height = 24;
-            this.uxEventList.Size = new System.Drawing.Size(879, 401);
+            this.uxEventList.Size = new System.Drawing.Size(881, 380);
             this.uxEventList.TabIndex = 0;
+            // 
+            // eventArrayIndex
+            // 
+            this.eventArrayIndex.HeaderText = "eventArrayIndex";
+            this.eventArrayIndex.Name = "eventArrayIndex";
+            this.eventArrayIndex.Visible = false;
+            // 
+            // eventID
+            // 
+            this.eventID.HeaderText = "id";
+            this.eventID.Name = "eventID";
+            // 
+            // day
+            // 
+            this.day.HeaderText = "day";
+            this.day.Name = "day";
+            // 
+            // month
+            // 
+            this.month.HeaderText = "month";
+            this.month.Name = "month";
+            // 
+            // eventYear
+            // 
+            this.eventYear.HeaderText = "year";
+            this.eventYear.Name = "eventYear";
+            // 
+            // message
+            // 
+            this.message.HeaderText = "message";
+            this.message.Name = "message";
             // 
             // uxSituationsTab
             // 
@@ -159,6 +196,32 @@ namespace Editor
             this.uxSituationsList.RowTemplate.Height = 24;
             this.uxSituationsList.Size = new System.Drawing.Size(875, 394);
             this.uxSituationsList.TabIndex = 0;
+            // 
+            // SituationsArrayIndex
+            // 
+            this.SituationsArrayIndex.HeaderText = "Situations Array Index";
+            this.SituationsArrayIndex.Name = "SituationsArrayIndex";
+            this.SituationsArrayIndex.Visible = false;
+            // 
+            // situationID
+            // 
+            this.situationID.HeaderText = "id";
+            this.situationID.Name = "situationID";
+            // 
+            // situation
+            // 
+            this.situation.HeaderText = "situation";
+            this.situation.Name = "situation";
+            // 
+            // situationChoice1
+            // 
+            this.situationChoice1.HeaderText = "choice 1";
+            this.situationChoice1.Name = "situationChoice1";
+            // 
+            // situationChoice2
+            // 
+            this.situationChoice2.HeaderText = "choice 2";
+            this.situationChoice2.Name = "situationChoice2";
             // 
             // uxEchoTab
             // 
@@ -235,15 +298,6 @@ namespace Editor
             this.uxEmailList.Size = new System.Drawing.Size(882, 401);
             this.uxEmailList.TabIndex = 0;
             // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(748, 444);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(150, 26);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
             // emailCurrentSprint
             // 
             this.emailCurrentSprint.HeaderText = "currentSprint";
@@ -289,75 +343,46 @@ namespace Editor
             this.emailbody.HeaderText = "body";
             this.emailbody.Name = "emailbody";
             // 
-            // eventArrayIndex
+            // btnSave
             // 
-            this.eventArrayIndex.HeaderText = "eventArrayIndex";
-            this.eventArrayIndex.Name = "eventArrayIndex";
-            this.eventArrayIndex.Visible = false;
+            this.btnSave.Location = new System.Drawing.Point(735, 3);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(150, 26);
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // eventID
+            // tabsPanel
             // 
-            this.eventID.HeaderText = "id";
-            this.eventID.Name = "eventID";
+            this.tabsPanel.Controls.Add(this.uxTabs);
+            this.tabsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabsPanel.Location = new System.Drawing.Point(0, 0);
+            this.tabsPanel.Name = "tabsPanel";
+            this.tabsPanel.Size = new System.Drawing.Size(920, 482);
+            this.tabsPanel.TabIndex = 2;
             // 
-            // day
+            // buttonPannel
             // 
-            this.day.HeaderText = "day";
-            this.day.Name = "day";
-            // 
-            // month
-            // 
-            this.month.HeaderText = "month";
-            this.month.Name = "month";
-            // 
-            // eventYear
-            // 
-            this.eventYear.HeaderText = "year";
-            this.eventYear.Name = "eventYear";
-            // 
-            // message
-            // 
-            this.message.HeaderText = "message";
-            this.message.Name = "message";
-            // 
-            // SituationsArrayIndex
-            // 
-            this.SituationsArrayIndex.HeaderText = "Situations Array Index";
-            this.SituationsArrayIndex.Name = "SituationsArrayIndex";
-            this.SituationsArrayIndex.Visible = false;
-            // 
-            // situationID
-            // 
-            this.situationID.HeaderText = "id";
-            this.situationID.Name = "situationID";
-            // 
-            // situation
-            // 
-            this.situation.HeaderText = "situation";
-            this.situation.Name = "situation";
-            // 
-            // situationChoice1
-            // 
-            this.situationChoice1.HeaderText = "choice 1";
-            this.situationChoice1.Name = "situationChoice1";
-            // 
-            // situationChoice2
-            // 
-            this.situationChoice2.HeaderText = "choice 2";
-            this.situationChoice2.Name = "situationChoice2";
+            this.buttonPannel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonPannel.Controls.Add(this.btnSave);
+            this.buttonPannel.Location = new System.Drawing.Point(20, 436);
+            this.buttonPannel.Name = "buttonPannel";
+            this.buttonPannel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.buttonPannel.Size = new System.Drawing.Size(888, 34);
+            this.buttonPannel.TabIndex = 3;
             // 
             // uxEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(920, 482);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.uxEventNameTab);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Controls.Add(this.buttonPannel);
+            this.Controls.Add(this.tabsPanel);
             this.Name = "uxEditor";
             this.Text = "Editor";
             this.Load += new System.EventHandler(this.Editor_Load);
-            this.uxEventNameTab.ResumeLayout(false);
+            this.uxTabs.ResumeLayout(false);
             this.uxEventTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uxEventList)).EndInit();
             this.uxSituationsTab.ResumeLayout(false);
@@ -366,13 +391,15 @@ namespace Editor
             ((System.ComponentModel.ISupportInitialize)(this.uxEchosList)).EndInit();
             this.uxEmailTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uxEmailList)).EndInit();
+            this.tabsPanel.ResumeLayout(false);
+            this.buttonPannel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl uxEventNameTab;
+        private System.Windows.Forms.TabControl uxTabs;
         private System.Windows.Forms.TabPage uxEventTab;
         private System.Windows.Forms.DataGridView uxEventList;
         private System.Windows.Forms.TabPage uxSituationsTab;
@@ -406,6 +433,8 @@ namespace Editor
         private System.Windows.Forms.DataGridViewTextBoxColumn situation;
         private System.Windows.Forms.DataGridViewTextBoxColumn situationChoice1;
         private System.Windows.Forms.DataGridViewTextBoxColumn situationChoice2;
+        private System.Windows.Forms.FlowLayoutPanel tabsPanel;
+        private System.Windows.Forms.FlowLayoutPanel buttonPannel;
     }
 }
 

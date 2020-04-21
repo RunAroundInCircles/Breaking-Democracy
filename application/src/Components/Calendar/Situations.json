@@ -1,12 +1,62 @@
 {
-	"0":{"id":0, "situation": "Riots break out in Region 2 due to police shooting.", "Choice1": "Send out false articles about destructive riots.", "Choice2": "Bribe a cop to kill another person."},
-	"1":{"id":1, "situation": "Candidate X caught embezzling money", "Choice1": "Use as blackmail.", "Choice2": "Spread through media."},
-	"2":{"id":2, "situation": "Candidate Y has an affair with Candidate Z", "Choice1": "Use as blackmail.", "Choice2": "Spread through media."},
-	"3":{"id":3, "situation": "Water shut down for all of district 4", "Choice1": "Give money in name of canadite.", "Choice2": "Do nothing."},
-	"4":{"id":4, "situation": "Massive Tornado hits Region 6", "Choice1": "Send aid from your party.", "Choice2": "Say other party did nothing."},
-	"5":{"id":5, "situation": "Candidate A starring in new movie", "Choice1": "Give bad reviews", "Choice2": "Give good reviews."},
-	"6":{"id":6, "situation": "Candidate B sex tape unearthed", "Choice1": "Spread through media.", "Choice2": "Use for blackmail."},
-	"7":{"id":7, "situation": "Red party spreading propaganda", "Choice1": "Spread propaganda back", "Choice2": "Denouce all claims."},
-	"8":{"id":8, "situation": "Blue party parade", "Choice1": "Send protest", "Choice2": "Have canadite endorse."},
-	"9":{"id":9, "situation": "Independents start forest fire", "Choice1": "Blame X side", "Choice2": "Blame Y side"}
+  "0": {
+    "id": "0",
+    "situation": "Riots break out in Region 2 due to police shooting.",
+    "choice 1": "Send out false articles about destructive riots.",
+    "choice 2": "Bribe a cop to kill another person."
+  },
+  "1": {
+    "id": "1",
+    "situation": "Candidate X caught embezzling money",
+    "choice 1": "Use as blackmail.",
+    "choice 2": "Spread through media."
+  },
+  "2": {
+    "id": "2",
+    "situation": "Candidate Y has an affair with Candidate Z",
+    "choice 1": "Use as blackmail.",
+    "choice 2": "Spread through media."
+  },
+  "3": {
+    "id": "3",
+    "situation": "Water shut down for all of district 4",
+    "choice 1": "Give money in name of canadite.",
+    "choice 2": "Do nothing."
+  },
+  "4": {
+    "id": "4",
+    "situation": "Massive Tornado hits Region 6",
+    "choice 1": "Send aid from your party.",
+    "choice 2": "Say other party did nothing."
+  },
+  "5": {
+    "id": "5",
+    "situation": "Candidate A starring in new movie",
+    "choice 1": "Give bad reviews",
+    "choice 2": "Give good reviews."
+  },
+  "6": {
+    "id": "6",
+    "situation": "Candidate B sex tape unearthed",
+    "choice 1": "Spread through media.",
+    "choice 2": "Use for blackmail."
+  },
+  "7": {
+    "id": "7",
+    "situation": "Red party spreading propaganda",
+    "choice 1": "Spread propaganda back",
+    "choice 2": "Denouce all claims."
+  },
+  "8": {
+    "id": "8",
+    "situation": "Blue party parade",
+    "choice 1": "Send protest",
+    "choice 2": "Have canadite endorse."
+  },
+  "9": {
+    "id": "9",
+    "situation": "Independents start forest fire",
+    "choice 1": "Blame X side",
+    "choice 2": "Blame Y side"
+  }
 }

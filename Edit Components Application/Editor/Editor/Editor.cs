@@ -56,8 +56,12 @@ namespace Editor
             string pathToEmailsList = "../application/src/Components/Email/EmailList.json";
 
             //Loads in the files into the editor
+
+            //First we load in JSONs that have arrays
             LoadInFileArray(pathToEventList, uxEventList);
             LoadInFileArray(pathToSituationsList, uxSituationsList);
+
+            //New load in JSONs that do not use arrays.
             LoadInFileWithoutArray(pathToEchosList, uxEchosList);
             LoadInFileWithoutArray(pathToEmailsList, uxEmailList);
 
@@ -76,44 +80,46 @@ namespace Editor
                 JsonReader jr = new JsonTextReader(sr); // Reads through the JSON File
                 string[] pair = new string[2]; //Holds the name of the variable and the value of the variable
                 int variableCounts = 0;
-                int lineCounts = 0;
                 string[] newRow = new string[grid.Columns.Count];
                 int cellCount = 0;
 
+                //Reads in the JSON File
                 while (jr.Read())
                 {
-                    lineCounts++;
                     if (jr.Value != null)
                     {
                         
-                        pair[variableCounts % 2] = jr.Value.ToString();
+                        pair[variableCounts % 2] = jr.Value.ToString(); //Either the variable name or the data in the variable
                         
+                        //We look at only the variable data
                         if ((variableCounts % 2) != 0)
                         {
-                            Console.WriteLine(jr.Value.ToString());
+                            
+                            //Add the data to the row
                             newRow[cellCount] = pair[1];
 
+                            //Check to see if we are at the end of the row
                             if(cellCount == newRow.Length - 1)
                             {
+                                //Reset the cell counter
                                 cellCount = 0;
+
+                                //Add row to the data grid view
                                 grid.Rows.Add(newRow);
                                 
                             }
                             else
                             {
+                                //Keep moving through the cells of the row
                                 cellCount++;
                             }
                             
                             
                         }
                         variableCounts++;
-                        //Console.WriteLine(jr.Value.ToString());
                     }
 
-                    
                 }
-                Console.WriteLine(pair[0] + " : " + pair[1]);
-
 
             }
         }
@@ -126,59 +132,174 @@ namespace Editor
             {
                 JsonReader jr = new JsonTextReader(sr); // Reads through the JSON File
                 string[] pair = new string[2]; //Holds the name of the variable and the value of the variable
-                int variableCounts = 0;
-                int lineCounts = 0;
-                string[] newRow = new string[grid.Columns.Count];
-                int cellCount = 0;
+                int variableCounts = 0; //Counts each variable coming in from the JSON
+                string[] newRow = new string[grid.Columns.Count]; //The Row that is being read in from the JSON
+                int cellCount = 0; //Counts the number of cells in the row.
 
                 while (jr.Read())
                 {
-                    lineCounts++;
                     if (jr.Value != null)
                     {
-                        if(cellCount == 0) //We are reading in the array index.
+                        if (cellCount == 0) //We are reading in the array index.
                         {
-                            newRow[cellCount] = jr.Value.ToString();
+                            newRow[cellCount] = jr.Value.ToString(); //Adds the array index to the row
                             cellCount++;
                         }
                         else
                         {
-                            pair[(variableCounts) % 2] = jr.Value.ToString();
+                            pair[(variableCounts) % 2] = jr.Value.ToString(); //This reads in either the variable name or the actual value.
 
+                            //Checks only the value of the variable
                             if (((variableCounts) % 2) != 0)
                             {
-                                Console.WriteLine(jr.Value.ToString());
+                                //Adds the value from the variable to the row.
                                 newRow[cellCount] = pair[1];
 
+                                //Checks to see if we have gone through all the variables in the row.
                                 if (cellCount == newRow.Length - 1)
                                 {
+                                    //Reset cell counter
                                     cellCount = 0;
+                                    //Add the row to the data grid
                                     grid.Rows.Add(newRow);
 
                                 }
                                 else
                                 {
+                                    //Keep Proceeding through cells
                                     cellCount++;
                                 }
 
 
                             }
+                            //Move on to the next variable to be read in
                             variableCounts++;
                         }
-
-                        
-                        
-                        //Console.WriteLine(jr.Value.ToString());
                     }
 
 
                 }
-                Console.WriteLine(pair[0] + " : " + pair[1]);
 
 
             }
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.DataGridView grid = uxEventList; //The grid we need to save
+            string path = ""; //Holds the path to the file we will edit.
+
+            //We need to find the correct Data grid to save and the correct paths to the file
+            switch (uxTabs.SelectedIndex)
+            {
+                case 0: // Events
+                    grid = uxEventList;
+                    path = "../application/src/Components/Calendar/EventList.json";
+                    break;
+                case 1: // Situations
+                    grid = uxSituationsList;
+                    path = "../application/src/Components/Calendar/Situations.json";
+                    break;
+                case 2: // Echos
+                    grid = uxEchosList;
+                    path = "../application/src/Components/Echo/echo.json";
+                    break;
+                case 3: // Email
+                    grid = uxEmailList;
+                    path = "../application/src/Components/Email/EmailList.json";
+                    break;
+            }
+
+
+
+
+
+            StringBuilder sb = new StringBuilder();
+            StringWriter sw = new StringWriter(sb);
+
+            using(JsonWriter writer = new JsonTextWriter(sw))
+            {
+                writer.Formatting = Formatting.Indented;
+                if (grid == uxEchosList || grid == uxEmailList)
+                {
+                    writer.WriteStartArray();
+                }
+                else
+                {
+                    writer.WriteStartObject();
+                }
+
+                for (int rowCount = 0; rowCount < grid.Rows.Count -1; rowCount++)
+                {
+                    DataGridViewRow row = grid.Rows[rowCount];
+
+                    if (row.Cells.Count > 0)
+                    {
+                        if ((grid == uxEventList || grid == uxSituationsList))
+                        {
+
+                            row.Cells[0].Value = row.Cells[1].Value;
+                            writer.WritePropertyName(row.Cells[0].Value.ToString());
+
+                        }
+                        
+                        writer.WriteStartObject();
+
+
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+
+                            /*      if ((grid == uxEventList || grid == uxSituationsList) && cell.ColumnIndex == 0)
+                                  {
+                                      writer.WriteStartArray();
+                                      writer.WritePropertyName(row.Cells[0].Value.ToString());
+
+                                      writer.WritePropertyName(grid.Columns[cell.ColumnIndex].HeaderText);
+                                  }
+                                  */
+                            if (!((grid == uxEventList || grid == uxSituationsList) && cell.ColumnIndex == 0))
+                            {
+
+                                writer.WritePropertyName(grid.Columns[cell.ColumnIndex].HeaderText);
+                                writer.WriteValue(cell.Value);
+
+                            }
+
+                        }
+
+                        writer.WriteEndObject();
+                        Console.WriteLine(sw.ToString());
+
+                    }
+                }
+
+                if (grid == uxEchosList || grid == uxEmailList)
+                {
+                    writer.WriteEndArray();
+                }
+
+                writer.Close();
+            }
+
+            sw.Close();
+
+
+            SaveFile(sb, path);
+        }
+
+
+
+        private void SaveFile(StringBuilder sb, string path)
+        {
+            Console.WriteLine(sb.ToString());
+            using (StreamWriter sw = new StreamWriter(path)) // Opens the JSON File
+            {
+
+                sw.WriteLine(sb.ToString());
+                sw.Close();
+            }
+
+        }
 
     }
 
