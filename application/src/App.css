@@ -136,7 +136,9 @@ Button:focus {
 }
 
 audio {
-	display:flex;
+	position: absolute;
+	left: 0px;
+	top: 0px;
 }
 
 .video{
