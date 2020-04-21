@@ -24,7 +24,7 @@ SOFTWARE.
 import React from 'react';
 import './App.css';
 import MainPage from './MainPage.js';
-
+import Intro from './Intro.js';
 
 function App() {
   return (
@@ -33,6 +33,7 @@ function App() {
 	    {/*<EmailApp emails={emails}/> { Email component of game, takes in list of email json objects } */}
       {/*<MapApp/> {/*Map component of the game takes no props*/}
 		  {/*<CalendarApp events={events}/>*/}
+		  {/*<Intro/>*/}
 	  <MainPage/>
     </div>
   );
