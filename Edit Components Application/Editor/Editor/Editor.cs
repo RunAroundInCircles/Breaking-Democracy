@@ -77,8 +77,9 @@ namespace Editor
                 string[] pair = new string[2]; //Holds the name of the variable and the value of the variable
                 int variableCounts = 0;
                 int lineCounts = 0;
+                string[] newRow = new string[grid.Columns.Count];
+                int cellCount = 0;
 
-                
                 while (jr.Read())
                 {
                     lineCounts++;
@@ -86,12 +87,22 @@ namespace Editor
                     {
                         
                         pair[variableCounts % 2] = jr.Value.ToString();
+                        
                         if ((variableCounts % 2) != 0)
                         {
-                            if(lineCounts == 1)
+                            newRow[cellCount] = pair[1];
+
+                            if(cellCount == newRow.Length - 1)
                             {
-                                grid.Columns.Add(pair[0],pair[0]);
+                                cellCount = 0;
+                                grid.Rows.Add(newRow);
+                                
                             }
+                            else
+                            {
+                                cellCount++;
+                            }
+                            
                             
                         }
                         variableCounts++;
