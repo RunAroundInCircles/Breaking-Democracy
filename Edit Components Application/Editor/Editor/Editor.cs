@@ -187,21 +187,26 @@ namespace Editor
         private void btnSave_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.DataGridView grid = uxEventList; //The grid we need to save
+            string path = ""; //Holds the path to the file we will edit.
 
-            //We need to find the correct Data grid to save
+            //We need to find the correct Data grid to save and the correct paths to the file
             switch (uxTabs.SelectedIndex)
             {
                 case 0: // Events
                     grid = uxEventList;
+                    path = "../application/src/Components/Calendar/EventList.json";
                     break;
                 case 1: // Situations
                     grid = uxSituationsList;
+                    path = "../application/src/Components/Calendar/Situations.json";
                     break;
                 case 2: // Echos
                     grid = uxEchosList;
+                    path = "../application/src/Components/Echo/echo.json";
                     break;
                 case 3: // Email
                     grid = uxEmailList;
+                    path = "../application/src/Components/Email/EmailList.json";
                     break;
             }
 
@@ -215,43 +220,80 @@ namespace Editor
             using(JsonWriter writer = new JsonTextWriter(sw))
             {
                 writer.Formatting = Formatting.Indented;
-
-                foreach (DataGridViewRow row in grid.Rows)
+                if (grid == uxEchosList || grid == uxEmailList)
                 {
-                    
+                    writer.WriteStartArray();
+                }
+                for (int rowCount = 0; rowCount < grid.Rows.Count -1; rowCount++)
+                {
+                    DataGridViewRow row = grid.Rows[rowCount];
 
-                    
-                   foreach(DataGridViewCell cell in row.Cells)
+                    if (row.Cells.Count > 0)
                     {
-                        if ((grid == uxEventList || grid == uxSituationsList) && cell.ColumnIndex == 0)
+    /*                    if ((grid == uxEventList || grid == uxSituationsList))
                         {
-                            writer.WritePropertyName(cell.Value.ToString());
-                            writer.WriteStartArray();
-                        }
+                            
+                            writer.WritePropertyName(row.Cells[0].Value.ToString());
 
+                        }
+                        */
                         writer.WriteStartObject();
-                        writer.WritePropertyName(grid.Columns[cell.ColumnIndex].HeaderText);
-                        if(cell.Value != null)
+
+
+                        foreach (DataGridViewCell cell in row.Cells)
                         {
-                            Console.WriteLine(cell.Value.ToString());
-                            writer.WriteValue(cell.Value);
+
+                          /*      if ((grid == uxEventList || grid == uxSituationsList) && cell.ColumnIndex == 0)
+                                {
+                                    writer.WriteStartArray();
+                                    writer.WritePropertyName(row.Cells[0].Value.ToString());
+
+                                    writer.WritePropertyName(grid.Columns[cell.ColumnIndex].HeaderText);
+                                }
+                                */
+                                writer.WritePropertyName(grid.Columns[cell.ColumnIndex].HeaderText);
+                                writer.WriteValue(cell.Value);
                         }
-                        
-                    }
 
-                    writer.WriteEnd();
-                    writer.WriteEndObject();
+                        writer.WriteEndObject();
+                        Console.WriteLine(sw.ToString());
+                       /* if (grid == uxEventList || grid == uxSituationsList)
+                        {
+                            
+                        }
+                        */
 
-                    if (grid == uxEventList || grid == uxSituationsList)
-                    {
-                        writer.WriteEndArray();
                     }
                 }
 
+                if (grid == uxEchosList || grid == uxEmailList)
+                {
+                    writer.WriteEndArray();
+                }
+
+                writer.Close();
             }
 
+            sw.Close();
+
+
+            SaveFile(sb, path);
+        }
+
+
+
+        private void SaveFile(StringBuilder sb, string path)
+        {
+            Console.WriteLine(sb.ToString());
+            using (StreamWriter sw = new StreamWriter(path)) // Opens the JSON File
+            {
+
+                sw.WriteLine(sb.ToString());
+                sw.Close();
+            }
 
         }
+
     }
 
 }
