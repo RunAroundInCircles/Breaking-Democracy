@@ -53,17 +53,8 @@ namespace Editor
             this.uxEventNameTab = new System.Windows.Forms.TabControl();
             this.uxEventTab = new System.Windows.Forms.TabPage();
             this.uxEventList = new System.Windows.Forms.DataGridView();
-            this.eventID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.day = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.month = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.message = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uxSituationsTab = new System.Windows.Forms.TabPage();
             this.uxSituationsList = new System.Windows.Forms.DataGridView();
-            this.situationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.situation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.situationChoice1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.situationChoice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uxEchoTab = new System.Windows.Forms.TabPage();
             this.uxEchosList = new System.Windows.Forms.DataGridView();
             this.echoBody = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +63,8 @@ namespace Editor
             this.echoTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uxEmailTab = new System.Windows.Forms.TabPage();
             this.uxEmailList = new System.Windows.Forms.DataGridView();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.emailCurrentSprint = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailSender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailccs = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,7 +73,17 @@ namespace Editor
             this.emailPinned = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailbody = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.eventArrayIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eventID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.day = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.month = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eventYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.message = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SituationsArrayIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.situationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.situation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.situationChoice1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.situationChoice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uxEventNameTab.SuspendLayout();
             this.uxEventTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uxEventList)).BeginInit();
@@ -119,42 +122,17 @@ namespace Editor
             // 
             this.uxEventList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.uxEventList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.eventArrayIndex,
             this.eventID,
             this.day,
             this.month,
-            this.message,
-            this.status});
+            this.eventYear,
+            this.message});
             this.uxEventList.Location = new System.Drawing.Point(-4, 0);
             this.uxEventList.Name = "uxEventList";
             this.uxEventList.RowTemplate.Height = 24;
             this.uxEventList.Size = new System.Drawing.Size(879, 401);
             this.uxEventList.TabIndex = 0;
-            // 
-            // eventID
-            // 
-            this.eventID.HeaderText = "id";
-            this.eventID.Name = "eventID";
-            // 
-            // day
-            // 
-            this.day.HeaderText = "day";
-            this.day.Name = "day";
-            // 
-            // month
-            // 
-            this.month.HeaderText = "month";
-            this.month.Name = "month";
-            // 
-            // message
-            // 
-            this.message.HeaderText = "message";
-            this.message.Name = "message";
-            // 
-            // status
-            // 
-            this.status.HeaderText = "status";
-            this.status.Name = "status";
-            this.status.ReadOnly = true;
             // 
             // uxSituationsTab
             // 
@@ -171,6 +149,7 @@ namespace Editor
             // 
             this.uxSituationsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.uxSituationsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SituationsArrayIndex,
             this.situationID,
             this.situation,
             this.situationChoice1,
@@ -180,26 +159,6 @@ namespace Editor
             this.uxSituationsList.RowTemplate.Height = 24;
             this.uxSituationsList.Size = new System.Drawing.Size(875, 394);
             this.uxSituationsList.TabIndex = 0;
-            // 
-            // situationID
-            // 
-            this.situationID.HeaderText = "id";
-            this.situationID.Name = "situationID";
-            // 
-            // situation
-            // 
-            this.situation.HeaderText = "situation";
-            this.situation.Name = "situation";
-            // 
-            // situationChoice1
-            // 
-            this.situationChoice1.HeaderText = "choice 1";
-            this.situationChoice1.Name = "situationChoice1";
-            // 
-            // situationChoice2
-            // 
-            this.situationChoice2.HeaderText = "choice 2";
-            this.situationChoice2.Name = "situationChoice2";
             // 
             // uxEchoTab
             // 
@@ -261,6 +220,7 @@ namespace Editor
             // 
             this.uxEmailList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.uxEmailList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.emailCurrentSprint,
             this.emailSender,
             this.emailAddress,
             this.emailccs,
@@ -274,6 +234,20 @@ namespace Editor
             this.uxEmailList.RowTemplate.Height = 24;
             this.uxEmailList.Size = new System.Drawing.Size(882, 401);
             this.uxEmailList.TabIndex = 0;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(748, 444);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(150, 26);
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // emailCurrentSprint
+            // 
+            this.emailCurrentSprint.HeaderText = "currentSprint";
+            this.emailCurrentSprint.Name = "emailCurrentSprint";
             // 
             // emailSender
             // 
@@ -315,14 +289,62 @@ namespace Editor
             this.emailbody.HeaderText = "body";
             this.emailbody.Name = "emailbody";
             // 
-            // btnSave
+            // eventArrayIndex
             // 
-            this.btnSave.Location = new System.Drawing.Point(748, 444);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(150, 26);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.eventArrayIndex.HeaderText = "eventArrayIndex";
+            this.eventArrayIndex.Name = "eventArrayIndex";
+            this.eventArrayIndex.Visible = false;
+            // 
+            // eventID
+            // 
+            this.eventID.HeaderText = "id";
+            this.eventID.Name = "eventID";
+            // 
+            // day
+            // 
+            this.day.HeaderText = "day";
+            this.day.Name = "day";
+            // 
+            // month
+            // 
+            this.month.HeaderText = "month";
+            this.month.Name = "month";
+            // 
+            // eventYear
+            // 
+            this.eventYear.HeaderText = "year";
+            this.eventYear.Name = "eventYear";
+            // 
+            // message
+            // 
+            this.message.HeaderText = "message";
+            this.message.Name = "message";
+            // 
+            // SituationsArrayIndex
+            // 
+            this.SituationsArrayIndex.HeaderText = "Situations Array Index";
+            this.SituationsArrayIndex.Name = "SituationsArrayIndex";
+            this.SituationsArrayIndex.Visible = false;
+            // 
+            // situationID
+            // 
+            this.situationID.HeaderText = "id";
+            this.situationID.Name = "situationID";
+            // 
+            // situation
+            // 
+            this.situation.HeaderText = "situation";
+            this.situation.Name = "situation";
+            // 
+            // situationChoice1
+            // 
+            this.situationChoice1.HeaderText = "choice 1";
+            this.situationChoice1.Name = "situationChoice1";
+            // 
+            // situationChoice2
+            // 
+            this.situationChoice2.HeaderText = "choice 2";
+            this.situationChoice2.Name = "situationChoice2";
             // 
             // uxEditor
             // 
@@ -360,19 +382,11 @@ namespace Editor
         private System.Windows.Forms.DataGridView uxSituationsList;
         private System.Windows.Forms.DataGridView uxEchosList;
         private System.Windows.Forms.DataGridView uxEmailList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn eventID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn day;
-        private System.Windows.Forms.DataGridViewTextBoxColumn month;
-        private System.Windows.Forms.DataGridViewTextBoxColumn message;
-        private System.Windows.Forms.DataGridViewTextBoxColumn status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn situationID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn situation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn situationChoice1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn situationChoice2;
         private System.Windows.Forms.DataGridViewTextBoxColumn echoBody;
         private System.Windows.Forms.DataGridViewTextBoxColumn echoName;
         private System.Windows.Forms.DataGridViewTextBoxColumn echoAt;
         private System.Windows.Forms.DataGridViewTextBoxColumn echoTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailCurrentSprint;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailSender;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailccs;
@@ -381,6 +395,17 @@ namespace Editor
         private System.Windows.Forms.DataGridViewTextBoxColumn emailPinned;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailID;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailbody;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eventArrayIndex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eventID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn day;
+        private System.Windows.Forms.DataGridViewTextBoxColumn month;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eventYear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn message;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SituationsArrayIndex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn situationID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn situation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn situationChoice1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn situationChoice2;
     }
 }
 
