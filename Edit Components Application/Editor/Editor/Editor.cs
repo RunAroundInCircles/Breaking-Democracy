@@ -35,8 +35,14 @@ using Newtonsoft.Json;
 
 namespace Editor
 {
+    /// <summary>
+    /// Describes how the uxEditor translates JSONs into a data grid view where the user can edit the file and save.
+    /// </summary>
     public partial class uxEditor : Form
     {
+        /// <summary>
+        /// Auto Generated Code
+        /// </summary>
         public uxEditor()
         {
             InitializeComponent();
@@ -79,9 +85,9 @@ namespace Editor
             {
                 JsonReader jr = new JsonTextReader(sr); // Reads through the JSON File
                 string[] pair = new string[2]; //Holds the name of the variable and the value of the variable
-                int variableCounts = 0;
-                string[] newRow = new string[grid.Columns.Count];
-                int cellCount = 0;
+                int variableCounts = 0; //The number of variables in the JSON
+                string[] newRow = new string[grid.Columns.Count]; //Temporary row that is used to add the data from the file to the Data Grid View
+                int cellCount = 0; //Counts the number of cells in the row
 
                 //Reads in the JSON File
                 while (jr.Read())
@@ -116,6 +122,7 @@ namespace Editor
                             
                             
                         }
+                        //Updates the number of variables in the JSON
                         variableCounts++;
                     }
 
@@ -125,7 +132,11 @@ namespace Editor
         }
 
 
-
+        /// <summary>
+        /// Loads in the file with a JSON array
+        /// </summary>
+        /// <param name="path"> path to the file </param>
+        /// <param name="grid"> Grid associated with the file</param>
         private void LoadInFileArray(string path, System.Windows.Forms.DataGridView grid)
         {
             using (StreamReader sr = new StreamReader(path)) // Opens the JSON File
@@ -184,6 +195,11 @@ namespace Editor
             }
         }
 
+        /// <summary>
+        /// On the click of the Save Button we translate the data grid view into a JSON file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.DataGridView grid = uxEventList; //The grid we need to save
@@ -213,28 +229,33 @@ namespace Editor
 
 
 
-
+            //The string builder and String Writer are used by the JsonWriter
             StringBuilder sb = new StringBuilder();
             StringWriter sw = new StringWriter(sb);
 
             using(JsonWriter writer = new JsonTextWriter(sw))
             {
-                writer.Formatting = Formatting.Indented;
+                writer.Formatting = Formatting.Indented; //Formatting for the JSON File
+
+                //All normal JSON files are stored in an array
                 if (grid == uxEchosList || grid == uxEmailList)
                 {
                     writer.WriteStartArray();
                 }
                 else
                 {
+                    //JSON files that are represented as elements of an array start with the index as the first object
                     writer.WriteStartObject();
                 }
 
+                //Go through each row in the grid
                 for (int rowCount = 0; rowCount < grid.Rows.Count -1; rowCount++)
                 {
                     DataGridViewRow row = grid.Rows[rowCount];
 
                     if (row.Cells.Count > 0)
                     {
+                        //Check to see if the grid we are looking at needs to get the array index or is a normal JSON file
                         if ((grid == uxEventList || grid == uxSituationsList))
                         {
 
@@ -243,20 +264,14 @@ namespace Editor
 
                         }
                         
+                        //Adds a JSON object
                         writer.WriteStartObject();
 
 
                         foreach (DataGridViewCell cell in row.Cells)
                         {
 
-                            /*      if ((grid == uxEventList || grid == uxSituationsList) && cell.ColumnIndex == 0)
-                                  {
-                                      writer.WriteStartArray();
-                                      writer.WritePropertyName(row.Cells[0].Value.ToString());
-
-                                      writer.WritePropertyName(grid.Columns[cell.ColumnIndex].HeaderText);
-                                  }
-                                  */
+                             //If this is not a JSON file that uses array Index we add the files to the JSON object
                             if (!((grid == uxEventList || grid == uxSituationsList) && cell.ColumnIndex == 0))
                             {
 
@@ -267,35 +282,42 @@ namespace Editor
 
                         }
 
+                        //Finish the creation of the JSON object
                         writer.WriteEndObject();
-                        Console.WriteLine(sw.ToString());
 
                     }
                 }
 
+                //The array for the JSON has been completed
                 if (grid == uxEchosList || grid == uxEmailList)
                 {
                     writer.WriteEndArray();
                 }
 
+                //Close JSON writer
                 writer.Close();
             }
 
+            //Close Stream Writer
             sw.Close();
 
-
+            //Save the file using the sb that holds the JSON data we created and save it to the file path
             SaveFile(sb, path);
         }
 
 
-
+        /// <summary>
+        /// When given a String Builder and a path to a JSON file the function will save the data from the String Builder to the JSON file
+        /// </summary>
+        /// <param name="sb"></param>
+        /// <param name="path"></param>
         private void SaveFile(StringBuilder sb, string path)
         {
-            Console.WriteLine(sb.ToString());
             using (StreamWriter sw = new StreamWriter(path)) // Opens the JSON File
             {
-
+                //Writes the data to the file
                 sw.WriteLine(sb.ToString());
+                //Close the file
                 sw.Close();
             }
 
