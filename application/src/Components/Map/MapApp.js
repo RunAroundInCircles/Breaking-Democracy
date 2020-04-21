@@ -22,6 +22,8 @@ SOFTWARE.
 */
 
 import React,{Component} from 'react';
+import {Link} from "react-router-dom";
+import {Button} from 'react-bootstrap';
 import {withRouter} from 'react-router-dom';
 import Map from './Map.js';
 import './Map.css';
@@ -49,6 +51,11 @@ class MapApp extends Component {
     render() {
         return(
             <div className="map-app">
+                <Link to='/MainPage' >
+                    <Button style={{top: 5, right: 5, position: 'absolute'}}>
+                          <span>X</span>
+                    </Button>
+                </Link>
                 <Map onSelect={this.setSelectedRegion} pollData={this.props.pollData} regionDistrictNames={this.props.regionDistrictNames}/>
             </div>
         )
