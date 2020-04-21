@@ -68,7 +68,7 @@ test('renders each email', () => {
 /**
  * Checks to see if clicking on emails changes them to selected
  */
-test('renders selected email', () => {
+test('Check selecting email functionality', () => {
 	//Expect that at first no emails should be selected
 	act(() => { //act allows functions to behave closer to normal browser behavior
 		ReactDOM.render(<EmailApp emails={emails}/>, container); //Renders EmailApp
