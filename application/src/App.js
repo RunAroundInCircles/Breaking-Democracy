@@ -34,7 +34,7 @@ function App() {
       {/*<MapApp/> {/*Map component of the game takes no props*/}
 		  {/*<CalendarApp events={events}/>*/}
 		  {/*<Intro/>*/}
-	  <MainPage/>
+	    <MainPage/>
     </div>
   );
 }
