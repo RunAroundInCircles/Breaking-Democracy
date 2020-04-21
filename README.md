@@ -15,6 +15,7 @@ The server will then start on localhost:3000
 Current Implementation
 =
 Once the page loads an introduction video plays to give a quick overview of the game. Once the video is over the application renders the mainpage so that the game can begin.
+![Intro](/UsercaseImages/introVideo.PNG)
 
 In mainpage you can switch between different modules by clicking on the red buttons at the top of the screen:
 * **An email module**: The email module allows users to see emails in the left side panel and then when an email is clicked the full email will be displayed in the main panel.
