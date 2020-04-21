@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4f58d4d19449dcb60d97804f310ae566",
+    "revision": "0033a23b68492da27869ecdfe63867d3",
     "url": "/Breaking-Democracy/index.html"
   },
   {
-    "revision": "a391df09d94dfee29249",
+    "revision": "1efed1b988f401574090",
     "url": "/Breaking-Democracy/static/css/main.a04ab1c9.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Breaking-Democracy/static/js/2.935c0657.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a391df09d94dfee29249",
-    "url": "/Breaking-Democracy/static/js/main.87fc0c9c.chunk.js"
+    "revision": "1efed1b988f401574090",
+    "url": "/Breaking-Democracy/static/js/main.6d715670.chunk.js"
   },
   {
     "revision": "8dc9abc20ee8c0017995",
