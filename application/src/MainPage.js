@@ -212,8 +212,7 @@ class MainPage extends Component{
 		return(
       		<Router>
         		<div id="screen">
-
-					<audio controls autoplay loop id="main-music">
+					<audio controls autoPlay loop id="main-music">
 						<source src={mainMusicMP3} type="audio/mpeg"></source>
 						<source src={mainMusicWAV} type="audio/wav"></source>
 						Your Browser does not support the audio element.
