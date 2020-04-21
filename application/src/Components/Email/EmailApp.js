@@ -46,7 +46,6 @@ class EmailApp extends Component {
 			currentEmails: []
         }
         this.setSelectedEmail = this.setSelectedEmail.bind(this);
-
     }
 
 	/**

@@ -1,25 +1,3 @@
-/*MIT License
-
-Copyright (c) 2019 Caleb Logan
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders EchoApp page 1`] = `
@@ -42,27 +20,25 @@ exports[`renders EchoApp page 1`] = `
     <div
       className="echo"
     >
-
       <span
         class="echo-contents"
       >
         <h4>
-          January 1, 2020
+          January 4, 2020
         </h4>
         <h1>
-          @democristannightlynews
+          @candidateliberal
         </h1>
          
         <h2>
-          DNN
+          Lyra Whit
         </h2>
          
         <h3>
-          Good evening Democristan, it is January, 2020. That means it’s time for the second presidential election in our history. There are 3 candidates this time around, and they are excited to get their campaigns out there. Stay tuned for further updates from DNN, we’ll be covering everything that happens this election cycle.
+          Hello my fellow Democristans, I am Lyra Whit; the front runner for the Democristan Liberal Party. As a newly formed country I believe that we have endless potential, however the Democristan Conservative Party is too concerned with mimicking the ways of western politics.  Democristan must break free and forge its own path to a new future.
         </h3>
          
       </span>
-
     </div>
     <div
       className="echo"
@@ -90,32 +66,29 @@ exports[`renders EchoApp page 1`] = `
     <div
       className="echo"
     >
-
       <span
         class="echo-contents"
       >
         <h4>
-          January 4, 2020
+          January 1, 2020
         </h4>
         <h1>
-          @candidateliberal
+          @democristannightlynews
         </h1>
          
         <h2>
-          Lyra Whit
+          DNN
         </h2>
          
         <h3>
-          Hello my fellow Democristans, I am Lyra Whit; the front runner for the Democristan Liberal Party. As a newly formed country I believe that we have endless potential, however the Democristan Conservative Party is too concerned with mimicking the ways of western politics.  Democristan must break free and forge its own path to a new future.
+          Good evening Democristan, it is January, 2020. That means it’s time for the second presidential election in our history. There are 3 candidates this time around, and they are excited to get their campaigns out there. Stay tuned for further updates from DNN, we’ll be covering everything that happens this election cycle.
         </h3>
          
       </span>
-
     </div>
     <div
       className="echo"
     >
-
       <span
         class="echo-contents"
       >
@@ -135,7 +108,6 @@ exports[`renders EchoApp page 1`] = `
         </h3>
          
       </span>
-
     </div>
   </div>
 </div>
