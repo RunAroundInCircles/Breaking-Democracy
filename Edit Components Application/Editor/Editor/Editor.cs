@@ -224,44 +224,51 @@ namespace Editor
                 {
                     writer.WriteStartArray();
                 }
+                else
+                {
+                    writer.WriteStartObject();
+                }
+
                 for (int rowCount = 0; rowCount < grid.Rows.Count -1; rowCount++)
                 {
                     DataGridViewRow row = grid.Rows[rowCount];
 
                     if (row.Cells.Count > 0)
                     {
-    /*                    if ((grid == uxEventList || grid == uxSituationsList))
+                        if ((grid == uxEventList || grid == uxSituationsList))
                         {
-                            
+
+                            row.Cells[0].Value = row.Cells[1].Value;
                             writer.WritePropertyName(row.Cells[0].Value.ToString());
 
                         }
-                        */
+                        
                         writer.WriteStartObject();
 
 
                         foreach (DataGridViewCell cell in row.Cells)
                         {
 
-                          /*      if ((grid == uxEventList || grid == uxSituationsList) && cell.ColumnIndex == 0)
-                                {
-                                    writer.WriteStartArray();
-                                    writer.WritePropertyName(row.Cells[0].Value.ToString());
+                            /*      if ((grid == uxEventList || grid == uxSituationsList) && cell.ColumnIndex == 0)
+                                  {
+                                      writer.WriteStartArray();
+                                      writer.WritePropertyName(row.Cells[0].Value.ToString());
 
-                                    writer.WritePropertyName(grid.Columns[cell.ColumnIndex].HeaderText);
-                                }
-                                */
+                                      writer.WritePropertyName(grid.Columns[cell.ColumnIndex].HeaderText);
+                                  }
+                                  */
+                            if (!((grid == uxEventList || grid == uxSituationsList) && cell.ColumnIndex == 0))
+                            {
+
                                 writer.WritePropertyName(grid.Columns[cell.ColumnIndex].HeaderText);
                                 writer.WriteValue(cell.Value);
+
+                            }
+
                         }
 
                         writer.WriteEndObject();
                         Console.WriteLine(sw.ToString());
-                       /* if (grid == uxEventList || grid == uxSituationsList)
-                        {
-                            
-                        }
-                        */
 
                     }
                 }
