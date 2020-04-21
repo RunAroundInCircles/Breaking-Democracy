@@ -22,8 +22,6 @@ SOFTWARE.
 */
 
 import React,{Component} from 'react';
-import {Link} from "react-router-dom";
-import {Button} from 'react-bootstrap';
 import EchoList from './EchoList.js';
 import './echoUI.css';
 import dolphin from '../../Resources/Echo_Dolphin.png';
@@ -48,11 +46,6 @@ class EchoApp extends Component {
             <div className="echo-app">
                 <img className="dolphin" src={dolphin} alt="dolphin"/>
                 <h1 className="echo-head">Echos</h1>
-                <Link to='/MainPage' >
-                    <Button style={{top: 5, right: 5, position: 'absolute'}}>
-                          <span>X</span>
-                    </Button>
-                </Link>
                 <EchoList
                     echos={this.props.echos}
                 />
