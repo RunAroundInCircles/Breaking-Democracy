@@ -34,7 +34,7 @@ import emails from './Components/Email/EmailList.json';
 import echos from './Components/Echo/echo.json';
 import {Button} from 'react-bootstrap';
 import EventPopup from './Components/Calendar/EventPopup.js';
-import Event from ".//Components/Calendar/Event.js";
+import Event from "./Components/Calendar/Event.js";
 import TimelineApp from './Components/Timeline/TimelineApp.js'
 import './MainPage.css';
 import desktop from './Resources/Title_Computer.png';
@@ -85,7 +85,7 @@ class MainPage extends Component{
 					7: ["Wegruesoe","Zaftan","Blektan","Wegruesoe City"]
 			},
 			//eventsCompleted is an array to hold all of the events that have been finished by the player after they complete them.
-			eventsCompleted: [], 
+			eventsCompleted: [],
       		currentEmails: [], /*The current list of emails for the sprint we are on */
       		currentSprint: 1, /* The current two week interval we are on */
 			//turnStartDate is the beginning Date for the game February 1, 2020, indicates the start of the turn in Calendar
@@ -96,8 +96,8 @@ class MainPage extends Component{
 		this.setCurrentEmail = this.setCurrentEmail.bind(this);
 		this.ifExists = this.ifExists.bind(this);
 	}
-	
-	
+
+
 	/**
 	 * Allows an external component to add entries to eventsCompleted and update the pollData
 	 * @param  {eventid}   eventsCompleted The id of the event completed.
@@ -113,32 +113,37 @@ class MainPage extends Component{
 			region: region,
 			district: district
 		}
-    
+
+
+
 		let updatedData = this.state.pollData;
 		updatedData[region][district] += (updatedData[region][district] * percent)
 
 		//Get the event IDs between the two dates that need to be completed before the round can advance
 		let eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
 
+
 		//Remove the newly completed event ID if it is in the array
 		if(eventsToComplete.includes(eventid)) {
 			eventsToComplete.splice(eventsToComplete.indexOf(eventid), 1);
 		}
-    
+
+
+
 		//Remove all completed event IDs from the array
 		this.state.eventsCompleted.map((completedEvent) => {
 			if(eventsToComplete.includes(completedEvent.eventID)) {
 				eventsToComplete.splice(eventsToComplete.indexOf(completedEvent.eventID), 1);
 			}
 		});
-    
+
 		while(eventsToComplete.length == 0){
 		//If all events are complete advance the
 		this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
-		
+
 		//Update eventsToComplete to detect turns with no events
 		eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
-		
+
 		//Advance the sprint number
 		this.setState({currentSprint: (this.state.currentSprint + 1)});
 		}
@@ -156,6 +161,7 @@ class MainPage extends Component{
 			if(!(isBefore(eventDate, turnStartDate) || isAfter(eventDate, turnEndDate))) {
         		event.status = 0;
         		eventsBetween.push(event.id);
+
 			}
 		});
 		return eventsBetween;
@@ -208,8 +214,8 @@ class MainPage extends Component{
         		<div id="screen">
 
 					<audio controls autoplay loop id="main-music">
-						<source src="mainMusicMP3" type="audio/mpeg"></source>
-						<source src="mainMusicWAV" type="audio/wav"></source>
+						<source src={mainMusicMP3} type="audio/mpeg"></source>
+						<source src={mainMusicWAV} type="audio/wav"></source>
 						Your Browser does not support the audio element.
 					</audio>
 
@@ -255,7 +261,7 @@ class MainPage extends Component{
 						&nbsp;
 						&nbsp; {/*This adds spaces between the buttons*/}
 						&nbsp;
-						
+
 						<Link to= '/Timeline'>
 							<Button>
 								<span>Timeline</span>

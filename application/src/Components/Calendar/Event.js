@@ -31,6 +31,7 @@ import {Button} from 'react-bootstrap';
  * @extends React,react-router-dom
  */
 class Event extends Component {
+
   /**
    * Creates the event to be shown within the calendar cells that allows the user to get more information about the specific event
    * @return {Link} An link to /Calendar/id of the event
@@ -45,6 +46,7 @@ class Event extends Component {
       </Link>
     );
   }
+
 }
 
 export default Event;
