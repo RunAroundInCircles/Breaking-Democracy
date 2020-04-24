@@ -90,8 +90,6 @@ class Email extends Component {
                     <img className="sideImage" src={face} alt="face"/>
                     <h2>{this.state.title}</h2> {/* Ttile of Email */}
                     <h3>{this.state.body.substring(0,40)}</h3> {/* Body of Email, shortened to 40 characters */}
-
-
                 </div>
             );
         }
