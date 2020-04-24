@@ -292,7 +292,17 @@ namespace Editor
                         if ((grid == uxEventList || grid == uxSituationsList))
                         {
 
+                            //If the first cell in the array is null set it to the default value.
+                            if (row.Cells[1].Value == null || row.Cells[1].Value.ToString().Length <= 0)
+                            {
+                                row.Cells[1].Value = row.Cells[1].OwningColumn.DefaultCellStyle.NullValue;
+                            }
+
+                            //The arry id is hidden and updates itself to the ID of the row.
                             row.Cells[0].Value = row.Cells[1].Value;
+
+
+                            //Writes the JSON variable name to the file
                             writer.WritePropertyName(row.Cells[0].Value.ToString());
 
                         }
@@ -300,14 +310,21 @@ namespace Editor
                         //Adds a JSON object
                         writer.WriteStartObject();
 
-
+                        //Goes through each cell in the grid (even the hidden ones)
                         foreach (DataGridViewCell cell in row.Cells)
                         {
 
                              //If this is not a JSON file that uses array Index we add the files to the JSON object
                             if (!((grid == uxEventList || grid == uxSituationsList) && cell.ColumnIndex == 0))
                             {
+                                //If the cell value is null or empty change it to the default value.
+                                if (cell.Value == null || cell.Value.ToString().Length <= 0)
+                                {
 
+                                    cell.Value = cell.OwningColumn.DefaultCellStyle.NullValue;
+                                }
+
+                                //Writes the JSON variable and its data to the writer object.
                                 writer.WritePropertyName(grid.Columns[cell.ColumnIndex].HeaderText);
                                 writer.WriteValue(cell.Value);
 
@@ -344,7 +361,7 @@ namespace Editor
         /// </summary>
         /// <param name="sb"></param>
         /// <param name="path"></param>
-        private void SaveFile(StringBuilder sb, string path)
+        public void SaveFile(StringBuilder sb, string path)
         {
             using (StreamWriter sw = new StreamWriter(path)) // Opens the JSON File
             {
