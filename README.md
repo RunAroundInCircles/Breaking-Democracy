@@ -40,10 +40,17 @@ In mainpage you can switch between different modules by clicking on the red butt
 * **A timeline module**: The timeline module allows users to see previous events the user has accompolished in this game session.
 ![Timeline](/UsercaseImages/InitialTimeline.PNG)
 
+
+Editor Application
+==
+For ease of changing in and out data we have created an editor application to allow developers to change JSON files in the game.
+![Editor Application](https://github.com/catiel/Breaking-Democracy/blob/master/Screenshots/EditorApplication.png)
+
+
 Testing
 =
 * **Snapshots**: For each component above, including the Main Page component, we have created snapshot tests which will check to see if the components stay consistent with any updates.
-
+* **Unit Testing**: For the editor application we have created Unit tests to check if the files needed for the application to run exist.
 
 Thank You to the following people
 =

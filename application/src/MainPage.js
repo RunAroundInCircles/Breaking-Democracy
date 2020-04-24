@@ -181,7 +181,7 @@ class MainPage extends Component{
 				return false;
 			}
 		}
-		return true
+		return true;
 	}
 
 
@@ -193,7 +193,7 @@ class MainPage extends Component{
 			if(emails[i].currentSprint == this.state.currentSprint)
 			{
 				if(this.ifExists(this.state.currentEmails, emails[i])){
-					this.state.currentEmails.push(emails[i]);
+					this.setState({currentEmails: [...this.state.currentEmails, emails[i]]});
 				}
 			}
 		}
