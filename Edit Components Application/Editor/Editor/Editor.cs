@@ -57,11 +57,11 @@ namespace Editor
         {
             //Takes in the current directory of the executable
             string currentDirectory = Directory.GetCurrentDirectory();
-
+            Console.WriteLine(currentDirectory);
             //Checks to make sure the application is running in the correct folder
             if (!(currentDirectory.EndsWith("Edit Components Application")))
             {
-                MessageBox.Show(currentDirectory + "\n" + "The application is in the wrong directory. Please make sure the executable is in the" + '"' + "Edit Components Application" + '"' +" directory.");
+                MessageBox.Show("The application is in the wrong directory. Please make sure the executable is in the" + '"' + "Edit Components Application" + '"' +" directory.");
                 Application.Exit();
             }
 
