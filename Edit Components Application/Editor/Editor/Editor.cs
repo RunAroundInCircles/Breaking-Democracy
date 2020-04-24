@@ -55,6 +55,17 @@ namespace Editor
         /// <param name="e"></param>
         private void Editor_Load(object sender, EventArgs e)
         {
+            //Takes in the current directory of the executable
+            string currentDirectory = Directory.GetCurrentDirectory();
+
+            //Checks to make sure the application is running in the correct folder
+            if (!(currentDirectory.EndsWith("Edit Components Application")))
+            {
+                MessageBox.Show(currentDirectory + "\n" + "The application is in the wrong directory. Please make sure the executable is in the" + '"' + "Edit Components Application" + '"' +" directory.");
+                Application.Exit();
+            }
+
+
             //The paths to all the jsons used in Grand Theft Democracy
             string pathToEventList = "../application/src/Components/Calendar/EventList.json";
             string pathToSituationsList = "../application/src/Components/Calendar/Situations.json";
@@ -67,9 +78,12 @@ namespace Editor
             //The files were not found so close the application
             if(!checkFiles(paths))
             {
-                MessageBox.Show("The Files could not be found. Please make sure the executable is in the Edit Components Application folder." +
-                    "\nAlso make sure the JSONs are in the correct paths.");
-                this.Close();
+                MessageBox.Show("The JSON files could not be found please make sure the following paths exist in the Grand Theft Democracy directory:" +
+                    "\n/application/src/Components/Calendar/EventList.json" +
+                    "\n/application/src/Components/Calendar/Situations.json" +
+                    "\n/application/src/Components/Echo/echo.json" +
+                    "\n/application/src/Components/Email/EmailList.json");
+                Application.Exit();
             }
             else
             {

@@ -58,5 +58,11 @@
     "situation": "Independents start forest fire",
     "Choice1": "Blame X side",
     "Choice2": "Blame Y side"
+  },
+  "0": {
+    "id": "0",
+    "situation": "situation",
+    "Choice1": "choice 1",
+    "Choice2": "choice 2"
   }
 }
