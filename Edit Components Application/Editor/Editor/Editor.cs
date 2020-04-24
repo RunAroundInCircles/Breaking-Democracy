@@ -55,6 +55,17 @@ namespace Editor
         /// <param name="e"></param>
         private void Editor_Load(object sender, EventArgs e)
         {
+            //Takes in the current directory of the executable
+            string currentDirectory = Directory.GetCurrentDirectory();
+
+            //Checks to make sure the application is running in the correct folder
+            if (!(currentDirectory.EndsWith("Edit Components Application")))
+            {
+                MessageBox.Show(currentDirectory + "\n" + "The application is in the wrong directory. Please make sure the executable is in the" + '"' + "Edit Components Application" + '"' +" directory.");
+                Application.Exit();
+            }
+
+
             //The paths to all the jsons used in Grand Theft Democracy
             string pathToEventList = "../application/src/Components/Calendar/EventList.json";
             string pathToSituationsList = "../application/src/Components/Calendar/Situations.json";
@@ -67,9 +78,12 @@ namespace Editor
             //The files were not found so close the application
             if(!checkFiles(paths))
             {
-                MessageBox.Show("The Files could not be found. Please make sure the executable is in the Edit Components Application folder." +
-                    "\nAlso make sure the JSONs are in the correct paths.");
-                this.Close();
+                MessageBox.Show("The JSON files could not be found please make sure the following paths exist in the Grand Theft Democracy directory:" +
+                    "\n/application/src/Components/Calendar/EventList.json" +
+                    "\n/application/src/Components/Calendar/Situations.json" +
+                    "\n/application/src/Components/Echo/echo.json" +
+                    "\n/application/src/Components/Email/EmailList.json");
+                Application.Exit();
             }
             else
             {
@@ -292,7 +306,17 @@ namespace Editor
                         if ((grid == uxEventList || grid == uxSituationsList))
                         {
 
+                            //If the first cell in the array is null set it to the default value.
+                            if (row.Cells[1].Value == null || row.Cells[1].Value.ToString().Length <= 0)
+                            {
+                                row.Cells[1].Value = row.Cells[1].OwningColumn.DefaultCellStyle.NullValue;
+                            }
+
+                            //The arry id is hidden and updates itself to the ID of the row.
                             row.Cells[0].Value = row.Cells[1].Value;
+
+
+                            //Writes the JSON variable name to the file
                             writer.WritePropertyName(row.Cells[0].Value.ToString());
 
                         }
@@ -300,14 +324,21 @@ namespace Editor
                         //Adds a JSON object
                         writer.WriteStartObject();
 
-
+                        //Goes through each cell in the grid (even the hidden ones)
                         foreach (DataGridViewCell cell in row.Cells)
                         {
 
                              //If this is not a JSON file that uses array Index we add the files to the JSON object
                             if (!((grid == uxEventList || grid == uxSituationsList) && cell.ColumnIndex == 0))
                             {
+                                //If the cell value is null or empty change it to the default value.
+                                if (cell.Value == null || cell.Value.ToString().Length <= 0)
+                                {
 
+                                    cell.Value = cell.OwningColumn.DefaultCellStyle.NullValue;
+                                }
+
+                                //Writes the JSON variable and its data to the writer object.
                                 writer.WritePropertyName(grid.Columns[cell.ColumnIndex].HeaderText);
                                 writer.WriteValue(cell.Value);
 
@@ -344,7 +375,7 @@ namespace Editor
         /// </summary>
         /// <param name="sb"></param>
         /// <param name="path"></param>
-        private void SaveFile(StringBuilder sb, string path)
+        public void SaveFile(StringBuilder sb, string path)
         {
             using (StreamWriter sw = new StreamWriter(path)) // Opens the JSON File
             {
