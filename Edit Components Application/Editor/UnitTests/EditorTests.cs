@@ -47,10 +47,10 @@ namespace UnitTests
             var editor = new uxEditor();
             
             //The paths to all the jsons used in Grand Theft Democracy
-            string pathToEventList = "../application/src/Components/Calendar/EventList.json";
-            string pathToSituationsList = "../application/src/Components/Calendar/Situations.json";
-            string pathToEchosList = "../application/src/Components/Echo/echo.json";
-            string pathToEmailsList = "../application/src/Components/Email/EmailList.json";
+            string pathToEventList = "../../application/src/Components/Calendar/EventList.json";
+            string pathToSituationsList = "../../application/src/Components/Calendar/Situations.json";
+            string pathToEchosList = "../../application/src/Components/Echo/echo.json";
+            string pathToEmailsList = "../../application/src/Components/Email/EmailList.json";
 
             string[] paths = { pathToEventList, pathToSituationsList, pathToEchosList, pathToEmailsList };
 
@@ -63,12 +63,59 @@ namespace UnitTests
         [TestMethod]
         public void CheckFilePathsThatDontExist()
         {
+            //Creates an instance of the editor
             var editor = new uxEditor();
+
+            //Provides a path that does not exist
             string badPath = "../DoesNotExist";
 
             string[] paths = { badPath };
 
             Assert.IsFalse(editor.checkFiles(paths));
+        }
+
+        /// <summary>
+        /// Checks to see if saving data to a file works.
+        /// </summary>
+        [TestMethod]
+        public void CheckSavingFiles()
+        {
+            //Creates an instance of the editor
+            var editor = new uxEditor();
+            //Creates a Builder with sample text
+            StringBuilder sb = new StringBuilder("Test if file can be saved.");
+            string path = "./testFile.txt"; //Path to temporary test file
+
+            //If test file does not exist
+            if (!File.Exists(path))
+            {
+                //Create the text file. 
+                //We also want to dispose of the stream reader created properly by running this with the using keyword.
+                using (File.CreateText(path));
+     
+            }
+
+            //Use the test method
+            editor.SaveFile(sb, path);
+
+            string results = "";
+
+            //Read through file
+            using(StreamReader sr = new StreamReader(path))
+            {
+                //Loops through until the end of the file
+                while (!sr.EndOfStream)
+                {
+                    //Reads in the results
+                    results = results + sr.ReadLine();
+                }
+            }
+
+            //Checks to see if the results from the file are the same as the data written in.
+            Assert.AreEqual(sb.ToString(), results);
+
+            //Deletes the temporary file.
+            File.Delete(path);
         }
     }
 }
