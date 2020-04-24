@@ -173,12 +173,11 @@
     "month": "10",
     "year": "2020",
     "message": "Third Presidential Debate"
-  },
-  "-1": {
-    "id": "-1",
-    "day": "-1",
-    "month": "-1",
-    "year": "-1",
-    "message": "TEST MESSAGE"
   }
+    "25": {
+    "id": "25",
+    "day": "3",
+    "month": "11",
+    "year": "2020",
+    "message": "2020 Presidential Election"
 }
