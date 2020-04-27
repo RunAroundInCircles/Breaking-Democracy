@@ -162,13 +162,12 @@ export class Reacteroids extends Component {
       });
       localStorage['topscore'] = this.state.currentScore;
     }
+    
     //Percent = score/137 - .50 so that -.5 is worst and best is open ended
     //137 comes from an average found while testing so that average change is 50 percent
 	  var percent = (this.state.currentScore/137)-.50;
     percent = percent.toFixed(2);
-	  var region = Math.floor(Math.random() * 8);
-	  var district = Math.floor(Math.random() * 7);
-	  this.props.callbackFromMain(this.props.eventID, percent, region, 0);
+	  this.props.callbackFromMain(this.props.eventID, percent);
   }
 
   generateAsteroids(howMany){
