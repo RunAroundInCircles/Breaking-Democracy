@@ -1,0 +1,15 @@
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\UnitTests.dll
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\UnitTests.pdb
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\UnitTests\obj\Debug\UnitTests.csprojAssemblyReference.cache
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\UnitTests\obj\Debug\UnitTests.csproj.CoreCompileInputs.cache
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\UnitTests\obj\Debug\UnitTests.csproj.CopyComplete
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\UnitTests\obj\Debug\UnitTests.dll
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\UnitTests\obj\Debug\UnitTests.pdb
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\UnitTests.dll
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\UnitTests.pdb

@@ -51,7 +51,6 @@ class EmailReader extends Component {
 		//Else if it is not null we return title, sender, senders email, cc emails, body to the containter to show selected email.
         else {
             return(
-
                 <div className="email-reader">
                     <h1 className="emailh1">{this.props.email.title}</h1>
                     <h2 className="emailh2">{this.props.email.sender}</h2>

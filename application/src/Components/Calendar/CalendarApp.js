@@ -26,6 +26,7 @@ import {Link} from "react-router-dom";
 import {Button} from 'react-bootstrap';
 import Calendar from './Calendar.js';
 import './CalendarUI.css';
+import Event from './Event';
 
 
 /**
@@ -40,10 +41,15 @@ class CalendarApp extends Component {
     constructor(props) {
       super(props);
 
-/*      this.state = {
-
+      this.state = {
+        events: props.events.map((event) => {
+          let date = new Date(event.year, event.month, event.day);
+          return(
+            {date: date, message: <Event message={event.message} id={event.id}/>, id: event.id}
+          );
+        })
       }
-*/    }
+    }
 
 	/**
    * Renders the calendar for the current month with all current events.
@@ -51,14 +57,7 @@ class CalendarApp extends Component {
    */
     render() {
         return(
-            <div className="calendar-app">
-                <Link to='/MainPage' >
-                    <Button style={{top: 5, right: 5, position: 'absolute'}}>
-                          <span>X</span>
-                    </Button>
-                </Link>
-                <Calendar  callbackFromMain={this.props.callback} events={this.props.events} eventsCompleted={this.props.eventsCompleted} turnStartDate={this.props.turnStartDate}/>
-            </div>
+          <Calendar events={this.state.events} eventsCompleted={this.props.eventsCompleted} turnStartDate={this.props.turnStartDate}/>
         )
     }
 

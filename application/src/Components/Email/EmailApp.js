@@ -22,8 +22,6 @@ SOFTWARE.
 */
 
 import React,{Component} from 'react';
-import {Link} from "react-router-dom";
-import {Button} from 'react-bootstrap';
 import './EmailUI.css';
 import EmailList from './EmailList.js';
 import EmailReader from './EmailReader.js';
@@ -56,13 +54,6 @@ class EmailApp extends Component {
     render() {
         return(
             <div className="email-app">
-
-                <Link to='/MainPage' >
-                    <Button style={{top: 5, right: 5, position: 'absolute'}}>
-                          <span>X</span>
-                    </Button>
-                </Link>
-
                 <EmailList
                     emails={this.props.emails}
                     selectedEmail={this.state.selectedEmail}

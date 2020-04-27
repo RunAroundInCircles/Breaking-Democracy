@@ -1,6 +1,46 @@
 [
-	{"currentSprint" : "1", "sender": "Game Master", "senderEmail":"mastermind@kremlin.org", "ccsEmail": "putin@kremlin.org", "title": "Welcome To Grand Theft Democracy", "favorited": false, "pinned": false, "id": 2, "body": "Hello and welcome to Grand Theft Democracy,\n\n This is an educational game directed at showing how Russia interferes with democratic countries around the globe. You play the role of Putin instructing the FSB on taking measures against the fictional country of Democristan in order to get a specific Russian aligned candidate elected.\n This Email box will be used to provide you with important information as you progress through the game.\nThe Map button will show the current poll results of Democristan. \nThe Echo button will open a mock social media app that will update with story and flavor text as you progress. \nThe Calendar button opens a calendar which shows all of the major events of the election, this is where interference happens, to start simply click on an event and you will start a minigame.  \nThe Timeline button will record your actions in the Calendar and show you how well you are doing.\n\nGood Luck."},
-	{"currentSprint" : "2", "sender": "FSB Director", "senderEmail":"makerussiagreatagain@kremlin.org", "ccsEmail": "putin@kremlin.org", "title": "Interference with Democristan", "favorited": false, "pinned": false, "id": 1, "body": "Good Evening Putin, \n\n As you may be aware, that pesky country of Democristan on our borders is beginning their election period soon, this being only their second election after they seceded from Russia, they are at risk of manipulation from us in order to make sure they don’t get out of hand.  They are backed by the United States so we must act discreetly. It is up to us to ensure the greatness of Russia to continue on, and we won’t stand for these separatists to do as they please. In the coming months we will be relying on your guidance and instructions with how to interfere. We’ll leave it up to you to decide what the best course of action is for Russia.\n\nSincerely,\nDirector of FSB"},
-	{"currentSprint" : "3", "sender": "FSB Director", "senderEmail":"makerussiagreatagain@kremlin.org", "ccsEmail": "putin@kremlin.org", "title": "Good Work", "favorited": false, "pinned": false, "id": 3, "body": "Good Work Mr. Putin,\n\nI see that you’ve already begun taking measures in interfering with Democristan. Doing the same kind of interference close together is less effective, so make sure to mix it up.  We’ll be providing new kinds of interference as the election progresses to help you stay on top of things.\nRight now we have information that the CEO of Democristan Gas is trying to make a secret deal with China.  This information could help in future interference.\n\nSincerely,\nFSB Director"},
-	{"currentSprint" : "4", "sender": "FSB Director", "senderEmail":"makerussiagreatagain@kremlin.org", "ccsEmail": "putin@kremlin.org", "title": "New Measures", "favorited": false, "pinned": false, "id": 5, "body": "Good Evening Mr. Putin,\n\nI hope things are going well, our agents at the FSB have devised a new interference measure. I recommend this one for our next operation."}
+  {
+    "currentSprint": "1",
+    "sender": "Game Master",
+    "senderEmail": "mastermind@kremlin.org",
+    "ccsEmail": "putin@kremlin.org",
+    "title": "Welcome To Grand Theft Democracy",
+    "favorited": "False",
+    "pinned": "False",
+    "id": "0",
+    "body": "Hello and welcome to Grand Theft Democracy,\n\n This is an educational game directed at showing how Russia interferes with democratic countries around the globe. You play the role of Putin instructing the FSB on taking measures against the fictional country of Democristan in order to get a specific Russian aligned candidate elected.\n This Email box will be used to provide you with important information as you progress through the game.\nThe Map button will show the current poll results of Democristan. \nThe Echo button will open a mock social media app that will update with story and flavor text as you progress. \nThe Calendar button opens a calendar which shows all of the major events of the election, this is where interference happens, to start simply click on an event and you will start a minigame.  \nThe Timeline button will record your actions in the Calendar and show you how well you are doing.\n\nGood Luck."
+  },
+  {
+    "currentSprint": "2",
+    "sender": "FSB Director",
+    "senderEmail": "makerussiagreatagain@kremlin.org",
+    "ccsEmail": "putin@kremlin.org",
+    "title": "Interference with Democristan",
+    "favorited": "False",
+    "pinned": "False",
+    "id": "1",
+    "body": "Good Evening Putin, \n\n As you may be aware, that pesky country of Democristan on our borders is beginning their election period soon, this being only their second election after they seceded from Russia, they are at risk of manipulation from us in order to make sure they don’t get out of hand.  They are backed by the United States so we must act discreetly. It is up to us to ensure the greatness of Russia to continue on, and we won’t stand for these separatists to do as they please. In the coming months we will be relying on your guidance and instructions with how to interfere. We’ll leave it up to you to decide what the best course of action is for Russia.\n\nSincerely,\nDirector of FSB"
+  },
+  {
+    "currentSprint": "3",
+    "sender": "FSB Director",
+    "senderEmail": "makerussiagreatagain@kremlin.org",
+    "ccsEmail": "putin@kremlin.org",
+    "title": "Good Work",
+    "favorited": "False",
+    "pinned": "False",
+    "id": "3",
+    "body": "Good Work Mr. Putin,\n\nI see that you’ve already begun taking measures in interfering with Democristan. Doing the same kind of interference close together is less effective, so make sure to mix it up.  We’ll be providing new kinds of interference as the election progresses to help you stay on top of things.\nRight now we have information that the CEO of Democristan Gas is trying to make a secret deal with China.  This information could help in future interference.\n\nSincerely,\nFSB Director"
+  },
+  {
+    "currentSprint": "4",
+    "sender": "FSB Director",
+    "senderEmail": "makerussiagreatagain@kremlin.org",
+    "ccsEmail": "putin@kremlin.org",
+    "title": "New Measures",
+    "favorited": "False",
+    "pinned": "False",
+    "id": "5",
+    "body": "Good Evening Mr. Putin,\n\nI hope things are going well, our agents at the FSB have devised a new interference measure. I recommend this one for our next operation."
+  }
 ]
