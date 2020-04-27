@@ -106,7 +106,6 @@ class MainPage extends Component{
 		this.handleVideoEnd = this.handleVideoEnd.bind(this);
     	this.checkIfPlayerWon = this.checkIfPlayerWon.bind(this);
 
-
 		var tempDate =  new Date(1 , 1, 1, 0, 0, 0, 0);
 		//Find the eventID with the last day and month
 		Object.values(events).map((event) => {
@@ -165,7 +164,9 @@ class MainPage extends Component{
   			}
   		});
 
+		console.log(eventsToComplete);
   		while(eventsToComplete.length == 0){
+			console.log("banana");
         	//Check if the game has ended
   		  	if(!this.state.gameEnded){
         		//If all events are complete advance the turn counter
@@ -243,9 +244,9 @@ class MainPage extends Component{
 	updateTurnStartDate  = () => {
 		var newdate = addDays(13, this.state.turnStartDate);
 		this.setState(
-		{
-			turnStartDate :  newdate//Moves the turn date up by 2 weeks.
-		}
+			{
+				turnStartDate :  newdate//Moves the turn date up by 2 weeks.
+			}
 		)
 	}
 
@@ -258,26 +259,27 @@ class MainPage extends Component{
 
 	render(){
 		return(
-			(this.state.renderVideo) //Check if the video or the game should be rendered
-			? //Render video
+			(this.state.renderVideo) //Check if the intro video or the game should be rendered
+			?(//Render video
 				<div>
 					<img className="desktop" src={desktop} alt="desktop"/>
 					<Intro endedCallback={this.handleVideoEnd}/>
 				</div>
-
-			:(
-				(this.state.gameEnded) //Check if the game has ended
-				? ((this.state.hasPlayerWon) //Check if the player has won
-					? //Render Good Ending
-					(<div>
+			)
+			:((this.state.gameEnded) //Check if the game has ended
+				?((this.state.hasPlayerWon) //Check if the player has won
+					?(//Render Good Ending
+						<div>
 							<img className="desktop" src={desktop} alt="desktop"/>
 							<GoodEnding/>
-						</div>)
-					://Render Bad Ending
-					(<div>
+						</div>
+					)
+					:(//Render Bad Ending
+						<div>
 							<img className="desktop" src={desktop} alt="desktop"/>
 							<BadEnding/>
-						</div>)
+						</div>
+					)
 				)
 				:(//render game
 					//Adding history allows us to start on Email instead of the '/' page
