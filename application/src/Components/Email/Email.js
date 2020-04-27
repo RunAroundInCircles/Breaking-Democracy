@@ -22,7 +22,7 @@ SOFTWARE.
 */
 
 import React,{Component} from 'react';
-import face from '../../Resources/Email Faces/face.png';
+import face from '../../Resources/Email Faces/game_master.png';
 
 /**
  * Represents an actual email which will be used to give tutorials and
@@ -47,9 +47,8 @@ class Email extends Component {
             favorited: props.favorited, //True/False value representing if email is favorited
             pinned: props.pinned, //True/False value representing if email is pinned
             id: props.id, //Unique ID of the email
-            onSelect: props.onSelect //Inherited method to run onClick
+            onSelect: props.onSelect, //Inherited method to run onClick
         }
-
         //Binds this to handleClick
         this.handleClick = this.handleClick.bind(this);
     }
@@ -63,6 +62,7 @@ class Email extends Component {
         e.preventDefault(); //Prevent default behavior
         this.state.onSelect(this.state); //Runs onSelect using this.state as argument
     }
+    
 
 /**
  * Renders each individual email in the email list panel

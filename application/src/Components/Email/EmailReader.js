@@ -22,7 +22,7 @@ SOFTWARE.
 */
 
 import React,{Component} from 'react';
-import face from '../../Resources/Email Faces/face.png';
+import face from '../../Resources/Email Faces/game_master.png';
 
 /**
  * This will display a full email to the user.
