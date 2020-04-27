@@ -42,7 +42,8 @@ import Situations from './Components/Calendar/Situations.json';
 import mainMusicMP3 from './Resources/Music/ThemeLoopable.mp3';
 import mainMusicWAV from './Resources/Music/ThemeLoopable.wav';
 import Intro from './Intro';
-
+import GoodEnding from './GoodEnding';
+import BadEnding from './BadEnding';
 import {
   BrowserRouter as Router,
   Switch,
@@ -91,13 +92,30 @@ class MainPage extends Component{
       		currentSprint: 1, //The current two week interval we are on
 			//turnStartDate is the beginning Date for the game February 1, 2020, indicates the start of the turn in Calendar
 			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0),
-			renderVideo: true //Determines whether the intro video or the game should be rendered
+			renderVideo: true, //Determines whether the intro video or the game should be rendered
+      gameEnded: false, //Determines whether the user has finished the game
+      lastEventID: 0, //The last event in the game
+      hasPlayerWon: false, //Check to see if the player won
+      playerScore: 0 //Holds the score of the player
 		}
 
 		this.callback = this.callback.bind(this);
 		this.setCurrentEmail = this.setCurrentEmail.bind(this);
 		this.ifExists = this.ifExists.bind(this);
 		this.handleVideoEnd = this.handleVideoEnd.bind(this);
+    this.checkIfPlayerWon = this.checkIfPlayerWon.bind(this);
+
+
+    var tempDate =  new Date(1 , 1, 1, 0, 0, 0, 0);
+    //Find the eventID with the last day and month
+    Object.values(events).map((event) => {
+      let eventDate = new Date(event.year, event.month, event.day, 0, 0, 0, 0);
+      if(isAfter(eventDate,tempDate)) {
+            this.state.lastEventID = event.id;
+            tempDate = eventDate;
+      }
+    });
+
 	}
 
 
@@ -109,6 +127,20 @@ class MainPage extends Component{
 	 * @param  {district}  eventsCompleted The id of the district to update
 	 * @param  {eventState}  eventsCompleted What the status of the event is.
 	 */
+
+  checkIfPlayerWon = (eventScore, eventID) =>{
+
+      if(eventID == this.state.lastEventID){
+          this.setState({playerScore: eventScore/eventID});
+          if(this.state.playerScore > .5){
+            this.setState({hasPlayerWon : true});
+          }
+          else{
+            this.setState({hasPlayerWon : false});
+          }
+      }
+  }
+
 	callback = (eventid, percent, region, district, eventState) => {
 		var eventCompleted = {
 			eventID: eventid,
@@ -131,6 +163,10 @@ class MainPage extends Component{
 			eventsToComplete.splice(eventsToComplete.indexOf(eventid), 1);
 		}
 
+    //Checks to see if the user has finished all events
+    if(this.state.eventsCompleted.includes(this.state.lastEventID)){
+      this.setState({gameEnded : true});
+    }
 
 
 		//Remove all completed event IDs from the array
@@ -141,14 +177,18 @@ class MainPage extends Component{
 		});
 
 		while(eventsToComplete.length == 0){
-		//If all events are complete advance the
-		this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
 
-		//Update eventsToComplete to detect turns with no events
-		eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
+      //Check if the game has ended
+		  if(!this.state.gameEnded){
+      		//If all events are complete advance the turn counter
+		       this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
 
-		//Advance the sprint number
-		this.setState({currentSprint: (this.state.currentSprint + 1)});
+		      //Update eventsToComplete to detect turns with no events
+		      eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
+
+		      //Advance the sprint number
+		      this.setState({currentSprint: (this.state.currentSprint + 1)});
+      }
 		}
 
 		this.setState({pollData: updatedData});
@@ -158,7 +198,6 @@ class MainPage extends Component{
 	//Returns all of the event IDs between 2 dates
 	getEventIDsBetween = (turnStartDate, turnEndDate) => {
 		let eventsBetween = [];
-
 		Object.values(events).map((event) => {
 			let eventDate = new Date(event.year, event.month, event.day, 0, 0, 0, 0);
 			if(!(isBefore(eventDate, turnStartDate) || isAfter(eventDate, turnEndDate))) {
@@ -226,8 +265,24 @@ class MainPage extends Component{
 					<img className="desktop" src={desktop} alt="desktop"/>
 					<Intro endedCallback={this.handleVideoEnd}/>
 				</div>
-			:( //render game
-				<Router>
+			:(
+        (this.state.gameEnded) //Check if the game has ended
+        ? ((this.state.hasPlayerWon) //Check if the player has won
+            ? //Render Good Ending
+            (<div>
+  					<img className="desktop" src={desktop} alt="desktop"/>
+  					<GoodEnding/>
+  				</div>)
+            ://Render Bad Ending
+            (<div>
+  					<img className="desktop" src={desktop} alt="desktop"/>
+  					<BadEnding/>
+  				</div>)
+          )
+        :(
+
+        //render game
+        <Router>
 					<div id="screen">
 						<audio controls autoPlay loop id="main-music">
 							<source src={mainMusicMP3} type="audio/mpeg"></source>
@@ -287,7 +342,7 @@ class MainPage extends Component{
 
 						<Switch>{/*The switch to click between pages.*/}
 							<Route path='/Calendar'>
-								<CalendarApp   events={Object.values(events)} eventsCompleted={this.state.eventsCompleted} turnStartDate={this.state.turnStartDate}/>
+								<CalendarApp  events={Object.values(events)} eventsCompleted={this.state.eventsCompleted} turnStartDate={this.state.turnStartDate}/>
 								<Route path='/Calendar/:id' render={(props)=>{
 									return <EventPopup callbackFromMain={this.callback} event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]}/>
 									}
@@ -307,12 +362,13 @@ class MainPage extends Component{
 								<EchoApp echos={echos}/>
 							</Route>
 							<Route path='/Timeline'>
-								<TimelineApp  events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
+								<TimelineApp checkIfPlayerWon={this.state.checkIfPlayerWon} events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
 							</Route>
 						</Switch>
 					</div>
 				</Router>
 			)
+    )
 		);
 	}
 
