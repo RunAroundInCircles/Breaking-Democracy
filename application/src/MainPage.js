@@ -87,7 +87,7 @@ class MainPage extends Component{
 			eventsCompleted: [],
 			currentSprint: 1, /* The current two week interval we are on */
 			currentEmails: [], /*The current list of emails for the sprint we are on */
-      
+
       //events is an object that holds all of the events on the calendar
       events: Object.values(events).map((event) => {
         let date = new Date(event.year, event.month, event.day);
@@ -103,8 +103,8 @@ class MainPage extends Component{
 		this.setCurrentEmail = this.setCurrentEmail.bind(this);
 		this.ifExists = this.ifExists.bind(this);
 	}
-	
-	
+
+
 	/**
 	 * Allows an external component to add entries to eventsCompleted and update the pollData
 	 * @param  {eventid}   eventsCompleted The id of the event completed.
@@ -179,19 +179,6 @@ class MainPage extends Component{
 		return eventsBetween;
 	}
 
-	render(){
-		return(
-      <Router>
-        <div id="screen">
-
-        <audio controls autoplay loop id="main-music">
-          <source src="mainMusicMP3" type="audio/mpeg"></source>
-          <source src="mainMusicWAV" type="audio/wav"></source>
-          Your Browser does not support the audio element.
-        </audio>
-
-        <img className="desktop" src={desktop} alt="desktop"/>
-          <nav>
 /*checks if the passed in email is already in the list of current emails. If it is not then it returns True, else if it already exists in the list it returns False
 @param  {emails}   The array of the currentEmails displayed.
 @param  {foundEmail}   The email that wants to be added to the current emails.
@@ -205,8 +192,8 @@ ifExists(emails, foundEmail){
 	}
 	return true
 }
-	
-	
+
+
 /*This function gets the current emails needed for the current sprint.
 @param  {emails} The list of emails to be assessed and added to the current email list.
 */
@@ -314,7 +301,5 @@ setCurrentEmail(emails) {
 			</Router>
 		);
 	}
-
 }
-
 export default MainPage
