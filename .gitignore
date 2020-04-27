@@ -122,3 +122,7 @@ typings/
 
 # TernJS port file
 .tern-port
+
+# Visual Studio Local Files
+*.suo
+*.lutdata

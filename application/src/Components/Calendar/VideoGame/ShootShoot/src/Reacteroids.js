@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Ship from './Ship';
 import Asteroid from './Asteroid';
-import { randomNumBetweenExcluding } from './helpers'
+import { randomNumBetweenExcluding } from './helpers';
+import asteroidsMusicWAV from '../../../../../Resources/Music/AsteroidsLoopable.wav';
+import asteroidsMusicMP3 from '../../../../../Resources/Music/AsteroidsLoopable.mp3';
+
 
 const KEY = {
   LEFT:  37,
@@ -159,13 +162,13 @@ export class Reacteroids extends Component {
       });
       localStorage['topscore'] = this.state.currentScore;
     }
-
     //Percent = score/137 - .50 so that -.5 is worst and best is open ended
     //137 comes from an average found while testing so that average change is 50 percent
 	  var percent = (this.state.currentScore/137)-.50;
     percent = percent.toFixed(2);
-
-	  this.props.callbackFromMain(this.props.eventID, percent);
+	  var region = Math.floor(Math.random() * 8);
+	  var district = Math.floor(Math.random() * 7);
+	  this.props.callbackFromMain(this.props.eventID, percent, region, 0);
   }
 
   generateAsteroids(howMany){
@@ -245,13 +248,19 @@ export class Reacteroids extends Component {
           <p>Game over, man!</p>
           <p>{message}</p>
         </div>
-		
+
       )
-	  
+
     }
 
     return (
       <div>
+        <audio controls autoPlay loop id="music">
+          <source src={asteroidsMusicWAV} type="audio/wav"></source>
+          <source src={asteroidsMusicMP3} type="audio/mpeg"></source>
+          Your Browser does not support the audio element.
+        </audio>
+
         { endgame }
         <canvas ref="canvas"
           width={this.state.screen.width * this.state.screen.ratio}
