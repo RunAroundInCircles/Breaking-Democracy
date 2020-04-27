@@ -22,7 +22,6 @@ SOFTWARE.
 */
 
 import React,{Component} from 'react';
-//import Sound from 'react-sound';
 import './App.css';
 import MapApp from './Components/Map/MapApp.js';
 import MapRegion from './Components/Map/MapRegion.js';
@@ -34,7 +33,6 @@ import emails from './Components/Email/EmailList.json';
 import echos from './Components/Echo/echo.json';
 import {Button} from 'react-bootstrap';
 import EventPopup from './Components/Calendar/EventPopup.js';
-import Event from "./Components/Calendar/Event.js";
 import TimelineApp from './Components/Timeline/TimelineApp.js'
 import './MainPage.css';
 import desktop from './Resources/Title_Computer.png';
@@ -89,73 +87,35 @@ class MainPage extends Component{
 			//eventsCompleted is an array to hold all of the events that have been finished by the player after they complete them.
 			eventsCompleted: [],
 
-      currentEmails: [], //The current list of emails for the sprint we are on
-      currentSprint: 1, //The current two week interval we are on
+			currentEmails: [], //The current list of emails for the sprint we are on
+			currentSprint: 1, //The current two week interval we are on
 
 			//turnStartDate is the beginning Date for the game February 1, 2020, indicates the start of the turn in Calendar
 			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0),
 			renderVideo: true, //Determines whether the intro video or the game should be rendered
-      gameEnded: false, //Determines whether the user has finished the game
-      lastEventID: 0, //The last event in the game
-      hasPlayerWon: false, //Check to see if the player won
-      playerScore: 0 //Holds the score of the player
+			gameEnded: false, //Determines whether the user has finished the game
+			lastEventID: 0, //The last event in the game
+			hasPlayerWon: false, //Check to see if the player won
+			playerScore: 0 //Holds the score of the player
 		}
 
 		this.callback = this.callback.bind(this);
 		this.setCurrentEmail = this.setCurrentEmail.bind(this);
 		this.ifExists = this.ifExists.bind(this);
 		this.handleVideoEnd = this.handleVideoEnd.bind(this);
-    this.checkIfPlayerWon = this.checkIfPlayerWon.bind(this);
+    	this.checkIfPlayerWon = this.checkIfPlayerWon.bind(this);
 
 
-    var tempDate =  new Date(1 , 1, 1, 0, 0, 0, 0);
-    //Find the eventID with the last day and month
-    Object.values(events).map((event) => {
-      let eventDate = new Date(event.year, event.month, event.day, 0, 0, 0, 0);
-      if(isAfter(eventDate,tempDate)) {
-            this.state.lastEventID = event.id;
-            tempDate = eventDate;
-      }
-    });
-
-	}
-
-
-	/**
-	 * Allows an external component to add entries to eventsCompleted and update the pollData
-	 * @param  {eventid}   eventsCompleted The id of the event completed.
-	 * @param  {percent}   eventsCompleted The percentage amount of change for the region's district
-	 * @param  {region}	   eventsCompleted The id of the region to update
-	 * @param  {district}  eventsCompleted The id of the district to update
-	 * @param  {eventState}  eventsCompleted What the status of the event is.
-	 */
-
-		//Update the poll data
-		let updatedData = this.state.pollData;
-		updatedData[region][district] += (updatedData[region][district] * percent)
-
-		//Check that the updated poll data isn't over 100%
-		if(updatedData[region][district] > 100) {
-			updatedData[region][district] = 100;
-		}
-  checkIfPlayerWon = (eventScore, eventID) =>{
-      if(eventID == this.state.lastEventID){
-          this.setState({playerScore: eventScore/eventID});
-          if(this.state.playerScore > .5){
-            this.setState({hasPlayerWon : true});
-          }
-          else{
-            this.setState({hasPlayerWon : false});
-          }
-      }
-  }
-
-		//Remove all completed event IDs from the array
-		this.state.eventsCompleted.map((completedEvent) => {
-			if(eventsToComplete.includes(completedEvent.eventID)) {
-				eventsToComplete.splice(eventsToComplete.indexOf(completedEvent.eventID), 1);
+		var tempDate =  new Date(1 , 1, 1, 0, 0, 0, 0);
+		//Find the eventID with the last day and month
+		Object.values(events).map((event) => {
+			let eventDate = new Date(event.year, event.month, event.day, 0, 0, 0, 0);
+			if(isAfter(eventDate,tempDate)) {
+					this.state.lastEventID = event.id;
+					tempDate = eventDate;
 			}
 		});
+	}
 
     /**
   	 * Allows an external component to add entries to eventsCompleted and update the pollData
@@ -187,12 +147,10 @@ class MainPage extends Component{
   		//Get the event IDs between the two dates that need to be completed before the round can advance
   		let eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
 
-
-      //Checks to see if the user has finished all events
-      if(this.state.eventsCompleted.includes(this.state.lastEventID)){
-        this.setState({gameEnded : true});
-      }
-
+		//Checks to see if the user has finished all events
+		if(this.state.eventsCompleted.includes(this.state.lastEventID)){
+			this.setState({gameEnded : true});
+		}
 
   		//Remove all completed event IDs from the array
   		this.state.eventsCompleted.map((completedEvent) => {
@@ -202,9 +160,8 @@ class MainPage extends Component{
   		});
 
   		while(eventsToComplete.length == 0){
-
-        //Check if the game has ended
-  		  if(!this.state.gameEnded){
+        	//Check if the game has ended
+  		  	if(!this.state.gameEnded){
         		//If all events are complete advance the turn counter
   		       this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
 
@@ -213,12 +170,23 @@ class MainPage extends Component{
 
   		      //Advance the sprint number
   		      this.setState({currentSprint: (this.state.currentSprint + 1)});
-        }
+        	}
   		}
   		this.setState({pollData: updatedData});
   		this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
-    	};
+    };
 
+	checkIfPlayerWon = (eventScore, eventID) =>{
+		if(eventID == this.state.lastEventID){
+			this.setState({playerScore: eventScore/eventID});
+			if(this.state.playerScore > .5){
+			  this.setState({hasPlayerWon : true});
+			}
+			else{
+			  this.setState({hasPlayerWon : false});
+			}
+		}
+	}
 
 	//Returns all of the event IDs between 2 dates
 	getEventIDsBetween = (turnStartDate, turnEndDate) => {
