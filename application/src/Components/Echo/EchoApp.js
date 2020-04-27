@@ -45,7 +45,7 @@ class EchoApp extends Component {
         return(
             <div className="echo-app">
                 <img className="dolphin" src={dolphin} alt="dolphin"/>
-                <h1 className="echo-head">Echos</h1>
+                <h1 className="echo-head">Echo</h1>
                 <EchoList
                     echos={this.props.echos}
                 />

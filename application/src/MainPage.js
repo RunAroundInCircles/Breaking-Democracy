@@ -37,8 +37,8 @@ import TimelineApp from './Components/Timeline/TimelineApp.js'
 import './MainPage.css';
 import desktop from './Resources/Title_Computer.png';
 import Situations from './Components/Calendar/Situations.json';
-import mainMusicMP3 from './Resources/Music/ThemeLoopable.mp3';
-import mainMusicWAV from './Resources/Music/ThemeLoopable.wav';
+import mainMusicMP3 from './Resources/Music/AsteroidsLoopable.mp3';
+import mainMusicWAV from './Resources/Music/AsteroidsLoopable.wav';
 import Intro from './Intro';
 import {
   BrowserRouter as Router,
@@ -86,7 +86,7 @@ class MainPage extends Component{
 			eventsCompleted: [],
       currentEmails: [], //The current list of emails for the sprint we are on
       currentSprint: 1, //The current two week interval we are on
-      
+
 			//turnStartDate is the beginning Date for the game February 1, 2020, indicates the start of the turn in Calendar
 			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0),
 			renderVideo: true //Determines whether the intro video or the game should be rendered
@@ -120,7 +120,7 @@ class MainPage extends Component{
 		//Update the poll data
 		let updatedData = this.state.pollData;
 		updatedData[region][district] += (updatedData[region][district] * percent)
-		
+
 		//Check that the updated poll data isn't over 100%
 		if(updatedData[region][district] > 100) {
 			updatedData[region][district] = 100;
@@ -134,7 +134,6 @@ class MainPage extends Component{
 		if(eventsToComplete.includes(eventid)) {
 			eventsToComplete.splice(eventsToComplete.indexOf(eventid), 1);
 		}
-
 
 
 		//Remove all completed event IDs from the array
@@ -230,6 +229,7 @@ class MainPage extends Component{
 					<Intro endedCallback={this.handleVideoEnd}/>
 				</div>
 			:( //render game
+
 				<Router>
 					<div id="screen">
 						<audio controls autoPlay loop id="main-music">
@@ -242,7 +242,7 @@ class MainPage extends Component{
 						<img className="desktop" src={desktop} alt="desktop"/>
 						<nav>
 							<Link to='/Calendar'> {/*Button to Calendar*/}
-								<Button className="button calendar-button">
+								<Button>
 									<span>Calendar</span>
 								</Button>
 							</Link>
