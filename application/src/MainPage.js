@@ -22,7 +22,6 @@ SOFTWARE.
 */
 
 import React,{Component} from 'react';
-//import Sound from 'react-sound';
 import './App.css';
 import MapApp from './Components/Map/MapApp.js';
 import MapRegion from './Components/Map/MapRegion.js';
@@ -34,7 +33,6 @@ import emails from './Components/Email/EmailList.json';
 import echos from './Components/Echo/echo.json';
 import {Button} from 'react-bootstrap';
 import EventPopup from './Components/Calendar/EventPopup.js';
-import Event from "./Components/Calendar/Event.js";
 import TimelineApp from './Components/Timeline/TimelineApp.js'
 import './MainPage.css';
 import desktop from './Resources/Title_Computer.png';
@@ -42,7 +40,6 @@ import Situations from './Components/Calendar/Situations.json';
 import mainMusicMP3 from './Resources/Music/ThemeLoopable.mp3';
 import mainMusicWAV from './Resources/Music/ThemeLoopable.wav';
 import Intro from './Intro';
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -105,22 +102,28 @@ class MainPage extends Component{
 	 * Allows an external component to add entries to eventsCompleted and update the pollData
 	 * @param  {eventid}   eventsCompleted The id of the event completed.
 	 * @param  {percent}   eventsCompleted The percentage amount of change for the region's district
-	 * @param  {region}	   eventsCompleted The id of the region to update
-	 * @param  {district}  eventsCompleted The id of the district to update
-	 * @param  {eventState}  eventsCompleted What the status of the event is.
 	 */
-	callback = (eventid, percent, region, district, eventState) => {
+	callback = (eventid, percent) => {
+		//Get the region and district to change
+		var region = Math.floor(Math.random() * 8);
+		var district = Math.floor(Math.random() * this.state.pollData[region].length);
+
+		//Create the new completed event to add
 		var eventCompleted = {
 			eventID: eventid,
 			percent: percent,
-			region: region,
-			district: district
+			region: this.state.regionDistrictNames[region][0], //Adds the name of the region
+			district: this.state.regionDistrictNames[region][district + 1] //Adds the name of the district
 		}
 
-
-
+		//Update the poll data
 		let updatedData = this.state.pollData;
 		updatedData[region][district] += (updatedData[region][district] * percent)
+		
+		//Check that the updated poll data isn't over 100%
+		if(updatedData[region][district] > 100) {
+			updatedData[region][district] = 100;
+		}
 
 		//Get the event IDs between the two dates that need to be completed before the round can advance
 		let eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));

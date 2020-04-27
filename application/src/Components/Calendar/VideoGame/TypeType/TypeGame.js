@@ -48,16 +48,14 @@ class TypeGame extends Component{
 	/*Will be able to check if the answer is right and change certain attributes when done.*/
 	handleSubmit(event){
 		event.preventDefault();
-		var region = Math.floor(Math.random() * 8);
-		var district = Math.floor(Math.random() * 7);
+		//If the player got the right answer give them a good change
 		if(this.props.answer == this.state.value){
-			var percent = .5
-			this.props.callbackFromMain(this.props.eventID, percent, region, 0,2);
+			this.props.callbackFromMain(this.props.eventID, .5);
 			this.setState({result: "Success!"});
 		}
+		//If the player didn't get the right answer give them a bad change
 		else {
-			var percent = -.5;
-			this.props.callbackFromMain(this.props.eventID, percent, region, 0,3);
+			this.props.callbackFromMain(this.props.eventID, -.5);
 			this.setState({result: "Failed!"});
 		}
 
