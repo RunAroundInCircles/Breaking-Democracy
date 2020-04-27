@@ -42,6 +42,7 @@ class Intro extends Component {
 					Your browser does not support the video tag.
 				</video>
 
+				{/* This button allows the player to skip the intro video and go directly to the game */}
 				<Button style={{top: 5, right: 5, position: 'absolute'}} onClick={this.props.endedCallback}>
 					<span>Skip Video</span>
 				</Button>
