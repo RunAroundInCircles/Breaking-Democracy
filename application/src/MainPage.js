@@ -141,59 +141,71 @@ class MainPage extends Component{
       }
   }
 
-	callback = (eventid, percent, region, district, eventState) => {
-		var eventCompleted = {
-			eventID: eventid,
-			percent: percent,
-			region: region,
-			district: district
-		}
 
 
 
-		let updatedData = this.state.pollData;
-		updatedData[region][district] += (updatedData[region][district] * percent)
+    /**
+  	 * Allows an external component to add entries to eventsCompleted and update the pollData
+  	 * @param  {eventid}   eventsCompleted The id of the event completed.
+  	 * @param  {percent}   eventsCompleted The percentage amount of change for the region's district
+  	 */
+  	callback = (eventid, percent) => {
+  		//Get the region and district to change
+  		var region = Math.floor(Math.random() * 8);
+  		var district = Math.floor(Math.random() * this.state.pollData[region].length);
 
-		//Get the event IDs between the two dates that need to be completed before the round can advance
-		let eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
+  		//Create the new completed event to add
+  		var eventCompleted = {
+  			eventID: eventid,
+  			percent: percent,
+  			region: this.state.regionDistrictNames[region][0], //Adds the name of the region
+  			district: this.state.regionDistrictNames[region][district + 1] //Adds the name of the district
+  		}
+
+  		//Update the poll data
+  		let updatedData = this.state.pollData;
+  		updatedData[region][district] += (updatedData[region][district] * percent)
+
+  		//Check that the updated poll data isn't over 100%
+  		if(updatedData[region][district] > 100) {
+  			updatedData[region][district] = 100;
+  		}
+
+  		//Get the event IDs between the two dates that need to be completed before the round can advance
+  		let eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
 
 
-		//Remove the newly completed event ID if it is in the array
-		if(eventsToComplete.includes(eventid)) {
-			eventsToComplete.splice(eventsToComplete.indexOf(eventid), 1);
-		}
-
-    //Checks to see if the user has finished all events
-    if(this.state.eventsCompleted.includes(this.state.lastEventID)){
-      this.setState({gameEnded : true});
-    }
-
-
-		//Remove all completed event IDs from the array
-		this.state.eventsCompleted.map((completedEvent) => {
-			if(eventsToComplete.includes(completedEvent.eventID)) {
-				eventsToComplete.splice(eventsToComplete.indexOf(completedEvent.eventID), 1);
-			}
-		});
-
-		while(eventsToComplete.length == 0){
-
-      //Check if the game has ended
-		  if(!this.state.gameEnded){
-      		//If all events are complete advance the turn counter
-		       this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
-
-		      //Update eventsToComplete to detect turns with no events
-		      eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
-
-		      //Advance the sprint number
-		      this.setState({currentSprint: (this.state.currentSprint + 1)});
+      //Checks to see if the user has finished all events
+      if(this.state.eventsCompleted.includes(this.state.lastEventID)){
+        this.setState({gameEnded : true});
       }
-		}
 
-		this.setState({pollData: updatedData});
-		this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
-  	};
+
+  		//Remove all completed event IDs from the array
+  		this.state.eventsCompleted.map((completedEvent) => {
+  			if(eventsToComplete.includes(completedEvent.eventID)) {
+  				eventsToComplete.splice(eventsToComplete.indexOf(completedEvent.eventID), 1);
+  			}
+  		});
+
+  		while(eventsToComplete.length == 0){
+
+        //Check if the game has ended
+  		  if(!this.state.gameEnded){
+        		//If all events are complete advance the turn counter
+  		       this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
+
+  		      //Update eventsToComplete to detect turns with no events
+  		      eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
+
+  		      //Advance the sprint number
+  		      this.setState({currentSprint: (this.state.currentSprint + 1)});
+        }
+  		}
+  		this.setState({pollData: updatedData});
+  		this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
+    	};
+
 
 	//Returns all of the event IDs between 2 dates
 	getEventIDsBetween = (turnStartDate, turnEndDate) => {
