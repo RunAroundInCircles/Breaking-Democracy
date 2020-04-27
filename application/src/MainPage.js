@@ -49,6 +49,7 @@ import {
   Link
 } from "react-router-dom";
 import { add, isBefore, isAfter, addDays } from 'date-fns';
+import { createBrowserHistory } from "history";
 
 /**
  * MainPage component of the app that renders and returns all the buttons
@@ -115,6 +116,11 @@ class MainPage extends Component{
 					tempDate = eventDate;
 			}
 		});
+
+		//Creates a history for the Router so that we can add './Email' to it
+		//This allows us to skip the '/' page and go directly to './Email' instead
+		const createdHistory = createBrowserHistory();
+		createdHistory.push('./Email');
 	}
 
     /**
@@ -260,112 +266,110 @@ class MainPage extends Component{
 				</div>
 
 			:(
-        (this.state.gameEnded) //Check if the game has ended
-        ? ((this.state.hasPlayerWon) //Check if the player has won
-            ? //Render Good Ending
-            (<div>
-  					<img className="desktop" src={desktop} alt="desktop"/>
-  					<GoodEnding/>
-  				</div>)
-            ://Render Bad Ending
-            (<div>
-  					<img className="desktop" src={desktop} alt="desktop"/>
-  					<BadEnding/>
-  				</div>)
-          )
-        :(
+				(this.state.gameEnded) //Check if the game has ended
+				? ((this.state.hasPlayerWon) //Check if the player has won
+					? //Render Good Ending
+					(<div>
+							<img className="desktop" src={desktop} alt="desktop"/>
+							<GoodEnding/>
+						</div>)
+					://Render Bad Ending
+					(<div>
+							<img className="desktop" src={desktop} alt="desktop"/>
+							<BadEnding/>
+						</div>)
+				)
+				:(//render game
+					//Adding history allows us to start on Email instead of the '/' page
+					<Router history={this.createdHistory}> 
+						<div id="screen">
+							<audio controls autoPlay loop id="main-music">
+								<source src={mainMusicMP3} type="audio/mpeg"></source>
+								<source src={mainMusicWAV} type="audio/wav"></source>
+								Your Browser does not support the audio element.
+							</audio>
 
-        //render game
-        <Router>
-					<div id="screen">
-						<audio controls autoPlay loop id="main-music">
-							<source src={mainMusicMP3} type="audio/mpeg"></source>
-							<source src={mainMusicWAV} type="audio/wav"></source>
-							Your Browser does not support the audio element.
-						</audio>
+							{this.setCurrentEmail(emails)}
+							<img className="desktop" src={desktop} alt="desktop"/>
+							<nav>
+								<Link to='/Calendar'> {/*Button to Calendar*/}
+									<Button>
+										<span>Calendar</span>
+									</Button>
+								</Link>
 
-						{this.setCurrentEmail(emails)}
-						<img className="desktop" src={desktop} alt="desktop"/>
-						<nav>
-							<Link to='/Calendar'> {/*Button to Calendar*/}
-								<Button>
-									<span>Calendar</span>
-								</Button>
-							</Link>
+								&nbsp;
+								&nbsp; {/*This adds spaces between the buttons*/}
+								&nbsp;
 
-							&nbsp;
-							&nbsp; {/*This adds spaces between the buttons*/}
-							&nbsp;
+								<Link to='/Email'>
+									<Button> {/*Button to Email*/}
+										<span>Email</span>
+									</Button>
+								</Link>
 
-							<Link to='/Email'>
-								<Button> {/*Button to Email*/}
-									<span>Email</span>
-								</Button>
-							</Link>
+								&nbsp;
+								&nbsp; {/*This adds spaces between the buttons*/}
+								&nbsp;
 
-							&nbsp;
-							&nbsp; {/*This adds spaces between the buttons*/}
-							&nbsp;
+								<Link to='/Map'>
+									<Button> {/*Button to Map*/}
+										<span>Map</span>
+									</Button>
+								</Link>
 
-							<Link to='/Map'>
-								<Button> {/*Button to Map*/}
-									<span>Map</span>
-								</Button>
-							</Link>
+								&nbsp;
+								&nbsp; {/*This adds spaces between the buttons*/}
+								&nbsp;
 
-							&nbsp;
-							&nbsp; {/*This adds spaces between the buttons*/}
-							&nbsp;
+								<Link to= '/Echo'>
+									<Button>
+										<span>Echo</span>
+									</Button>
+								</Link>
 
-							<Link to= '/Echo'>
-								<Button>
-									<span>Echo</span>
-								</Button>
-							</Link>
+								&nbsp;
+								&nbsp; {/*This adds spaces between the buttons*/}
+								&nbsp;
 
-							&nbsp;
-							&nbsp; {/*This adds spaces between the buttons*/}
-							&nbsp;
+								<Link to= '/Timeline'>
+									<Button>
+										<span>Timeline</span>
+									</Button>
+								</Link>
+							</nav>
 
-							<Link to= '/Timeline'>
-								<Button>
-									<span>Timeline</span>
-								</Button>
-							</Link>
-						</nav>
-
-						<Switch>{/*The switch to click between pages.*/}
-							<Route path='/Calendar'>
-								<CalendarApp  events={Object.values(events)} eventsCompleted={this.state.eventsCompleted} turnStartDate={this.state.turnStartDate}/>
-								<Route path='/Calendar/:id' render={(props)=>{
-									return <EventPopup callbackFromMain={this.callback} event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]}/>
-									}
-								}/>
-							</Route>
-							<Route path='/Email'>
-								<EmailApp emails = {this.state.currentEmails}/>
-							</Route>
-							<Route path='/Map'>
-								<MapApp pollData={this.state.pollData} regionDistrictNames={this.state.regionDistrictNames}/>
-								<Route path='/Map/:id' render={(props)=>{
-										return <MapRegion region={props.match.params.id} pollData={this.state.pollData} regionDistrictNames={this.state.regionDistrictNames}/>
-									}
-								}/>
-							</Route>
-							<Route path='/Echo'>
-								<EchoApp echos={echos}/>
-							</Route>
-							<Route path='/Timeline'>
-								<TimelineApp checkIfPlayerWon={this.state.checkIfPlayerWon} events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
-							</Route>
-						</Switch>
-					</div>
-				</Router>
-			)
-    )
+							<Switch>{/*The switch to click between pages.*/}
+								<Route path='/Calendar'>
+									<CalendarApp  events={Object.values(events)} eventsCompleted={this.state.eventsCompleted} turnStartDate={this.state.turnStartDate}/>
+									<Route path='/Calendar/:id' render={(props)=>{
+										return <EventPopup callbackFromMain={this.callback} event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]}/>
+										}
+									}/>
+								</Route>
+								<Route path='/Email'>
+									<EmailApp emails = {this.state.currentEmails}/>
+								</Route>
+								<Route path='/Map'>
+									<MapApp pollData={this.state.pollData} regionDistrictNames={this.state.regionDistrictNames}/>
+									<Route path='/Map/:id' render={(props)=>{
+											return <MapRegion region={props.match.params.id} pollData={this.state.pollData} regionDistrictNames={this.state.regionDistrictNames}/>
+										}
+									}/>
+								</Route>
+								<Route path='/Echo'>
+									<EchoApp echos={echos}/>
+								</Route>
+								<Route path='/Timeline'>
+									<TimelineApp checkIfPlayerWon={this.state.checkIfPlayerWon} events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
+								</Route>
+							</Switch>
+						</div>
+					</Router>
+				)	
+    		)
 		);
 	}
-
 }
 
 export default MainPage
