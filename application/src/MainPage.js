@@ -47,6 +47,7 @@ import {
   Link
 } from "react-router-dom";
 import { add, isBefore, isAfter, addDays } from 'date-fns';
+import { createBrowserHistory } from "history";
 
 /**
  * MainPage component of the app that renders and returns all the buttons
@@ -91,6 +92,11 @@ class MainPage extends Component{
 			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0),
 			renderVideo: true //Determines whether the intro video or the game should be rendered
 		}
+
+		//Creates a history for the Router so that we can add './Email' to it
+		//This allows us to skip the '/' page and go directly to './Email' instead
+		const createdHistory = createBrowserHistory();
+		createdHistory.push('./Email');
 
 		this.callback = this.callback.bind(this);
 		this.setCurrentEmail = this.setCurrentEmail.bind(this);
@@ -230,7 +236,7 @@ class MainPage extends Component{
 					<Intro endedCallback={this.handleVideoEnd}/>
 				</div>
 			:( //render game
-				<Router>
+				<Router history={this.createdHistory}> {/* Adding history allows us to start on Email instead of the '/' page */}
 					<div id="screen">
 						<audio controls autoPlay loop id="main-music">
 							<source src={mainMusicMP3} type="audio/mpeg"></source>
