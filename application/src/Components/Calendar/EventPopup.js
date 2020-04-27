@@ -46,7 +46,8 @@ function EventPopup(props) {
     const [renderGame, setRenderGame] = useState(false);
     
     //Sets num to a random index of challenges for use in TypeGame
-    var num = Math.floor(Math.random() * challenges.length);
+    //Use as state prevents the question from changing after event completion
+    const [num, setNum] = useState(Math.floor(Math.random() * challenges.length));
 
 	//Creates an array of all the games to pick so one can be randomly chosen
     const games = [
@@ -55,7 +56,7 @@ function EventPopup(props) {
     ];
 
     //Sets gameToPlay to a random index of games
-    //This prevents the game from switching after you complete it
+    //Use as state prevents the game from switching after you complete it
     const [gameToPlay, setGameToPlay] = useState(Math.floor(Math.random() * games.length));
 	
     return (
