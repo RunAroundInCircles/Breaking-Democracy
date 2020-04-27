@@ -14,7 +14,10 @@ The server will then start on localhost:3000
 
 Current Implementation
 =
-You can switch between different modules by clicking on the red buttons at the top of the screen:
+Once the page loads an introduction video plays to give a quick overview of the game. Once the video is over the application renders the mainpage so that the game can begin.
+![Intro](/UsercaseImages/introVideo.png)
+
+In mainpage you can switch between different modules by clicking on the red buttons at the top of the screen:
 * **An email module**: The email module allows users to see emails in the left side panel and then when an email is clicked the full email will be displayed in the main panel.
 ![Inbox](/UsercaseImages/StartingInbox.PNG)
 ![EmailSelected](/UsercaseImages/SelectedEmail.PNG)
@@ -37,10 +40,17 @@ You can switch between different modules by clicking on the red buttons at the t
 * **A timeline module**: The timeline module allows users to see previous events the user has accompolished in this game session.
 ![Timeline](/UsercaseImages/InitialTimeline.PNG)
 
+
+Editor Application
+==
+For ease of changing in and out data we have created an editor application to allow developers to change JSON files in the game.
+![Editor Application](https://github.com/catiel/Breaking-Democracy/blob/master/Screenshots/EditorApplication.png)
+
+
 Testing
 =
 * **Snapshots**: For each component above, including the Main Page component, we have created snapshot tests which will check to see if the components stay consistent with any updates.
-
+* **Unit Testing**: For the editor application we have created Unit tests to check if the files needed for the application to run exist.
 
 Thank You to the following people
 =
