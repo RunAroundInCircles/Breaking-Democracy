@@ -1,15 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders intro page 1`] = `
-<video
-  autoPlay={true}
-  controls={true}
-  id="background-video"
->
-  <source
-    src="intro.mp4"
-    type="video/mp4"
-  />
-  Your browser does not support the video tag.
-</video>
+<div>
+  <video
+    autoPlay={true}
+    controls={true}
+    id="background-video"
+  >
+    <source
+      src="intro.mp4"
+      type="video/mp4"
+    />
+    Your browser does not support the video tag.
+  </video>
+  <button
+    className="btn btn-primary"
+    disabled={false}
+    style={
+      Object {
+        "position": "absolute",
+        "right": 5,
+        "top": 5,
+      }
+    }
+    type="button"
+  >
+    <span>
+      Skip Video
+    </span>
+  </button>
+</div>
 `;

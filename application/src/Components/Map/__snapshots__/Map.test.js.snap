@@ -7,6 +7,30 @@ exports[`renders MapApp page 1`] = `
   >
     Country of Democristan
   </h1>
+  <h2
+    id="conservative-box"
+    style={
+      Object {
+        "alignItems": "center",
+        "justifyContent": "center",
+        "left": "10%",
+        "position": "absolute",
+        "top": "50%",
+      }
+    }
+  />
+  <h2
+    id="liberal-box"
+    style={
+      Object {
+        "alignItems": "center",
+        "justifyContent": "center",
+        "left": "10%",
+        "position": "absolute",
+        "top": "55%",
+      }
+    }
+  />
   <div
     className="country-map"
     dangerouslySetInnerHTML={
