@@ -40,11 +40,23 @@ class TimelineEvent extends Component {
         var eventsFormated = [];                                            //Structure to contain events while they are being generated
         let options = {year: 'numeric', month: 'short', day: 'numeric'};    //Format how the dates will be displayed
         var i;
+        var eventScore = 0;
+        var maxEventId = 0;
+
         for(i = 0; i < this.props.eventsCompleted.length; i++) {
+
             var completedEvent = this.props.eventsCompleted[i]; //Get the next completed event
             var event = this.props.events[completedEvent.eventID]; //Get the details of the completed event
             var fillColor = "grey"; //Start the color as grey
             var percentText = completedEvent.percent; //Get the percentage change
+
+            eventScore = eventScore + percentText; //Calculate the total score the player has got
+
+            //Used to find highest event completed.
+            if(event.eventID > maxEventId){
+              maxEventId = event.eventID;
+            }
+
             if(completedEvent.percent > 0) { //If a positive change set color to green
                 percentText = "+" + percentText;
                 fillColor = "green";
@@ -54,10 +66,10 @@ class TimelineEvent extends Component {
             }
             let date = new Date(event.year, event.month, event.day); //Get the date of the event
             var tooltipText =  //Format the tooltip text to be the date, event message, the region effected, and the district effected
-                date.toLocaleDateString("en-US", options) 
+                date.toLocaleDateString("en-US", options)
                 + "\n" + event.message
-                + "\n" + "Region: " + completedEvent.region
-                + "\n" + "District: " + completedEvent.district;
+                + "\n" + "Region " + completedEvent.region
+                + "\n" + "District " + completedEvent.district;
             eventsFormated.push(
                 <svg height="100" width="100" style={{margin: 4}}>
                     <circle cx="50" cy="50" r="47" stroke="black" strokeWidth="3" fill={fillColor}>
@@ -68,6 +80,7 @@ class TimelineEvent extends Component {
             );
         }
 
+        this.props.checkIfPlayerWon(eventScore,maxEventId);
         return(
             <div className="timeline-list"
                 style={{display: 'flex',

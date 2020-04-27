@@ -45,19 +45,15 @@ function MapRegion(props) {
     useEffect(() => {
         document.querySelectorAll('g > path[id~=district]').forEach((district, index) => {
             var districtName = document.getElementById('district-name');
-            var conservativeBox = document.getElementById('popup-conservative-box');
-            var liberalBox = document.getElementById('popup-liberal-box');
             districtName.innerText = "Region of " + props.regionDistrictNames[props.region][0];
             var color = 'rgb(' + (colors[0][index]/100)*255 +
                 ', 0, ' +
                 (1- (colors[0][index]/100))*255 + ')'; //Formats colors to be used
             district.style.setProperty("fill", color);
-            //Function to display the name and poll percentage of the District that is being hovered over
+            //Function to display the name of the District that is being hovered over
             district.addEventListener('mouseover', function(event) {
                 districtName.innerText = (index+1) + ": " + props.regionDistrictNames[props.region][index+1] + " District";
-                conservativeBox.innerText = colors[0][index].toFixed(2) + "% Conservative";
-                liberalBox.innerText = (100-colors[0][index]).toFixed(2) + "% Liberal";
-            });
+      			});
             //Function to display the name of the Region if no district is being hovered over
             district.addEventListener('mouseout', function(event) {
       				  districtName.innerText = "Region of " + props.regionDistrictNames[props.region][0];
@@ -108,18 +104,6 @@ function MapRegion(props) {
                 justifyContent: 'center',
                 left: '40%'
             }}></h1>
-            <h2 id="popup-conservative-box" style={{position: 'absolute',
-                alignItems: 'center',
-                justifyContent: 'center',
-                left: '10%',
-                top: '50%'
-            }}></h2>
-            <h2 id="popup-liberal-box" style={{position: 'absolute',
-                alignItems: 'center',
-                justifyContent: 'center',
-                left: '10%',
-                top: '55%'
-            }}></h2>
                 {/*This link acts as a back button allowing the user to redirect to Map*/}
                 <Link to='/Map'>
                     <Button style={{top: 5, right: 5, position: 'absolute'}}>

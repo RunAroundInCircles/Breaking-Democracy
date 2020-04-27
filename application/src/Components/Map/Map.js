@@ -50,18 +50,6 @@ class Map extends Component{
 		return (
 			<div>
 				<h1 id="region-name">Country of Democristan</h1>
-				<h2 id="conservative-box" style={{position: 'absolute',
-						alignItems: 'center',
-						justifyContent: 'center',
-						left: '10%',
-						top: '50%'
-				}}></h2>
-				<h2 id="liberal-box" style={{position: 'absolute',
-						alignItems: 'center',
-						justifyContent: 'center',
-						left: '10%',
-						top: '55%'
-				}}></h2>
 				{/*Uses svg to display map*/}
 				<div className="country-map" dangerouslySetInnerHTML={svg} ref={this.mapRef}/>
 			</div>
@@ -75,7 +63,6 @@ class Map extends Component{
 	componentDidMount() {
 		var func = this.props.onSelect; //Allows access to onSelect within the forEach
     if(this.mapRef.current) {
-			var redTotal = 0;
       //Iterates through all paths within the svg and attaches the click event to each path and gives them their unique color
       this.mapRef.current.querySelectorAll('g > path').forEach((region, index) => {
         var i;
@@ -83,7 +70,6 @@ class Map extends Component{
         var blue = 0;
         for(i = 0; i < this.props.pollData[index].length; i++) {
           red += this.props.pollData[index][i];
-					redTotal += this.props.pollData[index][i];
         }
         red = red/this.props.pollData[index].length;
         blue = 100-red;
@@ -91,29 +77,21 @@ class Map extends Component{
         var color = 'rgb(' + (red/100)*255 + ', 0, ' + (blue/100)*255 + ')'; //Formats colors to be used
         region.style.setProperty("fill", color);
         region.style.setProperty("fill:hover", 'gold');
+        //Function to display the name of the Region that is being hovered over
         var name = this.props.regionDistrictNames[index][0]
-				var regionName = document.getElementById('region-name');
-				var conservativeBox = document.getElementById('conservative-box');
-				var liberalBox = document.getElementById('liberal-box');
-				//Function to display the name and poll percentage of the Region that is being hovered over
         region.addEventListener('mouseover', function(event) {
+          var regionName = document.getElementById('region-name');
           regionName.innerText = "Region of " + name;
-					conservativeBox.innerText = red.toFixed(2) + "% Conservative";
-					liberalBox.innerText = blue.toFixed(2) + "% Liberal";
         });
-        //Function to display the name and poll percentage of Democristan if no region is being hovered over
+        //Function to display the name of the Democristan if no region is being hovered over
         region.addEventListener('mouseout', function(event) {
+          var regionName = document.getElementById('region-name');
           regionName.innerText = "Country of Democristan";
-					conservativeBox.innerText = (redTotal/28).toFixed(2) + "% Conservative";
-					liberalBox.innerText = (100-(redTotal/28)).toFixed(2) + "% Liberal";
         });
         region.addEventListener('click', function(event) {
           //Decides which region map to show based on what region is clicked on
           func(index);
         });
-				//Displays Democristan pollData by default
-				conservativeBox.innerText = (redTotal/28).toFixed(2) + "% Conservative";
-				liberalBox.innerText = (100-(redTotal/28)).toFixed(2) + "% Liberal";
       });
 		}
 	 }
