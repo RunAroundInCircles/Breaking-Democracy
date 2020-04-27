@@ -39,8 +39,8 @@ import TimelineApp from './Components/Timeline/TimelineApp.js'
 import './MainPage.css';
 import desktop from './Resources/Title_Computer.png';
 import Situations from './Components/Calendar/Situations.json';
-import mainMusicMP3 from './Resources/Music/ThemeLoopable.mp3';
-import mainMusicWAV from './Resources/Music/ThemeLoopable.wav';
+import mainMusicMP3 from './Resources/Music/AsteroidsLoopable.mp3';
+import mainMusicWAV from './Resources/Music/AsteroidsLoopable.wav';
 import Intro from './Intro';
 import GoodEnding from './GoodEnding';
 import BadEnding from './BadEnding';
@@ -88,8 +88,10 @@ class MainPage extends Component{
 			},
 			//eventsCompleted is an array to hold all of the events that have been finished by the player after they complete them.
 			eventsCompleted: [],
-      		currentEmails: [], //The current list of emails for the sprint we are on
-      		currentSprint: 1, //The current two week interval we are on
+
+      currentEmails: [], //The current list of emails for the sprint we are on
+      currentSprint: 1, //The current two week interval we are on
+
 			//turnStartDate is the beginning Date for the game February 1, 2020, indicates the start of the turn in Calendar
 			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0),
 			renderVideo: true, //Determines whether the intro video or the game should be rendered
@@ -128,8 +130,15 @@ class MainPage extends Component{
 	 * @param  {eventState}  eventsCompleted What the status of the event is.
 	 */
 
-  checkIfPlayerWon = (eventScore, eventID) =>{
+		//Update the poll data
+		let updatedData = this.state.pollData;
+		updatedData[region][district] += (updatedData[region][district] * percent)
 
+		//Check that the updated poll data isn't over 100%
+		if(updatedData[region][district] > 100) {
+			updatedData[region][district] = 100;
+		}
+  checkIfPlayerWon = (eventScore, eventID) =>{
       if(eventID == this.state.lastEventID){
           this.setState({playerScore: eventScore/eventID});
           if(this.state.playerScore > .5){
@@ -141,8 +150,12 @@ class MainPage extends Component{
       }
   }
 
-
-
+		//Remove all completed event IDs from the array
+		this.state.eventsCompleted.map((completedEvent) => {
+			if(eventsToComplete.includes(completedEvent.eventID)) {
+				eventsToComplete.splice(eventsToComplete.indexOf(completedEvent.eventID), 1);
+			}
+		});
 
     /**
   	 * Allows an external component to add entries to eventsCompleted and update the pollData
@@ -277,6 +290,7 @@ class MainPage extends Component{
 					<img className="desktop" src={desktop} alt="desktop"/>
 					<Intro endedCallback={this.handleVideoEnd}/>
 				</div>
+
 			:(
         (this.state.gameEnded) //Check if the game has ended
         ? ((this.state.hasPlayerWon) //Check if the player has won
@@ -306,7 +320,7 @@ class MainPage extends Component{
 						<img className="desktop" src={desktop} alt="desktop"/>
 						<nav>
 							<Link to='/Calendar'> {/*Button to Calendar*/}
-								<Button className="button calendar-button">
+								<Button>
 									<span>Calendar</span>
 								</Button>
 							</Link>

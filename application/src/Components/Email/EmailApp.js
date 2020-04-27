@@ -43,7 +43,7 @@ class EmailApp extends Component {
 		super(props);
         this.state = {
             selectedEmail: null,
-			currentEmails: []
+			      currentEmails: []
         }
         this.setSelectedEmail = this.setSelectedEmail.bind(this);
     }
