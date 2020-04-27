@@ -22,6 +22,7 @@ SOFTWARE.
 */
 
 import React,{Component} from 'react';
+//import Sound from 'react-sound';
 import './App.css';
 import MapApp from './Components/Map/MapApp.js';
 import MapRegion from './Components/Map/MapRegion.js';
@@ -33,6 +34,7 @@ import emails from './Components/Email/EmailList.json';
 import echos from './Components/Echo/echo.json';
 import {Button} from 'react-bootstrap';
 import EventPopup from './Components/Calendar/EventPopup.js';
+import Event from "./Components/Calendar/Event.js";
 import TimelineApp from './Components/Timeline/TimelineApp.js'
 import './MainPage.css';
 import desktop from './Resources/Title_Computer.png';
@@ -42,7 +44,6 @@ import mainMusicWAV from './Resources/Music/ThemeLoopable.wav';
 import Intro from './Intro';
 import GoodEnding from './GoodEnding';
 import BadEnding from './BadEnding';
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -50,7 +51,6 @@ import {
   Link
 } from "react-router-dom";
 import { add, isBefore, isAfter, addDays } from 'date-fns';
-import { createBrowserHistory } from "history";
 
 /**
  * MainPage component of the app that renders and returns all the buttons
@@ -88,9 +88,8 @@ class MainPage extends Component{
 			},
 			//eventsCompleted is an array to hold all of the events that have been finished by the player after they complete them.
 			eventsCompleted: [],
-			currentEmails: [], //The current list of emails for the sprint we are on
-			currentSprint: 1, //The current two week interval we are on
-      
+      		currentEmails: [], //The current list of emails for the sprint we are on
+      		currentSprint: 1, //The current two week interval we are on
 			//turnStartDate is the beginning Date for the game February 1, 2020, indicates the start of the turn in Calendar
 			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0),
 			renderVideo: true, //Determines whether the intro video or the game should be rendered
@@ -99,11 +98,6 @@ class MainPage extends Component{
       hasPlayerWon: false, //Check to see if the player won
       playerScore: 0 //Holds the score of the player
 		}
-
-		//Creates a history for the Router so that we can add './Email' to it
-		//This allows us to skip the '/' page and go directly to './Email' instead
-		const createdHistory = createBrowserHistory();
-		createdHistory.push('./Email');
 
 		this.callback = this.callback.bind(this);
 		this.setCurrentEmail = this.setCurrentEmail.bind(this);
@@ -123,12 +117,17 @@ class MainPage extends Component{
     });
 
 	}
-  
-/**
- * Checks to see if the player has won the game
- * @param  {[type]} eventScore How well the player has completed events
- * @param  {[type]} eventID    The max event the player has completed
- */
+
+
+	/**
+	 * Allows an external component to add entries to eventsCompleted and update the pollData
+	 * @param  {eventid}   eventsCompleted The id of the event completed.
+	 * @param  {percent}   eventsCompleted The percentage amount of change for the region's district
+	 * @param  {region}	   eventsCompleted The id of the region to update
+	 * @param  {district}  eventsCompleted The id of the district to update
+	 * @param  {eventState}  eventsCompleted What the status of the event is.
+	 */
+
   checkIfPlayerWon = (eventScore, eventID) =>{
 
       if(eventID == this.state.lastEventID){
@@ -141,34 +140,19 @@ class MainPage extends Component{
           }
       }
   }
-  
-	/**
-	 * Allows an external component to add entries to eventsCompleted and update the pollData
-	 * @param  {eventid}   eventsCompleted The id of the event completed.
-	 * @param  {percent}   eventsCompleted The percentage amount of change for the region's district
-	 */
-  callback = (eventid, percent) => {
-		//Get the region and district to change
-		var region = Math.floor(Math.random() * 8);
-		var district = Math.floor(Math.random() * this.state.pollData[region].length);
 
-		//Create the new completed event to add
-
+	callback = (eventid, percent, region, district, eventState) => {
 		var eventCompleted = {
 			eventID: eventid,
 			percent: percent,
-			region: this.state.regionDistrictNames[region][0], //Adds the name of the region
-			district: this.state.regionDistrictNames[region][district + 1] //Adds the name of the district
+			region: region,
+			district: district
 		}
 
-		//Update the poll data
+
+
 		let updatedData = this.state.pollData;
 		updatedData[region][district] += (updatedData[region][district] * percent)
-		
-		//Check that the updated poll data isn't over 100%
-		if(updatedData[region][district] > 100) {
-			updatedData[region][district] = 100;
-		}
 
 		//Get the event IDs between the two dates that need to be completed before the round can advance
 		let eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
@@ -239,6 +223,7 @@ class MainPage extends Component{
 		return true;
 	}
 
+
 	/*This function gets the current emails needed for the current sprint.
 	@param  {emails} The list of emails to be assessed and added to the current email list.
 	*/
@@ -297,7 +282,6 @@ class MainPage extends Component{
         :(
 
         //render game
-          <Router history={this.createdHistory}> {/* Adding history allows us to start on Email instead of the '/' page */}
         <Router>
 					<div id="screen">
 						<audio controls autoPlay loop id="main-music">
@@ -387,5 +371,7 @@ class MainPage extends Component{
     )
 		);
 	}
+
 }
+
 export default MainPage
