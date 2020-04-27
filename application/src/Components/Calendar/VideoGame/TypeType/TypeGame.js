@@ -71,7 +71,6 @@ class TypeGame extends Component{
 			//This div is the body of the popup window containing the back button and the event info
 			<div style={{justifyContent: 'center'}}>
 				<h1>{this.props.challenges.challenge}</h1>
-				<h2>{this.props.answer}</h2>
 				{/*Creates a form that has a submit button. and calls handleChange when pressed.*/}
 				<form onSubmit={this.handleSubmit}>
 					<label>

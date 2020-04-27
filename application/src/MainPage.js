@@ -85,8 +85,8 @@ class MainPage extends Component{
 			},
 			//eventsCompleted is an array to hold all of the events that have been finished by the player after they complete them.
 			eventsCompleted: [],
-      currentEmails: [], //The current list of emails for the sprint we are on
-      currentSprint: 1, //The current two week interval we are on
+			currentEmails: [], //The current list of emails for the sprint we are on
+			currentSprint: 1, //The current two week interval we are on
       
 			//turnStartDate is the beginning Date for the game February 1, 2020, indicates the start of the turn in Calendar
 			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0),

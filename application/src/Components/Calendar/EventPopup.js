@@ -25,7 +25,6 @@ import React,{useState} from 'react';
 import {Link} from "react-router-dom";
 import {Button} from 'react-bootstrap';
 import TypeGame from './VideoGame/TypeType/TypeGame.js';
-import ReactDOM from 'react-dom';
 import challenges from './VideoGame/TypeType/codingChallenges.json';
 import { Reacteroids } from './VideoGame/ShootShoot/src/Reacteroids';
 
@@ -36,17 +35,28 @@ import { Reacteroids } from './VideoGame/ShootShoot/src/Reacteroids';
  */
 
 function EventPopup(props) {
-	
-	var num = Math.floor(Math.random()* 10);
     //The date of the event to display
     let date = new Date(props.event.year, props.event.month, props.event.day);
+    
     //options is used to format how the date of the event is displayed
     let options = {year: 'numeric', month: 'short', day: 'numeric'};
     
-	const [renderGame, setRenderGame] = useState(false);
-	//gets a certain challenge for an event happening from the json file.
-    //let game = <TypeGame challenges = {challenges[num]} answer = {challenges[num].answer} callbackFromMain={props.callbackFromMain} eventID={props.event.id}/>;
-    let game = <Reacteroids callbackFromMain={props.callbackFromMain} eventID={props.event.id}/>;
+    //Sets whether the game should be rendered or not
+    //Used as state so once the game is completed it doesn't restart the event
+    const [renderGame, setRenderGame] = useState(false);
+    
+    //Sets num to a random index of challenges for use in TypeGame
+    var num = Math.floor(Math.random() * challenges.length);
+
+	//Creates an array of all the games to pick so one can be randomly chosen
+    const games = [
+        <TypeGame challenges = {challenges[num]} answer = {challenges[num].answer} callbackFromMain={props.callbackFromMain} eventID={props.event.id}/>,
+        <Reacteroids callbackFromMain={props.callbackFromMain} eventID={props.event.id}/>
+    ];
+
+    //Sets gameToPlay to a random index of games
+    //This prevents the game from switching after you complete it
+    const [gameToPlay, setGameToPlay] = useState(Math.floor(Math.random() * games.length));
 	
     return (
         //This div covers the screen with an black opaque layer
@@ -74,10 +84,12 @@ function EventPopup(props) {
 						<span>X</span>
 					</Button>
                 </Link>
-                {/*This div contains all of the information for the event*/}
 
+                {/* Determines whether the game or the event info should be rendered */}
                 {renderGame 
-                    ? game
+                    //Render game
+                    ? games[gameToPlay]
+                    //Render event info
                     : <div style={{justifyContent: 'center'}}>
                         <h1>{date.toLocaleDateString("en-US", options)}</h1>
                         <h2>{props.event.message}</h2>
