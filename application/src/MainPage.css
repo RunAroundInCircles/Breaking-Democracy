@@ -37,7 +37,7 @@ SOFTWARE.
 
 Button {
   position: relative;
-
+  top: 3px;
 }
 
 .email-button {
