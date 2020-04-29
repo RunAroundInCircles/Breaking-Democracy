@@ -23,6 +23,10 @@ SOFTWARE.
 
 import React,{Component} from 'react';
 import face from '../../Resources/Email Faces/game_master.png';
+import face2 from '../../Resources/Email Faces/face.png';
+
+const url = ['../../Resources/Email Faces/game_master.png',
+				'../../Resources/Email Faces/face.png'];
 
 /**
  * Represents an actual email which will be used to give tutorials and
@@ -48,10 +52,11 @@ class Email extends Component {
             pinned: props.pinned, //True/False value representing if email is pinned
             id: props.id, //Unique ID of the email
             onSelect: props.onSelect, //Inherited method to run onClick
+			face: props.face
         }
         //Binds this to handleClick
         this.handleClick = this.handleClick.bind(this);
-    }
+	}
 
     /**
      * Alters reaction to clicking
@@ -63,7 +68,22 @@ class Email extends Component {
         this.state.onSelect(this.state); //Runs onSelect using this.state as argument
     }
     
-
+	renderImage(imageUrl) {
+		if(this.props.face == url[0]){			
+			return (
+				<div>
+					<img className="sideImage" src={face} alt="face"/>
+				</div>
+			);
+		}
+		else{
+			return (
+				<div>
+					<img className="sideImage" src={face2} alt="face"/>
+				</div>
+			);
+		}
+	}
 /**
  * Renders each individual email in the email list panel
  * @return returns the div of the indvidual email in the email list
@@ -75,7 +95,7 @@ class Email extends Component {
             return (
                 <div className='email-selected' onClick={this.handleClick}>
                         <h1>{this.state.sender}</h1> {/* Name of Sender */}
-                        <img className="sideImage" src={face} alt="face"/>
+                        {url.map(urlImage => this.renderImage(urlImage))}
                         <h2>{this.state.title}</h2> {/* Title of Email */}
                         <h3>{this.state.body.substring(0,40)}</h3> {/* Body of Email, shortened to 40 characters */}
                 </div>
@@ -87,7 +107,7 @@ class Email extends Component {
             return (
                 <div className='email-notselected' onClick={this.handleClick}>
                     <h1>{this.state.sender}</h1> {/* Name of Sender */}
-                    <img className="sideImage" src={face} alt="face"/>
+                    {url.map(urlImage => this.renderImage(urlImage))}
                     <h2>{this.state.title}</h2> {/* Ttile of Email */}
                     <h3>{this.state.body.substring(0,40)}</h3> {/* Body of Email, shortened to 40 characters */}
                 </div>
