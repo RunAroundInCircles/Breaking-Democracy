@@ -80,7 +80,8 @@ class TimelineEvent extends Component {
             );
         }
 
-        this.props.checkIfPlayerWon(eventScore,maxEventId);
+        this.props.checkIfPlayerWon(eventScore, maxEventId);
+
         return(
             <div className="timeline-list"
                 style={{display: 'flex',
@@ -93,7 +94,7 @@ class TimelineEvent extends Component {
             >
                 {eventsFormated}
             </div>
-        )
+        );
     }
 }
 

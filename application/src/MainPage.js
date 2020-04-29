@@ -379,7 +379,7 @@ class MainPage extends Component{
 									<EchoApp echos={echos}/>
 								</Route>
 								<Route path='/Timeline'>
-									<TimelineApp checkIfPlayerWon={this.state.checkIfPlayerWon} events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
+									<TimelineApp checkIfPlayerWon={this.checkIfPlayerWon} events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
 								</Route>
 							</Switch>
 						</div>
