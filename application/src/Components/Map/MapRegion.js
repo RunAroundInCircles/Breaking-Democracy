@@ -105,7 +105,7 @@ function MapRegion(props) {
                 left: '40%'
             }}></h1>
                 {/*This link acts as a back button allowing the user to redirect to Map*/}
-                <Link to='/Map' >
+                <Link to='/Map'>
                     <Button style={{top: 5, right: 5, position: 'absolute'}}>
 						              <span>X</span>
 					          </Button>

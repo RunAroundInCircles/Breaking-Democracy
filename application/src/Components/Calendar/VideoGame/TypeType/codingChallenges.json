@@ -1,12 +1,6 @@
-{
-    "0":{"id": 0, "challenge": "Who won the 2016 election in the USA?","answer": "Donald Trump"},
-    "1":{"id": 1, "challenge": "How many representatives does kansas have?","answer": "125"},
-	"2":{"id": 2,"challenge": "How many states in the USA?","answer": "50"},
-	"3":{"id": 3, "challenge": "How many territories are part of the USA?","answer": "5"},
-    "4":{"id": 4, "challenge": "Who won the 2016 election in the USA?","answer": "Donald Trump"},
-	"5":{"id": 5,"challenge": "How many representatives does kansas have?","answer": "125"},
-	"6":{"id": 6, "challenge": "How many states in the USA?","answer": "50"},
-    "7":{"id": 7, "challenge": "How many territories are part of the USA?","answer": "5"},
-	"8":{"id": 8,"challenge": "How many territories are part of the USA?","answer": "5"},
-	"9":{"id": 9, "challenge": "How many states in the USA?","answer": "50"}
-}
+[
+    {"id": 0, "challenge": "Who won the 2016 election in the USA?","answer": "Donald Trump"},
+    {"id": 1, "challenge": "How many representatives does kansas have?","answer": "125"},
+	{"id": 2,"challenge": "How many states in the USA?","answer": "50"},
+	{"id": 3, "challenge": "How many territories are part of the USA?","answer": "5"}
+]

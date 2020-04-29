@@ -48,24 +48,20 @@ class TypeGame extends Component{
 	/*Will be able to check if the answer is right and change certain attributes when done.*/
 	handleSubmit(event){
 		event.preventDefault();
-		var region = Math.floor(Math.random() * 8);
-		var district = Math.floor(Math.random() * 7);
 		if(this.props.answer == this.state.value){
 			var percent = .5
-			this.props.callbackFromMain(this.props.eventID, percent, region, 0,2);
+			this.props.callbackFromMain(this.props.eventID, percent);
 			this.setState({result: "Success!"});
 		}
 		else {
 			var percent = -.5;
-			this.props.callbackFromMain(this.props.eventID, percent, region, 0,3);
+			this.props.callbackFromMain(this.props.eventID, percent);
 			this.setState({result: "Failed!"});
 		}
-
-
 	}
 
 	/**
-	 * Renders the event popup to show the plaer has won
+	 * Renders the event popup to show the player has won
 	 * @return {div} [Returns the popup]
 	 */
 	render(){
@@ -73,7 +69,6 @@ class TypeGame extends Component{
 			//This div is the body of the popup window containing the back button and the event info
 			<div style={{justifyContent: 'center'}}>
 				<h1>{this.props.challenges.challenge}</h1>
-				<h2>{this.props.answer}</h2>
 				{/*Creates a form that has a submit button. and calls handleChange when pressed.*/}
 				<form onSubmit={this.handleSubmit}>
 					<label>
