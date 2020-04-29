@@ -47,6 +47,7 @@ class TypeGame extends Component{
 
 	/*Will be able to check if the answer is right and change certain attributes when done.*/
 	handleSubmit(event){
+		event.preventDefault();
 		if(this.props.answer == this.state.value){
 			var percent = .5
 			this.props.callbackFromMain(this.props.eventID, percent);

@@ -149,9 +149,8 @@ class MainPage extends Component{
 
 		//Checks to see if the user has finished all events
 		let updatedGameEnded = this.state.gameEnded;
-		if(this.state.eventsCompleted.includes(this.state.lastEventID)){
-			this.setState({gameEnded : true});
-			//updatedGameEnded = true;
+		if(Object.values(this.state.eventsCompleted).length + 1 == Object.values(events).length) {
+			updatedGameEnded = true;
 		}
 
 		//Get the event IDs between the two dates that need to be completed before the round can advance
@@ -167,31 +166,26 @@ class MainPage extends Component{
   			}
   		});
 
+		//Check if the turn needs to be advanced
 		let updatedTurnStartDate = this.state.turnStartDate;
 		let updatedCurrentSprint = this.state.currentSprint;
-  		while(eventsToComplete.length == 0){
-        	//Check if the game has ended
-  		  	if(!this.state.gameEnded){
-        		//If all events are complete advance the turn counter
-				//this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
-				updatedTurnStartDate = add(updatedTurnStartDate, {weeks: 2});
+  		while(eventsToComplete.length == 0 && !updatedGameEnded){
+			//If all events are complete advance the turn counter
+			updatedTurnStartDate = add(updatedTurnStartDate, {weeks: 2});
 
-  		      	//Update eventsToComplete to detect turns with no events
-  		      	eventsToComplete = this.getEventIDsBetween(updatedTurnStartDate, add(updatedTurnStartDate, {days: 13}));
+			//Update eventsToComplete to detect turns with no events
+			eventsToComplete = this.getEventIDsBetween(updatedTurnStartDate, add(updatedTurnStartDate, {days: 13}));
 
-  		      	//Advance the sprint number
-				//this.setState({currentSprint: (this.state.currentSprint + 1)});
-				updatedCurrentSprint += 1;
-        	}
+			//Advance the sprint number
+			updatedCurrentSprint += 1;
   		}
-  		//this.setState({pollData: updatedData});
-		//this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
 		  
 		this.setState((state, props) => ({
 			pollData: updatedData,
 			eventsCompleted: [...state.eventsCompleted, eventCompleted],
 			turnStartDate: updatedTurnStartDate,
-			currentSprint: updatedCurrentSprint
+			currentSprint: updatedCurrentSprint,
+			gameEnded: updatedGameEnded
 		}));
     };
 
@@ -267,10 +261,6 @@ class MainPage extends Component{
 	 */
 	handleVideoEnd = () => {
 		this.setState({renderVideo: false});
-	}
-
-	componentDidMount() {
-		//console.log(this.state.renderVideo);
 	}
 
 	render(){
