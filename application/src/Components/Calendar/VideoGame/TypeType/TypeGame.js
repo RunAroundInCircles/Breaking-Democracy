@@ -57,8 +57,6 @@ class TypeGame extends Component{
 			this.props.callbackFromMain(this.props.eventID, percent);
 			this.setState({result: "Failed!"});
 		}
-
-
 	}
 
 	/**

@@ -87,10 +87,8 @@ class MainPage extends Component{
 			},
 			//eventsCompleted is an array to hold all of the events that have been finished by the player after they complete them.
 			eventsCompleted: [],
-
 			currentEmails: [], //The current list of emails for the sprint we are on
 			currentSprint: 1, //The current two week interval we are on
-
 			//turnStartDate is the beginning Date for the game February 1, 2020, indicates the start of the turn in Calendar
 			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0),
 			renderVideo: true, //Determines whether the intro video or the game should be rendered
@@ -118,8 +116,8 @@ class MainPage extends Component{
 
 		//Creates a history for the Router so that we can add './Email' to it
 		//This allows us to skip the '/' page and go directly to './Email' instead
-		const createdHistory = createBrowserHistory();
-		createdHistory.push('./Email');
+		//let createdHistory = createBrowserHistory();
+		//createdHistory.push('./Email');
 	}
 
     /**
@@ -149,13 +147,18 @@ class MainPage extends Component{
   			updatedData[region][district] = 100;
   		}
 
-  		//Get the event IDs between the two dates that need to be completed before the round can advance
-  		let eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
-
 		//Checks to see if the user has finished all events
+		let updatedGameEnded = this.state.gameEnded;
 		if(this.state.eventsCompleted.includes(this.state.lastEventID)){
 			this.setState({gameEnded : true});
+			//updatedGameEnded = true;
 		}
+
+		//Get the event IDs between the two dates that need to be completed before the round can advance
+		let eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
+		  
+		//Remove the newly completed event
+		eventsToComplete.splice(eventsToComplete.indexOf(eventid), 1);
 
   		//Remove all completed event IDs from the array
   		this.state.eventsCompleted.map((completedEvent) => {
@@ -164,23 +167,32 @@ class MainPage extends Component{
   			}
   		});
 
-		console.log(eventsToComplete);
+		let updatedTurnStartDate = this.state.turnStartDate;
+		let updatedCurrentSprint = this.state.currentSprint;
   		while(eventsToComplete.length == 0){
-			console.log("banana");
         	//Check if the game has ended
   		  	if(!this.state.gameEnded){
         		//If all events are complete advance the turn counter
-  		       this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
+				//this.setState({turnStartDate: add(this.state.turnStartDate, {weeks: 2})});
+				updatedTurnStartDate = add(updatedTurnStartDate, {weeks: 2});
 
-  		      //Update eventsToComplete to detect turns with no events
-  		      eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
+  		      	//Update eventsToComplete to detect turns with no events
+  		      	eventsToComplete = this.getEventIDsBetween(updatedTurnStartDate, add(updatedTurnStartDate, {days: 13}));
 
-  		      //Advance the sprint number
-  		      this.setState({currentSprint: (this.state.currentSprint + 1)});
+  		      	//Advance the sprint number
+				//this.setState({currentSprint: (this.state.currentSprint + 1)});
+				updatedCurrentSprint += 1;
         	}
   		}
-  		this.setState({pollData: updatedData});
-  		this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
+  		//this.setState({pollData: updatedData});
+		//this.setState({eventsCompleted: [...this.state.eventsCompleted, eventCompleted]});
+		  
+		this.setState((state, props) => ({
+			pollData: updatedData,
+			eventsCompleted: [...state.eventsCompleted, eventCompleted],
+			turnStartDate: updatedTurnStartDate,
+			currentSprint: updatedCurrentSprint
+		}));
     };
 
 	checkIfPlayerWon = (eventScore, eventID) =>{
@@ -257,9 +269,13 @@ class MainPage extends Component{
 		this.setState({renderVideo: false});
 	}
 
+	componentDidMount() {
+		//console.log(this.state.renderVideo);
+	}
+
 	render(){
 		return(
-			(this.state.renderVideo) //Check if the intro video or the game should be rendered
+			(this.state.renderVideo || this.state.gameEnded) //Check if the intro video or the game should be rendered
 			?(//Render video
 				<div>
 					<img className="desktop" src={desktop} alt="desktop"/>
@@ -283,7 +299,7 @@ class MainPage extends Component{
 				)
 				:(//render game
 					//Adding history allows us to start on Email instead of the '/' page
-					<Router history={this.createdHistory}> 
+					<Router history={createBrowserHistory().push('./Email')}> 
 						<div id="screen">
 							<audio controls autoPlay loop id="main-music">
 								<source src={mainMusicMP3} type="audio/mpeg"></source>
