@@ -26,6 +26,7 @@ import './EmailUI.css';
 import EmailList from './EmailList.js';
 import EmailReader from './EmailReader.js';
 
+
 /**
  * Used to display a list of emails and a reader that allows the user to view an
  * entire email.
@@ -42,7 +43,7 @@ class EmailApp extends Component {
 		super(props);
         this.state = {
             selectedEmail: null,
-			currentEmails: []
+			      currentEmails: []
         }
         this.setSelectedEmail = this.setSelectedEmail.bind(this);
     }
@@ -56,6 +57,7 @@ class EmailApp extends Component {
             <div className="email-app">
                 <EmailList
                     emails={this.props.emails}
+
                     selectedEmail={this.state.selectedEmail}
                     onSelect={this.setSelectedEmail}
                 />
@@ -64,6 +66,7 @@ class EmailApp extends Component {
             </div>
         )
     }
+
 
 	//function to set the currently selected email to be displayed in EmailReader.js
     setSelectedEmail(email) {

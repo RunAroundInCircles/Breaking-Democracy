@@ -49,7 +49,7 @@ function EventPopup(props) {
     //Use as state prevents the question from changing after event completion
     const [num, setNum] = useState(Math.floor(Math.random() * challenges.length));
 
-	//Creates an array of all the games to pick so one can be randomly chosen
+    //Creates an array of all the games to pick so one can be randomly chosen
     const games = [
         <TypeGame challenges = {challenges[num]} answer = {challenges[num].answer} callbackFromMain={props.callbackFromMain} eventID={props.event.id}/>,
         <Reacteroids callbackFromMain={props.callbackFromMain} eventID={props.event.id}/>
@@ -58,7 +58,7 @@ function EventPopup(props) {
     //Sets gameToPlay to a random index of games
     //Use as state prevents the game from switching after you complete it
     const [gameToPlay, setGameToPlay] = useState(Math.floor(Math.random() * games.length));
-	
+
     return (
         //This div covers the screen with an black opaque layer
          <div style={{display: 'flex',
@@ -85,7 +85,7 @@ function EventPopup(props) {
 						<span>X</span>
 					</Button>
                 </Link>
-
+                
                 {/* Determines whether the game or the event info should be rendered */}
                 {renderGame 
                     //Render game
