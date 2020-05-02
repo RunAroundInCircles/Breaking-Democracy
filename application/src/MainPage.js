@@ -37,8 +37,8 @@ import TimelineApp from './Components/Timeline/TimelineApp.js'
 import './MainPage.css';
 import desktop from './Resources/Title_Computer.png';
 import Situations from './Components/Calendar/Situations.json';
-import mainMusicMP3 from './Resources/Music/AsteroidsLoopable.mp3';
-import mainMusicWAV from './Resources/Music/AsteroidsLoopable.wav';
+import mainMusicMP3 from './Resources/Music/ThemeLoopable.mp3';
+import mainMusicWAV from './Resources/Music/ThemeLoopable.wav';
 import Intro from './Intro';
 import GoodEnding from './GoodEnding';
 import BadEnding from './BadEnding';
@@ -155,7 +155,7 @@ class MainPage extends Component{
 
 		//Get the event IDs between the two dates that need to be completed before the round can advance
 		let eventsToComplete = this.getEventIDsBetween(this.state.turnStartDate, add(this.state.turnStartDate, {days: 13}));
-		  
+
 		//Remove the newly completed event
 		eventsToComplete.splice(eventsToComplete.indexOf(eventid), 1);
 
@@ -179,7 +179,7 @@ class MainPage extends Component{
 			//Advance the sprint number
 			updatedCurrentSprint += 1;
   		}
-		  
+
 		this.setState((state, props) => ({
 			pollData: updatedData,
 			eventsCompleted: [...state.eventsCompleted, eventCompleted],
@@ -289,7 +289,7 @@ class MainPage extends Component{
 				)
 				:(//render game
 					//Adding history allows us to start on Email instead of the '/' page
-					<Router history={createBrowserHistory().push('./Email')}> 
+					<Router history={createBrowserHistory().push('./Email')}>
 						<div id="screen">
 							<audio controls autoPlay loop id="main-music">
 								<source src={mainMusicMP3} type="audio/mpeg"></source>
@@ -374,7 +374,7 @@ class MainPage extends Component{
 							</Switch>
 						</div>
 					</Router>
-				)	
+				)
     		)
 		);
 	}
