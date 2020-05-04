@@ -247,8 +247,8 @@ main {
 
 .calendar .body .col {
   flex-grow: 0;
-  flex-basis: calc(100%/7);
-  width: calc(100%/7);
+  flex-basis: calc(100%/7.0005);
+  width: calc(100%/7.0005);
 }
 
 .calendar-event-button {
