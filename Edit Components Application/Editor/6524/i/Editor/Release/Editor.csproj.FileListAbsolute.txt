@@ -1,0 +1,11 @@
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\0\b\Editor.exe.config
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\0\b\Editor.exe
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\0\b\Editor.pdb
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\0\i\Editor\Release\Editor.uxEditor.resources
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\0\i\Editor\Release\Editor.Properties.Resources.resources
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\0\i\Editor\Release\Editor.csproj.GenerateResource.cache
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\0\i\Editor\Release\Editor.csproj.CoreCompileInputs.cache
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\0\i\Editor\Release\Editor.csproj.CopyComplete
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\0\i\Editor\Release\Editor.exe
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\0\i\Editor\Release\Editor.pdb
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\0\i\Editor\Release\Editor.csprojAssemblyReference.cache
