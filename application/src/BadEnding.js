@@ -24,7 +24,6 @@ SOFTWARE.
 import React,{Component} from 'react';
 import './App.css';
 import failurevid from './Resources/failurevid.mp4';
-import {Button} from 'react-bootstrap';
 
 /**
  * Used to display the BadEnding of the game
@@ -33,15 +32,11 @@ class BadEnding extends Component {
 	render() {
 		return (
 			<div>
-				{/*
-					The video to show the players when they arrive on the page
-					onEnded calls a method that update's MainPage's state so that the player can being playing
-				*/}
-				<video id="background-video" autoPlay controls onEnded={this.props.endedCallback}>
+				{/*The video to show the players when they lose the game*/}
+				<video id="background-video" autoPlay controls>
 					<source src={failurevid} type="video/mp4" />
 					Your browser does not support the video tag.
 				</video>
-				<h1>You Lose!</h1>
 			</div>
 		)
 	}

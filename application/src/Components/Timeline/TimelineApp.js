@@ -46,7 +46,7 @@ class TimelineApp extends Component {
         return(
             <div className="timeline-app">
                 <Timeline/>
-                <TimelineEvent checkIfPlayerWon={this.props.checkIfPlayerWon} events={this.props.events} eventsCompleted={this.props.eventsCompleted}/>
+                <TimelineEvent events={this.props.events} eventsCompleted={this.props.eventsCompleted}/>
             </div>
         )
     }
