@@ -264,7 +264,7 @@ class MainPage extends Component{
 			}
 		}
 	}
-	
+
 		/*checks if the passed in email is already in the list of current emails. If it is not then it returns True, else if it already exists in the list it returns False
 	@param  {emails}   The array of the currentEmails displayed.
 	@param  {foundEmail}   The email that wants to be added to the current emails.
@@ -339,8 +339,8 @@ class MainPage extends Component{
 				)
 				:(//render game
 					//Adding history allows us to start on Email instead of the '/' page
-					
-					<Router history={createBrowserHistory().push('./Email')}>
+
+					<Router history={createBrowserHistory().push('/Email')}>
 						<div id="screen">
 							<audio controls autoPlay loop id="main-music">
 								<source src={mainMusicMP3} type="audio/mpeg"></source>
