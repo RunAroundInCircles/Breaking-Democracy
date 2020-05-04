@@ -23,7 +23,7 @@ SOFTWARE.
 
 import React,{Component} from 'react';
 import './App.css';
-
+import victoryvid from './Resources/victoryvid.mp4';
 import {Button} from 'react-bootstrap';
 
 /**
@@ -36,6 +36,10 @@ class GoodEnding extends Component {
 				{/*
 					What the player should see if they won
 				*/}
+				<video id="background-video" autoPlay controls onEnded={this.props.endedCallback}>
+					<source src={victoryvid} type="video/mp4" />
+					Your browser does not support the video tag.
+				</video>
 				<h1>You Win</h1>
 			</div>
 		)
