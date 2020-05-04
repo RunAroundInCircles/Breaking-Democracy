@@ -88,6 +88,7 @@ class MainPage extends Component{
 			//eventsCompleted is an array to hold all of the events that have been finished by the player after they complete them.
 			eventsCompleted: [],
 			currentEmails: [], //The current list of emails for the sprint we are on
+			currentEchos: [],
 			currentSprint: 1, //The current two week interval we are on
 			//turnStartDate is the beginning Date for the game February 1, 2020, indicates the start of the turn in Calendar
 			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0),
@@ -100,7 +101,9 @@ class MainPage extends Component{
 
 		this.callback = this.callback.bind(this);
 		this.setCurrentEmail = this.setCurrentEmail.bind(this);
-		this.ifExists = this.ifExists.bind(this);
+		this.ifEmailExists = this.ifEmailExists.bind(this);
+		this.setCurrentEcho = this.setCurrentEcho.bind(this);
+		this.ifEchoExists = this.ifEchoExists.bind(this);
 		this.handleVideoEnd = this.handleVideoEnd.bind(this);
     	this.checkIfPlayerWon = this.checkIfPlayerWon.bind(this);
 
@@ -219,7 +222,7 @@ class MainPage extends Component{
 	@param  {emails}   The array of the currentEmails displayed.
 	@param  {foundEmail}   The email that wants to be added to the current emails.
 	*/
-	ifExists(emails, foundEmail){
+	ifEmailExists(emails, foundEmail){
 		for(var i in emails) {
 			if(emails[i].currentSprint == foundEmail.currentSprint)
 			{
@@ -237,8 +240,37 @@ class MainPage extends Component{
 		for(var i in emails) {
 			if(emails[i].currentSprint == this.state.currentSprint)
 			{
-				if(this.ifExists(this.state.currentEmails, emails[i])){
+				if(this.ifEmailExists(this.state.currentEmails, emails[i])){
 					this.setState({currentEmails: [...this.state.currentEmails, emails[i]]});
+				}
+			}
+		}
+	}
+	
+		/*checks if the passed in email is already in the list of current emails. If it is not then it returns True, else if it already exists in the list it returns False
+	@param  {emails}   The array of the currentEmails displayed.
+	@param  {foundEmail}   The email that wants to be added to the current emails.
+	*/
+	ifEchoExists(echos, foundEcho){
+		for(var i in echos) {
+			if(echos[i].currentSprint == foundEcho.currentSprint)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+
+
+	/*This function gets the current emails needed for the current sprint.
+	@param  {emails} The list of emails to be assessed and added to the current email list.
+	*/
+	setCurrentEcho(echos) {
+		for(var i in echos) {
+			if(echos[i].currentSprint == this.state.currentSprint)
+			{
+				if(this.ifEchoExists(this.state.currentEchos, echos[i])){
+					this.setState({currentEchos: [...this.state.currentEchos, echos[i]]});
 				}
 			}
 		}
@@ -298,6 +330,7 @@ class MainPage extends Component{
 							</audio>
 
 							{this.setCurrentEmail(emails)}
+							{this.setCurrentEcho(echos)}
 							<img className="desktop" src={desktop} alt="desktop"/>
 							<nav>
 								<Link to='/Calendar'> {/*Button to Calendar*/}
@@ -366,7 +399,7 @@ class MainPage extends Component{
 									}/>
 								</Route>
 								<Route path='/Echo'>
-									<EchoApp echos={echos}/>
+									<EchoApp echos={this.state.currentEchos}/>
 								</Route>
 								<Route path='/Timeline'>
 									<TimelineApp checkIfPlayerWon={this.checkIfPlayerWon} events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
