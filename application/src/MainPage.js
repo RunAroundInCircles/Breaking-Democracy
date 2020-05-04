@@ -89,7 +89,7 @@ class MainPage extends Component{
 			//eventsCompleted is an array to hold all of the events that have been finished by the player after they complete them.
 			eventsCompleted: [],
 			currentEmails: [], //The current list of emails for the sprint we are on
-			currentEchos: [],
+			currentEchos: [], //The current list of echos for the sprint we are on
 			currentSprint: 1, //The current two week interval we are on
 			//turnStartDate is the beginning Date for the game February 1, 2020, indicates the start of the turn in Calendar
 			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0),
@@ -120,8 +120,8 @@ class MainPage extends Component{
 
 		//Creates a history for the Router so that we can add './Email' to it
 		//This allows us to skip the '/' page and go directly to './Email' instead
-		//let createdHistory = createBrowserHistory();
-		//createdHistory.push('./Email');
+		let createdHistory = createBrowserHistory();
+		createdHistory.push('./Email');
 	}
 
     /**
@@ -264,14 +264,14 @@ class MainPage extends Component{
 			}
 		}
 	}
-	
-		/*checks if the passed in email is already in the list of current emails. If it is not then it returns True, else if it already exists in the list it returns False
-	@param  {emails}   The array of the currentEmails displayed.
-	@param  {foundEmail}   The email that wants to be added to the current emails.
+
+	/*checks if the passed in echo is already in the list of current echos. If it is not then it returns True, else if it already exists in the list it returns False
+	@param  {echos}   The array of the currentEchos displayed.
+	@param  {foundEcho}   The echo that wants to be added to the current emails.
 	*/
 	ifEchoExists(echos, foundEcho){
 		for(var i in echos) {
-			if(echos[i].currentSprint == foundEcho.currentSprint)
+			if(echos[i].time == foundEcho.time)
 			{
 				return false;
 			}
@@ -280,15 +280,16 @@ class MainPage extends Component{
 	}
 
 
-	/*This function gets the current emails needed for the current sprint.
-	@param  {emails} The list of emails to be assessed and added to the current email list.
+	/*This function gets the current echoes needed for the current sprint.
+	@param  {echos} The list of echos to be assessed and added to the current echo list.
 	*/
 	setCurrentEcho(echos) {
 		for(var i in echos) {
 			if(echos[i].currentSprint == this.state.currentSprint)
 			{
 				if(this.ifEchoExists(this.state.currentEchos, echos[i])){
-					this.setState({currentEchos: [...this.state.currentEchos, echos[i]]});
+          this.state.currentEchos.unshift(echos[i]);
+          //this.setState({currentEchos: [...this.state.currentEchos, echos[i]]});
 				}
 			}
 		}
@@ -339,8 +340,8 @@ class MainPage extends Component{
 				)
 				:(//render game
 					//Adding history allows us to start on Email instead of the '/' page
-					
-					<Router history={createBrowserHistory().push('./Email')}>
+
+					<Router history={createBrowserHistory().push('/Email')}>
 						<div id="screen">
 							<audio controls autoPlay loop id="main-music">
 								<source src={mainMusicMP3} type="audio/mpeg"></source>

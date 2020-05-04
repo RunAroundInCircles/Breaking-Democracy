@@ -5,7 +5,10 @@ import { randomNumBetweenExcluding } from './helpers';
 import asteroidsMusicWAV from '../../../../../Resources/Music/AsteroidsLoopable.wav';
 import asteroidsMusicMP3 from '../../../../../Resources/Music/AsteroidsLoopable.mp3';
 
-
+/*
+Contains the event key number for each key pressed by the user.
+Helps with event handaling
+ */
 const KEY = {
   LEFT:  37,
   RIGHT: 39,
@@ -17,12 +20,16 @@ const KEY = {
 };
 
 export class Reacteroids extends Component {
+
   constructor(props) {
     super(props);
+    /*
+    Size of the window for the game
+     */
     this.state = {
       screen: {
         width: window.innerWidth / 2.5,
-        height: window.innerHeight /2.5,
+        height: window.innerHeight /2.8,
         ratio: window.devicePixelRatio || 1,
       },
       context: null,
