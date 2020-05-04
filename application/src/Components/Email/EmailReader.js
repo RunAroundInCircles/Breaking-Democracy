@@ -22,7 +22,11 @@ SOFTWARE.
 */
 
 import React,{Component} from 'react';
-import face from '../../Resources/Email Faces/face.png';
+import face from '../../Resources/Email Faces/game_master.png';
+import face2 from '../../Resources/Email Faces/putin.png';
+
+const url = ['../../Resources/Email Faces/game_master.png',
+				'../../Resources/Email Faces/putin.png'];
 
 /**
  * This will display a full email to the user.
@@ -36,6 +40,22 @@ class EmailReader extends Component {
             email: props.email
         }
     }
+	renderImage(imageUrl) {
+		if(this.props.email.face == url[0]){			
+			return (
+				<div>
+					<img className="readerImage" src={face} alt="face"/>
+				</div>
+			);
+		}
+		else{
+			return (
+				<div>
+					<img className="readerImage" src={face2} alt="face"/>
+				</div>
+			);
+		}
+	}
 	/**
    * Renders the email
    * @return {[Div]} Renders either an empty box because no email is selected or the selected email
@@ -57,7 +77,7 @@ class EmailReader extends Component {
                     <h3 className="emailh3">{this.props.email.senderEmail}</h3>
                     <h3 className="emailh4">{this.props.email.ccsEmail}</h3>
                     <body className="emailbody" style={{whiteSpace: 'pre-wrap'}}>{this.props.email.body}</body>
-                    <img className="readerImage" src={face} alt="face"/>
+                    {url.map(urlImage => this.renderImage(urlImage))}
                 </div>
             )
         }

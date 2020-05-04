@@ -3,24 +3,28 @@
     "body": "Hello my fellow Democristans, I am Lyra Whit; the front runner for the Democristan Liberal Party. As a newly formed country I believe that we have endless potential, however the Democristan Conservative Party is too concerned with mimicking the ways of western politics.  Democristan must break free and forge its own path to a new future.",
     "name": "Lyra Whit",
     "at": "@candidateliberal",
-    "time": "January 4, 2020"
+    "time": "January 1, 2020",
+    "currentSprint": "1"
   },
   {
     "body": "Greetings Democristan, I am George Warren; the son of our great first president John Warren. As a president I am dedicated to my father’s way of leading our nation and will strive to keep Democristan on the path to greatness.",
     "name": "George Warren",
     "at": "@candidateconservative",
-    "time": "January 3, 2020"
+    "time": "January 2, 2020",
+    "currentSprint": "2"
   },
   {
     "body": "Good evening Democristan, it is January, 2020. That means it’s time for the second presidential election in our history. There are 3 candidates this time around, and they are excited to get their campaigns out there. Stay tuned for further updates from DNN, we’ll be covering everything that happens this election cycle.",
     "name": "DNN",
     "at": "@democristannightlynews",
-    "time": "January 1, 2020"
+    "time": "January 3, 2020",
+    "currentSprint": "3"
   },
   {
     "body": "My fellow countrymen, I am Dimitri Patrov; the people’s voices need to be heard and I know they deserve this. Therefore, I am running in this election under the Democristan People’s Party, where we will shape this country together by the people, with the people, and for the people.",
     "name": "Dimitri Patrov",
     "at": "@candidatepurple",
-    "time": "January 6, 2020"
+    "time": "January 4, 2020",
+    "currentSprint": "4"
   }
 ]
