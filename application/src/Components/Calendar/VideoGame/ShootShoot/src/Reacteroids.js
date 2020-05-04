@@ -162,7 +162,7 @@ export class Reacteroids extends Component {
       });
       localStorage['topscore'] = this.state.currentScore;
     }
-    
+
     //Percent = score/137 - .50 so that -.5 is worst and best is open ended
     //137 comes from an average found while testing so that average change is 50 percent
 	  var percent = (this.state.currentScore/137)-.50;
@@ -254,7 +254,7 @@ export class Reacteroids extends Component {
 
     return (
       <div>
-        <audio controls autoPlay loop id="music">
+        <audio autoPlay loop id="game-music">
           <source src={asteroidsMusicWAV} type="audio/wav"></source>
           <source src={asteroidsMusicMP3} type="audio/mpeg"></source>
           Your Browser does not support the audio element.
