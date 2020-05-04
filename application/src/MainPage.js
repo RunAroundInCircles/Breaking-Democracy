@@ -50,6 +50,7 @@ import {
 } from "react-router-dom";
 import { add, isBefore, isAfter, addDays } from 'date-fns';
 import { createBrowserHistory } from "history";
+import { formatDistanceStrictWithOptions } from 'date-fns/fp';
 
 /**
  * MainPage component of the app that renders and returns all the buttons
@@ -88,6 +89,7 @@ class MainPage extends Component{
 			//eventsCompleted is an array to hold all of the events that have been finished by the player after they complete them.
 			eventsCompleted: [],
 			currentEmails: [], //The current list of emails for the sprint we are on
+			currentEchos: [],
 			currentSprint: 1, //The current two week interval we are on
 			//turnStartDate is the beginning Date for the game February 1, 2020, indicates the start of the turn in Calendar
 			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0),
@@ -100,7 +102,9 @@ class MainPage extends Component{
 
 		this.callback = this.callback.bind(this);
 		this.setCurrentEmail = this.setCurrentEmail.bind(this);
-		this.ifExists = this.ifExists.bind(this);
+		this.ifEmailExists = this.ifEmailExists.bind(this);
+		this.setCurrentEcho = this.setCurrentEcho.bind(this);
+		this.ifEchoExists = this.ifEchoExists.bind(this);
 		this.handleVideoEnd = this.handleVideoEnd.bind(this);
     	this.checkIfPlayerWon = this.checkIfPlayerWon.bind(this);
 
@@ -147,10 +151,12 @@ class MainPage extends Component{
   			updatedData[region][district] = 100;
   		}
 
-		//Checks to see if the user has finished all events
+		//Checks to see if the user has finished all events and if they won the game
 		let updatedGameEnded = this.state.gameEnded;
+		let updatedHasPlayerWon = this.state.hasPlayerWon;
 		if(Object.values(this.state.eventsCompleted).length + 1 == Object.values(events).length) {
 			updatedGameEnded = true;
+			updatedHasPlayerWon = this.checkIfPlayerWon(updatedData);
 		}
 
 		//Get the event IDs between the two dates that need to be completed before the round can advance
@@ -185,19 +191,34 @@ class MainPage extends Component{
 			eventsCompleted: [...state.eventsCompleted, eventCompleted],
 			turnStartDate: updatedTurnStartDate,
 			currentSprint: updatedCurrentSprint,
-			gameEnded: updatedGameEnded
+			gameEnded: updatedGameEnded,
+			hasPlayerWon: updatedHasPlayerWon
 		}));
     };
 
-	checkIfPlayerWon = (eventScore, eventID) =>{
-		if(eventID == this.state.lastEventID){
-			this.setState({playerScore: eventScore/eventID});
-			if(this.state.playerScore > .5){
-			  this.setState({hasPlayerWon : true});
+	/**
+	 * Calculates whether the player won based off of their score
+	 * @param {data} data the data to use to calculate the player's score
+	 * @returns {boolean} whether the player won or not
+	 */
+	checkIfPlayerWon = (data) =>{
+		let i;
+		let j;
+		let score = 0;
+		let districts = 0;
+		let iterableData = Object.values(data);
+		for(i = 0; i < iterableData.length; i++) {
+			for(j = 0; j < iterableData[i].length; j++) {
+				score += iterableData[i][j];
+				districts++;
 			}
-			else{
-			  this.setState({hasPlayerWon : false});
-			}
+		}
+		score = score/districts;
+		if(score > 50){
+			return true;
+		}
+		else {
+			return false;
 		}
 	}
 
@@ -219,7 +240,7 @@ class MainPage extends Component{
 	@param  {emails}   The array of the currentEmails displayed.
 	@param  {foundEmail}   The email that wants to be added to the current emails.
 	*/
-	ifExists(emails, foundEmail){
+	ifEmailExists(emails, foundEmail){
 		for(var i in emails) {
 			if(emails[i].currentSprint == foundEmail.currentSprint)
 			{
@@ -237,8 +258,37 @@ class MainPage extends Component{
 		for(var i in emails) {
 			if(emails[i].currentSprint == this.state.currentSprint)
 			{
-				if(this.ifExists(this.state.currentEmails, emails[i])){
+				if(this.ifEmailExists(this.state.currentEmails, emails[i])){
 					this.setState({currentEmails: [...this.state.currentEmails, emails[i]]});
+				}
+			}
+		}
+	}
+
+		/*checks if the passed in email is already in the list of current emails. If it is not then it returns True, else if it already exists in the list it returns False
+	@param  {emails}   The array of the currentEmails displayed.
+	@param  {foundEmail}   The email that wants to be added to the current emails.
+	*/
+	ifEchoExists(echos, foundEcho){
+		for(var i in echos) {
+			if(echos[i].currentSprint == foundEcho.currentSprint)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+
+
+	/*This function gets the current emails needed for the current sprint.
+	@param  {emails} The list of emails to be assessed and added to the current email list.
+	*/
+	setCurrentEcho(echos) {
+		for(var i in echos) {
+			if(echos[i].currentSprint == this.state.currentSprint)
+			{
+				if(this.ifEchoExists(this.state.currentEchos, echos[i])){
+					this.setState({currentEchos: [...this.state.currentEchos, echos[i]]});
 				}
 			}
 		}
@@ -265,7 +315,7 @@ class MainPage extends Component{
 
 	render(){
 		return(
-			(this.state.renderVideo || this.state.gameEnded) //Check if the intro video or the game should be rendered
+			(this.state.renderVideo) //Check if the intro video should be rendered
 			?(//Render video
 				<div>
 					<img className="desktop" src={desktop} alt="desktop"/>
@@ -289,7 +339,8 @@ class MainPage extends Component{
 				)
 				:(//render game
 					//Adding history allows us to start on Email instead of the '/' page
-					<Router history={createBrowserHistory().push('./Email')}>
+
+					<Router history={createBrowserHistory().push('/Email')}>
 						<div id="screen">
 							<audio controls autoPlay loop id="main-music">
 								<source src={mainMusicMP3} type="audio/mpeg"></source>
@@ -298,6 +349,7 @@ class MainPage extends Component{
 							</audio>
 
 							{this.setCurrentEmail(emails)}
+							{this.setCurrentEcho(echos)}
 							<img className="desktop" src={desktop} alt="desktop"/>
 							<nav>
 								<Link to='/Calendar'> {/*Button to Calendar*/}
@@ -366,10 +418,10 @@ class MainPage extends Component{
 									}/>
 								</Route>
 								<Route path='/Echo'>
-									<EchoApp echos={echos}/>
+									<EchoApp echos={this.state.currentEchos}/>
 								</Route>
 								<Route path='/Timeline'>
-									<TimelineApp checkIfPlayerWon={this.checkIfPlayerWon} events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
+									<TimelineApp events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
 								</Route>
 							</Switch>
 						</div>

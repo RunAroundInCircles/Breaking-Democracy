@@ -34,7 +34,8 @@ class TypeGame extends Component{
 		super(props);
 		this.state = {
 			result: "",
-			value: ""
+			value: "",
+			submitState: true //Enables or disables the submit button so the player does not redo the event
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
@@ -48,15 +49,18 @@ class TypeGame extends Component{
 	/*Will be able to check if the answer is right and change certain attributes when done.*/
 	handleSubmit(event){
 		event.preventDefault();
+		document.getElementById("submit").disabled = true;
 		if(this.props.answer == this.state.value){
 			var percent = .5
 			this.props.callbackFromMain(this.props.eventID, percent);
 			this.setState({result: "Success!"});
+			this.setState({submitState: false});
 		}
 		else {
 			var percent = -.5;
 			this.props.callbackFromMain(this.props.eventID, percent);
 			this.setState({result: "Failed!"});
+			this.setState({submitState: false});
 		}
 	}
 
@@ -65,6 +69,26 @@ class TypeGame extends Component{
 	 * @return {div} [Returns the popup]
 	 */
 	render(){
+		if(this.state.submitState == true){
+
+		return(
+			//This div is the body of the popup window containing the back button and the event info
+			<div style={{justifyContent: 'center',
+						paddingTop: '100px'}}>
+				<h1>{this.props.challenges.challenge}</h1>
+				{/*Creates a form that has a submit button. and calls handleChange when pressed.*/}
+				<form onSubmit={this.handleSubmit}>
+					<label>
+						Answer:
+						<input type="text" value = {this.state.value} onChange={this.handleChange} />
+					</label>
+					<input type="submit" id = "submit" value="Submit" />
+				</form>
+				<h1>{this.state.result}</h1>
+			</div>
+	)
+	}
+	else{
 		return(
 			//This div is the body of the popup window containing the back button and the event info
 			<div style={{justifyContent: 'center'}}>
@@ -75,11 +99,13 @@ class TypeGame extends Component{
 						Answer:
 						<input type="text" value = {this.state.value} onChange={this.handleChange} />
 					</label>
-					<input type="submit" value="Submit" />
+					<input type="submit" value="Submit" disabled/>
 				</form>
 				<h1>{this.state.result}</h1>
 			</div>
-	)}
+	)
+	}
+}
 }
 
 export default TypeGame

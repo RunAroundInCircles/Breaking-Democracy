@@ -90,25 +90,25 @@ SOFTWARE.
 
 
 .email-reader .readerImage {
-  height: 90px;
-  width: 90px;
+  height: 60px;
+  width: 60px;
   position: absolute;
   left: 90%;
-  top: 28px;
+  top: 45px;
   transform: translate(80px, 5px);
 }
 
 .email-selected .sideImage {
-  height: 90px;
-  width: 90px;
+  height: 60px;
+  width: 60px;
   position: absolute;
   left: 80%;
   transform: translate(-30px, -100px);
 }
 
 .email-notselected .sideImage {
-  height: 90px;
-  width: 90px;
+  height: 60px;
+  width: 60px;
   position: absolute;
   left: 80%;
   transform: translate(-30px, -100px);
