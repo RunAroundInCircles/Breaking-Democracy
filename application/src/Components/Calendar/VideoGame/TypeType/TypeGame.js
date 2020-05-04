@@ -48,6 +48,7 @@ class TypeGame extends Component{
 	/*Will be able to check if the answer is right and change certain attributes when done.*/
 	handleSubmit(event){
 		event.preventDefault();
+		document.getElementById("submit").disabled = true;
 		if(this.props.answer == this.state.value){
 			var percent = .5
 			this.props.callbackFromMain(this.props.eventID, percent);
@@ -75,7 +76,7 @@ class TypeGame extends Component{
 						Answer:
 						<input type="text" value = {this.state.value} onChange={this.handleChange} />
 					</label>
-					<input type="submit" value="Submit" />
+					<input type="submit" id = "submit" value="Submit" />
 				</form>
 				<h1>{this.state.result}</h1>
 			</div>

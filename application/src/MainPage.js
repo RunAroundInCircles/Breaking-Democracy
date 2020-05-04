@@ -297,6 +297,8 @@ class MainPage extends Component{
 
 	render(){
 		return(
+		
+			
 			(this.state.renderVideo || this.state.gameEnded) //Check if the intro video or the game should be rendered
 			?(//Render video
 				<div>
@@ -321,6 +323,7 @@ class MainPage extends Component{
 				)
 				:(//render game
 					//Adding history allows us to start on Email instead of the '/' page
+					
 					<Router history={createBrowserHistory().push('./Email')}>
 						<div id="screen">
 							<audio controls autoPlay loop id="main-music">
