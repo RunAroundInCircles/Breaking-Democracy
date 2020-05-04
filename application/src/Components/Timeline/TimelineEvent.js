@@ -41,7 +41,6 @@ class TimelineEvent extends Component {
         let options = {year: 'numeric', month: 'short', day: 'numeric'};    //Format how the dates will be displayed
         var i;
         var eventScore = 0;
-        var maxEventId = 0;
 
         for(i = 0; i < this.props.eventsCompleted.length; i++) {
 
@@ -51,11 +50,6 @@ class TimelineEvent extends Component {
             var percentText = completedEvent.percent; //Get the percentage change
 
             eventScore = eventScore + percentText; //Calculate the total score the player has got
-
-            //Used to find highest event completed.
-            if(event.eventID > maxEventId){
-              maxEventId = event.eventID;
-            }
 
             if(completedEvent.percent > 0) { //If a positive change set color to green
                 percentText = "+" + percentText;
@@ -79,8 +73,6 @@ class TimelineEvent extends Component {
                 </svg>
             );
         }
-
-        this.props.checkIfPlayerWon(eventScore, maxEventId);
 
         return(
             <div className="timeline-list"

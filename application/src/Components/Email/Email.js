@@ -23,10 +23,10 @@ SOFTWARE.
 
 import React,{Component} from 'react';
 import face from '../../Resources/Email Faces/game_master.png';
-import face2 from '../../Resources/Email Faces/face.png';
+import face2 from '../../Resources/Email Faces/putin.png';
 
 const url = ['../../Resources/Email Faces/game_master.png',
-				'../../Resources/Email Faces/face.png'];
+				'../../Resources/Email Faces/putin.png'];
 
 /**
  * Represents an actual email which will be used to give tutorials and

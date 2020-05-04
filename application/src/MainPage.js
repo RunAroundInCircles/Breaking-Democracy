@@ -50,6 +50,7 @@ import {
 } from "react-router-dom";
 import { add, isBefore, isAfter, addDays } from 'date-fns';
 import { createBrowserHistory } from "history";
+import { formatDistanceStrictWithOptions } from 'date-fns/fp';
 
 /**
  * MainPage component of the app that renders and returns all the buttons
@@ -150,10 +151,12 @@ class MainPage extends Component{
   			updatedData[region][district] = 100;
   		}
 
-		//Checks to see if the user has finished all events
+		//Checks to see if the user has finished all events and if they won the game
 		let updatedGameEnded = this.state.gameEnded;
+		let updatedHasPlayerWon = this.state.hasPlayerWon;
 		if(Object.values(this.state.eventsCompleted).length + 1 == Object.values(events).length) {
 			updatedGameEnded = true;
+			updatedHasPlayerWon = this.checkIfPlayerWon(updatedData);
 		}
 
 		//Get the event IDs between the two dates that need to be completed before the round can advance
@@ -188,19 +191,34 @@ class MainPage extends Component{
 			eventsCompleted: [...state.eventsCompleted, eventCompleted],
 			turnStartDate: updatedTurnStartDate,
 			currentSprint: updatedCurrentSprint,
-			gameEnded: updatedGameEnded
+			gameEnded: updatedGameEnded,
+			hasPlayerWon: updatedHasPlayerWon
 		}));
     };
 
-	checkIfPlayerWon = (eventScore, eventID) =>{
-		if(eventID == this.state.lastEventID){
-			this.setState({playerScore: eventScore/eventID});
-			if(this.state.playerScore > .5){
-			  this.setState({hasPlayerWon : true});
+	/**
+	 * Calculates whether the player won based off of their score
+	 * @param {data} data the data to use to calculate the player's score
+	 * @returns {boolean} whether the player won or not
+	 */
+	checkIfPlayerWon = (data) =>{
+		let i;
+		let j;
+		let score = 0;
+		let districts = 0;
+		let iterableData = Object.values(data);
+		for(i = 0; i < iterableData.length; i++) {
+			for(j = 0; j < iterableData[i].length; j++) {
+				score += iterableData[i][j];
+				districts++;
 			}
-			else{
-			  this.setState({hasPlayerWon : false});
-			}
+		}
+		score = score/districts;
+		if(score > 50){
+			return true;
+		}
+		else {
+			return false;
 		}
 	}
 
@@ -297,7 +315,7 @@ class MainPage extends Component{
 
 	render(){
 		return(
-			(this.state.renderVideo || this.state.gameEnded) //Check if the intro video or the game should be rendered
+			(this.state.renderVideo) //Check if the intro video should be rendered
 			?(//Render video
 				<div>
 					<img className="desktop" src={desktop} alt="desktop"/>
@@ -321,6 +339,7 @@ class MainPage extends Component{
 				)
 				:(//render game
 					//Adding history allows us to start on Email instead of the '/' page
+
 					<Router history={createBrowserHistory().push('/Email')}>
 						<div id="screen">
 							<audio controls autoPlay loop id="main-music">
@@ -402,7 +421,7 @@ class MainPage extends Component{
 									<EchoApp echos={this.state.currentEchos}/>
 								</Route>
 								<Route path='/Timeline'>
-									<TimelineApp checkIfPlayerWon={this.checkIfPlayerWon} events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
+									<TimelineApp events={Object.values(events)} eventsCompleted={this.state.eventsCompleted}/>
 								</Route>
 							</Switch>
 						</div>
