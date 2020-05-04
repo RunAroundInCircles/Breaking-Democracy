@@ -76,7 +76,7 @@ class Email extends Component {
 				</div>
 			);
 		}
-		else{
+		else if (this.props.face == url[1]){
 			return (
 				<div>
 					<img className="sideImage" src={face2} alt="face"/>
