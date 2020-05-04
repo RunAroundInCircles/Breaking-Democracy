@@ -37,15 +37,18 @@ class TimelineApp extends Component {
         super(props);
         
         this.state = {
-            eventStartIndex: 0
+            eventStartIndex: 0 //Indicates the index of the eventsCompleted array to start at
         }
 
         this.viewNextEventGroup = this.viewNextEventGroup.bind(this);
         this.viewPreviousEventGroup = this.viewPreviousEventGroup.bind(this);
     };
 
+    /**
+     * If possible increases the event start index by 10
+     * @param {*} event The default click event
+     */
     viewNextEventGroup(event) {
-        console.log("click");
         event.preventDefault();
         if(this.state.eventStartIndex + 10 < this.props.eventsCompleted.length) {
             this.setState((state, props) => ({
@@ -54,8 +57,11 @@ class TimelineApp extends Component {
         }
     }
 
+    /**
+     * If possible decreases the event start index by 10
+     * @param {*} event The default click event
+     */
     viewPreviousEventGroup(event) {
-        console.log("click");
         event.preventDefault();
         if(this.state.eventStartIndex - 10 >= 0) {
             this.setState((state, props) => ({
@@ -70,7 +76,7 @@ class TimelineApp extends Component {
  	*/
     render() {
         return(
-            <div className="timeline-app">
+            <div className="timeline-app" style={{justifyContent: 'center', display: 'flex'}}>
                 <Timeline
                     viewNextEventGroup={this.viewNextEventGroup}
                     viewPreviousEventGroup={this.viewPreviousEventGroup}

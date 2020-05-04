@@ -54,7 +54,7 @@ class Timeline extends Component{
 					<polygon 
 						points="0,25 50,0 50,50" 
 						style={{fill: 'grey', stroke: 'red', strokeWidth: 3}}
-						onclick={this.props.viewPreviousEventGroup}
+						onClick={this.props.viewPreviousEventGroup}
 					/>
 				</svg>
 				{/*Line*/}

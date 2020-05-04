@@ -53,12 +53,15 @@ class TimelineEvent extends Component {
             else if(completedEvent.percent < 0) { //If negative change set color to red
                 fillColor = "red";
             }
+
             let date = new Date(event.year, event.month, event.day); //Get the date of the event
+            
             var tooltipText =  //Format the tooltip text to be the date, event message, the region effected, and the district effected
                 date.toLocaleDateString("en-US", options)
                 + "\n" + event.message
                 + "\n" + "Region " + completedEvent.region
                 + "\n" + "District " + completedEvent.district;
+            
             eventsFormated.push(
                 <svg height="100" width="100" style={{margin: 4}}>
                     <circle cx="50" cy="50" r="47" stroke="black" strokeWidth="3" fill={fillColor}>
