@@ -204,24 +204,27 @@ class MainPage extends Component{
 
 	/**
 	 * Calculates whether the player won based off of their score
-	 * The player wins when their averaged score is between 40 and 60
+	 * The player wins when they have a majority of districts with scores
+	 * between 40 and 60
 	 * @param {data} data the data to use to calculate the player's score
 	 * @returns {boolean} whether the player won or not
 	 */
 	checkIfPlayerWon = (data) =>{
 		let i;
 		let j;
-		let score = 0;
-		let districts = 0;
+		let districtsWon = 0;
+		let districtsTotal = 0;
 		let iterableData = Object.values(data);
 		for(i = 0; i < iterableData.length; i++) {
 			for(j = 0; j < iterableData[i].length; j++) {
-				score += iterableData[i][j];
-				districts++;
+				if(iterableData[i][j] >= 40 && iterableData[i][j] <= 60) {
+					districtsWon++;
+				}
+				districtsTotal++;
 			}
 		}
-		score = score/districts;
-		if(score >= 40 && score <= 60){
+		console.log("Won: " + districtsWon + " Total: " + districtsTotal + " Percent: " + (districtsWon/districtsTotal));
+		if(districtsWon/districtsTotal > .50){
 			return true;
 		}
 		else {
