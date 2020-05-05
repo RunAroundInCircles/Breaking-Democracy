@@ -98,7 +98,7 @@
     {
 	"currentSprint": "11",
     "sender": "Game Master",
-    "senderEmail": "mastermind@kremlin.org,
+    "senderEmail": "mastermind@kremlin.org",
     "ccsEmail": "putin@kremlin.org",
     "title": "Game Annoucement",
     "favorited": "False",
@@ -121,7 +121,7 @@
   },
     {
 	"currentSprint": "16",
-    "sender": "",
+    "sender": "Number 1 Fan",
     "senderEmail": "ILovePutin@umail.com",
     "ccsEmail": "putin@kremlin.org",
     "title": "I love you once again",
