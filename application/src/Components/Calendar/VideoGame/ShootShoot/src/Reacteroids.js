@@ -226,10 +226,11 @@ export class Reacteroids extends Component {
       localStorage['topscore'] = this.state.currentScore;
     }
 
-    //Percent = score/137 - .50 so that -.5 is worst and best is open ended
+    //Percent = score/137 - .50 so that -.50 is worst and best is .50
     //137 comes from an average found while testing so that average change is 50 percent
 	  var percent = (this.state.currentScore/137)-.50;
     percent = percent.toFixed(2);
+    if(percent > .50) percent = .50;
 	  this.props.callbackFromMain(this.props.eventID, percent);
   }
 
