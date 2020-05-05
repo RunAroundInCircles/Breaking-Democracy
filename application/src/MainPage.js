@@ -145,7 +145,6 @@ class MainPage extends Component{
 
   		//Update the poll data
 		let updatedData = this.state.pollData;
-		let beforeData = updatedData[region][district];
 		//Adds the difference of 50 and the current score times the percent change so that
 		//good changes get the score closer to 50% and bad scores drive the score away from 50%
   		updatedData[region][district] += ((50 -updatedData[region][district]) * percent);
@@ -156,9 +155,7 @@ class MainPage extends Component{
 		}
 		else if(updatedData[region][district] < 0) {
 			updatedData[region][district] = 0;
-		}  
-
-		console.log("Before: " + beforeData + " After: " + updatedData[region][district] + " Percent: " + percent);
+		}
 
 		//Checks to see if the user has finished all events and if they won the game
 		let updatedGameEnded = this.state.gameEnded;
@@ -224,7 +221,6 @@ class MainPage extends Component{
 			}
 		}
 		score = score/districts;
-		console.log("Final Score: " + score);
 		if(score >= 40 && score <= 60){
 			return true;
 		}
