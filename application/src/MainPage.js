@@ -106,7 +106,8 @@ class MainPage extends Component{
 		this.setCurrentEcho = this.setCurrentEcho.bind(this);
 		this.ifEchoExists = this.ifEchoExists.bind(this);
 		this.handleVideoEnd = this.handleVideoEnd.bind(this);
-    	this.checkIfPlayerWon = this.checkIfPlayerWon.bind(this);
+    this.checkIfPlayerWon = this.checkIfPlayerWon.bind(this);
+    this.update_main_loop = this.update_main_loop.bind(this);
 
 		var tempDate =  new Date(1 , 1, 1, 0, 0, 0, 0);
 		//Find the eventID with the last day and month
@@ -295,6 +296,17 @@ class MainPage extends Component{
 		}
 	}
 
+  update_main_loop = (state) => {
+    var audio = document.getElementById("main-music");
+    if(state == true){
+      audio.play();
+    }
+    else{
+      audio.pause();
+    }
+
+  }
+
 
 	/*This function allows the calendar to update the turn date which allows the player to progress
 	through the game.*/
@@ -404,7 +416,7 @@ class MainPage extends Component{
 								<Route path='/Calendar'>
 									<CalendarApp  events={Object.values(events)} eventsCompleted={this.state.eventsCompleted} turnStartDate={this.state.turnStartDate}/>
 									<Route path='/Calendar/:id' render={(props)=>{
-										return <EventPopup callbackFromMain={this.callback} event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]}/>
+										return <EventPopup updateMainMusic={this.update_main_loop} callbackFromMain={this.callback} event={events[props.match.params.id]} situation = {Situations[Math.floor(Math.random()* 10)]}/>
 										}
 									}/>
 								</Route>

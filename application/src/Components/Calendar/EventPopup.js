@@ -37,14 +37,14 @@ import { Reacteroids } from './VideoGame/ShootShoot/src/Reacteroids';
 function EventPopup(props) {
     //The date of the event to display
     let date = new Date(props.event.year, props.event.month, props.event.day);
-    
+
     //options is used to format how the date of the event is displayed
     let options = {year: 'numeric', month: 'short', day: 'numeric'};
-    
+
     //Sets whether the game should be rendered or not
     //Used as state so once the game is completed it doesn't restart the event
     const [renderGame, setRenderGame] = useState(false);
-    
+
     //Sets num to a random index of challenges for use in TypeGame
     //Use as state prevents the question from changing after event completion
     const [num, setNum] = useState(Math.floor(Math.random() * challenges.length));
@@ -52,7 +52,7 @@ function EventPopup(props) {
     //Creates an array of all the games to pick so one can be randomly chosen
     const games = [
         <TypeGame challenges = {challenges[num]} answer = {challenges[num].answer} callbackFromMain={props.callbackFromMain} eventID={props.event.id}/>,
-        <Reacteroids callbackFromMain={props.callbackFromMain} eventID={props.event.id}/>
+        <Reacteroids updateMainMusic={props.updateMainMusic} callbackFromMain={props.callbackFromMain} eventID={props.event.id}/>
     ];
 
     //Sets gameToPlay to a random index of games
@@ -85,9 +85,9 @@ function EventPopup(props) {
 						<span>X</span>
 					</Button>
                 </Link>
-                
+
                 {/* Determines whether the game or the event info should be rendered */}
-                {renderGame 
+                {renderGame
                     //Render game
                     ? games[gameToPlay]
                     //Render event info
