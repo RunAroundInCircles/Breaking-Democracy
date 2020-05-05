@@ -71,7 +71,7 @@ namespace Editor
             string pathToSituationsList = "../application/src/Components/Calendar/Situations.json";
             string pathToEchosList = "../application/src/Components/Echo/echo.json";
             string pathToEmailsList = "../application/src/Components/Email/EmailList.json";
-
+            string pathToQuizQuestions = "../application/src/Components/Calendar/VideoGame/TypeType/codingChallenges.json";
             string[] paths = { pathToEventList, pathToSituationsList, pathToEchosList, pathToEmailsList };
 
             
@@ -82,7 +82,8 @@ namespace Editor
                     "\n/application/src/Components/Calendar/EventList.json" +
                     "\n/application/src/Components/Calendar/Situations.json" +
                     "\n/application/src/Components/Echo/echo.json" +
-                    "\n/application/src/Components/Email/EmailList.json");
+                    "\n/application/src/Components/Email/EmailList.json" +
+                    "\n/application/src/Components/Calendar/VideoGame/TypeType/codingChallenges.json");
                 Application.Exit();
             }
             else
@@ -96,6 +97,7 @@ namespace Editor
                 //New load in JSONs that do not use arrays.
                 LoadInFileWithoutArray(pathToEchosList, uxEchosList);
                 LoadInFileWithoutArray(pathToEmailsList, uxEmailList);
+                LoadInFileWithoutArray(pathToQuizQuestions, uxQuizList);
             }
 
         }

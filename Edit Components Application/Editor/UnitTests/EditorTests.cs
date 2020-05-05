@@ -51,8 +51,9 @@ namespace UnitTests
             string pathToSituationsList = "../../application/src/Components/Calendar/Situations.json";
             string pathToEchosList = "../../application/src/Components/Echo/echo.json";
             string pathToEmailsList = "../../application/src/Components/Email/EmailList.json";
+            string pathToQuizQuestions = "../../application/src/Components/Calendar/VideoGame/TypeType/codingChallenges.json";
 
-            string[] paths = { pathToEventList, pathToSituationsList, pathToEchosList, pathToEmailsList };
+            string[] paths = { pathToEventList, pathToSituationsList, pathToEchosList, pathToEmailsList, pathToQuizQuestions };
 
             Assert.IsTrue(editor.checkFiles(paths));
         }
