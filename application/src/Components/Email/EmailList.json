@@ -21,7 +21,7 @@
     "pinned": "False",
     "id": "1",
     "body": "Good Evening Putin, \n\n As you may be aware, that pesky country of Democristan on our borders is beginning their election period soon, this being only their second election after they seceded from Russia, they are at risk of manipulation from us in order to make sure they don’t get out of hand.  They are backed by the United States so we must act discreetly. It is up to us to ensure the greatness of Russia to continue on, and we won’t stand for these separatists to do as they please. In the coming months we will be relying on your guidance and instructions with how to interfere. We’ll leave it up to you to decide what the best course of action is for Russia.\n\nSincerely,\nDirector of FSB",
-    "face": "../../Resources/Email Faces/game_master.png"
+    "face": "../../Resources/Email Faces/putin.png"
   },
   {
     "currentSprint": "3",
@@ -43,8 +43,104 @@
     "title": "New Measures",
     "favorited": "False",
     "pinned": "False",
-    "id": "5",
+    "id": "4",
     "body": "Good Evening Mr. Putin,\n\nI hope things are going well, our agents at the FSB have devised a new interference measure. I recommend this one for our next operation.",
     "face": "../../Resources/Email Faces/putin.png"
+  },
+  {
+	"currentSprint": "5",
+    "sender": "Number 1 Fan",
+    "senderEmail": "ILovePutin@umail.com",
+    "ccsEmail": "putin@kremlin.org",
+    "title": "BIGgesT fAn!!!",
+    "favorited": "False",
+    "pinned": "False",
+    "id": "5",
+    "body": "Omg. I can't believe I'm talking to you right now. I love you so much. You are my idol. I hope one day I can ride on a horse with yOU!!!!",
+    "face": "../../Resources/Email Faces/fan.png"
+  },
+    {
+	"currentSprint": "6",
+    "sender": "Anon",
+    "senderEmail": "anonymous@kremlin.org",
+    "ccsEmail": "putin@kremlin.org",
+    "title": "be careful",
+    "favorited": "False",
+    "pinned": "False",
+    "id": "6",
+    "body": "One false move and the citizens of Democristan will notice your tactics. Be careful in your choices from here one out. Demitri has eyes on him.",
+    "face": "../../Resources/Email Faces/game_master.png"
+  },
+    {
+	"currentSprint": "8",
+    "sender": "E News",
+    "senderEmail": "enews@entertainment.com",
+    "ccsEmail": "putin@kremlin.org",
+    "title": "The blues embezzeling funds?",
+    "favorited": "False",
+    "pinned": "False",
+    "id": "7",
+    "body": "Click on the link to see our new article on the upcoming elections. Is the Blue side trying to trick us?: www.enews.com/blue-embezzlement.html",
+    "face": "../../Resources/Email Faces/fan.png"
+  },
+    {
+	"currentSprint": "10",
+    "sender": "FSB Director",
+    "senderEmail": "makerussiagreatagain@kremlin.org",
+    "ccsEmail": "putin@kremlin.org",
+    "title": "Good work",
+    "favorited": "False",
+    "pinned": "False",
+    "id": "8",
+    "body": "We are doing good work on the election currently. Looking at the map we are close to Demitri getting to where he needs to be. Keep up the good work.",
+    "face": "../../Resources/Email Faces/putin.png"
+  },
+    {
+	"currentSprint": "11",
+    "sender": "Game Master",
+    "senderEmail": "mastermind@kremlin.org",
+    "ccsEmail": "putin@kremlin.org",
+    "title": "Game Annoucement",
+    "favorited": "False",
+    "pinned": "False",
+    "id": "9",
+    "body": "Make sure you are checking all aspects of the game to keep up to date on the story and how you are empacting the country. Echos are a good way to see what people are currently feeling.",
+    "face": "../../Resources/Email Faces/game_master.png"
+  },
+    {
+	"currentSprint": "15",
+    "sender": "Number 1 Fan",
+    "senderEmail": "ILovePutin@umail.com",
+    "ccsEmail": "putin@kremlin.org",
+    "title": "I lost respect...",
+    "favorited": "False",
+    "pinned": "False",
+    "id": "10",
+    "body": "I heard some nasty rumors about you Mr. Putin. I don't think I can love you as much as before if I know that you are interfering with the election process. This is a serious defense. Please tell me you would never ever do that. Please.",
+    "face": "../../Resources/Email Faces/fan.png"
+  },
+    {
+	"currentSprint": "16",
+    "sender": "Number 1 Fan",
+    "senderEmail": "ILovePutin@umail.com",
+    "ccsEmail": "putin@kremlin.org",
+    "title": "I love you once again",
+    "favorited": "False",
+    "pinned": "False",
+    "id": "11",
+    "body": "I have decided you can do no wrong and I love you again. disregard the previous email. I will believe in your purity. <3 Keep up the good work.",
+    "face": "../../Resources/Email Faces/fan.png"
+  },
+    {
+	"currentSprint": "20",
+    "sender": "Game Master",
+    "senderEmail": "mastermind@kremlin.org",
+    "ccsEmail": "putin@kremlin.org",
+    "title": "End Game",
+    "favorited": "False",
+    "pinned": "False",
+    "id": "12",
+    "body": "We are coming up on the end of the game. This is the last time you can get the citizens of Democristan on you side. Hurry up and make sure most states are red to secure a victory.",
+    "face": "../../Resources/Email Faces/game_master.png"
   }
 ]
