@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e3a7cb82406468948ae82b5c5367e241",
+    "revision": "56a119e4c479013e5dfa12fade2fb5d0",
     "url": "/Breaking-Democracy/index.html"
   },
   {
-    "revision": "ee1923724646017cc8fd",
+    "revision": "b6e6381bd22cbfdf6610",
     "url": "/Breaking-Democracy/static/css/main.e39e0ce6.chunk.css"
   },
   {
-    "revision": "6503a0d506492bdc7fd0",
-    "url": "/Breaking-Democracy/static/js/2.b3565dfb.chunk.js"
+    "revision": "a7588d7232128f9d22a4",
+    "url": "/Breaking-Democracy/static/js/2.d2b1d073.chunk.js"
   },
   {
     "revision": "3453b8997016469371284a28c0e873e2",
-    "url": "/Breaking-Democracy/static/js/2.b3565dfb.chunk.js.LICENSE.txt"
+    "url": "/Breaking-Democracy/static/js/2.d2b1d073.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ee1923724646017cc8fd",
-    "url": "/Breaking-Democracy/static/js/main.a23e9958.chunk.js"
+    "revision": "b6e6381bd22cbfdf6610",
+    "url": "/Breaking-Democracy/static/js/main.8347c2d2.chunk.js"
   },
   {
     "revision": "8dc9abc20ee8c0017995",
