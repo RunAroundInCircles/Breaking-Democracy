@@ -24,9 +24,11 @@ SOFTWARE.
 import React,{Component} from 'react';
 import face from '../../Resources/Email Faces/game_master.png';
 import face2 from '../../Resources/Email Faces/putin.png';
+import face3 from '../../Resources/Email Faces/fan.png';
 
 const url = ['../../Resources/Email Faces/game_master.png',
-				'../../Resources/Email Faces/putin.png'];
+				'../../Resources/Email Faces/putin.png',
+				'../../Resources/Email Faces/fan.png'];
 
 /**
  * Represents an actual email which will be used to give tutorials and
@@ -80,6 +82,13 @@ class Email extends Component {
 			return (
 				<div>
 					<img className="sideImage" src={face2} alt="face"/>
+				</div>
+			);
+		}
+		else if (this.props.face == url[1]){
+			return (
+				<div>
+					<img className="sideImage" src={face3} alt="face"/>
 				</div>
 			);
 		}
