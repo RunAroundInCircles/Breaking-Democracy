@@ -50,17 +50,17 @@ class EmailReader extends Component {
 				</div>
 			);
 		}
-		else if (this.props.face == url[1]){
+		else if (this.props.email.face == url[1]){
 			return (
 				<div>
-					<img className="sideImage" src={face2} alt="face"/>
+					<img className="readerImage" src={face2} alt="face"/>
 				</div>
 			);
 		}
-		else if (this.props.face == url[2]){
+		else if (this.props.email.face == url[2]){
 			return (
 				<div>
-					<img className="sideImage" src={face3} alt="face"/>
+					<img className="readerImage" src={face3} alt="face"/>
 				</div>
 			);
 		}
