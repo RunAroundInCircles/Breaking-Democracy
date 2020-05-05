@@ -43,7 +43,8 @@ export class Reacteroids extends Component {
       asteroidCount: 3,
       currentScore: 0,
       topScore: localStorage['topscore'] || 0,
-      inGame: false
+      inGame: false,
+      playMusic: true
     }
 	this.result = 0;
     this.ship = [];
@@ -141,6 +142,9 @@ export class Reacteroids extends Component {
       currentScore: 0,
     });
 
+    //Disable main music loop
+    this.props.updateMainMusic(false);
+
     // Make ship
     let ship = new Ship({
       position: {
@@ -160,7 +164,13 @@ export class Reacteroids extends Component {
   gameOver(){
     this.setState({
       inGame: false,
-    });
+    }
+
+  );
+  
+  //Reenable main music and disable game Music
+  this.props.updateMainMusic(true);
+  this.setState({playMusic : false});
 
     // Replace top score
     if(this.state.currentScore > this.state.topScore){
@@ -240,6 +250,9 @@ export class Reacteroids extends Component {
     let endgame;
     let message;
 
+
+
+
     if (this.state.currentScore <= 0) {
       message = '0 points... So sad.';
     } else if (this.state.currentScore >= this.state.topScore){
@@ -249,6 +262,9 @@ export class Reacteroids extends Component {
     }
 
     if(!this.state.inGame){
+
+
+
       endgame = (
         <div className="endgame">
           <p>Game over, man!</p>
@@ -260,19 +276,38 @@ export class Reacteroids extends Component {
     }
 
     return (
+      (this.state.playMusic)
+      ?(
+        <div>
+          <audio autoPlay loop id="game-music">
+            <source src={asteroidsMusicWAV} type="audio/wav"></source>
+            <source src={asteroidsMusicMP3} type="audio/mpeg"></source>
+            Your Browser does not support the audio element.
+            </audio>
+
+            { endgame }
+            <canvas ref="canvas"
+            width={this.state.screen.width * this.state.screen.ratio}
+            height={this.state.screen.height * this.state.screen.ratio}
+            />
+            </div>
+    )
+    :
+    (
       <div>
-        <audio autoPlay loop id="game-music">
+        <audio autoPlay muted loop id="game-music">
           <source src={asteroidsMusicWAV} type="audio/wav"></source>
           <source src={asteroidsMusicMP3} type="audio/mpeg"></source>
           Your Browser does not support the audio element.
-        </audio>
+          </audio>
 
-        { endgame }
-        <canvas ref="canvas"
+          { endgame }
+          <canvas ref="canvas"
           width={this.state.screen.width * this.state.screen.ratio}
           height={this.state.screen.height * this.state.screen.ratio}
-        />
-      </div>
+          />
+          </div>
+    )
     );
   }
 }
