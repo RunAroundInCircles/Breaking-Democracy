@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Breaking-Democracy/static/css/main.e39e0ce6.chunk.css",
-    "main.js": "/Breaking-Democracy/static/js/main.8347c2d2.chunk.js",
-    "main.js.map": "/Breaking-Democracy/static/js/main.8347c2d2.chunk.js.map",
+    "main.js": "/Breaking-Democracy/static/js/main.3b9cd33b.chunk.js",
+    "main.js.map": "/Breaking-Democracy/static/js/main.3b9cd33b.chunk.js.map",
     "runtime-main.js": "/Breaking-Democracy/static/js/runtime-main.b7e529be.js",
     "runtime-main.js.map": "/Breaking-Democracy/static/js/runtime-main.b7e529be.js.map",
     "static/js/2.d2b1d073.chunk.js": "/Breaking-Democracy/static/js/2.d2b1d073.chunk.js",
     "static/js/2.d2b1d073.chunk.js.map": "/Breaking-Democracy/static/js/2.d2b1d073.chunk.js.map",
     "index.html": "/Breaking-Democracy/index.html",
-    "precache-manifest.1ffd6fc694c89c03f402f09e9d6d1e3c.js": "/Breaking-Democracy/precache-manifest.1ffd6fc694c89c03f402f09e9d6d1e3c.js",
+    "precache-manifest.47d1d9c51957df18b5a56a07c392a970.js": "/Breaking-Democracy/precache-manifest.47d1d9c51957df18b5a56a07c392a970.js",
     "service-worker.js": "/Breaking-Democracy/service-worker.js",
     "static/css/main.e39e0ce6.chunk.css.map": "/Breaking-Democracy/static/css/main.e39e0ce6.chunk.css.map",
     "static/js/2.d2b1d073.chunk.js.LICENSE.txt": "/Breaking-Democracy/static/js/2.d2b1d073.chunk.js.LICENSE.txt",
@@ -27,6 +27,6 @@
     "static/js/runtime-main.b7e529be.js",
     "static/js/2.d2b1d073.chunk.js",
     "static/css/main.e39e0ce6.chunk.css",
-    "static/js/main.8347c2d2.chunk.js"
+    "static/js/main.3b9cd33b.chunk.js"
   ]
 }
