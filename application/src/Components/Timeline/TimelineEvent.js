@@ -40,17 +40,12 @@ class TimelineEvent extends Component {
         var eventsFormated = [];                                            //Structure to contain events while they are being generated
         let options = {year: 'numeric', month: 'short', day: 'numeric'};    //Format how the dates will be displayed
         var i;
-        var eventScore = 0;
-
-        for(i = 0; i < this.props.eventsCompleted.length; i++) {
-
+        //Adds the first 10 completed events to be rendered on the timeline
+        for(i = this.props.eventStartIndex; (i < this.props.eventsCompleted.length && i < this.props.eventStartIndex + 10); i++) {
             var completedEvent = this.props.eventsCompleted[i]; //Get the next completed event
             var event = this.props.events[completedEvent.eventID]; //Get the details of the completed event
             var fillColor = "grey"; //Start the color as grey
             var percentText = completedEvent.percent; //Get the percentage change
-
-            eventScore = eventScore + percentText; //Calculate the total score the player has got
-
             if(completedEvent.percent > 0) { //If a positive change set color to green
                 percentText = "+" + percentText;
                 fillColor = "green";
@@ -58,12 +53,15 @@ class TimelineEvent extends Component {
             else if(completedEvent.percent < 0) { //If negative change set color to red
                 fillColor = "red";
             }
+
             let date = new Date(event.year, event.month, event.day); //Get the date of the event
+            
             var tooltipText =  //Format the tooltip text to be the date, event message, the region effected, and the district effected
                 date.toLocaleDateString("en-US", options)
                 + "\n" + event.message
                 + "\n" + "Region " + completedEvent.region
                 + "\n" + "District " + completedEvent.district;
+            
             eventsFormated.push(
                 <svg height="100" width="100" style={{margin: 4}}>
                     <circle cx="50" cy="50" r="47" stroke="black" strokeWidth="3" fill={fillColor}>
@@ -80,7 +78,7 @@ class TimelineEvent extends Component {
                     alignItems: 'center',
                     justifyContent: 'center',
                     position: 'absolute',
-                    width: '100vw',
+                    width: '80vw',
                     height: '80vh'
                 }}
             >

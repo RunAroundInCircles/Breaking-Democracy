@@ -32,11 +32,43 @@ import Timeline from './Timeline.js';
  * @extends React
  */
 class TimelineApp extends Component {
-// This code snippet will be used later in production
+    // This code snippet will be used later in production
     constructor(props) {
-		super(props);
-  };
+        super(props);
+        
+        this.state = {
+            eventStartIndex: 0 //Indicates the index of the eventsCompleted array to start at
+        }
 
+        this.viewNextEventGroup = this.viewNextEventGroup.bind(this);
+        this.viewPreviousEventGroup = this.viewPreviousEventGroup.bind(this);
+    };
+
+    /**
+     * If possible increases the event start index by 10
+     * @param {*} event The default click event
+     */
+    viewNextEventGroup(event) {
+        event.preventDefault();
+        if(this.state.eventStartIndex + 10 < this.props.eventsCompleted.length) {
+            this.setState((state, props) => ({
+                eventStartIndex: state.eventStartIndex + 10
+            }));
+        }
+    }
+
+    /**
+     * If possible decreases the event start index by 10
+     * @param {*} event The default click event
+     */
+    viewPreviousEventGroup(event) {
+        event.preventDefault();
+        if(this.state.eventStartIndex - 10 >= 0) {
+            this.setState((state, props) => ({
+                eventStartIndex: state.eventStartIndex - 10
+            }));
+        }
+    }
 
 	/**
  	* Renders a Timeline and a TimelineEvent given all current events.
@@ -44,9 +76,16 @@ class TimelineApp extends Component {
  	*/
     render() {
         return(
-            <div className="timeline-app">
-                <Timeline/>
-                <TimelineEvent events={this.props.events} eventsCompleted={this.props.eventsCompleted}/>
+            <div className="timeline-app" style={{justifyContent: 'center', display: 'flex'}}>
+                <Timeline
+                    viewNextEventGroup={this.viewNextEventGroup}
+                    viewPreviousEventGroup={this.viewPreviousEventGroup}
+                />
+                <TimelineEvent 
+                    events={this.props.events} 
+                    eventsCompleted={this.props.eventsCompleted} 
+                    eventStartIndex={this.state.eventStartIndex}
+                />
             </div>
         )
     }

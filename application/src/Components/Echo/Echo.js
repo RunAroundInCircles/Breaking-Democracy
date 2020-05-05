@@ -44,7 +44,7 @@ class Echo extends Component {
     render() {
            return (
                 <div className='echo'>
-                  <span class='echo-contents'>
+                  <span className='echo-contents'>
 					          <h4>{this.state.time}</h4>
                     <h1>{this.state.at}</h1> {/* Name of Sender */}
                     <h2>{this.state.name}</h2> {/* Ttile of Echo */}
