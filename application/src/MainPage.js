@@ -145,9 +145,15 @@ class MainPage extends Component{
 
   		//Update the poll data
 		let updatedData = this.state.pollData;
-		//Adds the difference of 50 and the current score times the percent change so that
+		let difference = 50 - updatedData[region][district]; //Gets the difference of 50 and the old score
+		//Gets the ratio of the difference and a selected number
+		//The selected number helps determine difficulty of the game, closer to 0 = easier, closer to 50 = harder
+		let differenceRatio = difference/17; 
+		if(differenceRatio < 0) differenceRatio *= -1;
+		//Adds the difference of 50 and the current score times the percent change and the 
+		//ratio between the difference and a selected number so that
 		//good changes get the score closer to 50% and bad scores drive the score away from 50%
-  		updatedData[region][district] += ((50 -updatedData[region][district]) * percent);
+  		updatedData[region][district] += (difference * percent * differenceRatio);
 
   		//Check if the updated poll is out of bounds
   		if(updatedData[region][district] > 100) {
@@ -204,24 +210,26 @@ class MainPage extends Component{
 
 	/**
 	 * Calculates whether the player won based off of their score
-	 * The player wins when their averaged score is between 40 and 60
+	 * The player wins when they have a majority of districts with scores
+	 * between 40 and 60
 	 * @param {data} data the data to use to calculate the player's score
 	 * @returns {boolean} whether the player won or not
 	 */
 	checkIfPlayerWon = (data) =>{
 		let i;
 		let j;
-		let score = 0;
-		let districts = 0;
+		let districtsWon = 0;
+		let districtsTotal = 0;
 		let iterableData = Object.values(data);
 		for(i = 0; i < iterableData.length; i++) {
 			for(j = 0; j < iterableData[i].length; j++) {
-				score += iterableData[i][j];
-				districts++;
+				if(iterableData[i][j] >= 40 && iterableData[i][j] <= 60) {
+					districtsWon++;
+				}
+				districtsTotal++;
 			}
 		}
-		score = score/districts;
-		if(score >= 40 && score <= 60){
+		if(districtsWon/districtsTotal >= .50){
 			return true;
 		}
 		else {
