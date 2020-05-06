@@ -51,13 +51,13 @@ class TypeGame extends Component{
 		event.preventDefault();
 		document.getElementById("submit").disabled = true;
 		if(this.props.answer == this.state.value){
-			var percent = .50
+			var percent = .50.toFixed(2);
 			this.props.callbackFromMain(this.props.eventID, percent);
 			this.setState({result: "Success!"});
 			this.setState({submitState: false});
 		}
 		else {
-			var percent = -.50;
+			var percent = -.50.toFixed(2);
 			this.props.callbackFromMain(this.props.eventID, percent);
 			this.setState({result: "Failed!"});
 			this.setState({submitState: false});
