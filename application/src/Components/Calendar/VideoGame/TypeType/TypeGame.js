@@ -59,7 +59,7 @@ class TypeGame extends Component{
 		else {
 			var percent = -.50.toFixed(2);
 			this.props.callbackFromMain(this.props.eventID, percent);
-			this.setState({result: "Failed!"});
+			this.setState({result: "Failed! The correct answer was: " + this.props.answer});
 			this.setState({submitState: false});
 		}
 	}

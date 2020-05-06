@@ -115,8 +115,13 @@ namespace UnitTests
             //Checks to see if the results from the file are the same as the data written in.
             Assert.AreEqual(sb.ToString(), results);
 
-            //Deletes the temporary file.
-            File.Delete(path);
+            //Make sure the test file wasn't deleted during the test
+            if (File.Exists(path))
+            {
+                //Deletes the temporary file.
+                File.Delete(path);
+            }
+
         }
 
 
@@ -137,6 +142,7 @@ namespace UnitTests
 
             // The path to the backup image
             string backup = "../../application/src/Resources/backup_of_desktop.png";
+            string testbackup = "../../application/src/Resources/test_backup.png";
 
             // Checks to see if all the paths exist
             if (File.Exists(pathToTestImage) && File.Exists(pathToOriginal) && File.Exists(backup))
@@ -147,7 +153,13 @@ namespace UnitTests
                 Assert.IsTrue(editor.UpdateDesktopImage(pathToTestImage,pathToOriginal,backup));
 
                 // If the change was success change the desktop image back to the original. 
-                editor.UpdateDesktopImage(backup, pathToOriginal, backup);
+                editor.UpdateDesktopImage(backup, pathToOriginal, testbackup);
+
+                // Make sure the test file was not deleted during the test
+                if (File.Exists(testbackup))
+                {
+                    File.Delete(testbackup);
+                }
                
             }
             else

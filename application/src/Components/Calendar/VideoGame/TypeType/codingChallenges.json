@@ -18,5 +18,10 @@
     "id": "3",
     "challenge": "How many territories are part of the USA?",
     "answer": "5"
+  },
+  {
+    "id": "4",
+    "challenge": "Who breaks ties in the US Senate?",
+    "answer": "Vice President"
   }
 ]
