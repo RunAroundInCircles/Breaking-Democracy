@@ -50,35 +50,35 @@ namespace Editor
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle175 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle176 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle177 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle178 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle179 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle180 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle181 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle182 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle183 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle184 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle185 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle186 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle187 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle188 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle189 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle190 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle191 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle192 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle193 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle194 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle195 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle196 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle197 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle198 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle199 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle200 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle201 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle202 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle203 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSave = new System.Windows.Forms.Button();
             this.uxQuizQuestions = new System.Windows.Forms.TabPage();
             this.uxQuizList = new System.Windows.Forms.DataGridView();
@@ -99,6 +99,11 @@ namespace Editor
             this.emailFace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uxEchoTab = new System.Windows.Forms.TabPage();
             this.uxEchosList = new System.Windows.Forms.DataGridView();
+            this.echoBody = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.echoName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.echoAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.echoTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.echocurrentSprint = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uxSituationsTab = new System.Windows.Forms.TabPage();
             this.uxSituationsList = new System.Windows.Forms.DataGridView();
             this.SituationsArrayIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -115,11 +120,6 @@ namespace Editor
             this.eventYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.message = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uxTabs = new System.Windows.Forms.TabControl();
-            this.echoBody = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.echoName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.echoAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.echoTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.echocurrentSprint = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnChangeDesktop = new System.Windows.Forms.Button();
             this.uxOpenDesktopImage = new System.Windows.Forms.OpenFileDialog();
             this.uxQuizQuestions.SuspendLayout();
@@ -139,7 +139,7 @@ namespace Editor
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSave.Location = new System.Drawing.Point(828, 345);
+            this.btnSave.Location = new System.Drawing.Point(828, 350);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(150, 41);
             this.btnSave.TabIndex = 1;
@@ -176,9 +176,9 @@ namespace Editor
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle1.NullValue = "0";
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle175.NullValue = "0";
+            dataGridViewCellStyle175.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle175;
             this.dataGridViewTextBoxColumn8.HeaderText = "id";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.Width = 48;
@@ -186,9 +186,9 @@ namespace Editor
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle2.NullValue = "Challenge Question";
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle176.NullValue = "Challenge Question";
+            dataGridViewCellStyle176.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle176;
             this.dataGridViewTextBoxColumn5.HeaderText = "challenge";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.Width = 119;
@@ -196,9 +196,9 @@ namespace Editor
             // dataGridViewTextBoxColumn9
             // 
             this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle3.NullValue = "Answer";
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle177.NullValue = "Answer";
+            dataGridViewCellStyle177.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle177;
             this.dataGridViewTextBoxColumn9.HeaderText = "answer";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.Width = 82;
@@ -239,9 +239,9 @@ namespace Editor
             // emailCurrentSprint
             // 
             this.emailCurrentSprint.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle4.NullValue = "0";
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.emailCurrentSprint.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle178.NullValue = "0";
+            dataGridViewCellStyle178.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.emailCurrentSprint.DefaultCellStyle = dataGridViewCellStyle178;
             this.emailCurrentSprint.HeaderText = "currentSprint";
             this.emailCurrentSprint.Name = "emailCurrentSprint";
             this.emailCurrentSprint.Width = 119;
@@ -249,9 +249,9 @@ namespace Editor
             // emailSender
             // 
             this.emailSender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle5.NullValue = "senderName";
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.emailSender.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle179.NullValue = "senderName";
+            dataGridViewCellStyle179.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.emailSender.DefaultCellStyle = dataGridViewCellStyle179;
             this.emailSender.HeaderText = "sender";
             this.emailSender.Name = "emailSender";
             this.emailSender.Width = 90;
@@ -259,9 +259,9 @@ namespace Editor
             // emailAddress
             // 
             this.emailAddress.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle6.NullValue = "senderEmail";
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.emailAddress.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle180.NullValue = "senderEmail";
+            dataGridViewCellStyle180.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.emailAddress.DefaultCellStyle = dataGridViewCellStyle180;
             this.emailAddress.HeaderText = "senderEmail";
             this.emailAddress.Name = "emailAddress";
             this.emailAddress.Width = 115;
@@ -269,9 +269,9 @@ namespace Editor
             // emailccs
             // 
             this.emailccs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle7.NullValue = "cssEmail";
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.emailccs.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle181.NullValue = "cssEmail";
+            dataGridViewCellStyle181.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.emailccs.DefaultCellStyle = dataGridViewCellStyle181;
             this.emailccs.HeaderText = "ccsEmail";
             this.emailccs.Name = "emailccs";
             this.emailccs.Width = 92;
@@ -279,9 +279,9 @@ namespace Editor
             // emailTitle
             // 
             this.emailTitle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle8.NullValue = "title";
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.emailTitle.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle182.NullValue = "title";
+            dataGridViewCellStyle182.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.emailTitle.DefaultCellStyle = dataGridViewCellStyle182;
             this.emailTitle.HeaderText = "title";
             this.emailTitle.Name = "emailTitle";
             this.emailTitle.Width = 59;
@@ -289,9 +289,9 @@ namespace Editor
             // emailFavorited
             // 
             this.emailFavorited.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle9.NullValue = "False";
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.emailFavorited.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle183.NullValue = "False";
+            dataGridViewCellStyle183.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.emailFavorited.DefaultCellStyle = dataGridViewCellStyle183;
             this.emailFavorited.HeaderText = "favorited";
             this.emailFavorited.Name = "emailFavorited";
             this.emailFavorited.Width = 92;
@@ -299,9 +299,9 @@ namespace Editor
             // emailPinned
             // 
             this.emailPinned.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle10.NullValue = "False";
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.emailPinned.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle184.NullValue = "False";
+            dataGridViewCellStyle184.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.emailPinned.DefaultCellStyle = dataGridViewCellStyle184;
             this.emailPinned.HeaderText = "pinned";
             this.emailPinned.Name = "emailPinned";
             this.emailPinned.Width = 80;
@@ -309,9 +309,9 @@ namespace Editor
             // emailID
             // 
             this.emailID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle11.NullValue = "0";
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.emailID.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle185.NullValue = "0";
+            dataGridViewCellStyle185.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.emailID.DefaultCellStyle = dataGridViewCellStyle185;
             this.emailID.HeaderText = "id";
             this.emailID.Name = "emailID";
             this.emailID.Width = 48;
@@ -319,9 +319,9 @@ namespace Editor
             // emailbody
             // 
             this.emailbody.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle12.NullValue = "Body";
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.emailbody.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle186.NullValue = "Body";
+            dataGridViewCellStyle186.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.emailbody.DefaultCellStyle = dataGridViewCellStyle186;
             this.emailbody.HeaderText = "body";
             this.emailbody.Name = "emailbody";
             this.emailbody.Width = 68;
@@ -329,8 +329,8 @@ namespace Editor
             // emailFace
             // 
             this.emailFace.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle13.NullValue = "../../Resources/Email Faces/game_master.png";
-            this.emailFace.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle187.NullValue = "../../Resources/Email Faces/game_master.png";
+            this.emailFace.DefaultCellStyle = dataGridViewCellStyle187;
             this.emailFace.HeaderText = "face";
             this.emailFace.Name = "emailFace";
             this.emailFace.Width = 299;
@@ -363,6 +363,55 @@ namespace Editor
             this.uxEchosList.Size = new System.Drawing.Size(959, 296);
             this.uxEchosList.TabIndex = 0;
             // 
+            // echoBody
+            // 
+            this.echoBody.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle188.NullValue = "body";
+            dataGridViewCellStyle188.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.echoBody.DefaultCellStyle = dataGridViewCellStyle188;
+            this.echoBody.HeaderText = "body";
+            this.echoBody.Name = "echoBody";
+            this.echoBody.Width = 68;
+            // 
+            // echoName
+            // 
+            this.echoName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle189.NullValue = "name";
+            dataGridViewCellStyle189.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.echoName.DefaultCellStyle = dataGridViewCellStyle189;
+            this.echoName.HeaderText = "name";
+            this.echoName.Name = "echoName";
+            this.echoName.Width = 72;
+            // 
+            // echoAt
+            // 
+            this.echoAt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle190.NullValue = "at";
+            dataGridViewCellStyle190.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.echoAt.DefaultCellStyle = dataGridViewCellStyle190;
+            this.echoAt.HeaderText = "at";
+            this.echoAt.Name = "echoAt";
+            this.echoAt.Width = 49;
+            // 
+            // echoTime
+            // 
+            this.echoTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle191.NullValue = "January 1, 2020";
+            dataGridViewCellStyle191.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.echoTime.DefaultCellStyle = dataGridViewCellStyle191;
+            this.echoTime.HeaderText = "time";
+            this.echoTime.Name = "echoTime";
+            this.echoTime.Width = 72;
+            // 
+            // echocurrentSprint
+            // 
+            this.echocurrentSprint.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle192.NullValue = "0";
+            this.echocurrentSprint.DefaultCellStyle = dataGridViewCellStyle192;
+            this.echocurrentSprint.HeaderText = "currentSprint";
+            this.echocurrentSprint.Name = "echocurrentSprint";
+            this.echocurrentSprint.Width = 119;
+            // 
             // uxSituationsTab
             // 
             this.uxSituationsTab.Controls.Add(this.uxSituationsList);
@@ -394,9 +443,9 @@ namespace Editor
             // SituationsArrayIndex
             // 
             this.SituationsArrayIndex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle19.NullValue = "0";
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SituationsArrayIndex.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle193.NullValue = "0";
+            dataGridViewCellStyle193.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SituationsArrayIndex.DefaultCellStyle = dataGridViewCellStyle193;
             this.SituationsArrayIndex.HeaderText = "Situations Array Index";
             this.SituationsArrayIndex.Name = "SituationsArrayIndex";
             this.SituationsArrayIndex.Visible = false;
@@ -404,9 +453,9 @@ namespace Editor
             // situationID
             // 
             this.situationID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle20.NullValue = "0";
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.situationID.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle194.NullValue = "0";
+            dataGridViewCellStyle194.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.situationID.DefaultCellStyle = dataGridViewCellStyle194;
             this.situationID.HeaderText = "id";
             this.situationID.Name = "situationID";
             this.situationID.Width = 48;
@@ -414,9 +463,9 @@ namespace Editor
             // situation
             // 
             this.situation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle21.NullValue = "situation";
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.situation.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle195.NullValue = "situation";
+            dataGridViewCellStyle195.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.situation.DefaultCellStyle = dataGridViewCellStyle195;
             this.situation.HeaderText = "situation";
             this.situation.Name = "situation";
             this.situation.Width = 90;
@@ -424,9 +473,9 @@ namespace Editor
             // situationChoice1
             // 
             this.situationChoice1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle22.NullValue = "choice 1";
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.situationChoice1.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle196.NullValue = "choice 1";
+            dataGridViewCellStyle196.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.situationChoice1.DefaultCellStyle = dataGridViewCellStyle196;
             this.situationChoice1.HeaderText = "Choice1";
             this.situationChoice1.Name = "situationChoice1";
             this.situationChoice1.Width = 88;
@@ -434,9 +483,9 @@ namespace Editor
             // situationChoice2
             // 
             this.situationChoice2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle23.NullValue = "choice 2";
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.situationChoice2.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle197.NullValue = "choice 2";
+            dataGridViewCellStyle197.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.situationChoice2.DefaultCellStyle = dataGridViewCellStyle197;
             this.situationChoice2.HeaderText = "Choice2";
             this.situationChoice2.Name = "situationChoice2";
             this.situationChoice2.Width = 88;
@@ -447,7 +496,7 @@ namespace Editor
             this.uxEventTab.Location = new System.Drawing.Point(4, 25);
             this.uxEventTab.Name = "uxEventTab";
             this.uxEventTab.Padding = new System.Windows.Forms.Padding(3);
-            this.uxEventTab.Size = new System.Drawing.Size(965, 302);
+            this.uxEventTab.Size = new System.Drawing.Size(965, 307);
             this.uxEventTab.TabIndex = 0;
             this.uxEventTab.Text = "Events";
             this.uxEventTab.UseVisualStyleBackColor = true;
@@ -467,14 +516,14 @@ namespace Editor
             this.uxEventList.Location = new System.Drawing.Point(3, 3);
             this.uxEventList.Name = "uxEventList";
             this.uxEventList.RowTemplate.Height = 24;
-            this.uxEventList.Size = new System.Drawing.Size(959, 296);
+            this.uxEventList.Size = new System.Drawing.Size(959, 301);
             this.uxEventList.TabIndex = 0;
             // 
             // eventArrayIndex
             // 
-            dataGridViewCellStyle24.NullValue = "0";
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.eventArrayIndex.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle198.NullValue = "0";
+            dataGridViewCellStyle198.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.eventArrayIndex.DefaultCellStyle = dataGridViewCellStyle198;
             this.eventArrayIndex.HeaderText = "eventArrayIndex";
             this.eventArrayIndex.Name = "eventArrayIndex";
             this.eventArrayIndex.Visible = false;
@@ -482,9 +531,9 @@ namespace Editor
             // eventID
             // 
             this.eventID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle25.NullValue = "0";
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.eventID.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle199.NullValue = "0";
+            dataGridViewCellStyle199.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.eventID.DefaultCellStyle = dataGridViewCellStyle199;
             this.eventID.HeaderText = "id";
             this.eventID.Name = "eventID";
             this.eventID.Width = 48;
@@ -492,9 +541,9 @@ namespace Editor
             // day
             // 
             this.day.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle26.NullValue = "1";
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.day.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle200.NullValue = "1";
+            dataGridViewCellStyle200.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.day.DefaultCellStyle = dataGridViewCellStyle200;
             this.day.HeaderText = "day";
             this.day.Name = "day";
             this.day.Width = 60;
@@ -502,9 +551,9 @@ namespace Editor
             // month
             // 
             this.month.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle27.NullValue = "12";
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.month.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle201.NullValue = "12";
+            dataGridViewCellStyle201.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.month.DefaultCellStyle = dataGridViewCellStyle201;
             this.month.HeaderText = "month";
             this.month.Name = "month";
             this.month.Width = 76;
@@ -512,9 +561,9 @@ namespace Editor
             // eventYear
             // 
             this.eventYear.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle28.NullValue = "2020";
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.eventYear.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle202.NullValue = "2020";
+            dataGridViewCellStyle202.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.eventYear.DefaultCellStyle = dataGridViewCellStyle202;
             this.eventYear.HeaderText = "year";
             this.eventYear.Name = "eventYear";
             this.eventYear.Width = 65;
@@ -522,9 +571,9 @@ namespace Editor
             // message
             // 
             this.message.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle29.NullValue = "message";
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.message.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle203.NullValue = "message";
+            dataGridViewCellStyle203.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.message.DefaultCellStyle = dataGridViewCellStyle203;
             this.message.HeaderText = "message";
             this.message.Name = "message";
             this.message.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -543,61 +592,14 @@ namespace Editor
             this.uxTabs.Location = new System.Drawing.Point(12, 12);
             this.uxTabs.Name = "uxTabs";
             this.uxTabs.SelectedIndex = 0;
-            this.uxTabs.Size = new System.Drawing.Size(973, 331);
+            this.uxTabs.Size = new System.Drawing.Size(973, 336);
             this.uxTabs.TabIndex = 0;
-            // 
-            // echoBody
-            // 
-            this.echoBody.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle14.NullValue = "body";
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.echoBody.DefaultCellStyle = dataGridViewCellStyle14;
-            this.echoBody.HeaderText = "body";
-            this.echoBody.Name = "echoBody";
-            this.echoBody.Width = 68;
-            // 
-            // echoName
-            // 
-            this.echoName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle15.NullValue = "name";
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.echoName.DefaultCellStyle = dataGridViewCellStyle15;
-            this.echoName.HeaderText = "name";
-            this.echoName.Name = "echoName";
-            this.echoName.Width = 72;
-            // 
-            // echoAt
-            // 
-            this.echoAt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle16.NullValue = "at";
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.echoAt.DefaultCellStyle = dataGridViewCellStyle16;
-            this.echoAt.HeaderText = "at";
-            this.echoAt.Name = "echoAt";
-            this.echoAt.Width = 49;
-            // 
-            // echoTime
-            // 
-            this.echoTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle17.NullValue = "January 1, 2020";
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.echoTime.DefaultCellStyle = dataGridViewCellStyle17;
-            this.echoTime.HeaderText = "time";
-            this.echoTime.Name = "echoTime";
-            this.echoTime.Width = 112;
-            // 
-            // echocurrentSprint
-            // 
-            this.echocurrentSprint.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle18.NullValue = "0";
-            this.echocurrentSprint.DefaultCellStyle = dataGridViewCellStyle18;
-            this.echocurrentSprint.HeaderText = "currentSprint";
-            this.echocurrentSprint.Name = "echocurrentSprint";
-            this.echocurrentSprint.Width = 119;
             // 
             // btnChangeDesktop
             // 
-            this.btnChangeDesktop.Location = new System.Drawing.Point(12, 345);
+            this.btnChangeDesktop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnChangeDesktop.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnChangeDesktop.Location = new System.Drawing.Point(12, 350);
             this.btnChangeDesktop.Name = "btnChangeDesktop";
             this.btnChangeDesktop.Size = new System.Drawing.Size(189, 41);
             this.btnChangeDesktop.TabIndex = 2;
@@ -613,10 +615,11 @@ namespace Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(998, 398);
+            this.ClientSize = new System.Drawing.Size(998, 403);
             this.Controls.Add(this.btnChangeDesktop);
             this.Controls.Add(this.uxTabs);
             this.Controls.Add(this.btnSave);
+            this.MinimumSize = new System.Drawing.Size(450, 400);
             this.Name = "uxEditor";
             this.Text = "Editor";
             this.Load += new System.EventHandler(this.Editor_Load);

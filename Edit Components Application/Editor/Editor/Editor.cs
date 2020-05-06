@@ -273,6 +273,10 @@ namespace Editor
                     grid = uxEmailList;
                     path = "../application/src/Components/Email/EmailList.json";
                     break;
+                case 4: // Quiz Questions
+                    grid = uxQuizList;
+                    path = "../application/src/Components/Calendar/VideoGame/TypeType/codingChallenges.json";
+                    break;
             }
 
 
@@ -287,7 +291,7 @@ namespace Editor
                 writer.Formatting = Formatting.Indented; //Formatting for the JSON File
 
                 //All normal JSON files are stored in an array
-                if (grid == uxEchosList || grid == uxEmailList)
+                if (grid == uxEchosList || grid == uxEmailList || grid == uxQuizList)
                 {
                     writer.WriteStartArray();
                 }
