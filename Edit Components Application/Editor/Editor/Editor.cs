@@ -389,6 +389,63 @@ namespace Editor
 
         }
 
+        /// <summary>
+        /// Allows the user to change the desktop image in the game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnChangeDesktop_Click(object sender, EventArgs e)
+        {
+            // Path to the current desktop image
+            string pathToOriginal = "../application/src/Resources/Title_Computer.png";
+            // Path to the backup image
+            string backupPath = "../application/src/Resources/backup_of_desktop.png";
+
+            //Opens the file dialog and waits for the user to give a PNG file.
+            if (uxOpenDesktopImage.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = uxOpenDesktopImage.FileName;
+
+                UpdateDesktopImage(filePath,pathToOriginal,backupPath);
+            }
+        }
+
+        /// <summary>
+        /// When provided a new image path the path will replace the older desktop file.
+        /// </summary>
+        /// <param name="newImagePath">Path to the image to replace the original desktop Image</param>
+        public bool UpdateDesktopImage(string newImagePath, string pathToOriginal, string backupPath)
+        {
+            // Creates an array of all the paths which we will use to seee if the paths are correct
+            string[] checkPathsAreCorrect = { pathToOriginal, newImagePath };
+
+            // Checks to see if the paths are correct
+            if (checkFiles(checkPathsAreCorrect) == true)
+            {
+                try
+                {
+                    // Creates a backup of the original background image
+                    File.Copy(pathToOriginal, backupPath, true);
+                    // Copies over the new image to replace the old one
+                    File.Copy(newImagePath, pathToOriginal,true);
+
+                    // Returns true if the image was updated successfully
+                    return true;
+                }
+                catch(Exception e)
+                {
+                    // If there are any issues with the replacement then the back up of the 
+                    MessageBox.Show("Unable to Replace desktop image. A backup of the original file is stored in:\n"
+                        + backupPath
+                        + "\n If you would like the original background it is stored in ../applicaiton/src/Resources/first_background.png");
+                    Console.WriteLine(e.Message);
+                    return false;
+                }               
+            }
+
+            // If the files cannot be found then fail
+            return false;
+        }
     }
 
 }
