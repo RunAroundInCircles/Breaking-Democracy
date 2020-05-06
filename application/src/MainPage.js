@@ -145,9 +145,15 @@ class MainPage extends Component{
 
   		//Update the poll data
 		let updatedData = this.state.pollData;
-		//Adds the difference of 50 and the current score times the percent change so that
+		let difference = 50 - updatedData[region][district]; //Gets the difference of 50 and the old score
+		//Gets the ratio of the difference and a selected number
+		//The selected number helps determine difficulty of the game, closer to 0 = easier, closer to 50 = harder
+		let differenceRatio = difference/17; 
+		if(differenceRatio < 0) differenceRatio *= -1;
+		//Adds the difference of 50 and the current score times the percent change and the 
+		//ratio between the difference and a selected number so that
 		//good changes get the score closer to 50% and bad scores drive the score away from 50%
-  		updatedData[region][district] += ((50 -updatedData[region][district]) * percent);
+  		updatedData[region][district] += (difference * percent * differenceRatio);
 
   		//Check if the updated poll is out of bounds
   		if(updatedData[region][district] > 100) {
@@ -223,8 +229,7 @@ class MainPage extends Component{
 				districtsTotal++;
 			}
 		}
-		console.log("Won: " + districtsWon + " Total: " + districtsTotal + " Percent: " + (districtsWon/districtsTotal));
-		if(districtsWon/districtsTotal > .50){
+		if(districtsWon/districtsTotal >= .50){
 			return true;
 		}
 		else {
