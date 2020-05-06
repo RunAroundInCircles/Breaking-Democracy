@@ -135,7 +135,7 @@ namespace UnitTests
             var editor = new uxEditor();
 
             // The test image
-            string pathToTestImage = "../test.png";
+            string pathToTestImage = "../../application/src/Resources/test_background.png";
 
             // The path to the desktop image
             string pathToOriginal = "../../application/src/Resources/Title_Computer.png";
