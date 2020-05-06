@@ -1,4 +1,3 @@
-C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\Editor\obj\Release\Editor.csprojAssemblyReference.cache
 C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\Editor\obj\Release\Editor.uxEditor.resources
 C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\Editor\obj\Release\Editor.Properties.Resources.resources
 C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\Editor\obj\Release\Editor.csproj.GenerateResource.cache
