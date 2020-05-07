@@ -24,6 +24,7 @@ SOFTWARE.
 import React,{Component} from 'react';
 import './App.css';
 import failurevid from './Resources/failurevid.mp4';
+import {Button} from 'react-bootstrap';
 
 /**
  * Used to display the BadEnding of the game
@@ -37,6 +38,10 @@ class BadEnding extends Component {
 					<source src={failurevid} type="video/mp4" />
 					Your browser does not support the video tag.
 				</video>
+				{/* This button allows the player to skip the intro video and go directly to the game */}
+				<Button style={{top: 5, right: 5, position: 'absolute'}} onClick={this.props.restartCallback}>
+					<span>Play Again?</span>
+				</Button>
 			</div>
 		)
 	}
