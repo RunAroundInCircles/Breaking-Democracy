@@ -50,7 +50,7 @@ class TypeGame extends Component{
 	handleSubmit(event){
 		event.preventDefault();
 		document.getElementById("submit").disabled = true;
-		if(this.props.answer == this.state.value){
+		if(this.props.answer.toLowerCase() == this.state.value.toLowerCase()){
 			var percent = .50.toFixed(2);
 			this.props.callbackFromMain(this.props.eventID, percent);
 			this.setState({result: "Success!"});
