@@ -1,6 +1,11 @@
 import Bullet from './Bullet';
 import Particle from './Particle';
 import { rotatePoint, randomNumBetween } from './helpers';
+import ShipExplode1 from '../../../../../Resources/Sound FX/ShipExplode1.wav';
+import ShipExplode2 from '../../../../../Resources/Sound FX/ShipExplode2.wav';
+import Shoot1 from '../../../../../Resources/Sound FX/Shoot01.wav';
+import Shoot2 from '../../../../../Resources/Sound FX/Shoot02.wav';
+import Shoot3 from '../../../../../Resources/Sound FX/Shoot03.wav';
 
 export default class Ship {
   constructor(args) {
@@ -17,11 +22,25 @@ export default class Ship {
     this.lastShot = 0;
     this.create = args.create;
     this.onDie = args.onDie;
+    this.ShipExplosionEffects = [
+      ShipExplode1, 
+      ShipExplode2
+    ];
+    this.ShootEffects = [
+      Shoot1,
+      Shoot2,
+      Shoot3
+    ];
   }
 
   destroy(){
     this.delete = true;
     this.onDie();
+
+    var soundEffectIndex = Math.floor(Math.random() * this.ShipExplosionEffects.length);
+    var shipExplosionSoundEffect = new Audio(this.ShipExplosionEffects[soundEffectIndex]);
+    shipExplosionSoundEffect.play();
+    console.log(shipExplosionSoundEffect);
 
     // Explode
     for (let i = 0; i < 60; i++) {
@@ -86,6 +105,10 @@ export default class Ship {
       const bullet = new Bullet({ship: this});
       this.create(bullet, 'bullets');
       this.lastShot = Date.now();
+
+      var soundEffectIndex = Math.floor(Math.random() * this.ShootEffects.length);
+      var shotSoundEffect = new Audio(this.ShootEffects[soundEffectIndex]);
+      shotSoundEffect.play();
     }
 
     // Move
