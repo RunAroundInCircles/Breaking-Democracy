@@ -21,10 +21,17 @@ export default class Particle {
     this.inertia = 0.98;
   }
 
+  /**
+   * Destroys this particle
+   */
   destroy(){
     this.delete = true;
   }
 
+  /**
+   * Renders the particle using the current state
+   * @param {*} state 
+   */
   render(state){
     // Move
     this.position.x += this.velocity.x;

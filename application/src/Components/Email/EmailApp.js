@@ -57,7 +57,6 @@ class EmailApp extends Component {
             <div className="email-app">
                 <EmailList
                     emails={this.props.emails}
-
                     selectedEmail={this.state.selectedEmail}
                     onSelect={this.setSelectedEmail}
                 />
@@ -68,7 +67,10 @@ class EmailApp extends Component {
     }
 
 
-	//function to set the currently selected email to be displayed in EmailReader.js
+	/**
+   * function to set the currently selected email to be displayed in EmailReader.js
+   * @param {[type]} email The email to be selected
+   */
     setSelectedEmail(email) {
         this.setState({selectedEmail: email}); //render gets retriggered as soon as state is changed
     }

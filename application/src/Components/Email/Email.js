@@ -28,7 +28,7 @@ import face3 from '../../Resources/Email Faces/fan.png';
 
 const url = ['../../Resources/Email Faces/game_master.png',
 				'../../Resources/Email Faces/putin.png',
-				'../../Resources/Email Faces/fan.png'];
+				'../../Resources/Email Faces/fan.png']; //Holds all the links to face images
 
 /**
  * Represents an actual email which will be used to give tutorials and
@@ -54,7 +54,7 @@ class Email extends Component {
             pinned: props.pinned, //True/False value representing if email is pinned
             id: props.id, //Unique ID of the email
             onSelect: props.onSelect, //Inherited method to run onClick
-			face: props.face
+						face: props.face //path to the face image
         }
         //Binds this to handleClick
         this.handleClick = this.handleClick.bind(this);
@@ -69,9 +69,13 @@ class Email extends Component {
         e.preventDefault(); //Prevent default behavior
         this.state.onSelect(this.state); //Runs onSelect using this.state as argument
     }
-    
+
+		/**
+		 * Renders the face image for the email when given the path
+		 * @param  {[type]} imageUrl path to face iamge
+		 */
 	renderImage(imageUrl) {
-		if(this.props.face == url[0]){			
+		if(this.props.face == url[0]){
 			return (
 				<div>
 					<img className="sideImage" src={face} alt="face"/>
@@ -93,6 +97,7 @@ class Email extends Component {
 			);
 		}
 	}
+
 /**
  * Renders each individual email in the email list panel
  * @return returns the div of the indvidual email in the email list

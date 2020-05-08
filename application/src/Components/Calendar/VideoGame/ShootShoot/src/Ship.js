@@ -15,6 +15,11 @@ CC0 1.0 Universal
 import Bullet from './Bullet';
 import Particle from './Particle';
 import { rotatePoint, randomNumBetween } from './helpers';
+import ShipExplode1 from '../../../../../Resources/Sound FX/ShipExplode1.wav';
+import ShipExplode2 from '../../../../../Resources/Sound FX/ShipExplode2.wav';
+import Shoot1 from '../../../../../Resources/Sound FX/Shoot01.wav';
+import Shoot2 from '../../../../../Resources/Sound FX/Shoot02.wav';
+import Shoot3 from '../../../../../Resources/Sound FX/Shoot03.wav';
 
 export default class Ship {
   constructor(args) {
@@ -31,11 +36,29 @@ export default class Ship {
     this.lastShot = 0;
     this.create = args.create;
     this.onDie = args.onDie;
+    //Contains all of the sound effects for the ship exploding
+    this.ShipExplosionEffects = [
+      ShipExplode1, 
+      ShipExplode2
+    ];
+    //Contains all of the sound effects for firing a bullet
+    this.ShootEffects = [
+      Shoot1,
+      Shoot2,
+      Shoot3
+    ];
   }
 
+  /**
+   * Destroys the ship, plays explosion sound effect, and generates explosion particles
+   */
   destroy(){
     this.delete = true;
     this.onDie();
+
+    //Play a random sound effect for the ship exploding
+    var soundEffectIndex = Math.floor(Math.random() * this.ShipExplosionEffects.length);
+    new Audio(this.ShipExplosionEffects[soundEffectIndex]).play();
 
     // Explode
     for (let i = 0; i < 60; i++) {
@@ -55,6 +78,10 @@ export default class Ship {
     }
   }
 
+  /**
+   * Changes the direction of rotation
+   * @param {string} dir 
+   */
   rotate(dir){
     if (dir == 'LEFT') {
       this.rotation -= this.rotationSpeed;
@@ -64,7 +91,11 @@ export default class Ship {
     }
   }
 
-  accelerate(val){
+  /**
+   * Applies acceleration to the ship and generates thruster particles
+   */
+  accelerate(){
+    //Apply acceleration
     this.velocity.x -= Math.sin(-this.rotation*Math.PI/180) * this.speed;
     this.velocity.y -= Math.cos(-this.rotation*Math.PI/180) * this.speed;
 
@@ -85,6 +116,10 @@ export default class Ship {
     this.create(particle, 'particles');
   }
 
+  /**
+   * Renders the ship using the current state
+   * @param {*} state 
+   */
   render(state){
     // Controls
     if(state.keys.up){
@@ -100,6 +135,10 @@ export default class Ship {
       const bullet = new Bullet({ship: this});
       this.create(bullet, 'bullets');
       this.lastShot = Date.now();
+
+      //Play a random sound effect for firing a bullet
+      var soundEffectIndex = Math.floor(Math.random() * this.ShootEffects.length);
+      new Audio(this.ShootEffects[soundEffectIndex]).play();
     }
 
     // Move

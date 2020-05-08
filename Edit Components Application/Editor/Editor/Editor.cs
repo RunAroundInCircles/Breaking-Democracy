@@ -22,16 +22,11 @@ SOFTWARE.
 */
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 
 namespace Editor
 {
@@ -61,7 +56,7 @@ namespace Editor
             //Checks to make sure the application is running in the correct folder
             if (!(currentDirectory.EndsWith("Edit Components Application")))
             {
-                MessageBox.Show("The application is in the wrong directory. Please make sure the executable is in the" + '"' + "Edit Components Application" + '"' +" directory.");
+                MessageBox.Show("The application is in the wrong directory. Please make sure the executable is in the" + '"' + "Edit Components Application" + '"' + " directory.");
                 Application.Exit();
             }
 
@@ -74,9 +69,9 @@ namespace Editor
             string pathToQuizQuestions = "../application/src/Components/Calendar/VideoGame/TypeType/codingChallenges.json";
             string[] paths = { pathToEventList, pathToSituationsList, pathToEchosList, pathToEmailsList };
 
-            
+
             //The files were not found so close the application
-            if(!checkFiles(paths))
+            if (!checkFiles(paths))
             {
                 MessageBox.Show("The JSON files could not be found please make sure the following paths exist in the Grand Theft Democracy directory:" +
                     "\n/application/src/Components/Calendar/EventList.json" +
@@ -107,7 +102,7 @@ namespace Editor
         /// </summary>
         /// <param name="paths"></param>
         /// <returns></returns>
-        public bool checkFiles(string [] paths)
+        public bool checkFiles(string[] paths)
         {
             bool pathsAreCorrect = true;
             //Check to see if the file exists
@@ -143,33 +138,33 @@ namespace Editor
                 {
                     if (jr.Value != null)
                     {
-                        
+
                         pair[variableCounts % 2] = jr.Value.ToString(); //Either the variable name or the data in the variable
-                        
+
                         //We look at only the variable data
                         if ((variableCounts % 2) != 0)
                         {
-                            
+
                             //Add the data to the row
                             newRow[cellCount] = pair[1];
 
                             //Check to see if we are at the end of the row
-                            if(cellCount == newRow.Length - 1)
+                            if (cellCount == newRow.Length - 1)
                             {
                                 //Reset the cell counter
                                 cellCount = 0;
 
                                 //Add row to the data grid view
                                 grid.Rows.Add(newRow);
-                                
+
                             }
                             else
                             {
                                 //Keep moving through the cells of the row
                                 cellCount++;
                             }
-                            
-                            
+
+
                         }
                         //Updates the number of variables in the JSON
                         variableCounts++;
@@ -273,6 +268,10 @@ namespace Editor
                     grid = uxEmailList;
                     path = "../application/src/Components/Email/EmailList.json";
                     break;
+                case 4: // Quiz Questions
+                    grid = uxQuizList;
+                    path = "../application/src/Components/Calendar/VideoGame/TypeType/codingChallenges.json";
+                    break;
             }
 
 
@@ -282,12 +281,12 @@ namespace Editor
             StringBuilder sb = new StringBuilder();
             StringWriter sw = new StringWriter(sb);
 
-            using(JsonWriter writer = new JsonTextWriter(sw))
+            using (JsonWriter writer = new JsonTextWriter(sw))
             {
                 writer.Formatting = Formatting.Indented; //Formatting for the JSON File
 
                 //All normal JSON files are stored in an array
-                if (grid == uxEchosList || grid == uxEmailList)
+                if (grid == uxEchosList || grid == uxEmailList || grid == uxQuizList)
                 {
                     writer.WriteStartArray();
                 }
@@ -298,7 +297,7 @@ namespace Editor
                 }
 
                 //Go through each row in the grid
-                for (int rowCount = 0; rowCount < grid.Rows.Count -1; rowCount++)
+                for (int rowCount = 0; rowCount < grid.Rows.Count - 1; rowCount++)
                 {
                     DataGridViewRow row = grid.Rows[rowCount];
 
@@ -322,7 +321,7 @@ namespace Editor
                             writer.WritePropertyName(row.Cells[0].Value.ToString());
 
                         }
-                        
+
                         //Adds a JSON object
                         writer.WriteStartObject();
 
@@ -330,7 +329,7 @@ namespace Editor
                         foreach (DataGridViewCell cell in row.Cells)
                         {
 
-                             //If this is not a JSON file that uses array Index we add the files to the JSON object
+                            //If this is not a JSON file that uses array Index we add the files to the JSON object
                             if (!((grid == uxEventList || grid == uxSituationsList) && cell.ColumnIndex == 0))
                             {
                                 //If the cell value is null or empty change it to the default value.
@@ -389,8 +388,65 @@ namespace Editor
 
         }
 
-    }
+        /// <summary>
+        /// Allows the user to change the desktop image in the game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnChangeDesktop_Click(object sender, EventArgs e)
+        {
+            // Path to the current desktop image
+            string pathToOriginal = "../application/src/Resources/Title_Computer.png";
+            // Path to the backup image
+            string backupPath = "../application/src/Resources/backup_of_desktop.png";
 
+            //Opens the file dialog and waits for the user to give a PNG file.
+            if (uxOpenDesktopImage.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = uxOpenDesktopImage.FileName;
+
+                UpdateDesktopImage(filePath, pathToOriginal, backupPath);
+            }
+        }
+
+        /// <summary>
+        /// When provided a new image path the path will replace the older desktop file.
+        /// </summary>
+        /// <param name="newImagePath">Path to the image to replace the original desktop Image</param>
+        public bool UpdateDesktopImage(string newImagePath, string pathToOriginal, string backupPath)
+        {
+            // Creates an array of all the paths which we will use to seee if the paths are correct
+            string[] checkPathsAreCorrect = { pathToOriginal, newImagePath };
+
+            // Checks to see if the paths are correct
+            if (checkFiles(checkPathsAreCorrect) == true)
+            {
+                try
+                {
+                    // Creates a backup of the original background image
+                    File.Copy(pathToOriginal, backupPath, true);
+                    // Copies over the new image to replace the old one
+                    File.Copy(newImagePath, pathToOriginal, true);
+
+                    // Returns true if the image was updated successfully
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    // If there are any issues with the replacement then the back up of the 
+                    MessageBox.Show("Unable to Replace desktop image. A backup of the original file is stored in:\n"
+                        + backupPath
+                        + "\n If you would like the original background it is stored in ../applicaiton/src/Resources/first_background.png");
+                    Console.WriteLine(e.Message);
+                    return false;
+                }
+            }
+
+            // If the files cannot be found then fail
+            return false;
+        }
+
+    }
 }
 
 

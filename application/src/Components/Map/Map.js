@@ -29,6 +29,7 @@ import country from '../../Resources/Maps/country.svg.js';
  * @extends Component
  */
 class Map extends Component{
+
 	/**
 	 * Generates the Map object
 	 * @param {Property} props The initial parameters needed to setup the Map
@@ -81,20 +82,33 @@ class Map extends Component{
         var i;
         var red = 0;
         var blue = 0;
+
+				//Loops through the pole date for the given region and it's index
         for(i = 0; i < this.props.pollData[index].length; i++) {
-          red += this.props.pollData[index][i];
+          red += this.props.pollData[index][i]; //Update the red colors
 					redTotal += this.props.pollData[index][i];
         }
+
+				//Find the percentage of red needed for the coloring
         red = red/this.props.pollData[index].length;
-        blue = 100-red;
+				//Determine the blue based off 100% - red %
+				blue = 100-red;
 
         var color = 'rgb(' + (red/100)*255 + ', 0, ' + (blue/100)*255 + ')'; //Formats colors to be used
+				//Color the region
         region.style.setProperty("fill", color);
+				//If the region is hovered over by the mouse turn it to gold
         region.style.setProperty("fill:hover", 'gold');
+
+				//Display the name of the regions
         var name = this.props.regionDistrictNames[index][0]
 				var regionName = document.getElementById('region-name');
+
+				//Display the percentages of conservative vs liberal
 				var conservativeBox = document.getElementById('conservative-box');
 				var liberalBox = document.getElementById('liberal-box');
+
+
 				//Function to display the name and poll data of the Region that is being hovered over
         region.addEventListener('mouseover', function(event) {
           var regionName = document.getElementById('region-name');
@@ -102,7 +116,8 @@ class Map extends Component{
 					conservativeBox.innerText = red.toFixed(2) + "% Conservative";
 					liberalBox.innerText = blue.toFixed(2) + "% Liberal";
         });
-        //Function to display the name and poll data of Democristan if no region is being hovered over
+
+				//Function to display the name and poll data of Democristan if no region is being hovered over
         region.addEventListener('mouseout', function(event) {
           var regionName = document.getElementById('region-name');
           regionName.innerText = "Country of Democristan";

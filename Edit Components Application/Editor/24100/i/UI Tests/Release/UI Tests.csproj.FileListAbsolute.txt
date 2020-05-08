@@ -1,0 +1,7 @@
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\0\b\Editor\UI Tests\bin\Release\UI Tests.dll
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\0\b\Editor\UI Tests\bin\Release\UI Tests.pdb
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\0\i\UI Tests\Release\UI Tests.csprojAssemblyReference.cache
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\0\i\UI Tests\Release\UI Tests.csproj.CoreCompileInputs.cache
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\0\i\UI Tests\Release\UI Tests.csproj.CopyComplete
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\0\i\UI Tests\Release\UI Tests.dll
+C:\Users\porsc\Desktop\College Stuff\Semester 2\Senior Design\repo3\repo3\Edit Components Application\Editor\0\i\UI Tests\Release\UI Tests.pdb
