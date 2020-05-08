@@ -14,6 +14,8 @@ CC0 1.0 Universal
 	
 import Particle from './Particle';
 import { asteroidVertices, randomNumBetween } from './helpers';
+import AsteroidExplode1 from '../../../../../Resources/Sound FX/AsteroidExplode1.wav';
+import AsteroidExplode2 from '../../../../../Resources/Sound FX/AsteroidExplode2.wav';
 
 export default class Asteroid {
   constructor(args) {
@@ -29,11 +31,21 @@ export default class Asteroid {
     this.create = args.create;
     this.addScore = args.addScore;
     this.vertices = asteroidVertices(8, args.size)
+    //SoundEffects contains all of the sound effects for asteroid explosions
+    this.SoundEffects = [
+      AsteroidExplode1,
+      AsteroidExplode2
+    ];
   }
 
   destroy(){
     this.delete = true;
     this.addScore(this.score);
+
+    //Play a random explosion sound effect for the ateroid exploding
+    var soundEffectIndex = Math.floor(Math.random() * this.SoundEffects.length);
+    var soundEffect = new Audio(this.SoundEffects[soundEffectIndex]);
+    soundEffect.play();
 
     // Explode
     for (let i = 0; i < this.radius; i++) {
