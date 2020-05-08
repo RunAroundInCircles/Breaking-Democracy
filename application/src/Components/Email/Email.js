@@ -97,6 +97,7 @@ class Email extends Component {
 			);
 		}
 	}
+
 /**
  * Renders each individual email in the email list panel
  * @return returns the div of the indvidual email in the email list
