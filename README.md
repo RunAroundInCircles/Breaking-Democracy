@@ -1,6 +1,6 @@
 Breaking Democracy
 =
-A prototype web game.
+A web game
 
 Instructions
 =
