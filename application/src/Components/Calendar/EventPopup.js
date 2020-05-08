@@ -34,7 +34,6 @@ import clickEffect from '../../Resources/Sound FX/MouseClick1.wav';
  * @param {Properties} props Parameters needed to create the event, contains event which had an id, year, month, day, and a message
  * @return {div} Returns a div that blocks all click events below it and contains the popup window
  */
-
 function EventPopup(props) {
     //The date of the event to display
     let date = new Date(props.event.year, props.event.month, props.event.day);
