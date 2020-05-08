@@ -22,7 +22,6 @@ SOFTWARE.
 */
 
 import React,{Component} from 'react';
-//import { isThisHour } from 'date-fns'; Will be used later in production
 
 /**
  * Timeline component of the app that renders the svg file for the timeline.
@@ -30,8 +29,11 @@ import React,{Component} from 'react';
  */
 class Timeline extends Component{
 
+	/**
+	 * Variables needed for the Timeline component
+	 */
 	state = {
-    eventsCompleted: this.props.eventsCompleted
+    eventsCompleted: this.props.eventsCompleted //The events that the player has completed so far
   };
 
 	/**
@@ -51,8 +53,8 @@ class Timeline extends Component{
 			>
 				{/*Left Arrow*/}
 				<svg height="50" width="50">
-					<polygon 
-						points="0,25 50,0 50,50" 
+					<polygon
+						points="0,25 50,0 50,50"
 						style={{fill: 'grey', stroke: 'red', strokeWidth: 3}}
 						onClick={this.props.viewPreviousEventGroup}
 					/>
@@ -63,9 +65,9 @@ class Timeline extends Component{
 				</svg>
 				{/*Right Arrow*/}
 				<svg height="50" width="50">
-					<polygon 
-						points="50,25 0,0 0,50" 
-						style={{fill: 'grey', stroke: 'red', strokeWidth: 3}} 
+					<polygon
+						points="50,25 0,0 0,50"
+						style={{fill: 'grey', stroke: 'red', strokeWidth: 3}}
 						onClick={this.props.viewNextEventGroup}
 					/>
 				</svg>

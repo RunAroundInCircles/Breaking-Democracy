@@ -39,6 +39,7 @@ import desktop from './Resources/Title_Computer.png';
 import Situations from './Components/Calendar/Situations.json';
 import mainMusicMP3 from './Resources/Music/ThemeLoopable.mp3';
 import mainMusicWAV from './Resources/Music/ThemeLoopable.wav';
+import clickEffect from './Resources/Sound FX/MouseClick1.wav';
 import Intro from './Intro';
 import GoodEnding from './GoodEnding';
 import BadEnding from './BadEnding';
@@ -50,7 +51,6 @@ import {
 } from "react-router-dom";
 import { add, isBefore, isAfter, addDays } from 'date-fns';
 import { createBrowserHistory } from "history";
-import { formatDistanceStrictWithOptions } from 'date-fns/fp';
 
 /**
  * MainPage component of the app that renders and returns all the buttons
@@ -59,6 +59,10 @@ import { formatDistanceStrictWithOptions } from 'date-fns/fp';
  */
 class MainPage extends Component{
 
+/**
+ * Creates the initial MainPage
+ * @param {[type]} props The properties that set the MainPage to its initial state
+ */
 	constructor(props) {
 		super(props);
 
@@ -77,22 +81,21 @@ class MainPage extends Component{
 			//regionDistrictNames stores all of the names of the regions and districts to be displayed on the map
 			//the first name in the array is the region, all subsequent are districts
 			regionDistrictNames: {
-					0: ["Saika","Rakka","Feidler","Larch","Broon","Lona La","Oglad","Prock"],
-					1: ["Kaika","Ash","Holly","Kefler","Darby"],
-					2: ["Flaze","Gretroit","Hearth","Magdo","Garde"],
-					3: ["Libdove","Moka","Agon","Veera"],
-					4: ["Osco","Proe","Haley"],
-					5: ["Warren Central", "Warren Central"],
-					6: ["Dukaste","Locke","Rehlat","Selia","Dukaste City"],
-					7: ["Wegruesoe","Zaftan","Blektan","Wegruesoe City"]
+				0: ["Saika","Rakka","Feidler","Larch","Broon","Lona La","Oglad","Prock"],
+				1: ["Kaika","Ash","Holly","Kefler","Darby"],
+				2: ["Flaze","Gretroit","Hearth","Magdo","Garde"],
+				3: ["Libdove","Moka","Agon","Veera"],
+				4: ["Osco","Proe","Haley"],
+				5: ["Warren Central", "Warren Central"],
+				6: ["Dukaste","Locke","Rehlat","Selia","Dukaste City"],
+				7: ["Wegruesoe","Zaftan","Blektan","Wegruesoe City"]
 			},
 			//eventsCompleted is an array to hold all of the events that have been finished by the player after they complete them.
 			eventsCompleted: [],
 			currentEmails: [], //The current list of emails for the sprint we are on
 			currentEchos: [], //The current list of echos for the sprint we are on
 			currentSprint: 1, //The current two week interval we are on
-			//turnStartDate is the beginning Date for the game February 1, 2020, indicates the start of the turn in Calendar
-			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0),
+			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0),//turnStartDate is the beginning Date for the game February 1, 2020, indicates the start of the turn in Calendar
 			renderVideo: true, //Determines whether the intro video or the game should be rendered
 			gameEnded: false, //Determines whether the user has finished the game
 			lastEventID: 0, //The last event in the game
@@ -100,15 +103,18 @@ class MainPage extends Component{
 			playerScore: 0 //Holds the score of the player
 		}
 
+    	//These are all the functions used by other files
 		this.callback = this.callback.bind(this);
 		this.setCurrentEmail = this.setCurrentEmail.bind(this);
 		this.ifEmailExists = this.ifEmailExists.bind(this);
 		this.setCurrentEcho = this.setCurrentEcho.bind(this);
 		this.ifEchoExists = this.ifEchoExists.bind(this);
 		this.handleVideoEnd = this.handleVideoEnd.bind(this);
-    this.checkIfPlayerWon = this.checkIfPlayerWon.bind(this);
-    this.update_main_loop = this.update_main_loop.bind(this);
+		this.checkIfPlayerWon = this.checkIfPlayerWon.bind(this);
+		this.update_main_loop = this.update_main_loop.bind(this);
+		this.restartGame = this.restartGame.bind(this);
 
+    	//Used to determine the last eventID
 		var tempDate =  new Date(1 , 1, 1, 0, 0, 0, 0);
 		//Find the eventID with the last day and month
 		Object.values(events).map((event) => {
@@ -143,13 +149,14 @@ class MainPage extends Component{
   			district: this.state.regionDistrictNames[region][district + 1] //Adds the name of the district
   		}
 
-  		//Update the poll data
-		let updatedData = this.state.pollData;
+		let updatedData = this.state.pollData; //Update the poll data
 		let difference = 50 - updatedData[region][district]; //Gets the difference of 50 and the old score
-		//Gets the ratio of the difference and a selected number
+
+    	//Gets the ratio of the difference and a selected number
 		//The selected number helps determine difficulty of the game, closer to 0 = easier, closer to 50 = harder
 		let differenceRatio = difference/17;
 		if(differenceRatio < 0) differenceRatio *= -1;
+
 		//Adds the difference of 50 and the current score times the percent change and the
 		//ratio between the difference and a selected number so that
 		//good changes get the score closer to 50% and bad scores drive the score away from 50%
@@ -198,6 +205,7 @@ class MainPage extends Component{
 			updatedCurrentSprint += 1;
   		}
 
+    	//Update the states that were affected by the completed event
 		this.setState((state, props) => ({
 			pollData: updatedData,
 			eventsCompleted: [...state.eventsCompleted, eventCompleted],
@@ -219,17 +227,29 @@ class MainPage extends Component{
 		let i;
 		let j;
 		let districtsWon = 0;
-		let districtsTotal = 0;
+		let districtsConservative = 0;
+		let districtsLiberal = 0;
 		let iterableData = Object.values(data);
+
+    	//Loop through map data
 		for(i = 0; i < iterableData.length; i++) {
 			for(j = 0; j < iterableData[i].length; j++) {
+				//If the player's score is within the range of 40-60 then the player has won the district
+				//Remember that we want the country divided so that is why the range is 40-60
 				if(iterableData[i][j] >= 40 && iterableData[i][j] <= 60) {
 					districtsWon++;
 				}
-				districtsTotal++;
+				else if(iterableData[i][j] > 60) {
+					districtsConservative++;
+				}
+				else {
+					districtsLiberal++;
+				}
 			}
 		}
-		if(districtsWon/districtsTotal >= .50){
+
+    	//If the player won the majority of the districts then the player has won
+		if(districtsWon > districtsLiberal && districtsWon > districtsConservative){
 			return true;
 		}
 		else {
@@ -237,23 +257,60 @@ class MainPage extends Component{
 		}
 	}
 
-	//Returns all of the event IDs between 2 dates
+	/**
+	 * Resets the game back to its initial attribute so the player can play again
+	 */
+  	restartGame = () =>{
+		//Play button click sound effect
+		new Audio(clickEffect).play();
+		
+		//Reset states back to initial values
+		this.setState({
+			eventsCompleted : [],
+			currentEmails : [],
+			currentEchos : [],
+			currentSprint : 1,
+			turnStartDate :  new Date(2020, 2, 1, 0, 0, 0, 0),
+			renderVideo: false,
+			gameEnded: false,
+			lastEventID: 0,
+			hasPlayerWon: false,
+			playerScore: 0
+		});
+	}
+
+
+	/**
+   *
+   * @param  {[type]} turnStartDate The start of the 2 week interval
+   * @param  {[type]} turnEndDate   The end of the 2 week interval
+   * @return {[type]}               Returns all of the event IDs between 2 dates
+   */
 	getEventIDsBetween = (turnStartDate, turnEndDate) => {
 		let eventsBetween = [];
+
+    	//Loops through all the events
 		Object.values(events).map((event) => {
+      		//Recieves the date from the event
 			let eventDate = new Date(event.year, event.month, event.day, 0, 0, 0, 0);
+      		//Checks to see if the event is within the 2 week interval
 			if(!(isBefore(eventDate, turnStartDate) || isAfter(eventDate, turnEndDate))) {
         		event.status = 0;
         		eventsBetween.push(event.id);
 			}
 		});
+
+    	//Returns a list of all events in the 2  weeks
 		return eventsBetween;
 	}
 
-	/*checks if the passed in email is already in the list of current emails. If it is not then it returns True, else if it already exists in the list it returns False
-	@param  {emails}   The array of the currentEmails displayed.
-	@param  {foundEmail}   The email that wants to be added to the current emails.
-	*/
+
+  /**
+   * Determines if the email is currently being displayed
+   * @param  {emails}     emails         The array of the currentEmails displayed.
+   * @param  {foundEmail} foundEmail     The email that wants to be added to the current emails.
+   * @return {[type]}                    Returns if the email already exists in the email reader
+   */
 	ifEmailExists(emails, foundEmail){
 		for(var i in emails) {
 			if(emails[i].currentSprint == foundEmail.currentSprint)
@@ -264,10 +321,10 @@ class MainPage extends Component{
 		return true;
 	}
 
-
-	/*This function gets the current emails needed for the current sprint.
-	@param  {emails} The list of emails to be assessed and added to the current email list.
-	*/
+	/**
+   * This function gets the current emails needed for the current sprint.
+   * @param  {emails} emails The list of emails to be assessed and added to the current email list.
+   */
 	setCurrentEmail(emails) {
 		for(var i in emails) {
 			if(emails[i].currentSprint == this.state.currentSprint)
@@ -279,10 +336,13 @@ class MainPage extends Component{
 		}
 	}
 
-	/*checks if the passed in echo is already in the list of current echos. If it is not then it returns True, else if it already exists in the list it returns False
-	@param  {echos}   The array of the currentEchos displayed.
-	@param  {foundEcho}   The echo that wants to be added to the current emails.
-	*/
+
+  /**
+   * checks if the passed in echo is already in the list of current echos.
+   * If it is not then it returns True, else if it already exists in the list it returns False
+   * @param  {echos}       echos      The array of the currentEchos displayed.
+   * @param  {foundEcho}   foundecho  The echo that wants to be added to the current emails.
+   */
 	ifEchoExists(echos, foundEcho){
 		for(var i in echos) {
 			if(echos[i].time == foundEcho.time)
@@ -293,50 +353,62 @@ class MainPage extends Component{
 		return true;
 	}
 
-
-	/*This function gets the current echoes needed for the current sprint.
-	@param  {echos} The list of echos to be assessed and added to the current echo list.
-	*/
+  /**
+   * This function gets the current echoes needed for the current sprint.
+   * 	@param  {echos} echos The list of echos to be assessed and added to the current echo list.
+   */
 	setCurrentEcho(echos) {
+    	//Loops through all echoes
 		for(var i in echos) {
+     	//Checks if the echo has the current sprint
 			if(echos[i].currentSprint == this.state.currentSprint)
 			{
+        		//If the echo already exists remove it from the list
 				if(this.ifEchoExists(this.state.currentEchos, echos[i])){
-          this.state.currentEchos.unshift(echos[i]);
-          //this.setState({currentEchos: [...this.state.currentEchos, echos[i]]});
+          			this.state.currentEchos.unshift(echos[i]);
 				}
 			}
 		}
 	}
 
-  update_main_loop = (state) => {
-    var audio = document.getElementById("main-music");
-    if(state == true){
-      audio.play();
-    }
-    else{
-      audio.pause();
-    }
-  }
+	/**
+	 * Allows the main music to be paused or played when given a state
+	 * @param  {[type]} state Determine if the audio should be paused or played
+	 */
+	update_main_loop = (state) => {
+		var audio = document.getElementById("main-music");
+		if(state == true){
+			audio.play();
+		}
+		else{
+			audio.pause();
+		}
+	}
 
-	/*This function allows the calendar to update the turn date which allows the player to progress
-	through the game.*/
+	/**
+	 * This function allows the calendar to update the turn date which allows the player to progress
+	 * through the game.
+	 */
 	updateTurnStartDate  = () => {
 		var newdate = addDays(13, this.state.turnStartDate);
-		this.setState(
-			{
-				turnStartDate :  newdate//Moves the turn date up by 2 weeks.
-			}
-		)
+		this.setState({
+			turnStartDate :  newdate//Moves the turn date up by 2 weeks.
+		});
 	}
 
 	/**
 	 * This function is passed down to Intro so once the video has ended the game can be rendered
+	 * Plays a button clicking sound if the event was triggered by a button click
+	 * @param {boolean} clicked whether the event was triggered through a click or not
 	 */
-	handleVideoEnd = () => {
+	handleVideoEnd(clicked) {
+		if(clicked) new Audio(clickEffect).play();
 		this.setState({renderVideo: false});
 	}
 
+	/**
+	 * Renders the main page component
+	 */
 	render(){
 		return(
 			(this.state.renderVideo) //Check if the intro video should be rendered
@@ -351,13 +423,13 @@ class MainPage extends Component{
 					?(//Render Good Ending
 						<div>
 							<img className="desktop" src={desktop} alt="desktop"/>
-							<GoodEnding/>
+							<GoodEnding restartCallback={this.restartGame}/>
 						</div>
 					)
 					:(//Render Bad Ending
 						<div>
 							<img className="desktop" src={desktop} alt="desktop"/>
-							<BadEnding/>
+							<BadEnding restartCallback={this.restartGame}/>
 						</div>
 					)
 				)
@@ -376,8 +448,8 @@ class MainPage extends Component{
 							{this.setCurrentEcho(echos)}
 							<img className="desktop" src={desktop} alt="desktop"/>
 							<nav>
-								<Link to='/Calendar'> {/*Button to Calendar*/}
-									<Button>
+								<Link to='/Calendar'>
+									<Button onClick={() => {new Audio(clickEffect).play()}}> {/*Button to Calendar*/}
 										<span>Calendar</span>
 									</Button>
 								</Link>
@@ -387,7 +459,7 @@ class MainPage extends Component{
 								&nbsp;
 
 								<Link to='/Email'>
-									<Button> {/*Button to Email*/}
+									<Button onClick={() => {new Audio(clickEffect).play()}}> {/*Button to Email*/}
 										<span>Email</span>
 									</Button>
 								</Link>
@@ -397,7 +469,7 @@ class MainPage extends Component{
 								&nbsp;
 
 								<Link to='/Map'>
-									<Button> {/*Button to Map*/}
+									<Button onClick={() => {new Audio(clickEffect).play()}}> {/*Button to Map*/}
 										<span>Map</span>
 									</Button>
 								</Link>
@@ -407,7 +479,7 @@ class MainPage extends Component{
 								&nbsp;
 
 								<Link to= '/Echo'>
-									<Button>
+									<Button onClick={() => {new Audio(clickEffect).play()}}> {/*Button to Echo*/}
 										<span>Echo</span>
 									</Button>
 								</Link>
@@ -417,7 +489,7 @@ class MainPage extends Component{
 								&nbsp;
 
 								<Link to= '/Timeline'>
-									<Button>
+									<Button onClick={() => {new Audio(clickEffect).play()}}> {/*Button to Timeline*/}
 										<span>Timeline</span>
 									</Button>
 								</Link>

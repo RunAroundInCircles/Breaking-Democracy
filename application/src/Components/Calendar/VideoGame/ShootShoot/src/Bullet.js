@@ -1,3 +1,17 @@
+/*Creative Commons Legal Code
+
+CC0 1.0 Universal
+
+    CREATIVE COMMONS CORPORATION IS NOT A LAW FIRM AND DOES NOT PROVIDE
+    LEGAL SERVICES. DISTRIBUTION OF THIS DOCUMENT DOES NOT CREATE AN
+    ATTORNEY-CLIENT RELATIONSHIP. CREATIVE COMMONS PROVIDES THIS
+    INFORMATION ON AN "AS-IS" BASIS. CREATIVE COMMONS MAKES NO WARRANTIES
+    REGARDING THE USE OF THIS DOCUMENT OR THE INFORMATION OR WORKS
+    PROVIDED HEREUNDER, AND DISCLAIMS LIABILITY FOR DAMAGES RESULTING FROM
+    THE USE OF THIS DOCUMENT OR THE INFORMATION OR WORKS PROVIDED
+    HEREUNDER.
+	*/
+	
 import { rotatePoint } from './helpers';
 
 export default class Bullet {
@@ -15,10 +29,17 @@ export default class Bullet {
     this.radius = 2;
   }
 
+  /**
+   * Destroys the bullet
+   */
   destroy(){
     this.delete = true;
   }
 
+  /**
+   * Renders the bullet using the current state
+   * @param {*} state 
+   */
   render(state){
     // Move
     this.position.x += this.velocity.x;

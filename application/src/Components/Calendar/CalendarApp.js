@@ -41,6 +41,7 @@ class CalendarApp extends Component {
     constructor(props) {
       super(props);
 
+      //Goes through all events and adds the event to the calendar
       this.state = {
         events: props.events.map((event) => {
           let date = new Date(event.year, event.month, event.day);

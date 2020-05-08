@@ -33,33 +33,47 @@ class TypeGame extends Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-			result: "",
-			value: "",
+			result: "", //Tells the player if the answer was right or wrong
+			value: "", //The players response to the question
 			submitState: true //Enables or disables the submit button so the player does not redo the event
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 	}
 
-	/*stores the answer inputted before submit*/
+	/**
+	 * stores the answer inputted before submit
+	 * @param  {[type]} event Updates the value variable to the player's response
+	 */
 	handleChange(event) {
 		this.setState({value: event.target.value});
 	}
 
-	/*Will be able to check if the answer is right and change certain attributes when done.*/
+
+	/**
+	 * Will be able to check if the answer is right and change certain attributes when done.
+	 * @param  {[type]} event The click event
+	 */
 	handleSubmit(event){
 		event.preventDefault();
-		document.getElementById("submit").disabled = true;
+		document.getElementById("submit").disabled = true; // Stops the player from resubmitting their answer
+
+		//Checks if the player said the correct answer
 		if(this.props.answer.toLowerCase() == this.state.value.toLowerCase()){
+			//If the player was correct their score increases
 			var percent = .50.toFixed(2);
 			this.props.callbackFromMain(this.props.eventID, percent);
 			this.setState({result: "Success!"});
+			//Tells the program the submit button is now disabled
 			this.setState({submitState: false});
 		}
 		else {
+			//If the player was inccorect their score decreases
 			var percent = -.50.toFixed(2);
 			this.props.callbackFromMain(this.props.eventID, percent);
+			//Displays the correct answer to the player
 			this.setState({result: "Failed! The correct answer was: " + this.props.answer});
+			//Tells the program the submit button is now disabled
 			this.setState({submitState: false});
 		}
 	}
@@ -69,6 +83,7 @@ class TypeGame extends Component{
 	 * @return {div} [Returns the popup]
 	 */
 	render(){
+		//Checks to see if the submit button is still enabled
 		if(this.state.submitState == true){
 			return(
 				//This div is the body of the popup window containing the back button and the event info
@@ -102,7 +117,7 @@ class TypeGame extends Component{
 					</form>
 					<h1>{this.state.result}</h1>
 				</div>
-		)
+		  )
 		}
 	}
 }

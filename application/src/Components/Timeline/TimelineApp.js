@@ -32,14 +32,19 @@ import Timeline from './Timeline.js';
  * @extends React
  */
 class TimelineApp extends Component {
-    // This code snippet will be used later in production
+
+  /**
+   * Creates the initial TimelineApp
+   * @param {[type]} props Variables needed by the timeline
+   */
     constructor(props) {
         super(props);
-        
+
         this.state = {
             eventStartIndex: 0 //Indicates the index of the eventsCompleted array to start at
         }
 
+        //Functions used outside of the function
         this.viewNextEventGroup = this.viewNextEventGroup.bind(this);
         this.viewPreviousEventGroup = this.viewPreviousEventGroup.bind(this);
     };
@@ -81,9 +86,9 @@ class TimelineApp extends Component {
                     viewNextEventGroup={this.viewNextEventGroup}
                     viewPreviousEventGroup={this.viewPreviousEventGroup}
                 />
-                <TimelineEvent 
-                    events={this.props.events} 
-                    eventsCompleted={this.props.eventsCompleted} 
+                <TimelineEvent
+                    events={this.props.events}
+                    eventsCompleted={this.props.eventsCompleted}
                     eventStartIndex={this.state.eventStartIndex}
                 />
             </div>

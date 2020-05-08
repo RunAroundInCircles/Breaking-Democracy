@@ -42,29 +42,36 @@ class EmailReader extends Component {
             email: props.email
         }
     }
-	renderImage(imageUrl) {
-		if(this.props.email.face == url[0]){			
-			return (
-				<div>
-					<img className="readerImage" src={face} alt="face"/>
-				</div>
-			);
-		}
-		else if (this.props.email.face == url[1]){
-			return (
-				<div>
-					<img className="readerImage" src={face2} alt="face"/>
-				</div>
-			);
-		}
-		else if (this.props.email.face == url[2]){
-			return (
-				<div>
-					<img className="readerImage" src={face3} alt="face"/>
-				</div>
-			);
-		}
+
+	/**
+	 * Renders the face image associated with the email
+	 * @param  {[type]} imageUrl Path to face image
+	 */
+		renderImage(imageUrl) {
+			//Compares the path to the list of all paths and renders the correct image
+			if(this.props.email.face == url[0]){
+				return (
+					<div>
+						<img className="readerImage" src={face} alt="face"/>
+					</div>
+					);
+				}
+			else if (this.props.email.face == url[1]){
+				return (
+					<div>
+						<img className="readerImage" src={face2} alt="face"/>
+					</div>
+					);
+				}
+			else if (this.props.email.face == url[2]){
+				return (
+					<div>
+						<img className="readerImage" src={face3} alt="face"/>
+						</div>
+					);
+			}
 	}
+
 	/**
    * Renders the email
    * @return {[Div]} Renders either an empty box because no email is selected or the selected email
