@@ -51,9 +51,18 @@ Testing
 =
 * **Snapshots**: For each component above, including the Main Page component, we have created snapshot tests which will check to see if the components stay consistent with any updates.
 * **Unit Testing**: For the editor application we have created Unit tests to check if the files needed for the application to run exist.
+* **UI Testing**: For the editor application we have created a [UI Testing Manual](https://github.com/catiel/Breaking-Democracy/blob/master/Editor%20Application%20UI%20Tests.docx)
 
 Thank You to the following people
 =
 * moodydev for inspiration on creating the react calendar: https://github.com/moodydev
 * chriz001 for creating the shooter minigame: https://github.com/chriz001/Reacteroids
-* Sterling Oliver for creating all music and video in the project. 
+* Sterling Oliver for creating all music and video in the project.
+
+Developed By
+=
+* Aidan Javier
+* Caleb Logan
+* Gavin Neises
+* Nickalas Porsch
+
