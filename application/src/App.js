@@ -1,6 +1,6 @@
 /*MIT License
 
-Copyright (c) 2019 Caleb 
+Copyright (c) 2019 Caleb
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,9 @@ import './App.css';
 import MainPage from './MainPage.js';
 import Intro from './Intro.js';
 
+/**
+ * The file the creates the Main Page and begins setup for the game
+ */
 function App() {
   return (
     //Contains all components of the game

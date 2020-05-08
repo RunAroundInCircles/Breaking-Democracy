@@ -31,10 +31,10 @@ class Echo extends Component {
         super(props);
 
         this.state = {
-            body: props.body,
-            name: props.name,
-            at: props.at,
-            time: props.time
+            body: props.body, //The main message of the echo
+            name: props.name, //Who sent the echo
+            at: props.at, //The handle of the person who sent the echo
+            time: props.time //When the echo was submitted
         }
     }
 	/**
