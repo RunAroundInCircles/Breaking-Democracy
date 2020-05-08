@@ -108,6 +108,8 @@ class MainPage extends Component{
 		this.handleVideoEnd = this.handleVideoEnd.bind(this);
     this.checkIfPlayerWon = this.checkIfPlayerWon.bind(this);
     this.update_main_loop = this.update_main_loop.bind(this);
+    this.restartGame = this.restartGame.bind(this);
+
 
 		var tempDate =  new Date(1 , 1, 1, 0, 0, 0, 0);
 		//Find the eventID with the last day and month
@@ -148,9 +150,9 @@ class MainPage extends Component{
 		let difference = 50 - updatedData[region][district]; //Gets the difference of 50 and the old score
 		//Gets the ratio of the difference and a selected number
 		//The selected number helps determine difficulty of the game, closer to 0 = easier, closer to 50 = harder
-		let differenceRatio = difference/17; 
+		let differenceRatio = difference/17;
 		if(differenceRatio < 0) differenceRatio *= -1;
-		//Adds the difference of 50 and the current score times the percent change and the 
+		//Adds the difference of 50 and the current score times the percent change and the
 		//ratio between the difference and a selected number so that
 		//good changes get the score closer to 50% and bad scores drive the score away from 50%
   		updatedData[region][district] += (difference * percent * differenceRatio);
@@ -236,6 +238,24 @@ class MainPage extends Component{
 			return false;
 		}
 	}
+
+  restartGame = () =>{
+    this.setState({
+
+      eventsCompleted : [],
+      currentEmails : [],
+      currentEchos : [],
+      currentSprint : 1,
+      turnStartDate :  new Date(2020, 2, 1, 0, 0, 0, 0),
+      renderVideo: false,
+      gameEnded: false,
+      lastEventID: 0,
+      hasPlayerWon: false,
+      playerScore: 0
+
+    })
+  }
+
 
 	//Returns all of the event IDs between 2 dates
 	getEventIDsBetween = (turnStartDate, turnEndDate) => {
@@ -354,13 +374,13 @@ class MainPage extends Component{
 					?(//Render Good Ending
 						<div>
 							<img className="desktop" src={desktop} alt="desktop"/>
-							<GoodEnding/>
+							<GoodEnding restartCallback={this.restartGame}/>
 						</div>
 					)
 					:(//Render Bad Ending
 						<div>
 							<img className="desktop" src={desktop} alt="desktop"/>
-							<BadEnding/>
+							<BadEnding restartCallback={this.restartGame}/>
 						</div>
 					)
 				)
