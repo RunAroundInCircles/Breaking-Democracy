@@ -30,6 +30,6 @@ import Intro from './Intro';
  */
 test('renders intro page', () => {
 	const tree = renderer
-	.create(<Intro/>)
+	.create(<Intro endedCallback={() => {}}/>)//Intro requires a callback function for operation
 	expect(tree).toMatchSnapshot();
 });
