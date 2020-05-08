@@ -44,6 +44,7 @@ class Calendar extends React.Component {
    */
   containsDate(date) {
     var i;
+    //Loops through all events
     for(i = 0; i < this.props.events.length; i++) {
 
       if(isEqual(date, this.props.events[i].date)) {
@@ -149,7 +150,7 @@ class Calendar extends React.Component {
         if(isBefore(day, turnDate) || isAfter(day, turnEndDate)){ //If the date is outside of the 2 week interval then the event is disabled.
           status = "disabled";
         }
-
+        //Stops any day outside of this month to be disabled that is not within the 2 week interval
         if(!isSameMonth(day, currentMonth)) {
           status = "disabled";
         }
