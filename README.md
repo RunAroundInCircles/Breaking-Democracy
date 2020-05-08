@@ -12,7 +12,7 @@ Then run the powershell script called INSTALL.ps1
 To start the server run the command `npm start` in the application directory.
 The server will then start on localhost:3000
 
-Please check the Wiki tab above for additional information.
+Please check the [Wiki tab](https://github.com/catiel/Breaking-Democracy/wiki) above for additional information.
 
 Current Implementation
 =
