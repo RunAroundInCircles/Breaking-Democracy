@@ -48,8 +48,7 @@ export default class Asteroid {
 
     //Play a random explosion sound effect for the ateroid exploding
     var soundEffectIndex = Math.floor(Math.random() * this.SoundEffects.length);
-    var soundEffect = new Audio(this.SoundEffects[soundEffectIndex]);
-    soundEffect.play();
+    new Audio(this.SoundEffects[soundEffectIndex]).play();
 
     // Explode
     for (let i = 0; i < this.radius; i++) {

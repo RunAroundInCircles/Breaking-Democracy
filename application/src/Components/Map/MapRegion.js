@@ -32,6 +32,7 @@ import region5 from '../../Resources/Maps/Region-5.svg.js';
 import region6 from '../../Resources/Maps/Region-6.svg.js';
 import region7 from '../../Resources/Maps/Region-7.svg.js';
 import region8 from '../../Resources/Maps/Region-8.svg.js';
+import clickEffect from '../../Resources/Sound FX/MouseClick1.wav';
 
 /**
  * This function returns the proper map region based on the passed in prop
@@ -133,9 +134,9 @@ function MapRegion(props) {
             }}></h2>
                 {/*This link acts as a back button allowing the user to redirect to Map*/}
                 <Link to='/Map'>
-                    <Button style={{top: 5, right: 5, position: 'absolute'}}>
-						              <span>X</span>
-					          </Button>
+                    <Button style={{top: 5, right: 5, position: 'absolute'}} onClick={() => {new Audio(clickEffect).play()}}>
+						<span>X</span>
+					</Button>
                 </Link>
                 {/*This div contains the regional map*/}
                 <div className="region-map"
