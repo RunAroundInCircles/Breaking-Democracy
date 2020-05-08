@@ -49,6 +49,9 @@ export default class Ship {
     ];
   }
 
+  /**
+   * Destroys the ship, plays explosion sound effect, and generates explosion particles
+   */
   destroy(){
     this.delete = true;
     this.onDie();
@@ -76,6 +79,10 @@ export default class Ship {
     }
   }
 
+  /**
+   * Changes the direction of rotation
+   * @param {string} dir 
+   */
   rotate(dir){
     if (dir == 'LEFT') {
       this.rotation -= this.rotationSpeed;
@@ -85,7 +92,11 @@ export default class Ship {
     }
   }
 
-  accelerate(val){
+  /**
+   * Applies acceleration to the ship and generates thruster particles
+   */
+  accelerate(){
+    //Apply acceleration
     this.velocity.x -= Math.sin(-this.rotation*Math.PI/180) * this.speed;
     this.velocity.y -= Math.cos(-this.rotation*Math.PI/180) * this.speed;
 
@@ -106,6 +117,10 @@ export default class Ship {
     this.create(particle, 'particles');
   }
 
+  /**
+   * Renders the ship using the current state
+   * @param {*} state 
+   */
   render(state){
     // Controls
     if(state.keys.up){

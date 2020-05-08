@@ -37,10 +37,8 @@ export class Reacteroids extends Component {
 
   constructor(props) {
     super(props);
-    /*
-    Size of the window for the game
-     */
     this.state = {
+      //Size of the window for the game
       screen: {
         width: window.innerWidth / 2.5,
         height: window.innerHeight /2.8,
@@ -62,7 +60,7 @@ export class Reacteroids extends Component {
       playMusic: true // Determines if the game music should be played
     }
 
-	this.result = 0;
+	  this.result = 0;
     this.ship = [];
     this.asteroids = [];
     this.bullets = [];
@@ -134,8 +132,6 @@ export class Reacteroids extends Component {
  */
   update() {
     const context = this.state.context; //Retrieves the canvas
-    const keys = this.state.keys; //Determines which keys have been pressed
-    const ship = this.ship[0];
 
     //Saves the current canvas and scales the canvas to the screen
     context.save();
@@ -224,13 +220,11 @@ export class Reacteroids extends Component {
   gameOver(){
     this.setState({
       inGame: false,
-    }
+    });
 
-  );
-
-  //Re-enable main music and disable game Music
-  this.props.updateMainMusic(true);
-  this.setState({playMusic : false});
+    //Re-enable main music and disable game Music
+    this.props.updateMainMusic(true);
+    this.setState({playMusic : false});
 
     // Replace top score
     if(this.state.currentScore > this.state.topScore){
@@ -253,7 +247,6 @@ export class Reacteroids extends Component {
    * @param  {[type]} howMany How many asteroids will be rendered
    */
   generateAsteroids(howMany){
-    let asteroids = [];
     let ship = this.ship[0];
     for (let i = 0; i < howMany; i++) {
       let asteroid = new Asteroid({
@@ -269,10 +262,20 @@ export class Reacteroids extends Component {
     }
   }
 
+  /**
+   * Adds the given item into the array specified by group
+   * @param {The element to add to the array} item 
+   * @param {They type of the array to add the element to} group 
+   */
   createObject(item, group){
     this[group].push(item);
   }
 
+  /**
+   * Removes or renders the given elements of the given type
+   * @param {The elements to update} items 
+   * @param {The type of the array the elements are} group 
+   */
   updateObjects(items, group){
     let index = 0;
     for (let item of items) {
@@ -285,6 +288,12 @@ export class Reacteroids extends Component {
     }
   }
 
+  /**
+   * Checks if the elements in each array collide
+   * Deletes the colliding elements
+   * @param {Array of elements to check against items2} items1 
+   * @param {Array of elements to check against items1} items2 
+   */
   checkCollisionsWith(items1, items2) {
     var a = items1.length - 1;
     var b;
@@ -301,6 +310,12 @@ export class Reacteroids extends Component {
     }
   }
 
+  /**
+   * Checks to see if the 2 objects are colliding
+   * @param {First object to check} obj1 
+   * @param {Second object to check} obj2 
+   * @returns {boolean} Whether the two objects collide 
+   */
   checkCollision(obj1, obj2){
     var vx = obj1.position.x - obj2.position.x;
     var vy = obj1.position.y - obj2.position.y;
@@ -311,6 +326,9 @@ export class Reacteroids extends Component {
     return false;
   }
 
+  /**
+   * Renders the game
+   */
   render() {
     let endgame;
     let message;
@@ -323,7 +341,6 @@ export class Reacteroids extends Component {
       }
     }
 
-
     if (this.state.currentScore <= 0) {
       message = '0 points... So sad.';
     } else if (this.state.currentScore >= this.state.topScore){
@@ -333,17 +350,12 @@ export class Reacteroids extends Component {
     }
 
     if(!this.state.inGame){
-
-
-
       endgame = (
         <div className="endgame">
           <p>Game over, man!</p>
           <p>{message}</p>
         </div>
-
       )
-
     }
 
     return (
@@ -351,24 +363,24 @@ export class Reacteroids extends Component {
       ?(
         <div>
           <audio autoPlay loop id="game-music">
-            <source src={asteroidsMusicWAV} type="audio/wav"></source>
-            <source src={asteroidsMusicMP3} type="audio/mpeg"></source>
+            <source src={asteroidsMusicWAV} type="audio/wav"/>
+            <source src={asteroidsMusicMP3} type="audio/mpeg"/>
             Your Browser does not support the audio element.
-            </audio>
+          </audio>
 
-            { endgame }
-            <canvas ref="canvas"
+          { endgame }
+          <canvas ref="canvas"
             width={this.state.screen.width * this.state.screen.ratio}
             height={this.state.screen.height * this.state.screen.ratio}
-            />
-            </div>
+          />
+        </div>
     )
     :
     (
       <div>
         <audio autoPlay muted loop id="game-music">
-          <source src={asteroidsMusicWAV} type="audio/wav"></source>
-          <source src={asteroidsMusicMP3} type="audio/mpeg"></source>
+          <source src={asteroidsMusicWAV} type="audio/wav"/>
+          <source src={asteroidsMusicMP3} type="audio/mpeg"/>
           Your Browser does not support the audio element.
           </audio>
 

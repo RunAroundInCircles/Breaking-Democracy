@@ -29,10 +29,17 @@ export default class Bullet {
     this.radius = 2;
   }
 
+  /**
+   * Destroys the bullet
+   */
   destroy(){
     this.delete = true;
   }
 
+  /**
+   * Renders the bullet using the current state
+   * @param {*} state 
+   */
   render(state){
     // Move
     this.position.x += this.velocity.x;

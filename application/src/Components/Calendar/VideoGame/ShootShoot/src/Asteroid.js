@@ -38,6 +38,10 @@ export default class Asteroid {
     ];
   }
 
+  /**
+   * Destroys the asteroid, plays an explosion sound effect, 
+   * generates explosion particles, and generates smaller asteroids if applicable
+   */
   destroy(){
     this.delete = true;
     this.addScore(this.score);
@@ -82,6 +86,10 @@ export default class Asteroid {
     }
   }
 
+  /**
+   * Renders the asteroid using the current state
+   * @param {*} state 
+   */
   render(state){
     // Move
     this.position.x += this.velocity.x;
