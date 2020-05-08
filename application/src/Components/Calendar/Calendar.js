@@ -120,7 +120,7 @@ class Calendar extends React.Component {
     const monthStart =  startOfMonth(currentMonth);
     const monthEnd =  endOfMonth(monthStart);
     var startDate =  startOfWeek(monthStart);
-    var turnDate = this.props.turnStartDate;//this.findTurnDate();
+    var turnDate = this.props.turnStartDate;
     let day = startDate;
     const endDate =  endOfWeek(monthEnd);
 

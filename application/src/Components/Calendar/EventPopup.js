@@ -82,8 +82,8 @@ function EventPopup(props) {
                 {/*This link acts as a back button allowing the user to redirect to Calendar*/}
                 <Link to='/Calendar' >
                     <Button style={{top: 5, right: 5, position: 'absolute'}} onClick={() => {new Audio(clickEffect).play()}}>
-						<span>X</span>
-					</Button>
+          						<span>X</span>
+          					</Button>
                 </Link>
 
                 {/* Determines whether the game or the event info should be rendered */}
@@ -97,14 +97,14 @@ function EventPopup(props) {
                         <h3>{props.situation.situation}</h3>
                         {/*Gives the choices for the situation and onclick rerenders the page for the game.*/}
                         <Button onClick= {() => {
-                            //This allows us to change the state and play the clicking sound 
+                            //This allows us to change the state and play the clicking sound
                             new Audio(clickEffect).play();
                             setRenderGame(true);
                         }}>
                             {props.situation.Choice1}
                         </Button>
                         <Button onClick= {() => {
-                            //This allows us to change the state and play the clicking sound 
+                            //This allows us to change the state and play the clicking sound
                             new Audio(clickEffect).play();
                             setRenderGame(true);
                         }}>

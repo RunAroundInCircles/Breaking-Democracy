@@ -22,6 +22,10 @@ SOFTWARE.
 */
 import React,{Component} from 'react';
 
+/**
+ * Echo component of the app that renders a single echo within the EchoList
+ * @extends React
+ */
 class Echo extends Component {
   /**
    * Constructs the echo component
@@ -42,16 +46,16 @@ class Echo extends Component {
  	* @return returns the div containing the time, at, name and body to be displayed on the page.
  	*/
     render() {
-           return (
-                <div className='echo'>
-                  <span className='echo-contents'>
-					          <h4>{this.state.time}</h4>
-                    <h1>{this.state.at}</h1> {/* Name of Sender */}
-                    <h2>{this.state.name}</h2> {/* Ttile of Echo */}
-                    <h3>{this.state.body}</h3> {/* Body of Echo*/}
-                  </span>
-                </div>
-            );
+       return (
+            <div className='echo'>
+              <span className='echo-contents'>
+  		          <h4>{this.state.time}</h4>
+                <h1>{this.state.at}</h1> {/* Name of Sender */}
+                <h2>{this.state.name}</h2> {/* Ttile of Echo */}
+                <h3>{this.state.body}</h3> {/* Body of Echo*/}
+              </span>
+            </div>
+        );
     }
 }
 
