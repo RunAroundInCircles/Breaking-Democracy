@@ -17,6 +17,7 @@ export default class Asteroid {
     this.create = args.create;
     this.addScore = args.addScore;
     this.vertices = asteroidVertices(8, args.size)
+    //SoundEffects contains all of the sound effects for asteroid explosions
     this.SoundEffects = [
       AsteroidExplode1,
       AsteroidExplode2
@@ -27,6 +28,7 @@ export default class Asteroid {
     this.delete = true;
     this.addScore(this.score);
 
+    //Play a random explosion sound effect for the ateroid exploding
     var soundEffectIndex = Math.floor(Math.random() * this.SoundEffects.length);
     var soundEffect = new Audio(this.SoundEffects[soundEffectIndex]);
     soundEffect.play();

@@ -22,10 +22,12 @@ export default class Ship {
     this.lastShot = 0;
     this.create = args.create;
     this.onDie = args.onDie;
+    //Contains all of the sound effects for the ship exploding
     this.ShipExplosionEffects = [
       ShipExplode1, 
       ShipExplode2
     ];
+    //Contains all of the sound effects for firing a bullet
     this.ShootEffects = [
       Shoot1,
       Shoot2,
@@ -37,6 +39,7 @@ export default class Ship {
     this.delete = true;
     this.onDie();
 
+    //Play a random sound effect for the ship exploding
     var soundEffectIndex = Math.floor(Math.random() * this.ShipExplosionEffects.length);
     var shipExplosionSoundEffect = new Audio(this.ShipExplosionEffects[soundEffectIndex]);
     shipExplosionSoundEffect.play();
@@ -105,6 +108,7 @@ export default class Ship {
       this.create(bullet, 'bullets');
       this.lastShot = Date.now();
 
+      //Play a random sound effect for firing a bullet
       var soundEffectIndex = Math.floor(Math.random() * this.ShootEffects.length);
       var shotSoundEffect = new Audio(this.ShootEffects[soundEffectIndex]);
       shotSoundEffect.play();
