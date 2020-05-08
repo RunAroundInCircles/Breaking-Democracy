@@ -40,7 +40,6 @@ export default class Ship {
     var soundEffectIndex = Math.floor(Math.random() * this.ShipExplosionEffects.length);
     var shipExplosionSoundEffect = new Audio(this.ShipExplosionEffects[soundEffectIndex]);
     shipExplosionSoundEffect.play();
-    console.log(shipExplosionSoundEffect);
 
     // Explode
     for (let i = 0; i < 60; i++) {
