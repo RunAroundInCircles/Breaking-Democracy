@@ -106,12 +106,8 @@ class Calendar extends React.Component {
         </div>
       );
     }
-
     return <div className="days row">{days}</div>;
   }
-
-
-
 
   /**
    * Renders each cell in the calendar and adds the day number
@@ -136,15 +132,11 @@ class Calendar extends React.Component {
 
     let formattedDate = "";
 
-
-
-
     //Goes through every day in the month and formats them (Gives the correct day number to the cell)
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate =  format(day, dateFormat);
         var status = "enabled";
-
 
         if(isBefore(day, turnDate) || isAfter(day, turnEndDate)){ //If the date is outside of the 2 week interval then the event is disabled.
           status = "disabled";
@@ -174,7 +166,6 @@ class Calendar extends React.Component {
       );
       days = [];
     }
-
     return <div className="body">{rows}</div>;
   }
 

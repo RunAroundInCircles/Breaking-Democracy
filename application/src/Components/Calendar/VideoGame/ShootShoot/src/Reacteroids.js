@@ -211,7 +211,6 @@ export class Reacteroids extends Component {
     this.setState({
       inGame: false,
     }
-
   );
 
   //Re-enable main music and disable game Music

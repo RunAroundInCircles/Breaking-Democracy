@@ -69,9 +69,9 @@ class Email extends Component {
         e.preventDefault(); //Prevent default behavior
         this.state.onSelect(this.state); //Runs onSelect using this.state as argument
     }
-    
+
 	renderImage(imageUrl) {
-		if(this.props.face == url[0]){			
+		if(this.props.face == url[0]){
 			return (
 				<div>
 					<img className="sideImage" src={face} alt="face"/>
@@ -93,6 +93,7 @@ class Email extends Component {
 			);
 		}
 	}
+
 /**
  * Renders each individual email in the email list panel
  * @return returns the div of the indvidual email in the email list

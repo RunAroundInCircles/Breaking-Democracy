@@ -70,42 +70,41 @@ class TypeGame extends Component{
 	 */
 	render(){
 		if(this.state.submitState == true){
-
-		return(
-			//This div is the body of the popup window containing the back button and the event info
-			<div style={{justifyContent: 'center',
-						paddingTop: '100px'}}>
-				<h1>{this.props.challenges.challenge}</h1>
-				{/*Creates a form that has a submit button. and calls handleChange when pressed.*/}
-				<form onSubmit={this.handleSubmit}>
-					<label>
-						Answer:
-						<input type="text" value = {this.state.value} onChange={this.handleChange} />
-					</label>
-					<input type="submit" id = "submit" value="Submit" />
-				</form>
-				<h1>{this.state.result}</h1>
-			</div>
-	)
+			return(
+				//This div is the body of the popup window containing the back button and the event info
+				<div style={{justifyContent: 'center',
+							paddingTop: '100px'}}>
+					<h1>{this.props.challenges.challenge}</h1>
+					{/*Creates a form that has a submit button. and calls handleChange when pressed.*/}
+					<form onSubmit={this.handleSubmit}>
+						<label>
+							Answer:
+							<input type="text" value = {this.state.value} onChange={this.handleChange} />
+						</label>
+						<input type="submit" id = "submit" value="Submit" />
+					</form>
+					<h1>{this.state.result}</h1>
+				</div>
+			)
+		}
+		else{
+			return(
+				//This div is the body of the popup window containing the back button and the event info
+				<div style={{justifyContent: 'center'}}>
+					<h1>{this.props.challenges.challenge}</h1>
+					{/*Creates a form that has a submit button. and calls handleChange when pressed.*/}
+					<form onSubmit={this.handleSubmit}>
+						<label>
+							Answer:
+							<input type="text" value = {this.state.value} onChange={this.handleChange} />
+						</label>
+						<input type="submit" value="Submit" disabled/>
+					</form>
+					<h1>{this.state.result}</h1>
+				</div>
+		)
+		}
 	}
-	else{
-		return(
-			//This div is the body of the popup window containing the back button and the event info
-			<div style={{justifyContent: 'center'}}>
-				<h1>{this.props.challenges.challenge}</h1>
-				{/*Creates a form that has a submit button. and calls handleChange when pressed.*/}
-				<form onSubmit={this.handleSubmit}>
-					<label>
-						Answer:
-						<input type="text" value = {this.state.value} onChange={this.handleChange} />
-					</label>
-					<input type="submit" value="Submit" disabled/>
-				</form>
-				<h1>{this.state.result}</h1>
-			</div>
-	)
-	}
-}
 }
 
 export default TypeGame

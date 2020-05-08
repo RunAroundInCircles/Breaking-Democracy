@@ -57,7 +57,6 @@ class EmailApp extends Component {
             <div className="email-app">
                 <EmailList
                     emails={this.props.emails}
-
                     selectedEmail={this.state.selectedEmail}
                     onSelect={this.setSelectedEmail}
                 />
