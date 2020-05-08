@@ -28,9 +28,15 @@ import React,{Component} from 'react';
  * @extends React
  */
 class TimelineEvent extends Component {
+
+    /**
+     * Creates the initial timeline event
+     * @param {[type]} props Properties used to setup the initial timeline event
+     */
     constructor(props) {
         super(props);
     }
+
 	/**
  	* Renders each individual timeline event into its own event space
  	* @return returns the div heading and returns each parsed timeline event
@@ -40,6 +46,7 @@ class TimelineEvent extends Component {
         var eventsFormated = [];                                            //Structure to contain events while they are being generated
         let options = {year: 'numeric', month: 'short', day: 'numeric'};    //Format how the dates will be displayed
         var i;
+
         //Adds the first 10 completed events to be rendered on the timeline
         for(i = this.props.eventStartIndex; (i < this.props.eventsCompleted.length && i < this.props.eventStartIndex + 10); i++) {
             var completedEvent = this.props.eventsCompleted[i]; //Get the next completed event
@@ -55,13 +62,14 @@ class TimelineEvent extends Component {
             }
 
             let date = new Date(event.year, event.month, event.day); //Get the date of the event
-            
+
             var tooltipText =  //Format the tooltip text to be the date, event message, the region effected, and the district effected
                 date.toLocaleDateString("en-US", options)
                 + "\n" + event.message
                 + "\n" + "Region " + completedEvent.region
                 + "\n" + "District " + completedEvent.district;
-            
+
+            //Adds the newly created timeline event cirt to the eventsFormated list so the circle can be rendered
             eventsFormated.push(
                 <svg height="100" width="100" style={{margin: 4}}>
                     <circle cx="50" cy="50" r="47" stroke="black" strokeWidth="3" fill={fillColor}>
@@ -72,6 +80,7 @@ class TimelineEvent extends Component {
             );
         }
 
+        //Renders all the circle events
         return(
             <div className="timeline-list"
                 style={{display: 'flex',

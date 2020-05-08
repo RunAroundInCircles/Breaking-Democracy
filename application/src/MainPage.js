@@ -59,6 +59,10 @@ import { formatDistanceStrictWithOptions } from 'date-fns/fp';
  */
 class MainPage extends Component{
 
+/**
+ * Creates the initial MainPage
+ * @param {[type]} props The properties that set the MainPage to its initial state
+ */
 	constructor(props) {
 		super(props);
 
@@ -91,8 +95,7 @@ class MainPage extends Component{
 			currentEmails: [], //The current list of emails for the sprint we are on
 			currentEchos: [], //The current list of echos for the sprint we are on
 			currentSprint: 1, //The current two week interval we are on
-			//turnStartDate is the beginning Date for the game February 1, 2020, indicates the start of the turn in Calendar
-			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0),
+			turnStartDate: new Date(2020, 2, 1, 0, 0, 0, 0),//turnStartDate is the beginning Date for the game February 1, 2020, indicates the start of the turn in Calendar
 			renderVideo: true, //Determines whether the intro video or the game should be rendered
 			gameEnded: false, //Determines whether the user has finished the game
 			lastEventID: 0, //The last event in the game
@@ -100,6 +103,7 @@ class MainPage extends Component{
 			playerScore: 0 //Holds the score of the player
 		}
 
+    //These are all the functions used by other files
 		this.callback = this.callback.bind(this);
 		this.setCurrentEmail = this.setCurrentEmail.bind(this);
 		this.ifEmailExists = this.ifEmailExists.bind(this);
@@ -110,7 +114,7 @@ class MainPage extends Component{
     this.update_main_loop = this.update_main_loop.bind(this);
     this.restartGame = this.restartGame.bind(this);
 
-
+    //Used to determine the last eventID
 		var tempDate =  new Date(1 , 1, 1, 0, 0, 0, 0);
 		//Find the eventID with the last day and month
 		Object.values(events).map((event) => {
@@ -145,13 +149,15 @@ class MainPage extends Component{
   			district: this.state.regionDistrictNames[region][district + 1] //Adds the name of the district
   		}
 
-  		//Update the poll data
-		let updatedData = this.state.pollData;
+
+		let updatedData = this.state.pollData; //Update the poll data
 		let difference = 50 - updatedData[region][district]; //Gets the difference of 50 and the old score
-		//Gets the ratio of the difference and a selected number
+
+    //Gets the ratio of the difference and a selected number
 		//The selected number helps determine difficulty of the game, closer to 0 = easier, closer to 50 = harder
 		let differenceRatio = difference/17;
-		if(differenceRatio < 0) differenceRatio *= -1;
+
+    if(differenceRatio < 0) differenceRatio *= -1;
 		//Adds the difference of 50 and the current score times the percent change and the
 		//ratio between the difference and a selected number so that
 		//good changes get the score closer to 50% and bad scores drive the score away from 50%
@@ -200,6 +206,7 @@ class MainPage extends Component{
 			updatedCurrentSprint += 1;
   		}
 
+    //Update the states that were affected by the completed event
 		this.setState((state, props) => ({
 			pollData: updatedData,
 			eventsCompleted: [...state.eventsCompleted, eventCompleted],
@@ -223,14 +230,20 @@ class MainPage extends Component{
 		let districtsWon = 0;
 		let districtsTotal = 0;
 		let iterableData = Object.values(data);
+
+    //Loop through map data
 		for(i = 0; i < iterableData.length; i++) {
 			for(j = 0; j < iterableData[i].length; j++) {
+        //If the player's score is within the range of 40-60 then the player has won the district
+        //Remember that we want the country divided so that is why the range is 40-60
 				if(iterableData[i][j] >= 40 && iterableData[i][j] <= 60) {
 					districtsWon++;
 				}
 				districtsTotal++;
 			}
 		}
+
+    //If the player recieved 50% or more on average then the player has won
 		if(districtsWon/districtsTotal >= .50){
 			return true;
 		}
@@ -239,7 +252,11 @@ class MainPage extends Component{
 		}
 	}
 
+  /**
+   * Resets the game back to its initial attribute so the player can play again
+   */
   restartGame = () =>{
+    //Reset states back to initial values
     this.setState({
 
       eventsCompleted : [],
@@ -257,24 +274,38 @@ class MainPage extends Component{
   }
 
 
-	//Returns all of the event IDs between 2 dates
+	/**
+   *
+   * @param  {[type]} turnStartDate The start of the 2 week interval
+   * @param  {[type]} turnEndDate   The end of the 2 week interval
+   * @return {[type]}               Returns all of the event IDs between 2 dates
+   */
 	getEventIDsBetween = (turnStartDate, turnEndDate) => {
 		let eventsBetween = [];
+
+    //Loops through all the events
 		Object.values(events).map((event) => {
+      //Recieves the date from the event
 			let eventDate = new Date(event.year, event.month, event.day, 0, 0, 0, 0);
+      //Checks to see if the event is within the 2 week interval
 			if(!(isBefore(eventDate, turnStartDate) || isAfter(eventDate, turnEndDate))) {
         		event.status = 0;
         		eventsBetween.push(event.id);
 
 			}
 		});
+
+    //Returns a list of all events in the 2  weeks
 		return eventsBetween;
 	}
 
-	/*checks if the passed in email is already in the list of current emails. If it is not then it returns True, else if it already exists in the list it returns False
-	@param  {emails}   The array of the currentEmails displayed.
-	@param  {foundEmail}   The email that wants to be added to the current emails.
-	*/
+
+  /**
+   * Determines if the email is currently being displayed
+   * @param  {emails}     emails         The array of the currentEmails displayed.
+   * @param  {foundEmail} foundEmail     The email that wants to be added to the current emails.
+   * @return {[type]}                    Returns if the email already exists in the email reader
+   */
 	ifEmailExists(emails, foundEmail){
 		for(var i in emails) {
 			if(emails[i].currentSprint == foundEmail.currentSprint)
@@ -285,10 +316,10 @@ class MainPage extends Component{
 		return true;
 	}
 
-
-	/*This function gets the current emails needed for the current sprint.
-	@param  {emails} The list of emails to be assessed and added to the current email list.
-	*/
+	/**
+   * This function gets the current emails needed for the current sprint.
+   * @param  {emails} emails The list of emails to be assessed and added to the current email list.
+   */
 	setCurrentEmail(emails) {
 		for(var i in emails) {
 			if(emails[i].currentSprint == this.state.currentSprint)
@@ -300,10 +331,13 @@ class MainPage extends Component{
 		}
 	}
 
-	/*checks if the passed in echo is already in the list of current echos. If it is not then it returns True, else if it already exists in the list it returns False
-	@param  {echos}   The array of the currentEchos displayed.
-	@param  {foundEcho}   The echo that wants to be added to the current emails.
-	*/
+
+  /**
+   * checks if the passed in echo is already in the list of current echos.
+   * If it is not then it returns True, else if it already exists in the list it returns False
+   * @param  {echos}       echos      The array of the currentEchos displayed.
+   * @param  {foundEcho}   foundecho  The echo that wants to be added to the current emails.
+   */
 	ifEchoExists(echos, foundEcho){
 		for(var i in echos) {
 			if(echos[i].time == foundEcho.time)
@@ -314,22 +348,28 @@ class MainPage extends Component{
 		return true;
 	}
 
-
-	/*This function gets the current echoes needed for the current sprint.
-	@param  {echos} The list of echos to be assessed and added to the current echo list.
-	*/
+  /**
+   * This function gets the current echoes needed for the current sprint.
+   * 	@param  {echos} echos The list of echos to be assessed and added to the current echo list.
+   */
 	setCurrentEcho(echos) {
+    //Loops through all echoes
 		for(var i in echos) {
+      //Checks if the echo has the current sprint
 			if(echos[i].currentSprint == this.state.currentSprint)
 			{
+        //If the echo already exists remove it from the list
 				if(this.ifEchoExists(this.state.currentEchos, echos[i])){
           this.state.currentEchos.unshift(echos[i]);
-          //this.setState({currentEchos: [...this.state.currentEchos, echos[i]]});
 				}
 			}
 		}
 	}
 
+/**
+ * Allows the main music to be paused or played when given a state
+ * @param  {[type]} state Determine if the audio should be paused or played
+ */
   update_main_loop = (state) => {
     var audio = document.getElementById("main-music");
     if(state == true){
@@ -342,8 +382,13 @@ class MainPage extends Component{
   }
 
 
-	/*This function allows the calendar to update the turn date which allows the player to progress
-	through the game.*/
+
+
+
+  /**
+   * This function allows the calendar to update the turn date which allows the player to progress
+ 	 * through the game.
+   */
 	updateTurnStartDate  = () => {
 		var newdate = addDays(13, this.state.turnStartDate);
 		this.setState(
@@ -353,13 +398,16 @@ class MainPage extends Component{
 		)
 	}
 
-	/**
+  /**
 	 * This function is passed down to Intro so once the video has ended the game can be rendered
-	 */
+   */
 	handleVideoEnd = () => {
 		this.setState({renderVideo: false});
 	}
 
+  /**
+   * Renders the main page component
+   */
 	render(){
 		return(
 			(this.state.renderVideo) //Check if the intro video should be rendered

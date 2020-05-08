@@ -39,15 +39,26 @@ import region8 from '../../Resources/Maps/Region-8.svg.js';
  * @constructor
  */
 function MapRegion(props) {
-    const colors = useState(props.pollData[props.region]);
-    //Applies coloring to the districts after the page is rendered
+    const colors = useState(props.pollData[props.region]); //The colors to be used by the region
 
+    /**
+     * Applies the coloring to the districts one the page is rendered
+     */
     useEffect(() => {
+
+      //Loops through every district on the page
         document.querySelectorAll('g > path[id~=district]').forEach((district, index) => {
+            //Determines the districts name
             var districtName = document.getElementById('district-name');
+
+            //The percentages
             var conservativeBox = document.getElementById('popup-conservative-box');
             var liberalBox = document.getElementById('popup-liberal-box');
+
+            //The text to display above the map
             districtName.innerText = "Region of " + props.regionDistrictNames[props.region][0];
+
+            //The color for the map region
             var color = 'rgb(' + (colors[0][index]/100)*255 +
                 ', 0, ' +
                 (1- (colors[0][index]/100))*255 + ')'; //Formats colors to be used
