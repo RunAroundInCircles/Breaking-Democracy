@@ -32,11 +32,6 @@ import dolphin from '../../Resources/Echo_Dolphin.png';
  * @extends React
  */
 class EchoApp extends Component {
-//This code snippet will be used later in production
-/*    constructor(props) {
-		super(props);
-    }
-*/
 	/**
  	* Renders a EchoList that has all echos passed in.
  	* @return returns the div containing an EchoList Component with all echos.
