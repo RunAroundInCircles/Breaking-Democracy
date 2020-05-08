@@ -24,6 +24,7 @@ SOFTWARE.
 import React,{Component} from 'react';
 import {Link} from "react-router-dom";
 import {Button} from 'react-bootstrap';
+import clickEffect from '../../Resources/Sound FX/MouseClick1.wav'
 
 /**
  * Represents an event in the calendar. This is where users will be able
@@ -40,7 +41,7 @@ class Event extends Component {
     let route = "/Calendar/" + this.props.id;
     return (
       <Link to={route} className="calendar-event-link">
-        <Button className="calendar-event-button">
+        <Button className="calendar-event-button" onClick={() => {new Audio(clickEffect).play()}}>
           {this.props.message}
         </Button>
       </Link>

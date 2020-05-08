@@ -37,13 +37,13 @@ class Intro extends Component {
 					The video to show the players when they arrive on the page
 					onEnded calls a method that update's MainPage's state so that the player can being playing
 				*/}
-				<video id="background-video" autoPlay controls onEnded={this.props.endedCallback}>
+				<video id="background-video" autoPlay controls onEnded={this.props.endedCallback.bind(this, false)}>
 					<source src={intro} type="video/mp4" />
 					Your browser does not support the video tag.
 				</video>
 
 				{/* This button allows the player to skip the intro video and go directly to the game */}
-				<Button style={{top: 5, right: 5, position: 'absolute'}} onClick={this.props.endedCallback}>
+				<Button style={{top: 5, right: 5, position: 'absolute'}} onClick={this.props.endedCallback.bind(this, true)}>
 					<span>Skip Video</span>
 				</Button>
 			</div>

@@ -39,6 +39,7 @@ import desktop from './Resources/Title_Computer.png';
 import Situations from './Components/Calendar/Situations.json';
 import mainMusicMP3 from './Resources/Music/ThemeLoopable.mp3';
 import mainMusicWAV from './Resources/Music/ThemeLoopable.wav';
+import clickEffect from './Resources/Sound FX/MouseClick1.wav';
 import Intro from './Intro';
 import GoodEnding from './GoodEnding';
 import BadEnding from './BadEnding';
@@ -260,6 +261,9 @@ class MainPage extends Component{
 	 * Resets the game back to its initial attribute so the player can play again
 	 */
   	restartGame = () =>{
+		//Play button click sound effect
+		new Audio(clickEffect).play();
+		
 		//Reset states back to initial values
 		this.setState({
 			eventsCompleted : [],
@@ -393,10 +397,13 @@ class MainPage extends Component{
 		});
 	}
 
-  	/**
+	/**
 	 * This function is passed down to Intro so once the video has ended the game can be rendered
-   	 */
-	handleVideoEnd = () => {
+	 * Plays a button clicking sound if the event was triggered by a button click
+	 * @param {boolean} clicked whether the event was triggered through a click or not
+	 */
+	handleVideoEnd(clicked) {
+		if(clicked) new Audio(clickEffect).play();
 		this.setState({renderVideo: false});
 	}
 
@@ -442,8 +449,8 @@ class MainPage extends Component{
 							{this.setCurrentEcho(echos)}
 							<img className="desktop" src={desktop} alt="desktop"/>
 							<nav>
-								<Link to='/Calendar'> {/*Button to Calendar*/}
-									<Button>
+								<Link to='/Calendar'>
+									<Button onClick={() => {new Audio(clickEffect).play()}}> {/*Button to Calendar*/}
 										<span>Calendar</span>
 									</Button>
 								</Link>
@@ -453,7 +460,7 @@ class MainPage extends Component{
 								&nbsp;
 
 								<Link to='/Email'>
-									<Button> {/*Button to Email*/}
+									<Button onClick={() => {new Audio(clickEffect).play()}}> {/*Button to Email*/}
 										<span>Email</span>
 									</Button>
 								</Link>
@@ -463,7 +470,7 @@ class MainPage extends Component{
 								&nbsp;
 
 								<Link to='/Map'>
-									<Button> {/*Button to Map*/}
+									<Button onClick={() => {new Audio(clickEffect).play()}}> {/*Button to Map*/}
 										<span>Map</span>
 									</Button>
 								</Link>
@@ -473,7 +480,7 @@ class MainPage extends Component{
 								&nbsp;
 
 								<Link to= '/Echo'>
-									<Button>
+									<Button onClick={() => {new Audio(clickEffect).play()}}> {/*Button to Echo*/}
 										<span>Echo</span>
 									</Button>
 								</Link>
@@ -483,7 +490,7 @@ class MainPage extends Component{
 								&nbsp;
 
 								<Link to= '/Timeline'>
-									<Button>
+									<Button onClick={() => {new Audio(clickEffect).play()}}> {/*Button to Timeline*/}
 										<span>Timeline</span>
 									</Button>
 								</Link>
