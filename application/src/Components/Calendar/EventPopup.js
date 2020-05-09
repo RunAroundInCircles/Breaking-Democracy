@@ -27,13 +27,13 @@ import {Button} from 'react-bootstrap';
 import TypeGame from './VideoGame/TypeType/TypeGame.js';
 import challenges from './VideoGame/TypeType/codingChallenges.json';
 import { Reacteroids } from './VideoGame/ShootShoot/src/Reacteroids';
+import clickEffect from '../../Resources/Sound FX/MouseClick1.wav';
 
 /**
  * Creates a popup when an event is clicked on the calendar
  * @param {Properties} props Parameters needed to create the event, contains event which had an id, year, month, day, and a message
  * @return {div} Returns a div that blocks all click events below it and contains the popup window
  */
-
 function EventPopup(props) {
     //The date of the event to display
     let date = new Date(props.event.year, props.event.month, props.event.day);
@@ -81,9 +81,9 @@ function EventPopup(props) {
             }}>
                 {/*This link acts as a back button allowing the user to redirect to Calendar*/}
                 <Link to='/Calendar' >
-                    <Button style={{top: 5, right: 5, position: 'absolute'}}>
-						<span>X</span>
-					</Button>
+                    <Button style={{top: 5, right: 5, position: 'absolute'}} onClick={() => {new Audio(clickEffect).play()}}>
+          						<span>X</span>
+          					</Button>
                 </Link>
 
                 {/* Determines whether the game or the event info should be rendered */}
@@ -96,8 +96,20 @@ function EventPopup(props) {
                         <h2>{props.event.message}</h2>
                         <h3>{props.situation.situation}</h3>
                         {/*Gives the choices for the situation and onclick rerenders the page for the game.*/}
-                        <Button onClick= {() => setRenderGame(true)}>{props.situation.Choice1}</Button>
-                        <Button onClick= {() => setRenderGame(true)}>{props.situation.Choice2}</Button>
+                        <Button onClick= {() => {
+                            //This allows us to change the state and play the clicking sound
+                            new Audio(clickEffect).play();
+                            setRenderGame(true);
+                        }}>
+                            {props.situation.Choice1}
+                        </Button>
+                        <Button onClick= {() => {
+                            //This allows us to change the state and play the clicking sound
+                            new Audio(clickEffect).play();
+                            setRenderGame(true);
+                        }}>
+                            {props.situation.Choice2}
+                        </Button>
                     </div>
                 }
             </div>

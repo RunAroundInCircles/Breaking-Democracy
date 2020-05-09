@@ -58,8 +58,7 @@ export default class Ship {
 
     //Play a random sound effect for the ship exploding
     var soundEffectIndex = Math.floor(Math.random() * this.ShipExplosionEffects.length);
-    var shipExplosionSoundEffect = new Audio(this.ShipExplosionEffects[soundEffectIndex]);
-    shipExplosionSoundEffect.play();
+    new Audio(this.ShipExplosionEffects[soundEffectIndex]).play();
 
     // Explode
     for (let i = 0; i < 60; i++) {
@@ -139,8 +138,7 @@ export default class Ship {
 
       //Play a random sound effect for firing a bullet
       var soundEffectIndex = Math.floor(Math.random() * this.ShootEffects.length);
-      var shotSoundEffect = new Audio(this.ShootEffects[soundEffectIndex]);
-      shotSoundEffect.play();
+      new Audio(this.ShootEffects[soundEffectIndex]).play();
     }
 
     // Move
