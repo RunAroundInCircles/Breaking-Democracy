@@ -131,6 +131,7 @@ exports[`renders CalendarApp page 1`] = `
           <button
             className="calendar-event-button btn btn-primary"
             disabled={false}
+            onClick={[Function]}
             type="button"
           >
             Saika Region Caucus
@@ -268,6 +269,7 @@ exports[`renders CalendarApp page 1`] = `
           <button
             className="calendar-event-button btn btn-primary"
             disabled={false}
+            onClick={[Function]}
             type="button"
           >
             Flaze Region Caucus
@@ -454,6 +456,7 @@ exports[`renders CalendarApp page 1`] = `
           <button
             className="calendar-event-button btn btn-primary"
             disabled={false}
+            onClick={[Function]}
             type="button"
           >
             Osco Region Caucus
@@ -651,9 +654,10 @@ exports[`renders CalendarApp page 1`] = `
           <button
             className="calendar-event-button btn btn-primary"
             disabled={false}
+            onClick={[Function]}
             type="button"
           >
-            Super Tuesday
+            Super Friday
           </button>
         </a>
          
