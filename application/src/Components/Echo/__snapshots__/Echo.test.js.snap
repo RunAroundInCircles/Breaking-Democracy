@@ -12,7 +12,7 @@ exports[`renders EchoApp page 1`] = `
   <h1
     className="echo-head"
   >
-    Echos
+    Echo
   </h1>
   <div
     className="echo-list"
@@ -21,53 +21,7 @@ exports[`renders EchoApp page 1`] = `
       className="echo"
     >
       <span
-        class="echo-contents"
-      >
-        <h4>
-          January 4, 2020
-        </h4>
-        <h1>
-          @candidateliberal
-        </h1>
-         
-        <h2>
-          Lyra Whit
-        </h2>
-         
-        <h3>
-          Hello my fellow Democristans, I am Lyra Whit; the front runner for the Democristan Liberal Party. As a newly formed country I believe that we have endless potential, however the Democristan Conservative Party is too concerned with mimicking the ways of western politics.  Democristan must break free and forge its own path to a new future.
-        </h3>
-         
-      </span>
-    </div>
-    <div
-      className="echo"
-    >
-      <span
-        class="echo-contents"
-      >
-        <h4>
-          January 3, 2020
-        </h4>
-        <h1>
-          @candidateconservative
-        </h1>
-         
-        <h2>
-          George Warren
-        </h2>
-         
-        <h3>
-          Greetings Democristan, I am George Warren; the son of our great first president John Warren. As a president I am dedicated to my father’s way of leading our nation and will strive to keep Democristan on the path to greatness.
-        </h3>
-         
-      </span>
-    </div>
-    <div
-      className="echo"
-    >
-      <span
-        class="echo-contents"
+        className="echo-contents"
       >
         <h4>
           January 1, 2020
@@ -90,7 +44,53 @@ exports[`renders EchoApp page 1`] = `
       className="echo"
     >
       <span
-        class="echo-contents"
+        className="echo-contents"
+      >
+        <h4>
+          January 2, 2020
+        </h4>
+        <h1>
+          @candidateconservative
+        </h1>
+         
+        <h2>
+          George Warren
+        </h2>
+         
+        <h3>
+          Greetings Democristan, I am George Warren; the son of our great first president John Warren. As a president I am dedicated to my father’s way of leading our nation and will strive to keep Democristan on the path to greatness.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          January 4, 2020
+        </h4>
+        <h1>
+          @candidateliberal
+        </h1>
+         
+        <h2>
+          Lyra Whit
+        </h2>
+         
+        <h3>
+          Hello my fellow Democristans, I am Lyra Whit; the front runner for the Democristan Liberal Party. As a newly formed country I believe that we have endless potential, however the Democristan Conservative Party is too concerned with mimicking the ways of western politics.  Democristan must break free and forge its own path to a new future.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
       >
         <h4>
           January 6, 2020
@@ -105,6 +105,650 @@ exports[`renders EchoApp page 1`] = `
          
         <h3>
           My fellow countrymen, I am Dimitri Patrov; the people’s voices need to be heard and I know they deserve this. Therefore, I am running in this election under the Democristan People’s Party, where we will shape this country together by the people, with the people, and for the people.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          March 15, 2020
+        </h4>
+        <h1>
+          @thepresidentwarren
+        </h1>
+         
+        <h2>
+          John Warren
+        </h2>
+         
+        <h3>
+          As your president it makes me so happy to see the people of Democristan participating in our country's politics. Remember that everyone can make a difference and it's up to the people to decide our future.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          March 19, 2020
+        </h4>
+        <h1>
+          @hannahsavy
+        </h1>
+         
+        <h2>
+          Hannah Savas
+        </h2>
+         
+        <h3>
+          I’m so excited to vote in this year's election. It’ll be my first time and my birthday is a day before voting day! #cy@dapolls
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          March 31, 2020
+        </h4>
+        <h1>
+          @zerokelvin
+        </h1>
+         
+        <h2>
+          Kevin Ice
+        </h2>
+         
+        <h3>
+          Ugh elections are so boring, why can’t we have an interesting contest between candidates instead of lame politicians bickering. 
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          April 6, 2020
+        </h4>
+        <h1>
+          @bearlybear
+        </h1>
+         
+        <h2>
+          Barny Brownback
+        </h2>
+         
+        <h3>
+          Who needs a president anyway, I say all these shenanigans are a big waste a time and money.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          April 19, 2020
+        </h4>
+        <h1>
+          @marshamellow
+        </h1>
+         
+        <h2>
+          Marsha Lark
+        </h2>
+         
+        <h3>
+           I don’t trust that Dimitri guy, I bet he works for Putin.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          April 23, 2020
+        </h4>
+        <h1>
+          @robobell
+        </h1>
+         
+        <h2>
+          Robby Bell
+        </h2>
+         
+        <h3>
+          Dimitri is a great candidate for our country and everyone who doesn’t think so is just plain dumb.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          April 28, 2020
+        </h4>
+        <h1>
+          @92political
+        </h1>
+         
+        <h2>
+          Mithras Marlowe
+        </h2>
+         
+        <h3>
+          I bet that George is just gonna use daddy’s money and clout to get elected, can’t even think for himself.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          May 1, 2020
+        </h4>
+        <h1>
+          @MrsGrantIsHere
+        </h1>
+         
+        <h2>
+          Floro Grant
+        </h2>
+         
+        <h3>
+          George will carry our country higher than the sky’s. I believe in you George.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          May 14, 2020
+        </h4>
+        <h1>
+          @pete12345
+        </h1>
+         
+        <h2>
+          Kiera DiPietro
+        </h2>
+         
+        <h3>
+           Lyra more like LIAR, anybody that supports her clearly hasn’t done any research on her background.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          May 22, 2020
+        </h4>
+        <h1>
+          @neatboy36
+        </h1>
+         
+        <h2>
+          Matteus Nieri
+        </h2>
+         
+        <h3>
+          Lyra has the most integrity out of all the candidates I hate how much hate she gets.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          June 30, 2020
+        </h4>
+        <h1>
+          @translucentlights
+        </h1>
+         
+        <h2>
+          Evi Meir
+        </h2>
+         
+        <h3>
+          WE NEED TO CUT RUSSIA OUT OF OUR COUNTRY NOW!
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          July 2, 2020
+        </h4>
+        <h1>
+          @ritzcracker
+        </h1>
+         
+        <h2>
+          Tina Ritter
+        </h2>
+         
+        <h3>
+          Russia is still a very important part of our economy, if we got rid of them entirely we would be crippled.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          July 6, 2020
+        </h4>
+        <h1>
+          @aliensarereal
+        </h1>
+         
+        <h2>
+          Illuminata Greef
+        </h2>
+         
+        <h3>
+          We should just become the 51st state of America, then we’d be much better off.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          July 6, 2020
+        </h4>
+        <h1>
+          @georgeab1
+        </h1>
+         
+        <h2>
+          George Abramsen
+        </h2>
+         
+        <h3>
+          Sticking to American ideals is a waste of time, they’ve been in decline for years and still haven’t even figured out what racism is.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          July 16, 2020
+        </h4>
+        <h1>
+          @uwuday
+        </h1>
+         
+        <h2>
+          Dayton Uzun
+        </h2>
+         
+        <h3>
+          Can people not have civilized discussions anymore? I mean it’s like any dissent is a personal attack on your Grandma.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          July 19, 2020
+        </h4>
+        <h1>
+          @gusgus
+        </h1>
+         
+        <h2>
+          Gus Ahmed
+        </h2>
+         
+        <h3>
+          Arguments have winners and losers, winners have the right to flaunt their superiority over the weak.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          July 30, 2020
+        </h4>
+        <h1>
+          @PresidentDonne
+        </h1>
+         
+        <h2>
+          Ciera Donne
+        </h2>
+         
+        <h3>
+          I hated John as our president so there’s no way I’ll stand by and let his son become president.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          August 3, 2020
+        </h4>
+        <h1>
+          @PoliticalRace
+        </h1>
+         
+        <h2>
+          Noll Weede
+        </h2>
+         
+        <h3>
+          Lyra Whit is nothing but a con artist selling false promises and lies in order to get elected.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          August 11, 2020
+        </h4>
+        <h1>
+          @Hulking
+        </h1>
+         
+        <h2>
+          Markus Ruffio
+        </h2>
+         
+        <h3>
+          This just in there are reports of potential hacking by the US government.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          August 27, 2020
+        </h4>
+        <h1>
+          @MrFarkas8989
+        </h1>
+         
+        <h2>
+          Rayen Farkas
+        </h2>
+         
+        <h3>
+          I’m so sick of all this fake news, I don’t know why I even keep up with this stuff anymore.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          September 6, 2020
+        </h4>
+        <h1>
+          @ENEWS
+        </h1>
+         
+        <h2>
+          E News
+        </h2>
+         
+        <h3>
+          Lyra Whit caught topless in her 20’s? OMG you won’t believe this picture.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          September 17, 2020
+        </h4>
+        <h1>
+          @ENEWS
+        </h1>
+         
+        <h2>
+          E News
+        </h2>
+         
+        <h3>
+          George Warren starred in an amateur film, it’s so cringey.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          September 30, 2020
+        </h4>
+        <h1>
+          @presidentnews
+        </h1>
+         
+        <h2>
+          Presidental Articles
+        </h2>
+         
+        <h3>
+          Dimitri Patrov was an avid supporter of Putin before Democristan, how could this affect us if he becomes president?
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          October 4, 2020
+        </h4>
+        <h1>
+          @workandsee
+        </h1>
+         
+        <h2>
+          Dawn Sierzant
+        </h2>
+         
+        <h3>
+          If we don’t band together Democristan isn’t going to last long.  We should be working on compromise not bickering over semantics.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          October 23, 2020
+        </h4>
+        <h1>
+          @robrobrob
+        </h1>
+         
+        <h2>
+          Sebastion Robinov
+        </h2>
+         
+        <h3>
+          I’m sick of this democracy stuff. We should just go back to Russia already.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          October 31, 2020
+        </h4>
+        <h1>
+          @IHatePolitics
+        </h1>
+         
+        <h2>
+          Camille Karlsen
+        </h2>
+         
+        <h3>
+          The debates don’t help anyone, people have already made up their minds at this point and will not be converted.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          November 22, 2020
+        </h4>
+        <h1>
+          @centralideals
+        </h1>
+         
+        <h2>
+          Micky Summerfield
+        </h2>
+         
+        <h3>
+          After the debates I don’t know who to vote for, I agree with some things that all the candidates said.
+        </h3>
+         
+      </span>
+    </div>
+    <div
+      className="echo"
+    >
+      <span
+        className="echo-contents"
+      >
+        <h4>
+          December 3, 2020
+        </h4>
+        <h1>
+          @FutureReporter
+        </h1>
+         
+        <h2>
+          Kyle Abbiati
+        </h2>
+         
+        <h3>
+          The election results are coming in live, I can’t wait to see who the next president is.
         </h3>
          
       </span>

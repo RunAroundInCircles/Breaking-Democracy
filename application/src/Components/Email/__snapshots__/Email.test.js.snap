@@ -20,11 +20,27 @@ exports[`renders emailApp page 1`] = `
         Game Master
       </h1>
        
-      <img
-        alt="face"
-        className="sideImage"
-        src="face.png"
-      />
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="game_master.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="game_master.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="game_master.png"
+        />
+      </div>
       <h2>
         Welcome To Grand Theft Democracy
       </h2>
@@ -42,11 +58,27 @@ exports[`renders emailApp page 1`] = `
         FSB Director
       </h1>
        
-      <img
-        alt="face"
-        className="sideImage"
-        src="face.png"
-      />
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="putin.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="putin.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="putin.png"
+        />
+      </div>
       <h2>
         Interference with Democristan
       </h2>
@@ -66,11 +98,27 @@ exports[`renders emailApp page 1`] = `
         FSB Director
       </h1>
        
-      <img
-        alt="face"
-        className="sideImage"
-        src="face.png"
-      />
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="putin.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="putin.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="putin.png"
+        />
+      </div>
       <h2>
         Good Work
       </h2>
@@ -90,11 +138,27 @@ I see that you’ve
         FSB Director
       </h1>
        
-      <img
-        alt="face"
-        className="sideImage"
-        src="face.png"
-      />
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="putin.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="putin.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="putin.png"
+        />
+      </div>
       <h2>
         New Measures
       </h2>
@@ -103,6 +167,310 @@ I see that you’ve
         Good Evening Mr. Putin,
 
 I hope things a
+      </h3>
+       
+    </div>
+    <div
+      className="email-notselected"
+      onClick={[Function]}
+    >
+      <h1>
+        Number 1 Fan
+      </h1>
+       
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="fan.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="fan.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="fan.png"
+        />
+      </div>
+      <h2>
+        BIGgesT fAn!!!
+      </h2>
+       
+      <h3>
+        Omg. I can't believe I'm talking to you 
+      </h3>
+       
+    </div>
+    <div
+      className="email-notselected"
+      onClick={[Function]}
+    >
+      <h1>
+        Anon
+      </h1>
+       
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="game_master.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="game_master.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="game_master.png"
+        />
+      </div>
+      <h2>
+        be careful
+      </h2>
+       
+      <h3>
+        One false move and the citizens of Democ
+      </h3>
+       
+    </div>
+    <div
+      className="email-notselected"
+      onClick={[Function]}
+    >
+      <h1>
+        E News
+      </h1>
+       
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="fan.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="fan.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="fan.png"
+        />
+      </div>
+      <h2>
+        The blues embezzeling funds?
+      </h2>
+       
+      <h3>
+        Click on the link to see our new article
+      </h3>
+       
+    </div>
+    <div
+      className="email-notselected"
+      onClick={[Function]}
+    >
+      <h1>
+        FSB Director
+      </h1>
+       
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="putin.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="putin.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="putin.png"
+        />
+      </div>
+      <h2>
+        Good work
+      </h2>
+       
+      <h3>
+        We are doing good work on the election c
+      </h3>
+       
+    </div>
+    <div
+      className="email-notselected"
+      onClick={[Function]}
+    >
+      <h1>
+        Game Master
+      </h1>
+       
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="game_master.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="game_master.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="game_master.png"
+        />
+      </div>
+      <h2>
+        Game Annoucement
+      </h2>
+       
+      <h3>
+        Make sure you are checking all aspects o
+      </h3>
+       
+    </div>
+    <div
+      className="email-notselected"
+      onClick={[Function]}
+    >
+      <h1>
+        Number 1 Fan
+      </h1>
+       
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="fan.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="fan.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="fan.png"
+        />
+      </div>
+      <h2>
+        I lost respect...
+      </h2>
+       
+      <h3>
+        I heard some nasty rumors about you Mr. 
+      </h3>
+       
+    </div>
+    <div
+      className="email-notselected"
+      onClick={[Function]}
+    >
+      <h1>
+        Number 1 Fan
+      </h1>
+       
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="fan.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="fan.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="fan.png"
+        />
+      </div>
+      <h2>
+        I love you once again
+      </h2>
+       
+      <h3>
+        I have decided you can do no wrong and I
+      </h3>
+       
+    </div>
+    <div
+      className="email-notselected"
+      onClick={[Function]}
+    >
+      <h1>
+        Game Master
+      </h1>
+       
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="game_master.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="game_master.png"
+        />
+      </div>
+      <div>
+        <img
+          alt="face"
+          className="sideImage"
+          src="game_master.png"
+        />
+      </div>
+      <h2>
+        End Game
+      </h2>
+       
+      <h3>
+        We are coming up on the end of the game.
       </h3>
        
     </div>

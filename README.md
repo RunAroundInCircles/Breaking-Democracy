@@ -12,6 +12,8 @@ Then run the powershell script called INSTALL.ps1
 To start the server run the command `npm start` in the application directory.
 The server will then start on localhost:3000
 
+Please check the [Wiki tab](https://github.com/catiel/Breaking-Democracy/wiki) above for additional information.
+
 Current Implementation
 =
 Once the page loads an introduction video plays to give a quick overview of the game. Once the video is over the application renders the mainpage so that the game can begin.
