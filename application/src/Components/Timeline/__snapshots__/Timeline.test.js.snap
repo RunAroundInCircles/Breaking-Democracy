@@ -3,6 +3,12 @@
 exports[`renders TimelineApp page 1`] = `
 <div
   className="timeline-app"
+  style={
+    Object {
+      "display": "flex",
+      "justifyContent": "center",
+    }
+  }
 >
   <div
     className="timeline-line"
@@ -22,6 +28,7 @@ exports[`renders TimelineApp page 1`] = `
       width="50"
     >
       <polygon
+        onClick={[Function]}
         points="0,25 50,0 50,50"
         style={
           Object {
@@ -54,6 +61,7 @@ exports[`renders TimelineApp page 1`] = `
       width="50"
     >
       <polygon
+        onClick={[Function]}
         points="50,25 0,0 0,50"
         style={
           Object {
@@ -74,7 +82,7 @@ exports[`renders TimelineApp page 1`] = `
         "height": "80vh",
         "justifyContent": "center",
         "position": "absolute",
-        "width": "100vw",
+        "width": "80vw",
       }
     }
   />
