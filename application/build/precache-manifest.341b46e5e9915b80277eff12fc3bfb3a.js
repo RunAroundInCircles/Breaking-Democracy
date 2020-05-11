@@ -1,27 +1,35 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d677c030a108ac916fb2a528df9e0ba7",
+    "revision": "d9f1802048e3def54067baf0c27def0d",
     "url": "/Breaking-Democracy/index.html"
   },
   {
-    "revision": "c01ea8f1f33cfe1a7c65",
+    "revision": "3480650e84a366f92123",
     "url": "/Breaking-Democracy/static/css/main.e39e0ce6.chunk.css"
   },
   {
-    "revision": "a7588d7232128f9d22a4",
-    "url": "/Breaking-Democracy/static/js/2.d2b1d073.chunk.js"
+    "revision": "8634cff8be8246724abc",
+    "url": "/Breaking-Democracy/static/js/2.425beef3.chunk.js"
   },
   {
     "revision": "3453b8997016469371284a28c0e873e2",
-    "url": "/Breaking-Democracy/static/js/2.d2b1d073.chunk.js.LICENSE.txt"
+    "url": "/Breaking-Democracy/static/js/2.425beef3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c01ea8f1f33cfe1a7c65",
-    "url": "/Breaking-Democracy/static/js/main.3b9cd33b.chunk.js"
+    "revision": "3480650e84a366f92123",
+    "url": "/Breaking-Democracy/static/js/main.02ce164e.chunk.js"
   },
   {
     "revision": "8dc9abc20ee8c0017995",
     "url": "/Breaking-Democracy/static/js/runtime-main.b7e529be.js"
+  },
+  {
+    "revision": "3b3dfb624f4225ac7b59313ddb263882",
+    "url": "/Breaking-Democracy/static/media/AsteroidExplode1.3b3dfb62.wav"
+  },
+  {
+    "revision": "ef835319032eadfe13efb60c3e10f14d",
+    "url": "/Breaking-Democracy/static/media/AsteroidExplode2.ef835319.wav"
   },
   {
     "revision": "5bc2f6b807d745abf117931d341d41f7",
@@ -30,6 +38,30 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "abc8a47583ba321e695e98860fb81131",
     "url": "/Breaking-Democracy/static/media/AsteroidsLoopable.abc8a475.mp3"
+  },
+  {
+    "revision": "82fd8cea7bcece2a873e53bf0b62ce07",
+    "url": "/Breaking-Democracy/static/media/MouseClick1.82fd8cea.wav"
+  },
+  {
+    "revision": "f0462ce4972144f7837978dfa169dcaf",
+    "url": "/Breaking-Democracy/static/media/ShipExplode1.f0462ce4.wav"
+  },
+  {
+    "revision": "1a66334820f96bd3fa6235a38c963e83",
+    "url": "/Breaking-Democracy/static/media/ShipExplode2.1a663348.wav"
+  },
+  {
+    "revision": "19708a6066bb0db52a1ef7be7f3a666b",
+    "url": "/Breaking-Democracy/static/media/Shoot01.19708a60.wav"
+  },
+  {
+    "revision": "0e7d342ac4ab9a969cd17529b6560b28",
+    "url": "/Breaking-Democracy/static/media/Shoot02.0e7d342a.wav"
+  },
+  {
+    "revision": "7caacf6004b4be8cc1e599cb4a316eea",
+    "url": "/Breaking-Democracy/static/media/Shoot03.7caacf60.wav"
   },
   {
     "revision": "0836aef3f5cc2159320129eccc04168c",

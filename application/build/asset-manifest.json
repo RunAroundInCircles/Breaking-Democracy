@@ -1,19 +1,27 @@
 {
   "files": {
     "main.css": "/Breaking-Democracy/static/css/main.e39e0ce6.chunk.css",
-    "main.js": "/Breaking-Democracy/static/js/main.3b9cd33b.chunk.js",
-    "main.js.map": "/Breaking-Democracy/static/js/main.3b9cd33b.chunk.js.map",
+    "main.js": "/Breaking-Democracy/static/js/main.02ce164e.chunk.js",
+    "main.js.map": "/Breaking-Democracy/static/js/main.02ce164e.chunk.js.map",
     "runtime-main.js": "/Breaking-Democracy/static/js/runtime-main.b7e529be.js",
     "runtime-main.js.map": "/Breaking-Democracy/static/js/runtime-main.b7e529be.js.map",
-    "static/js/2.d2b1d073.chunk.js": "/Breaking-Democracy/static/js/2.d2b1d073.chunk.js",
-    "static/js/2.d2b1d073.chunk.js.map": "/Breaking-Democracy/static/js/2.d2b1d073.chunk.js.map",
+    "static/js/2.425beef3.chunk.js": "/Breaking-Democracy/static/js/2.425beef3.chunk.js",
+    "static/js/2.425beef3.chunk.js.map": "/Breaking-Democracy/static/js/2.425beef3.chunk.js.map",
     "index.html": "/Breaking-Democracy/index.html",
-    "precache-manifest.47d1d9c51957df18b5a56a07c392a970.js": "/Breaking-Democracy/precache-manifest.47d1d9c51957df18b5a56a07c392a970.js",
+    "precache-manifest.341b46e5e9915b80277eff12fc3bfb3a.js": "/Breaking-Democracy/precache-manifest.341b46e5e9915b80277eff12fc3bfb3a.js",
     "service-worker.js": "/Breaking-Democracy/service-worker.js",
     "static/css/main.e39e0ce6.chunk.css.map": "/Breaking-Democracy/static/css/main.e39e0ce6.chunk.css.map",
-    "static/js/2.d2b1d073.chunk.js.LICENSE.txt": "/Breaking-Democracy/static/js/2.d2b1d073.chunk.js.LICENSE.txt",
+    "static/js/2.425beef3.chunk.js.LICENSE.txt": "/Breaking-Democracy/static/js/2.425beef3.chunk.js.LICENSE.txt",
+    "static/media/AsteroidExplode1.wav": "/Breaking-Democracy/static/media/AsteroidExplode1.3b3dfb62.wav",
+    "static/media/AsteroidExplode2.wav": "/Breaking-Democracy/static/media/AsteroidExplode2.ef835319.wav",
     "static/media/AsteroidsLoopable.wav": "/Breaking-Democracy/static/media/AsteroidsLoopable.5bc2f6b8.wav",
     "static/media/AsteroidsLoopable.mp3": "/Breaking-Democracy/static/media/AsteroidsLoopable.abc8a475.mp3",
+    "static/media/MouseClick1.wav": "/Breaking-Democracy/static/media/MouseClick1.82fd8cea.wav",
+    "static/media/ShipExplode1.wav": "/Breaking-Democracy/static/media/ShipExplode1.f0462ce4.wav",
+    "static/media/ShipExplode2.wav": "/Breaking-Democracy/static/media/ShipExplode2.1a663348.wav",
+    "static/media/Shoot01.wav": "/Breaking-Democracy/static/media/Shoot01.19708a60.wav",
+    "static/media/Shoot02.wav": "/Breaking-Democracy/static/media/Shoot02.0e7d342a.wav",
+    "static/media/Shoot03.wav": "/Breaking-Democracy/static/media/Shoot03.7caacf60.wav",
     "static/media/ThemeLoopable.wav": "/Breaking-Democracy/static/media/ThemeLoopable.0836aef3.wav",
     "static/media/ThemeLoopable.mp3": "/Breaking-Democracy/static/media/ThemeLoopable.242ac998.mp3",
     "static/media/failurevid.mp4": "/Breaking-Democracy/static/media/failurevid.0ead22b8.mp4",
@@ -25,8 +33,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.b7e529be.js",
-    "static/js/2.d2b1d073.chunk.js",
+    "static/js/2.425beef3.chunk.js",
     "static/css/main.e39e0ce6.chunk.css",
-    "static/js/main.3b9cd33b.chunk.js"
+    "static/js/main.02ce164e.chunk.js"
   ]
 }
